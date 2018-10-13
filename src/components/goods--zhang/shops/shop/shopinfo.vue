@@ -1,5 +1,5 @@
 <template>
-    
+    <p>这是信息</p>
 </template>
 
 <script>

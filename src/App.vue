@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <app-shops></app-shops>
     <img src="./assets/logo.png">
     <h1>{{ msg }}</h1>
     <h2>Essential Links</h2>
@@ -21,6 +22,7 @@
 </template>
 
 <script>
+  import Shops from './components/goods--zhang/shops/shops'
 export default {
   name: 'app',
   data () {
@@ -29,7 +31,7 @@ export default {
     }
   },
   components:{
-
+    'app-shops':Shops
   }
 }
 </script>
