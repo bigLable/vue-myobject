@@ -9,10 +9,10 @@
 </template>
 
 <script>
-    export default {
-        name: "shoping"
-    }
-    let imgs=[img1,img2,img3]
+  export default {
+    name: "shoping"
+  }
+
 </script>
 
 <style scoped>
