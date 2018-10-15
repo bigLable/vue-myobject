@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <app-shops></app-shops>
-       <tscardata></tscardata>
+      
   </div>
 
 </template>
@@ -18,7 +18,7 @@ export default {
   },
   components:{
     'app-shops':Shops,
-    'tscardata':tscardata
+
   }
 }
 </script>
