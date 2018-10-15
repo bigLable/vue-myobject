@@ -18,4 +18,15 @@
 //   {path:'*',redirect:'/'} //重定向，针对任何未匹配路由
 // ]
 import tscarhead from './components/transaction--shen/tsCar'
+import user from './components/user--zhai/user.vue'
+import login from './components/user--zhai/login.vue'
+import registe from './components/user--zhai/registe.vue'
+export const routes = [
+  {path:'/user',component:user},
+  {path:'/login',component:login},
+  {path:'/registe',component:registe}
+]
+
+
+
 
