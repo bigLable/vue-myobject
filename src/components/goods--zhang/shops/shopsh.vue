@@ -1,5 +1,6 @@
 <template>
-    <div class="container">
+    <div>
+      <h1>shops</h1>
       <app-header-title></app-header-title>
       <app-shoping></app-shoping>
       <app-shoplist></app-shoplist>
