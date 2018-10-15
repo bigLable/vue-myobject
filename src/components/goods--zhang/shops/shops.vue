@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div>
       <app-header-title></app-header-title>
       <app-shoping></app-shoping>
       <app-shoplist></app-shoplist>
@@ -7,9 +7,9 @@
 </template>
 
 <script>
-  import HeaderTitle from './header-title'
-  import Shoping from './shoping'
-  import Shoplist from './shoplist'
+  import HeaderTitle from './shopindex/header-title'
+  import Shoping from './shopindex/shoping'
+  import Shoplist from './shopindex/shoplist'
   export default {
     name: "shops",
     components:{

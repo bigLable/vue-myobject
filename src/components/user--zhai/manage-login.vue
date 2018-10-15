@@ -1,10 +1,10 @@
 <template>
-<h1>个人中心</h1>
+    <h1>管理员登录</h1>
 </template>
 
 <script>
     export default {
-        name: "user"
+        name: "manage-login"
     }
 </script>
 
