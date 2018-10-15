@@ -1,13 +1,14 @@
 <template>
   <div id="app">
     <app-shops></app-shops>
-
+       <tscardata></tscardata>
   </div>
 
 </template>
 
 <script>
   import Shops from './components/goods--zhang/shops/shops'
+  import tscardata from './components/transaction--shen/tsCardata'
 export default {
   name: 'app',
   data () {
@@ -16,7 +17,8 @@ export default {
     }
   },
   components:{
-    'app-shops':Shops
+    'app-shops':Shops,
+    'tscardata':tscardata
   }
 }
 </script>
