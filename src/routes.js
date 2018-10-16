@@ -17,5 +17,14 @@
 //   },
 //   {path:'*',redirect:'/'} //重定向，针对任何未匹配路由
 // ]
-import tscarhead from './components/transaction--shen/tsCar'
+import Car from './components/transaction--shen/Car'
+import Pay from './components/transaction--shen/Pay'
+export const routes=[
+  {path:'/Car',component:Car,
+    children:[
+        {path:'',component:Car},
+        {path:Pay,component:Pay}
+      ]
+   },
 
+]
