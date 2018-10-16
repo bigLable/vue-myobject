@@ -1,6 +1,6 @@
 <template>
   <div>
-    <pay-nav></pay-nav>
+    <!--<pay-nav></pay-nav>-->
     <pay-oderprocess></pay-oderprocess>
     <pay-adress></pay-adress>
     <pay-detail></pay-detail>

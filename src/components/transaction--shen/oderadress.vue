@@ -1,12 +1,15 @@
 <template>
+  <div class="container" >
+    <h4>确认收货地址</h4>
+    <h2 class="h2-dot" ></h2>
   <el-card class="box-card">
   <div class="container">
-    <div class="col-sm-3">确认收货</div>
-    <div class="col-sm-3 col-sm-pull-1">确认收货</div>
+
+    <div class="col-sm-4">收货地址</div>
+    <div class="col-sm-7 col-sm-pull-0 pointer" >编辑</div>
     <hr/>
 
       <div slot="header" class="clearfix">
-        <span>卡片名称</span>
         <el-button style="float: right; padding: 3px 0" type="text">操作按钮</el-button>
       </div>
       <div v-for="o in 4" :key="o" class="text item">
@@ -15,6 +18,7 @@
 
   </div>
   </el-card>
+  </div>
 </template>
 
 <script>
@@ -24,6 +28,10 @@
 </script>
 
 <style scoped>
+  .h2-dot{
+    border-bottom:dashed 1px black;
+    display:block;
+  }
   .text {
     font-size: 14px;
   }
@@ -43,5 +51,14 @@
 
   .box-card {
     width: 480px;
+  }
+  h4{
+    color: red;
+    opacity: 0.5;
+  }
+  .pointer:hover{
+    color: blue;
+    cursor: pointer;
+
   }
 </style>

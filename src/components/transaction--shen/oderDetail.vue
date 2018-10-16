@@ -1,6 +1,11 @@
 <template>
-  <div>
-    <p>确认订单信息</p>
+  <div class="container" style="margin-top: 20px">
+
+    <h5>确认订单信息</h5>
+    <h2 class="h2-dot"></h2>
+    <div class="table-c ">
+
+
     <table class="table table-hover">
       <tr>
         <th>宝贝图片</th>
@@ -10,21 +15,22 @@
         <th>数量</th>
         <th>小计</th>
       </tr>
-      <tr v-for="key in 2">
+      <tr v-for="key in 2" id="bc">
         <td>
-          图片
+         <img src="../../assets/logo.png">
         </td>
-        <td>详细信息</td>
-        <td>A7M3</td>
+        <td style="color: grey">详细信息</td>
+        <td >A7M3</td>
+        <td class="Red">￥100.00</td>
         <td>2</td>
-        <td>￥100.00</td>
-        <td>￥200.00</td>
+        <td class="Red">￥200.00</td>
       </tr>
-      <tr>
-        <td colspan=3 style="text-align: left">给卖家留言:<input type="text" placeholder="欢迎给我们留言！"/></td>
-        <td colspan=3 style="text-align: right">合计费用:￥121.00</td>
+      <tr >
+        <td colspan=3 style="text-align: left;padding-top:5%">给卖家留言:<input type="text" placeholder="欢迎给我们留言！"/></td>
+        <td colspan=3 style="text-align: center;padding-top:5%">合计费用:<span class="Red">￥121.00</span></td>
       </tr>
     </table>
+    </div>
   </div>
 
 </template>
@@ -36,5 +42,41 @@
 </script>
 
 <style scoped>
+  /*.bc{*/
+    /*box-shadow: 3px 3px 2px gainsboro;*/
+  /*}*/
+  .h2-dot{
+    border-bottom:dashed 1px black;
+    display:block;
+  }
+  tr{
 
+    margin-top: 5px;
+  }
+h5{
+  color: red;
+  opacity: 1;
+}
+
+  .Red{
+    font-weight: bold;
+    color: red;
+  }
+  #bc td{
+    background-color: rgba(249,247,247,0.7);
+
+    border-bottom:5px solid white;
+  }
+  input::-webkit-input-placeholder {
+         font-family: 微软雅黑;
+        /* placeholder颜色  */
+           color:grey;
+         /* placeholder字体大小  */
+           font-size: 12px;
+         /* placeholder位置  */
+           text-align: center;
+     }
+  input {
+                  border: 1px solid black;
+              }
 </style>
