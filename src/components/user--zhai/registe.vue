@@ -10,7 +10,7 @@
         <el-input v-model="input4" placeholder="请输入手机号码"></el-input><br><br>
         <el-input v-model="input5" placeholder="请输入邮箱地址"></el-input><br><br>
         <el-button type="primary" style="width:250px">注 册</el-button>
-        <el-button type="info" style="width:250px" id="btn">已经有账号</el-button>
+        <router-link role="presentation" to="/login"><el-button type="info" style="width:250px" id="btn">已经有账号</el-button></router-link>
       </div>
     </div>
   </div>
@@ -35,8 +35,8 @@
   .container{
     width:100%;
     height:700px;
-    background-image:url('../../assets/timg.jpg');
-    background-position:-400px;
+    background-image:url('../../assets/registe.jpg');
+    background-position:-300px;
   }
   .main{
     width:550px;

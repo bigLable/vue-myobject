@@ -22,19 +22,26 @@ import worksdetail from'./components/comment--Qi/works/worksdetail'
 import  Home from './components/comment--Qi/Home'
 import Car from './components/transaction--shen/Car'
 import Pay from './components/transaction--shen/Pay'
-import repair from './components/goods--zhang/repair/repair'
-import search from './components/goods--zhang/search/search'
-import shops from './components/goods--zhang/shops/shops'
+import user from './components/user--zhai/user.vue'
+import login from './components/user--zhai/login.vue'
+import registe from './components/user--zhai/registe.vue'
+import manage from './components/user--zhai/manage.vue'
+import managelogin from './components/user--zhai/manage-login.vue'
+import changeinfo from './components/user--zhai/changeinfo.vue'
 export const routes=[
   {path:'/Car',component:Car},
   {path:'/Pay',component:Pay},
   {path:'/',component:Home},
-  {path:'/repair',component:repair},
-  {path:'/search',component:search},
-  {path:'/shops',component:shops},
   {path:'/works',component:works,children:[
       {path:':id',component:worksdetail}
     ]
-  }
+  },{path:'/user',component:user,
+    children:[
+      {path:'/changeinfo',component:changeinfo}
+    ]},
+  {path:'/login',component:login},
+  {path:'/registe',component:registe},
+  {path:'/manage',component:manage},
+  {path:'/managelogin',component:managelogin},
 
 ]
