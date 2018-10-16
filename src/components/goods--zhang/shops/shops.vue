@@ -1,9 +1,12 @@
 <template>
-    <div class="">
-      <app-header-title></app-header-title>
-      <app-shoping></app-shoping>
-      <app-shoplist></app-shoplist>
-    </div>
+  <div class="container-fluid">
+    <app-header-title></app-header-title>
+    <app-shoping></app-shoping>
+    <app-shoplist></app-shoplist>
+    <router-view></router-view>
+  </div>
+
+
 </template>
 
 <script>
