@@ -28,10 +28,16 @@ import registe from './components/user--zhai/registe.vue'
 import manage from './components/user--zhai/manage.vue'
 import managelogin from './components/user--zhai/manage-login.vue'
 import changeinfo from './components/user--zhai/changeinfo.vue'
+import repair from './components/goods--zhang/repair/repair'
+import search from './components/goods--zhang/search/search'
+import shops from './components/goods--zhang/shops/shops'
 export const routes=[
   {path:'/Car',component:Car},
   {path:'/Pay',component:Pay},
   {path:'/',component:Home},
+  {path:'/repair',component:repair},
+  {path:'/search',component:search},
+  {path:'/shops',component:shops},
   {path:'/works',component:works,children:[
       {path:':id',component:worksdetail}
     ]
