@@ -2,7 +2,6 @@
   <div id="app">
     <app-shops></app-shops>
     <router-link to="/Car">去往购物车</router-link>
-    <router-link to="/Car/pay">去确定下单页面</router-link>
     <router-view></router-view>
   </div>
 
