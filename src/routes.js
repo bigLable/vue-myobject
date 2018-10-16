@@ -20,11 +20,7 @@
 import Car from './components/transaction--shen/Car'
 import Pay from './components/transaction--shen/Pay'
 export const routes=[
-  {path:'/Car',component:Car,
-    children:[
-        {path:'',component:Car},
-        {path:Pay,component:Pay}
-      ]
-   },
+  {path:'/Car',component:Car},
+  {path:'/Pay',component:Pay},
 
 ]

@@ -46,10 +46,11 @@
            <td>删除</td>
            <td>已选商品:</td>
            <td>合计(不含运费):</td>
-           <td colspan="2">结算:</td>
+           <td colspan="2"><router-link to="/Pay">结算:</router-link></td>
          </tr>
        </table>
      </div>
+
     </div>
 </template>
 
