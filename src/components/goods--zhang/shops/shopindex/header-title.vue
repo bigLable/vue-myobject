@@ -1,6 +1,9 @@
 <template>
-  <div class="">
-    <p>索尼在线商城首页</p>
+  <div id="px" class="row">
+    <div class="col-lg-12 col-sm-12 col-xs-12 col-md-12">
+      <p>咔嚓在线商城首页>商品列表>商品详情></p>
+    </div>
+
   </div>
 </template>
 
@@ -11,8 +14,14 @@
 </script>
 
 <style scoped>
+  #px{
+    height: 100px;
+
+  }
 p{
   font-size: 16px;
   color: #ccc;
+  position: relative;
+  top: 10px;
 }
 </style>

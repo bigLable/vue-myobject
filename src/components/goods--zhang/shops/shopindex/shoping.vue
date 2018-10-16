@@ -1,4 +1,5 @@
 <template>
+  <div class="container">
     <div class="row">
       <div id="d1" class="col-sm-5">
         商品图片
@@ -7,6 +8,8 @@
         商品信息
       </div>
     </div>
+  </div>
+
 </template>
 
 <script>

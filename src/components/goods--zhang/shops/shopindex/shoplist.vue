@@ -1,26 +1,75 @@
 <template>
-  <div class="container">
-    <app-shop-imgs></app-shop-imgs>
-    <app-shop-info></app-shop-info>
-    <app-shop-comment></app-shop-comment>
+  <div id="divsf" class="row">
+    <div class="container">
+      <div class="col-xs-3 col-sm-4 col-md-6 col-lg-7">
+        <span>相机型号</span>
+      </div>
+      <div class="col-xs-9 col-sm-8 col-md-6 col-lg-5"   >
+        <ul>
+          <li @click="shopimg">概述</li>
+
+          <li @click="shopinfo">详细参数</li>
+
+          <li @click="shopcomment" >评论</li>
+          <li><input type="button" class="btn btn-primary" value="立即购买"></li>
+        </ul>
+      </div>
+    </div>
+
   </div>
+
+
 
 </template>
 
 <script>
-  import Shopimgs from './shop/shopimgs'
-  import Shopinfo from './shop/shopinfo'
-  import Shopcomment from './shop/shopcomment'
+
     export default {
         name: "applist",
       components:{
-        'app-shop-imgs':Shopimgs,
-        'app-shop-info':Shopinfo,
-        'app-shop-comment':Shopcomment ,
+
+      },
+      methods:{
+        shopimg(){
+          this.$router.push({path:'/shops/shopimgs'})
+        },
+          shopinfo(){
+            this.$router.push({path:'/shops/shopinfo'})
+          },
+        shopcomment(){
+          this.$router.push({path:'/shops/shopcomment'})
+        }
       }
     }
 </script>
 
 <style scoped>
+  #divsf{
+    height: 70px;
+    border: 1px solid lightgray;
+  }
+  ul{
+    list-style: none;
+  }
+  li{
+    font-size: 18px;
+    width: 90px;
+    height: 30px;
+    display: inline-block;
+    text-align: center;
+    border-left: #cccccc 1px solid;
+    position: relative;
+    bottom: -15px;
+
+  }
+  li:hover{
+    color: dodgerblue;
+  }
+  span{
+    font-size: 25px;
+    position: relative;
+    top: 15px;
+  }
+  
 
 </style>
