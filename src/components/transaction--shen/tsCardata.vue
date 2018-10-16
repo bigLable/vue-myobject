@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-      <div class="row"><h2>商品列表{{num}}</h2></div>
+      <div class="row"><h2>商品列表{{}}</h2></div>
 
      <div class="row">
 
@@ -21,12 +21,13 @@
            <td>
              <label>
              <input type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
+               <img src="info.shopImg">
            </label>
            </td>
-           <td>图片加详细信息</td>
-           <td>￥50.00</td>
-           <td>2</td>
-           <td>￥100.00</td>
+           <td>info.shopifo</td>
+           <td>info.shopPrice</td>
+           <td><span><img src="../../assets/add.gif"/></span><span>num</span><span><img src="../../assets/subtraction.gif"/></span></td>
+           <td>总价</td>
            <td>删除</td>
          </tr>
           <tr>
@@ -59,24 +60,27 @@
     export default {
         name: "tsCardata",
         data(){
-          return {}
-        },
+          return {
+            info:[]
+          }
+      },
       methods:{
         getData:function(){
-
           var _this = this;
-
           axios({
             method:'get',
-            url:'http://localhost:3000/shoppingCart/getAlladres'
+            url:'http://localhost:3000/shoppingCart/getAllcar'
           }).then(function(result){
             console.log(result.data);
-            _this.info = result.data;
-
+            _this.info = result.data[0];
+               console.log(_this.info)
           },function(err){
             console.log(err);
           })
         }
+      },
+      beforeMount:function () {
+        this.getData();
       }
 
     }
@@ -84,5 +88,7 @@
 </script>
 
 <style scoped>
-
+table span{
+  border: 1px solid gainsboro;
+}
 </style>
