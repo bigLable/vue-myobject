@@ -22,10 +22,16 @@ import worksdetail from'./components/comment--Qi/works/worksdetail'
 import  Home from './components/comment--Qi/Home'
 import Car from './components/transaction--shen/Car'
 import Pay from './components/transaction--shen/Pay'
+import repair from './components/goods--zhang/repair/repair'
+import search from './components/goods--zhang/search/search'
+import shops from './components/goods--zhang/shops/shops'
 export const routes=[
   {path:'/Car',component:Car},
   {path:'/Pay',component:Pay},
   {path:'/',component:Home},
+  {path:'/repair',component:repair},
+  {path:'/search',component:search},
+  {path:'/shops',component:shops},
   {path:'/works',component:works,children:[
       {path:':id',component:worksdetail}
     ]

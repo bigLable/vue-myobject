@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <title-repair></title-repair>
     <select-repair></select-repair>
-    <raputor></raputor>
+    <router-view></router-view>
   </div>
 
 </template>
