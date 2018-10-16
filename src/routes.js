@@ -31,13 +31,25 @@ import changeinfo from './components/user--zhai/changeinfo.vue'
 import repair from './components/goods--zhang/repair/repair'
 import search from './components/goods--zhang/search/search'
 import shops from './components/goods--zhang/shops/shops'
+import shopinfo from './components/goods--zhang/shops/shopindex/shop/shopinfo'
+import shopimgs from './components/goods--zhang/shops/shopindex/shop/shopimgs'
+import shopcomment from './components/goods--zhang/shops/shopindex/shop/shopcomment'
+import raputor from './components/goods--zhang/repair/assembly-r/raputor/raputor'
+import chizu from './components/goods--zhang/repair/assembly-r/raputor/chizu'
 export const routes=[
   {path:'/Car',component:Car},
   {path:'/Pay',component:Pay},
   {path:'/',component:Home},
-  {path:'/repair',component:repair},
+  {path:'/repair',component:repair,children:[
+      {path:'raputor',component:raputor},
+      {path:'chizu',component:chizu}
+    ]},
   {path:'/search',component:search},
-  {path:'/shops',component:shops},
+  {path:'/shops',component:shops,children:[
+      {path:'shopinfo',component:shopinfo},
+      {path:'shopimgs',component:shopimgs},
+      {path:'shopcomment',component:shopcomment}
+    ]},
   {path:'/works',component:works,children:[
       {path:':id',component:worksdetail}
     ]

@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row">
       <div id="div1" >
-          <div id="d1"class=" col-lg-6 col-md-6 col-sm-6 col-xs-6"@click="zao">
+          <div id="d1"class=" col-lg-6 col-md-6 col-sm-6 col-xs-6" @click="zao">
             <p>零售店</p>
         </div>
         <div id="d2" class=" col-lg-6 col-md-6 col-sm-6 col-xs-6" @click="zuo" >
@@ -19,8 +19,11 @@
         name: "select-repair",
       methods:{
           zao(){
-            this.$router.push({path:'/raputor'})
-          }
+            this.$router.push({path:'/repair/raputor'})
+          },
+        zuo(){
+          this.$router.push({path:'/repair/chizu'})
+        }
     }
     }
 </script>

@@ -14,7 +14,7 @@
       </el-menu-item>
       <el-submenu index="2">
         <template slot="title">
-          <router-link role="presentation" to=""><a>商品分类</a></router-link>
+          <router-link role="presentation" to="/search"><a>商品分类</a></router-link>
         </template>
         <el-menu-item index="2-1">选项1</el-menu-item>
         <el-menu-item index="2-2">选项2</el-menu-item>
@@ -30,7 +30,7 @@
         <router-link role="presentation" to="/about"><a>关于我们</a></router-link>
       </el-menu-item>
       <el-menu-item index="4">
-        <router-link role="presentation" to=""><a>售后服务</a></router-link>
+        <router-link role="presentation" to="/repair"><a>售后服务</a></router-link>
       </el-menu-item>
       <el-menu-item index="5">
         <router-link role="presentation" to="/works"><a>摄影展示</a></router-link>
