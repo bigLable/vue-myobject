@@ -1,11 +1,11 @@
 <template>
   <div class="container">
     <div class="row">
-      <div id="div1">
-        <div id="d1" class=" col-lg-6 col-md-6 col-sm-6 col-xs-6">
-          <p>零售店</p>
+      <div id="div1" >
+          <div id="d1"class=" col-lg-6 col-md-6 col-sm-6 col-xs-6" @click="zao">
+            <p>零售店</p>
         </div>
-        <div id="d2" class=" col-lg-6 col-md-6 col-sm-6 col-xs-6">
+        <div id="d2" class=" col-lg-6 col-md-6 col-sm-6 col-xs-6" @click="zuo" >
           <p>特约维修店</p>
         </div>
         <p id="p1">直营店铺</p>
@@ -16,7 +16,15 @@
 
 <script>
     export default {
-        name: "select-repair"
+        name: "select-repair",
+      methods:{
+          zao(){
+            this.$router.push({path:'/repair/raputor'})
+          },
+        zuo(){
+          this.$router.push({path:'/repair/chizu'})
+        }
+    }
     }
 </script>
 

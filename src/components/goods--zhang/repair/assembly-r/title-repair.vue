@@ -1,5 +1,5 @@
 <template>
-  <div class=" text-center ">
+  <div class="row text-center ">
     <p>售后服务</p>
   </div>
 

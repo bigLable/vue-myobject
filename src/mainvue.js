@@ -6,12 +6,12 @@ import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 Vue.use(ElementUI)
 import routerinstall from './routerinstall'
-const router =new VueRouter({
+const routerin =new VueRouter({
   routerinstall,
   model:history
 })
 new Vue({
   el: '#app',
-  router,
+  routerin ,
   render: h => h(App)
 })

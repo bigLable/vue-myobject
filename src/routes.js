@@ -17,10 +17,49 @@
 //   },
 //   {path:'*',redirect:'/'} //重定向，针对任何未匹配路由
 // ]
+import works from './components/comment--Qi/works/works'
+import worksdetail from'./components/comment--Qi/works/worksdetail'
+import  Home from './components/comment--Qi/Home'
 import Car from './components/transaction--shen/Car'
 import Pay from './components/transaction--shen/Pay'
+import user from './components/user--zhai/user.vue'
+import login from './components/user--zhai/login.vue'
+import registe from './components/user--zhai/registe.vue'
+import manage from './components/user--zhai/manage.vue'
+import managelogin from './components/user--zhai/manage-login.vue'
+import changeinfo from './components/user--zhai/changeinfo.vue'
+import repair from './components/goods--zhang/repair/repair'
+import search from './components/goods--zhang/search/search'
+import shops from './components/goods--zhang/shops/shops'
+import shopinfo from './components/goods--zhang/shops/shopindex/shop/shopinfo'
+import shopimgs from './components/goods--zhang/shops/shopindex/shop/shopimgs'
+import shopcomment from './components/goods--zhang/shops/shopindex/shop/shopcomment'
+import raputor from './components/goods--zhang/repair/assembly-r/raputor/raputor'
+import chizu from './components/goods--zhang/repair/assembly-r/raputor/chizu'
 export const routes=[
   {path:'/Car',component:Car},
   {path:'/Pay',component:Pay},
+  {path:'/',component:Home},
+  {path:'/repair',component:repair,children:[
+      {path:'raputor',component:raputor},
+      {path:'chizu',component:chizu}
+    ]},
+  {path:'/search',component:search},
+  {path:'/shops',component:shops,children:[
+      {path:'shopinfo',component:shopinfo},
+      {path:'shopimgs',component:shopimgs},
+      {path:'shopcomment',component:shopcomment}
+    ]},
+  {path:'/works',component:works,children:[
+      {path:':id',component:worksdetail}
+    ]
+  },{path:'/user',component:user,
+    children:[
+      {path:'/changeinfo',component:changeinfo}
+    ]},
+  {path:'/login',component:login},
+  {path:'/registe',component:registe},
+  {path:'/manage',component:manage},
+  {path:'/managelogin',component:managelogin},
 
 ]
