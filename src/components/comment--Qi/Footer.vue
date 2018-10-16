@@ -10,50 +10,25 @@
       text-color="#fff"
       active-text-color="1a1a1a" >
       <el-menu-item index="1" >
-        <router-link role="presentation" to="/"><img src="../../assets/u19.png" alt=""></router-link>
+       <img src="../../assets/u19.png" alt="">
       </el-menu-item>
-      <el-submenu index="2" >
-        <template slot="title">
-          <router-link role="presentation" to="/search"><a>商品分类</a></router-link>
-        </template>
-        <el-menu-item index="2-1">选项1</el-menu-item>
-        <el-menu-item index="2-2">选项2</el-menu-item>
-        <el-menu-item index="2-3">选项3</el-menu-item>
-        <el-submenu index="2-4">
-          <template slot="title">选项4</template>
-          <el-menu-item index="2-4-1">选项1</el-menu-item>
-          <el-menu-item index="2-4-2">选项2</el-menu-item>
-          <el-menu-item index="2-4-3">选项3</el-menu-item>
-        </el-submenu>
-      </el-submenu>
+      <el-menu-item index="2">
+       <span>2018-2028咔嚓中国有限公司版权所有</span>
+      </el-menu-item>
       <el-menu-item index="3">
-        <router-link role="presentation" to="/about"><a>关于我们</a></router-link>
+        <router-link role="presentation" to=""><a>责任声明</a></router-link>
       </el-menu-item>
       <el-menu-item index="4">
-        <router-link role="presentation" to="/repair"><a>售后服务</a></router-link>
+        <router-link role="presentation" to=""><a>联系我们</a></router-link>
       </el-menu-item>
       <el-menu-item index="5">
-        <router-link role="presentation" to="/works"><a>摄影展示</a></router-link>
-      </el-menu-item>
-      <el-menu-item index="10" class="sou">
-        <el-input
-          placeholder="请输入内容"
-          v-model="input23">
-          <i slot="prefix" class="el-input__icon el-icon-search"></i>
-        </el-input>
+        <router-link role="presentation" to=""><a>网站所有者信息</a></router-link>
       </el-menu-item>
       <el-menu-item index="6">
-        <router-link role="presentation" to="/login"><a class="move">登录</a></router-link>
+        <router-link role="presentation" to=""><img class="tu" src="../../assets/qq.png" alt=""></router-link>
       </el-menu-item>
       <el-menu-item index="7">
-        <router-link role="presentation" to="/registe"><a class="move">注册</a></router-link>
-      </el-menu-item>
-      <el-menu-item index="8">
-        <router-link role="presentation" to="/Car"><a class="move">购物车</a></router-link>
-      </el-menu-item>
-
-      <el-menu-item index="9">
-        <router-link role="presentation" to="/user"><a class="move">个人中心</a></router-link>
+        <router-link role="presentation" to=""><img  class="tu" src="../../assets/weixin.png" alt=""></router-link>
       </el-menu-item>
 
     </el-menu>
@@ -101,6 +76,11 @@
     font-size: 30px;
   }
   .el-menu-demo{
-    height: 60px;
+    clear: both;
+    height: 100px;
+  }
+  .tu{
+    width: 20px;
+    height: 20px;
   }
 </style>
