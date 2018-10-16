@@ -1,5 +1,7 @@
 <template>
+
   <div>
+    <br>
     <div>
       <el-carousel :interval="4000" type="card" height="700px">
         <el-carousel-item v-for="item in 5" :key="item">
