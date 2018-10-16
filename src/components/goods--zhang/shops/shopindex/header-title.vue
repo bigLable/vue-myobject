@@ -1,6 +1,6 @@
 <template>
-  <div class="row" >
-    <p>索尼在线商城首页>{{种类}}>{{型号}}</p>
+  <div class="">
+    <p>索尼在线商城首页</p>
   </div>
 </template>
 

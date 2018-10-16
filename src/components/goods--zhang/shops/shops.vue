@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="">
       <app-header-title></app-header-title>
       <app-shoping></app-shoping>
       <app-shoplist></app-shoplist>
