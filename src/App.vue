@@ -1,14 +1,13 @@
 <template>
   <div id="app">
-    <app-shops></app-shops>
-    <router-link to="/Car">去往购物车</router-link>
+    <app-header></app-header>
     <router-view></router-view>
   </div>
 
 </template>
 
 <script>
-  import Shops from './components/goods--zhang/shops/shops'
+  import Header from './components/comment--Qi/Header'
 export default {
   name: 'app',
   data () {
@@ -17,7 +16,8 @@ export default {
     }
   },
   components:{
-    'app-shops':Shops,
+
+    'app-header':Header
 
 
   }
