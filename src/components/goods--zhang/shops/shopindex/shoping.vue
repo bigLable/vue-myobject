@@ -37,7 +37,7 @@
         </div>
         <div id="z1">
           <ul>
-          <li> <input class="btn btn-primary but" type="button" value="立即购买"></li>
+          <li> <input class="btn btn-primary but glyphicon " type="button" value="立即购买"></li>
           <li>  <input  class="btn btn-default but" type="button" value="加入购物车"></li>
         </ul>
 
@@ -61,7 +61,7 @@
         alert('我被点击了')
       },
       pa1(){
-        
+
       }
     }
   }
