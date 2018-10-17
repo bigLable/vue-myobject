@@ -18,6 +18,7 @@
 //   {path:'*',redirect:'/'} //重定向，针对任何未匹配路由
 // ]
 import works from './components/comment--Qi/works/works'
+import about from './components/comment--Qi/about'
 import hotworks from './components/comment--Qi/works/hotworks'
 import newworks from './components/comment--Qi/works/newworks'
 import recworks from './components/comment--Qi/works/recworks'
@@ -58,7 +59,9 @@ export const routes=[
       {path:'',component:recworks},
 
     ]
-  },{path:'/user',component:user,
+  },
+  {path:'/about',component:about},
+  {path:'/user',component:user,
     children:[
       {path:'/changeinfo',component:changeinfo}
     ]},

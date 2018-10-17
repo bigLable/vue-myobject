@@ -14,20 +14,20 @@
       <div id="hot" class="col-xs-12" ><span class="glyphicon glyphicon-fire" aria-hidden="true"><span>热门数码产品</span></span></div>
       <br><br><br><br>
       <el-row class="container" >
-          <el-col :span="8" v-for="(o, index) in 2" :key="o" :offset="index > 0 ? 2 : 0"   >
-            <el-card :body-style="{ padding: '50px' }">
-              <img src="../../assets/sh3.png" class="image">
-              <div style="padding: 14px;">
-                <span> 佳能EOS R(单机)</span>
-                <div class="bottom clearfix">
-                  <time class="time">{{ currentDate }}</time>
-                  <el-button type="text" class="button">
-                    ¥15364-16000</el-button>
-                </div>
+        <el-col :span="8" v-for="(o, index) in 2" :key="o" :offset="index > 0 ? 2 : 0"   >
+          <el-card :body-style="{ padding: '50px' }">
+            <img src="../../assets/sh3.png" class="image">
+            <div style="padding: 14px;">
+              <span> 佳能EOS R(单机)</span>
+              <div class="bottom clearfix">
+                <time class="time">{{ currentDate }}</time>
+                <el-button type="text" class="button">
+                  ¥15364-16000</el-button>
               </div>
-            </el-card>
-          </el-col>
-        </el-row>
+            </div>
+          </el-card>
+        </el-col>
+      </el-row>
       <br>
       <el-row  class="container" >
         <el-col :span="8" v-for="(o, index) in 2" :key="o" :offset="index > 0 ? 2 : 0"   >
@@ -67,7 +67,7 @@
           {url:require("../../assets/ph3.jpg")} ,
           {url:require("../../assets/ph4.jpg")} ,
           {url:require("../../assets/ph5.jpg")} ,
-         ]
+        ]
       };
     }
   }
@@ -102,11 +102,13 @@
   .button {
     padding: 0;
     float: right;
+
   }
 
   .image {
     width: 100%;
     display: block;
+
 
 
   }

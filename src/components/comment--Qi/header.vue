@@ -1,63 +1,60 @@
 <template>
   <div  >
     <div class="line "></div>
-    <el-menu
-      :default-active="activeIndex2"
-      class="el-menu-demo "
-      mode="horizontal"
-      @select="handleSelect"
-      background-color="#545c64"
-      text-color="#fff"
-      active-text-color="1a1a1a" >
-      <el-menu-item index="1" >
-        <router-link role="presentation" to="/"><img src="../../assets/u19.png" alt=""></router-link>
-      </el-menu-item>
-      <el-submenu index="2" >
-        <template slot="title">
-          <router-link role="presentation" to="/shops"><a>商品分类</a></router-link>
-        </template>
-        <el-menu-item index="2-1">选项1</el-menu-item>
-        <el-menu-item index="2-2">选项2</el-menu-item>
-        <el-menu-item index="2-3">选项3</el-menu-item>
-        <el-submenu index="2-4">
-          <template slot="title">选项4</template>
-          <el-menu-item index="2-4-1">选项1</el-menu-item>
-          <el-menu-item index="2-4-2">选项2</el-menu-item>
-          <el-menu-item index="2-4-3">选项3</el-menu-item>
-        </el-submenu>
-      </el-submenu>
-      <el-menu-item index="3">
-        <router-link role="presentation" to="/about"><a>关于我们</a></router-link>
-      </el-menu-item>
-      <el-menu-item index="4">
-        <router-link role="presentation" to="/repair"><a>售后服务</a></router-link>
-      </el-menu-item>
-      <el-menu-item index="5">
-        <router-link role="presentation" to="/works"><a>摄影展示</a></router-link>
-      </el-menu-item>
-      <el-menu-item index="10" class="sou">
-        <el-input
-          placeholder="请输入内容"
-          v-model="input23">
-          <i slot="prefix" class="el-input__icon el-icon-search"></i>
-        </el-input>
-      </el-menu-item>
-      <el-menu-item index="6">
-        <router-link role="presentation" to="/login"><a class="move">登录</a></router-link>
-      </el-menu-item>
-      <el-menu-item index="7">
-        <router-link role="presentation" to="/registe"><a class="move">注册</a></router-link>
-      </el-menu-item>
-      <el-menu-item index="8">
-        <router-link role="presentation" to="/Car"><a class="move">购物车</a></router-link>
-      </el-menu-item>
+    <nav class="navbar navbar navbar-inverse">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                  data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
 
-      <el-menu-item index="9">
-        <router-link role="presentation" to="/user"><a class="move">个人中心</a></router-link>
-      </el-menu-item>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li>  <router-link role="presentation" to="/"><img src="../../assets/u19.png" alt=""></router-link></li>
+            <li class="">
+              <router-link role="presentation" to="/shops"><a>商品列表</a></router-link>
 
-    </el-menu>
+            </li>
+            <li>
+              <router-link role="presentation" to="/works"><a>摄影展示</a></router-link>
 
+            </li>
+            <li>
+              <router-link role="presentation" to="/about"><a>关于我们</a></router-link>
+            </li>
+            <li>
+              <router-link role="presentation" to="/repair"><a>售后服务</a></router-link>
+            </li>
+            <li> <form class="navbar-form navbar-left">
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Search">
+              </div>
+              <button type="submit" class="btn btn-default">搜索</button>
+            </form></li>
+            <li>
+              <router-link role="presentation" to="/login"><a class="move">登录</a></router-link>
+            </li>
+            <li>
+              <router-link role="presentation" to="/registe"><a class="move">注册</a></router-link>
+            </li>
+            <li>
+              <router-link role="presentation" to="/Car"><a class="move">购物车</a></router-link>
+            </li>
+            <li>
+              <router-link role="presentation" to="/user"><a class="move">个人中心</a></router-link>
+            </li>
+          </ul>
+
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
 
   </div>
 </template>
@@ -88,13 +85,14 @@
   a {
     color: #fff;
     text-decoration: none;
-    margin-left: 30px;
+    margin-left: 20px;
+  }
+  a:hover{
+    color: #a3a3a3;
   }
 
   .move {
     font-size: 12px;
-    position: absolute;
-    right: 20px;
     top: -10px;
   }
   .sou{

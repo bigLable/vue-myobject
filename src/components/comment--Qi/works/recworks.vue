@@ -71,6 +71,7 @@
       </div>
     </div>
   </div>
+
   <div class="block">
     <span class="demonstration">&nbsp;</span>
     <el-pagination
@@ -78,6 +79,7 @@
       :total="50">
     </el-pagination>
   </div>
+
 
 </div>
 </template>
