@@ -15,7 +15,7 @@
 
 <style scoped>
   #px{
-    height: 100px;
+    height: 50px;
 
   }
 p{
