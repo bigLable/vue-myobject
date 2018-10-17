@@ -17,14 +17,21 @@
 //   },
 //   {path:'*',redirect:'/'} //重定向，针对任何未匹配路由
 // ]
-import tscarhead from './components/transaction--shen/tsCar'
 import user from './components/user--zhai/user.vue'
 import login from './components/user--zhai/login.vue'
 import registe from './components/user--zhai/registe.vue'
+import manage from './components/user--zhai/manage.vue'
+import managelogin from './components/user--zhai/manage-login.vue'
+import changeinfo from './components/user--zhai/changeinfo.vue'
 export const routes = [
-  {path:'/user',component:user},
+  {path:'/user',component:user,
+    children:[
+    {path:'/changeinfo',component:changeinfo}
+  ]},
   {path:'/login',component:login},
-  {path:'/registe',component:registe}
+  {path:'/registe',component:registe},
+  {path:'/manage',component:manage},
+  {path:'/managelogin',component:managelogin},
 ]
 
 

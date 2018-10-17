@@ -4,10 +4,24 @@
     <div class="login"><h1>登 录</h1></div>
     <div class="login-1"><h5>Welcome Login</h5></div>
     <div class="input">
-      <el-input v-model="input" placeholder="请输入邮箱"></el-input><br><br>
-      <el-input v-model="input2" placeholder="请输入密码" type="password"></el-input><br><br>
+      <el-form :model="dynamicValidateForm" ref="dynamicValidateForm" class="demo-dynamic">
+        <el-form-item
+          prop="email"
+          :rules="[
+      { required: true, message: '请输入邮箱地址', trigger: 'blur'},
+      { type: 'email', message: '请输入正确的邮箱地址', trigger: ['blur', 'change'] }
+    ]">
+          <el-input v-model="dynamicValidateForm.email" placeholder="请输入邮箱"></el-input>
+        </el-form-item>
+        <el-form :model="ruleForm2" status-icon :rules="rules2" ref="ruleForm2" class="demo-ruleForm">
+          <el-form-item prop="pass">
+            <el-input type="password" v-model="ruleForm2.pass" autocomplete="off" placeholder="请输入密码"></el-input>
+          </el-form-item>
       <el-button type="primary" style="width:250px">登 录</el-button>
       <router-link role="presentation" to="/registe"><el-button type="info" style="width:250px" id="btn">还没有账号</el-button></router-link>
+      </el-form>
+        <router-link to="/manage"><el-button plain size="mini" style="margin-top:10px;margin-left:158px">管理员登录</el-button></router-link>
+      </el-form>
     </div>
   </div>
 </div>
@@ -17,11 +31,37 @@
     export default {
         name: "login",
       data() {
+        var validatePass = (rule, value, callback) => {
+          if (value === '') {
+            callback(new Error('请输入密码'));
+          } else {
+            if (this.ruleForm2.checkPass !== '') {
+              this.$refs.ruleForm2.validateField('checkPass');
+            }
+            callback();
+          }
+        };
         return {
           input: '',
-          input2:''
+          input2:'',
+          dynamicValidateForm: {
+            domains: [{
+              value: ''
+            }],
+            email: ''
+          },
+          ruleForm2: {
+            pass: '',
+            checkPass: '',
+            age: ''
+          },
+          rules2: {
+            pass: [
+              { validator: validatePass, trigger: 'blur' }
+            ],
+          }
+        };
         }
-      }
     }
 </script>
 
