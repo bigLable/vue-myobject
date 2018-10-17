@@ -4,7 +4,7 @@
    <!--<car-head></car-head>-->
    <car-cardata></car-cardata>
    <!--<router-view></router-view>-->
-   <car-foot></car-foot>
+   <!--<car-foot></car-foot>-->
  </div>
 </template>
 <script>

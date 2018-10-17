@@ -13,7 +13,7 @@
       </div>
         <div id="m1">
           <div class="bbq col-md-6 col-xs-6 col-lg-6">
-            <img class="img-responsive" src="https://www.sonystyle.com.cn/etc/designs/sonystyle/images/p0.jpg" alt="">
+            <img class="img-responsive img-circle" src="https://www.sonystyle.com.cn/etc/designs/sonystyle/images/p0.jpg" alt="">
             <p>用户名</p>
           </div>
           <div class="star col-md-6 col-xs-6 col-lg-6">
@@ -71,8 +71,6 @@
   .bbq p{
     text-align:center;
     font-size: 16px;
-    position: relative;
-    left: -6px;
 
   }
   .glyphicon.glyphicon-star{

@@ -6,32 +6,28 @@
         <h2 class="h2-dot"></h2>
       </div>
      <div class="row">
-
        <table class="table table-hover ">
          <tr>
            <th style="margin-left: 5px">
-             <label>
-               <input type="checkbox" id=" blankCheckbox " value="option1" aria-label="...">
-             </label>
-             全选</th>
+             </th>
            <th>商品信息</th>
            <th>单价</th>
            <th>数量</th>
            <th>总计金额</th>
            <th>操作</th>
          </tr>
-         <tr v-for="key in 2" id="bc">
+         <tr v-for="(good,key) in info" id="bc">
            <td>
              <label>
-             <input type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
-               <img src="../../assets/logo.png">
+             <input type="checkbox" id="blankCheckbox" v-model="checkedname" :value='good.ShopID' aria-label="...">
+               <img v-bind:src="good.shopImg"/>
            </label>
            </td>
-           <td>info.shopifo</td>
-           <td class="ifo">info.shopPrice</td>
-           <td><span><img src="../../assets/add.gif"/></span><span>num</span><span><img src="../../assets/subtraction.gif"/></span></td>
-           <td class="ifo">总价</td>
-           <td>删除</td>
+           <td>{{good.shopifo}}</td>
+           <td class="ifo">{{good.shopPrice}}</td>
+           <td><span><img src="../../assets/add.gif" @click="addNum(key)" /></span><span >{{Num}}</span><span><img src="../../assets/subtraction.gif" @click="sub(key)"/></span></td>
+           <td class="ifo">{{'￥'+Total}}</td>
+           <td ><span v-on:click="getdelete(key)">删除</span></td>
          </tr>
           <tr >
             <th colspan="6" style="text-align: center">
@@ -46,53 +42,84 @@
             </th>
           </tr>
          <tr class="pay">
-           <td>
-             <label>
-             <input type="checkbox" id=" blankCheckbox" value="option1" aria-label="...">
-           </label>
-             全选
-             <span style="margin-left: 30%">
-               删除
-           </span>
-           </td>
-           <td ></td>
-           <td>已选商品:</td>
+           <!--<td>-->
+             <!--<label>-->
+             <!--<input type="checkbox" id=" blankCheckbox"  value="option1" aria-label="..." :onclick="allSelect">-->
+           <!--</label>-->
+             <!--全选-->
+             <!--<span style="margin-left: 30%">-->
+               <!--删除-->
+           <!--</span>-->
+           <!--</td>-->
+           <!--<td ></td>-->
+           <td colspan="3">已选商品:{{checkedname}}号</td>
            <td>合计(不含运费):</td>
-           <td colspan="3"  class="paymoney"><router-link to="/Pay" style="color: white;font-size: large">结算:</router-link></td>
+           <td colspan="3"  class="paymoney"><router-link to="/Pay" style="color: white;font-size: large">去结算:</router-link></td>
          </tr>
        </table>
      </div>
 
     </div>
 </template>
-
+<!--var example-component = Vue.component(-->
+<!--{-->
+<!--data:function(){ return { a : ‘’ }	,-->
+<!--computed: {-->
+<!--b: function () {-->
+<!--return this.a + 1;-->
+<!--}-->
+<!--}-->
+<!--},-->
+<!--});-->
 <script>
-
+    import axios from 'axios'
     export default {
         name: "tsCardata",
         data(){
           return {
-            info:[]
-          }
-      },
+            Total:'0',
+            info: [],
+            Num: 0,
+            // info:{'shopImg':require('../../assets/logo.png'),'shopifo':'超清','shopPrice':20,'num':2,'total':40},
+            checkedname: [],
+            goData: [],
+
+            }
+          },
       methods:{
+          getdelete(key){
+            this.info.splice(key,1)
+          },
+          addNum(key){
+            if(this.Num>=0){
+              this.Num=this.Num+1;
+              this.Total=this.Num*this.info[key].shopPrice;
+            }
+          },
+        sub(key){
+            if(this.Num>0){
+              this.Num=this.Num-1;
+              this.Total=this.Num*this.info[key].shopPrice;
+            }
+        },
         getData:function(){
           var _this = this;
           axios({
             method:'get',
             url:'http://localhost:3000/shoppingCart/getAllcar'
           }).then(function(result){
-            console.log(result.data);
-            _this.info = result.data[0];
-               console.log(_this.info)
-          },function(err){
+            console.log('============== =====');
+            // console.log(result.data)
+            _this.info = result.data.data[0];
+            console.log(_this.info[0]);
+              },function(err){
             console.log(err);
           })
-        }
+        },
       },
-      beforeMount:function () {
+      mounted:function () {
         this.getData();
-      }
+      },
 
     }
 
