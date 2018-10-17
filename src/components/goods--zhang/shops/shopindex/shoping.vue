@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="row">
-     <div id="dv1" class="col-lg-5 col-md-6 col-sm-7 col-xs-9">
+     <div id="dv1" class="col-lg-6 col-md-6 col-sm-7 col-xs-11">
        <div id="d1">
          <img class="img-responsive" src="https://www.sonystyle.com.cn/content/dam/sonystyle/products/lenses/e_lens/sel400F28gm/product/img_sel400f28gm_w.jpg.thumb.537.537.png" alt="">
          <div class="cen">
@@ -18,7 +18,7 @@
        <span class="glyphicon glyphicon-chevron-right"></span>
        <span class="glyphicon glyphicon-chevron-left"></span>
      </div>
-      <div id="dv2" class="col-lg-7 col-md-6 col-sm-5 col-xs-12 ">
+      <div id="dv2" class="col-lg-6 col-md-6 col-sm-5 col-xs-12 ">
         <div id="page1">
           <span id="sh2">SEL400F28GM 全画幅超远摄定焦G大师镜头 (FE 400mm F2.8 GM OSS)</span>
           <p>
@@ -63,7 +63,7 @@
   }
   #z1 li{
     display: inline-block;
-    width: 300px;
+    width: 255px;
     height: 75px;
   }
   li{
@@ -73,7 +73,7 @@
   }
 #dv1{
   position: relative;
-  height: 600px;
+  height: 670px;
 }
 #dv2{
   height: 600px;
@@ -89,7 +89,7 @@
   float: right;
   position: absolute;
   right: 5px;
-  top: 85%;
+  top: 87%;
 }
   .glyphicon.glyphicon-chevron-left{
     font-size: 45px;
@@ -97,7 +97,7 @@
     float: left;
     position: absolute;
     left: 5px;
-    top: 85%;
+    top: 87%;
   }
   .ylt:first-child  {
      display: inline-block;
