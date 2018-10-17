@@ -18,7 +18,9 @@
 //   {path:'*',redirect:'/'} //重定向，针对任何未匹配路由
 // ]
 import works from './components/comment--Qi/works/works'
-import worksdetail from'./components/comment--Qi/works/worksdetail'
+import hotworks from './components/comment--Qi/works/hotworks'
+import newworks from './components/comment--Qi/works/newworks'
+import recworks from './components/comment--Qi/works/recworks'
 import  Home from './components/comment--Qi/Home'
 import Car from './components/transaction--shen/Car'
 import Pay from './components/transaction--shen/Pay'
@@ -51,7 +53,10 @@ export const routes=[
       {path:'shopcomment',component:shopcomment}
     ]},
   {path:'/works',component:works,children:[
-      {path:':id',component:worksdetail}
+      {path:'hotworks',component:hotworks},
+      {path:'newworks',component:newworks},
+      {path:'',component:recworks},
+
     ]
   },{path:'/user',component:user,
     children:[
