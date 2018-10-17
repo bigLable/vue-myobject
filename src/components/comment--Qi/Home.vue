@@ -4,7 +4,8 @@
     <br>
     <div class="col-xs-12">
       <el-carousel :interval="4000" type="card" height="700px">
-        <el-carousel-item v-for="item in 5" :key="item">
+        <el-carousel-item v-for="(img,index) in imgList" :key="index">
+          <img v-bind:src="img.url">
         </el-carousel-item>
       </el-carousel>
     </div>
@@ -59,7 +60,14 @@
     name: "Home",
     data() {
       return {
-        currentDate: new Date()
+        currentDate: new Date(),
+        imgList:[
+          {url:require("../../assets/ph1.jpg")} ,
+          {url:require("../../assets/ph2.jpg")} ,
+          {url:require("../../assets/ph3.jpg")} ,
+          {url:require("../../assets/ph4.jpg")} ,
+          {url:require("../../assets/ph5.jpg")} ,
+         ]
       };
     }
   }
@@ -67,25 +75,7 @@
 
 <style scoped>
 
-  .el-carousel__item:nth-child(3) {
-    background-image: url("../../assets/ph1.jpg");
-  }
 
-  .el-carousel__item:nth-child(4) {
-    background-image: url("../../assets/ph2.jpg");
-  }
-
-  .el-carousel__item:nth-child(5) {
-    background-image: url("../../assets/ph3.jpg");
-  }
-
-  .el-carousel__item:nth-child(6) {;
-    background-image: url("../../assets/ph4.jpg");
-  }
-
-  .el-carousel__item:nth-child(7) {
-    background-image: url("../../assets/ph5.jpg");
-  }
 
   #hot {
     font-size: 24px;

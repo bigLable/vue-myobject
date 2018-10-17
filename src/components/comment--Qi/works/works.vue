@@ -1,12 +1,15 @@
 <template>
 <div>
   <br>
-  <el-carousel :interval="5000" arrow="always" height="1080px">
-    <el-carousel-item v-for="item in 4" :key="item">
-      <h3></h3>
-    </el-carousel-item>
-  </el-carousel>
+  <div class="col-xs-12">
+    <el-carousel :interval="4000"  height="1080px">
+      <el-carousel-item v-for="(img,index) in imgList" :key="index">
+        <img v-bind:src="img.url">
+      </el-carousel-item>
+    </el-carousel>
+  </div>
   <app-workskinds></app-workskinds>
+
 
 </div>
 </template>
@@ -18,7 +21,14 @@
         name: "works",
       data() {
         return {
-          activeName: 'second'
+          activeName: 'second', imgList:[
+            {url:require("../../../assets/zp1.jpg")} ,
+            {url:require("../../../assets/zp2.jpg")} ,
+            {url:require("../../../assets/zp3.jpg")} ,
+            {url:require("../../../assets/zp4.jpg")} ,
+
+          ]
+
 
         };
       },
@@ -35,20 +45,8 @@
 </script>
 
 <style scoped>
+img{
+  width: 1920px;
+}
 
-  .el-carousel__item:nth-child(3) {
-    background: url("../../../assets/zp1.jpg") no-repeat;
-  }
-
-  .el-carousel__item:nth-child(4) {
-    background: url("../../../assets/zp2.jpg") no-repeat;
-  }
-
-  .el-carousel__item:nth-child(5) {
-    background: url("../../../assets/zp3.jpg") no-repeat;
-  }
-
-  .el-carousel__item:nth-child(6) {
-    background: url("../../../assets/zp4.jpg") no-repeat;
-  }
 </style>
