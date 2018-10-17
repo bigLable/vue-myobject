@@ -1,5 +1,5 @@
 <template>
-    <h1>管理员登录</h1>
+  <div class="container"></div>
 </template>
 
 <script>
