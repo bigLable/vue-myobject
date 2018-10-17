@@ -3,12 +3,12 @@
     <div class="row">
      <div id="dv1" class="col-lg-6 col-md-6 col-sm-7 col-xs-11">
        <div id="d1">
-         <img class="img-responsive" src="https://www.sonystyle.com.cn/content/dam/sonystyle/products/lenses/e_lens/sel400F28gm/product/img_sel400f28gm_w.jpg.thumb.537.537.png" alt="">
+         <img id="imge" class="img-responsive" src="https://www.sonystyle.com.cn/content/dam/sonystyle/products/lenses/e_lens/sel400F28gm/product/img_sel400f28gm_w.jpg.thumb.537.537.png" alt="">
          <div class="cen">
-           <div class="ylt">
-             <img class="img-responsive" src="https://www.sonystyle.com.cn/content/dam/sonystyle/products/lenses/e_lens/sel400F28gm/product/img_sel400f28gm_w.jpg.thumb.537.537.png" alt="">
+           <div @click="img1" class="ylt">
+             <img  class="img-responsive" src="https://www.sonystyle.com.cn/content/dam/sonystyle/products/lenses/e_lens/sel400F28gm/product/img_sel400f28gm_w.jpg.thumb.537.537.png" alt="">
            </div>
-           <div class="ylt">
+           <div @click ="img2" @mousedown="pa1" class="ylt">
              <img class="img-responsive" src="https://www.sonystyle.com.cn/content/dam/sonystyle/products/lenses/e_lens/sel400F28gm/product/img_sel400f28gm_w.jpg.thumb.537.537.png" alt="">
            </div>
 
@@ -52,7 +52,18 @@
 
 <script>
   export default {
-    name: "shoping"
+    name: "shoping",
+    methods:{
+      img1(){
+        alert('我被点击了')
+      },
+      img2(){
+        alert('我被点击了')
+      },
+      pa1(){
+        
+      }
+    }
   }
 
 </script>

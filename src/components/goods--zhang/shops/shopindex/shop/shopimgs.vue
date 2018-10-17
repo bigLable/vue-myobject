@@ -12,8 +12,5 @@
 </script>
 
 <style scoped>
-  div{
-    height: 900px;
-    background: #cccccc;
-  }
+
 </style>
