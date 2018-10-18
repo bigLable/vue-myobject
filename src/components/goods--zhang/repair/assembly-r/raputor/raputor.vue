@@ -133,11 +133,11 @@
     position:relative;
 
   }
-.imgdiv{
-  width: 100px;
-  height: 150px;
-  background: black;
-}
+  img{
+    height: 200px;
+    position:relative;
+    left: 10px;
+  }
   .repudiv{
     height: 400px;
   }
