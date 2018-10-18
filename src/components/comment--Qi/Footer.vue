@@ -4,7 +4,7 @@
     <nav class="navbar navbar navbar-inverse">
       <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
-        
+
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -56,12 +56,12 @@
     width: 70px;
     height: 40px;
   }
-span  {
-     font-size: 15px;
-color: #b8b8b8;
-  margin-left: 20px;
-  line-height: 50px;
-}
+  span  {
+    font-size: 15px;
+    color: #b8b8b8;
+    margin-left: 20px;
+    line-height: 50px;
+  }
   a {
 
     color: #ffffff;

@@ -7,7 +7,7 @@
         <div class="caption">
           <h3>可爱的猫咪</h3>
           <p></p>
-          <p><a href="#" class="btn btn-primary" role="button">详情</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+          <p> <router-link role="presentation" to="/comment/10"><a href="#" class="btn btn-primary" role="button">详情</a> </router-link><a href="#" class="btn btn-default" role="button">Button</a></p>
         </div>
       </div>
     </div>
@@ -19,7 +19,7 @@
         <div class="caption">
           <h3>可爱的猫咪</h3>
           <p></p>
-          <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+          <p><router-link role="presentation" to="/comment/20"><a href="#" class="btn btn-primary" role="button">详情</a> </router-link> <a href="#" class="btn btn-default" role="button">Button</a></p>
         </div>
       </div>
     </div>

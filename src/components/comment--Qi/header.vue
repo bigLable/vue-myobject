@@ -51,7 +51,6 @@
               <router-link role="presentation" to="/user"><a class="move">个人中心</a></router-link>
             </li>
           </ul>
-
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
     </nav>
