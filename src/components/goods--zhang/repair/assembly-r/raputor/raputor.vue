@@ -1,19 +1,118 @@
 <template>
-  <div  id=ddd class="container">
-    <div id=reputor class="row">
-      <div class=" repudiv col-lg-3 col-md-3 col-sm-6 col-xs-6" >
-        <div class="imgdiv">
-          <img src="" alt="">
+  <div id="dv1" class="row">
+    <div  id=ddd class="container">
+      <div id=reputor class="row">
+        <div class=" repudiv col-lg-3 col-md-3 col-sm-6 col-xs-6" >
+          <div class="imgdiv">
+            <img src="" alt="">
+          </div>
+          <div>
+            <h3>{{}}</h3>
+            <p>地区:{{}}</p>
+            <p>地址:{{}}</p>
+            <p>营业时间:{{}}</p>
+            <p>电话:{{}}</p>
+          </div>
         </div>
-        <div>
-          <h3>{{}}</h3>
-          <p>地区:{{}}</p>
-          <p>地址:{{}}</p>
-          <p>营业时间:{{}}</p>
-          <p>电话:{{}}</p>
+        <div class=" repudiv col-lg-3 col-md-3 col-sm-6 col-xs-6" >
+          <div class="imgdiv">
+            <img src="" alt="">
+          </div>
+          <div>
+            <h3>{{}}</h3>
+            <p>地区:{{}}</p>
+            <p>地址:{{}}</p>
+            <p>营业时间:{{}}</p>
+            <p>电话:{{}}</p>
+          </div>
         </div>
+        <div class=" repudiv col-lg-3 col-md-3 col-sm-6 col-xs-6" >
+          <div class="imgdiv">
+            <img src="" alt="">
+          </div>
+          <div>
+            <h3>{{}}</h3>
+            <p>地区:{{}}</p>
+            <p>地址:{{}}</p>
+            <p>营业时间:{{}}</p>
+            <p>电话:{{}}</p>
+          </div>
+        </div>
+        <div class=" repudiv col-lg-3 col-md-3 col-sm-6 col-xs-6" >
+          <div class="imgdiv">
+            <img src="" alt="">
+          </div>
+          <div>
+            <h3>{{}}</h3>
+            <p>地区:{{}}</p>
+            <p>地址:{{}}</p>
+            <p>营业时间:{{}}</p>
+            <p>电话:{{}}</p>
+          </div>
+        </div>
+        <div class=" repudiv col-lg-3 col-md-3 col-sm-6 col-xs-6" >
+          <div class="imgdiv">
+            <img src="" alt="">
+          </div>
+          <div>
+            <h3>{{}}</h3>
+            <p>地区:{{}}</p>
+            <p>地址:{{}}</p>
+            <p>营业时间:{{}}</p>
+            <p>电话:{{}}</p>
+          </div>
+        </div>
+        <div class=" repudiv col-lg-3 col-md-3 col-sm-6 col-xs-6" >
+          <div class="imgdiv">
+            <img src="" alt="">
+          </div>
+          <div>
+            <h3>{{}}</h3>
+            <p>地区:{{}}</p>
+            <p>地址:{{}}</p>
+            <p>营业时间:{{}}</p>
+            <p>电话:{{}}</p>
+          </div>
+        </div>
+        <div class=" repudiv col-lg-3 col-md-3 col-sm-6 col-xs-6" >
+          <div class="imgdiv">
+            <img src="" alt="">
+          </div>
+          <div>
+            <h3>{{}}</h3>
+            <p>地区:{{}}</p>
+            <p>地址:{{}}</p>
+            <p>营业时间:{{}}</p>
+            <p>电话:{{}}</p>
+          </div>
+        </div>
+        <div class=" repudiv col-lg-3 col-md-3 col-sm-6 col-xs-6" >
+          <div class="imgdiv">
+            <img src="" alt="">
+          </div>
+          <div>
+            <h3>{{}}</h3>
+            <p>地区:{{}}</p>
+            <p>地址:{{}}</p>
+            <p>营业时间:{{}}</p>
+            <p>电话:{{}}</p>
+          </div>
+        </div>
+        <div class=" repudiv col-lg-3 col-md-3 col-sm-6 col-xs-6" >
+          <div class="imgdiv">
+            <img src="" alt="">
+          </div>
+          <div>
+            <h3>{{}}</h3>
+            <p>地区:{{}}</p>
+            <p>地址:{{}}</p>
+            <p>营业时间:{{}}</p>
+            <p>电话:{{}}</p>
+          </div>
         </div>
       </div>
+  </div>
+
   </div>
 </template>
 
@@ -27,7 +126,7 @@
   #ddd{
     background:white;
     position:relative;
-    top: -265px;
+
   }
 .imgdiv{
   height: 190px;
@@ -37,6 +136,10 @@
 }
   .repudiv{
     height: 400px;
+  }
+  #dv1{
+    background: #f6f8f8;
+    height: 100%;
   }
 
 </style>
