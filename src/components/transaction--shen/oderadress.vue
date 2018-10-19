@@ -12,18 +12,39 @@
       <div slot="header" class="clearfix">
         <el-button style="float: right; padding: 3px 0" type="text">操作按钮</el-button>
       </div>
-      <div v-for="o in 4" :key="o" class="text item">
-        {{'列表内容 ' + o }}
+    <el-radio-group v-model="radio2">
+      <div v-for="text in info"  :key="text.Adressid" class="text item">
+        <el-radio :label="text.Adressid"></el-radio>
+        {{'&nbsp;&nbsp;&nbsp;&nbsp;'+ text.adrename }}
       </div>
-
+    </el-radio-group>
   </div>
   </el-card>
   </div>
 </template>
 
 <script>
+  import axios from 'axios'
     export default {
-        name: "oderadress"
+        name: "oderadress",
+
+         data(){
+          return{
+            info:[],
+            radio2:1
+          }
+      },
+        mounted(){
+        let _this = this;
+          axios.get('http://localhost:3000/shoppingCart/getAlladres').then(function(result){
+          console.log('============== =====');
+          // console.log(result.data)
+          _this.info = result.data.data[0];
+          console.log(_this.info);
+        },function(err){
+          console.log(err);
+        })
+        }
     }
 </script>
 

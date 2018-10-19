@@ -2,7 +2,7 @@
   <div class="container">
     <div id="px" class="row">
       <div class="col-lg-12 col-sm-12 col-xs-12 col-md-12">
-        <p>咔嚓在线商城首页>商品列表>商品详情></p>
+        <p>咔嚓在线商城首页>商品列表>{{}}</p>
       </div>
 
     </div>
@@ -12,7 +12,16 @@
 
 <script>
     export default {
-        name: "header1"
+        name: "header1",
+      data(){
+          return{
+
+          }
+
+        },
+      watch:{
+
+          }
     }
 </script>
 

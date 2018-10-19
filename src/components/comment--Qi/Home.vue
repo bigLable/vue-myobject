@@ -44,12 +44,65 @@
           </el-card>
         </el-col>
       </el-row>
-
-
     </div>
+    <div class="color col-xs-12 ">
+    <div id="hot" class="col-xs-12" ><span class="glyphicon-heart
+glyphicon glyphicon-star" aria-hidden="true"><span>最新数码产品</span></span></div>
+    <br><br><br><br>
+    <el-row class="container" >
+      <el-col :span="8" v-for="(o, index) in 2" :key="o" :offset="index > 0 ? 2 : 0"   >
+        <el-card :body-style="{ padding: '50px' }">
+          <img src="../../assets/sh3.png" class="image">
+          <div style="padding: 14px;">
+            <span> 佳能EOS R(单机)</span>
+            <div class="bottom clearfix">
+              <time class="time">{{ currentDate }}</time>
+              <el-button type="text" class="button">
+                ¥15364-16000</el-button>
+            </div>
+          </div>
+        </el-card>
+      </el-col>
+    </el-row>
+    <br>
+    <el-row  class="container" >
+      <el-col :span="8" v-for="(o, index) in 2" :key="o" :offset="index > 0 ? 2 : 0"   >
+        <el-card :body-style="{ padding: '30px' }">
+          <img src="../../assets/sh2.png" class="image">
+          <div style="padding: 14px;">
+            <span> 佳能EOS R(单机)</span>
+            <div class="bottom clearfix">
+              <time class="time">{{ currentDate }}</time>
+              <el-button type="text" class="button">
+                ¥15364-16000</el-button>
+            </div>
+          </div>
+        </el-card>
+      </el-col>
+    </el-row>
 
 
-
+  </div>
+    <div class="color col-xs-12 ">
+      <div id="hot" class="col-xs-12" ><span class="
+glyphicon glyphicon-eye-open" aria-hidden="true"><span>&nbsp;热门作品</span></span></div>
+      <br><br><br><br>
+      <el-row class="container" >
+        <el-col :span="8" v-for="(o, index) in 2" :key="o" :offset="index > 0 ? 2 : 0"   >
+          <el-card :body-style="{ padding: '50px' }">
+            <img src="../../assets/zp2.jpg" class="image">
+            <div style="padding: 14px;">
+              <span> 佳能EOS R(单机)</span>
+              <div class="bottom clearfix">
+                <time class="time">{{ currentDate }}</time>
+                <el-button type="text" class="button">
+                  ¥15364-16000</el-button>
+              </div>
+            </div>
+          </el-card>
+        </el-col>
+      </el-row>
+    </div>
   </div>
 
 
