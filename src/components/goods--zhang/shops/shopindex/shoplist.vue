@@ -23,8 +23,7 @@
 </template>
 
 <script>
-
-    export default {
+  export default {
         name: "applist",
       components:{
 
@@ -38,10 +37,13 @@
           },
         shopcomment(){
           this.$router.push({path:'/shops/shopcomment'})
-        }
+        },
+
       }
+
     }
 </script>
+
 
 <style scoped>
   #divsf{
