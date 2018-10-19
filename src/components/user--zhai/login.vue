@@ -20,7 +20,7 @@
       <el-button type="primary" style="width:250px">登 录</el-button>
       <router-link role="presentation" to="/registe"><el-button type="info" style="width:250px" id="btn">还没有账号</el-button></router-link>
       </el-form>
-        <router-link to="/manage"><el-button plain size="mini" style="margin-top:10px;margin-left:158px">管理员登录</el-button></router-link>
+        <router-link to="/managelogin"><el-button plain size="mini" style="margin-top:10px;margin-left:158px">管理员登录</el-button></router-link>
       </el-form>
     </div>
   </div>
