@@ -1,15 +1,21 @@
 <template>
   <div class="container">
+    <div id="px" class="row">
+      <div class="col-lg-12 col-sm-12 col-xs-12 col-md-12">
+        <p>咔嚓在线商城首页>{{user.shopType}}>{{user.shopName}}</p>
+      </div>
+    </div>
     <div class="row">
      <div id="dv1" class="col-lg-6 col-md-6 col-sm-7 col-xs-11">
-       <div id="d1">
-         <img id="imge" class="img-responsive" src="https://www.sonystyle.com.cn/content/dam/sonystyle/products/lenses/e_lens/sel400F28gm/product/img_sel400f28gm_w.jpg.thumb.537.537.png" alt="">
+       <div  id="d1">
+         <img id="imge" class="img-responsive" :src="user.shopImg" alt="">
+
          <div class="cen">
            <div @click="img1" class="ylt">
-             <img  class="img-responsive" src="https://www.sonystyle.com.cn/content/dam/sonystyle/products/lenses/e_lens/sel400F28gm/product/img_sel400f28gm_w.jpg.thumb.537.537.png" alt="">
+             <img  class="img-responsive" :src="user.shopImg2" alt="">
            </div>
            <div @click ="img2" @mousedown="pa1" class="ylt">
-             <img class="img-responsive" src="https://www.sonystyle.com.cn/content/dam/sonystyle/products/lenses/e_lens/sel400F28gm/product/img_sel400f28gm_w.jpg.thumb.537.537.png" alt="">
+             <img class="img-responsive" :src="user.shopImg3" alt="">
            </div>
 
          </div>
@@ -20,24 +26,23 @@
      </div>
       <div id="dv2" class="col-lg-6 col-md-6 col-sm-5 col-xs-12 ">
         <div id="page1">
-          <span id="sh2">SEL400F28GM 全画幅超远摄定焦G大师镜头 (FE 400mm F2.8 GM OSS)</span>
-          <p>
-            商品描述：全画幅超远摄定焦G大师镜头/内置两组新研发的XD线性马达，自动跟踪对焦性能提升约5倍*1/出色的光学设计和萤石等光学镜片的采用/轻量化设计, 平衡性更佳/具备全时DMF对焦功能
-            推荐使用场景：体育、新闻、鸟类和野生动物</p>
+          <span id="sh2">{{user.shopPara}}</span>
+          <p>产品详情：{{user.shopifo}}</p>
         </div>
         <hr>
         <div id="shoping">
           <ul>
-            <li>价格：15800</li>
-            <li>规格：<input type="button" value="SEL400F28GM"></li>
-            <li>颜色 <input type="color"></li>
-            <li>数量 <input type="number" style="width: 50px"></li>
+            <li style="width: 300px">价格：<span style="color:cornflowerblue;font-size: 24px;">RMB {{user.shopPrice}}.00</span></li>
+            <li>规格：<input type="button" class="btn btn-default" id="bt2" :value="user.shopName"></li>
+            <li>颜色：<input type="color"></li>
+            <li>数量：<input type="number" style="width: 50px"></li>
+            <li>库存：<span style="color: cornflowerblue ;font-size:22px">{{user.shopKC}}台</span></li>
           </ul>
           <hr>
         </div>
         <div id="z1">
           <ul>
-          <li> <input class="btn btn-primary but glyphicon " type="button" value="立即购买"></li>
+          <li> <input class="btn btn-primary but cornflowerblue " type="button" value="立即购买"></li>
           <li>  <input  class="btn btn-default but" type="button" value="加入购物车"></li>
         </ul>
 
@@ -51,22 +56,47 @@
 </template>
 
 <script>
+  import axios from 'axios'
   export default {
     name: "shoping",
-    methods:{
-      img1(){
-        $(function () {
-          $('#d1').css("float","right")
+    data() {
+      return {
+        name: '',
+        user: [],
+      };
+
+    },
+    methods: {
+
+      getData(){
+      let  _this=this
+        axios.get('http://localhost:3000/shop/shopGetid?id=10001').then(function (result) {
+          console.log(result.data);
+          _this.user = result.data[0];
+          console.log(_this.user);
+
         })
+      }, function(err) {
+        console.log(err.msg)
+      },
+      img1() {
 
       },
-      img2(){
+      img2() {
         alert('我被点击了')
       },
-      pa1(){
+      pa1() {
 
       }
+    },
+    mounted(){
+      this.getData()
+
     }
+
+
+
+
   }
 
 </script>
@@ -152,5 +182,27 @@
     width: 250px;
     height: 60px;
     font-size: 20px;
+  }
+  .btn:hover{
+    background: cornflowerblue;
+    color: white;
+  }
+  .btn:active{
+    background: cornflowerblue;
+    color: white;
+  }
+  .btn:focus{
+    background: cornflowerblue;
+    color: white;
+  }
+  #px{
+    height: 50px;
+
+  }
+  #px p{
+    font-size: 16px;
+    color: darkgray;
+    position: relative;
+    top: 10px;
   }
 </style>

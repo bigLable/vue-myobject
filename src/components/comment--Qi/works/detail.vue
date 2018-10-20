@@ -3,7 +3,7 @@
     <div class="">
       <div>
         <div >
-       <img src="../../../assets/sl1.png" alt="..." class=" img-responsive img-thumbnail"></div>
+       <img src="../../../assets/ph1.jpg" alt="..." class=" img-responsive img-thumbnail"></div>
         <div >
           <el-badge :value="200" :max="99" class="item">
             <el-button size="small">评论</el-button>
@@ -24,8 +24,10 @@
           >
           </el-input>
         </div>
-          <el-button type="primary" id="type" :plain="true" @click="open2">发表评论</el-button>
+          <el-button type="success" id="type" :plain="true" @click="open2">发表评论</el-button>
+          <el-button type="primary" id="type" :plain="true" @click="open2">我要上传</el-button>
         </div>
+
       </div>
 
 

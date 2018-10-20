@@ -1,6 +1,6 @@
 <template>
   <div  >
-    <div class="line ">&nbsp;</div>
+    <div class="line "></div>
     <nav class="navbar navbar navbar-inverse">
       <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -52,6 +52,9 @@
 </script>
 
 <style scoped>
+  .line{
+    clear: both;
+  }
   img {
     width: 70px;
     height: 40px;

@@ -11,22 +11,28 @@
       <el-menu-item index="3">
         <router-link role="presentation" to="/works/newworks">最新作品</router-link>
       </el-menu-item>
+
     </el-menu>
     </div>
-
-
     <router-view></router-view>
+    <template>
+    </template>
+
+
   </div>
 </template>
 
 <script>
+
   export default {
     name: "workskinds",
     data() {
       return {
+
         activeIndex: '1',
-        activeIndex2: '1'
-      };
+        activeIndex2: '1',
+
+      }
     },
     methods: {
       handleSelect(key, keyPath) {
