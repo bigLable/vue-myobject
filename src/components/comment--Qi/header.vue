@@ -25,6 +25,7 @@
             <li>
               <router-link role="presentation" to="/works"><a>摄影展示</a></router-link>
 
+
             </li>
             <li>
               <router-link role="presentation" to="/about"><a>关于我们</a></router-link>
@@ -32,7 +33,7 @@
             <li>
               <router-link role="presentation" to="/repair"><a>售后服务</a></router-link>
             </li>
-            <li> <form class="navbar-form navbar-left">
+            <li> <form class="navbar-form navbar-left" style="margin: 10px">
               <div class="form-group">
                 <input type="text" class="form-control" placeholder="Search">
               </div>
@@ -76,6 +77,9 @@
 </script>
 
 <style scoped>
+  *{
+    margin: 0;
+  }
   img {
     width: 70px;
     height: 40px;
@@ -94,10 +98,6 @@
     font-size: 12px;
     top: -10px;
   }
-  .sou{
-    font-size: 30px;
-  }
-  .el-menu-demo{
-    height: 60px;
-  }
+
+
 </style>
