@@ -2,7 +2,7 @@
   <div class="container">
     <div id="px" class="row">
       <div class="col-lg-12 col-sm-12 col-xs-12 col-md-12">
-        <p>咔嚓在线商城首页>商品列表>{{user.shopName}}</p>
+        <p>咔嚓在线商城首页>{{user.shopType}}>{{user.shopName}}</p>
       </div>
     </div>
     <div class="row">
@@ -27,7 +27,7 @@
       <div id="dv2" class="col-lg-6 col-md-6 col-sm-5 col-xs-12 ">
         <div id="page1">
           <span id="sh2">{{user.shopPara}}</span>
-          <p>{{user.shopifo}}</p>
+          <p>产品详情：{{user.shopifo}}</p>
         </div>
         <hr>
         <div id="shoping">
@@ -70,7 +70,7 @@
 
       getData(){
       let  _this=this
-        axios.get('http://localhost:3000/shop/shopGetid?id=10007').then(function (result) {
+        axios.get('http://localhost:3000/shop/shopGetid?id=10001').then(function (result) {
           console.log(result.data);
           _this.user = result.data[0];
           console.log(_this.user);
@@ -201,7 +201,7 @@
   }
   #px p{
     font-size: 16px;
-    color: #ccc;
+    color: darkgray;
     position: relative;
     top: 10px;
   }
