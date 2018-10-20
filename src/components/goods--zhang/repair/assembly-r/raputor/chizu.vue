@@ -23,15 +23,25 @@
         <input type="button" class="btn btn-warning" value="快速定位到我的位置">
       </div>
 
-
     </div>
 </div>
     </div>
 </template>
 
-<script>
-    export default {
-        name: "chizu"
+<script >
+
+  export default {
+        name: "chizu",
+      components:{
+      },
+      methods:{
+        mounted:function(){
+
+        },
+
+      },
+
+
     }
 
 </script>
@@ -66,4 +76,5 @@
   .container{
     background: white;
   }
+
 </style>
