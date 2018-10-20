@@ -3,7 +3,7 @@
     <div class="">
       <div>
         <div >
-       <img src="../../../assets/sl1.png" alt="..." class=" img-responsive img-thumbnail"></div>
+       <img src="../../../assets/ph1.jpg" alt="..." class=" img-responsive img-thumbnail"></div>
         <div >
           <el-badge :value="200" :max="99" class="item">
             <el-button size="small">评论</el-button>

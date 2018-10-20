@@ -3,10 +3,10 @@
     <div class="" v-for="work in info">
       <div class="col-sm-6 col-md-4">
         <div class="thumbnail">
-          <img src="../../../assets/sl3.jpg" alt="...">
+          <img :src="work.worksPic"  alt="...">
           <div class="caption">
             <h3 >{{work.worksDescribe}}</h3>
-            <p><a href="#" class="btn btn-primary" role="button">&nbsp;详情&nbsp;</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+            <p><router-link role="presentation" to="/comment/10"><a href="#" class="btn btn-primary" role="button">&nbsp;详情&nbsp;</a> </router-link><a href="#" class="btn btn-default" role="button">Button</a></p>
             <h4>{{work.worksDate}}</h4>
           </div>
         </div>
