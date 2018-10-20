@@ -55,7 +55,10 @@
     name: "shoping",
     methods:{
       img1(){
-        alert('我被点击了')
+        $(function () {
+          $('#d1').css("float","right")
+        })
+
       },
       img2(){
         alert('我被点击了')
@@ -101,6 +104,7 @@
   position: absolute;
   right: 5px;
   top: 87%;
+
 }
   .glyphicon.glyphicon-chevron-left{
     font-size: 45px;

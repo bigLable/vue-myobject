@@ -11,6 +11,7 @@
              { required: true, message: '用户名不能为空', trigger: 'blur' }]">
             <el-input v-model="ruleForm.name" placeholder="请输入用户名"></el-input>
           </el-form-item>
+        </el-form>
           <el-form :model="ruleForm2" status-icon :rules="rules2" ref="ruleForm2" class="demo-ruleForm">
             <el-form-item prop="pass">
               <el-input type="password" v-model="ruleForm2.pass" autocomplete="off" placeholder="请输入密码"></el-input>
@@ -31,7 +32,6 @@
             <el-button type="primary" style="width:250px">注 册</el-button>
             <router-link role="presentation" to="/login"><el-button type="info" style="width:250px" id="btn">已经有账号</el-button></router-link>
           </el-form>
-        </el-form>
       </div>
     </div>
   </div>
