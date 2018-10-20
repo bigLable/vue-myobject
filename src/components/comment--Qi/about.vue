@@ -1,5 +1,7 @@
 <template>
-    <h1>关于我们</h1>
+   <div>
+     <img src="../../assets/cache.png" alt="">
+   </div>
 </template>
 
 <script>
@@ -9,5 +11,8 @@
 </script>
 
 <style scoped>
+  div{
+    background-color: beige;
+  }
 
 </style>

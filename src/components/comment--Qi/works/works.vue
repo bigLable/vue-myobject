@@ -3,18 +3,20 @@
   <div class="col-xs-12">
     <el-carousel :interval="4000"  height="700px">
       <el-carousel-item v-for="(img,index) in imgList" :key="index">
-        <img v-bind:src="img.url">
+     <img v-bind:src="img.url">
       </el-carousel-item>
     </el-carousel>
   </div>
+
   <app-workskinds></app-workskinds>
 
 
-</div>
+<!--<h1 v-for="work in info">{{work.worksPic}}</h1>-->
+
+ </div>
 </template>
-
 <script>
-
+  // import axios from 'axios'
   import workskinds from './workskinds'
     export default {
         name: "works",
@@ -26,7 +28,8 @@
             {url:require("../../../assets/zp3.jpg")} ,
             {url:require("../../../assets/zp4.jpg")} ,
 
-          ]
+          ],
+          //info:[],
 
 
         };
@@ -39,7 +42,19 @@
         handleClick(tab, event) {
           console.log(tab, event);
         }
-      }
+      },
+      // mounted(){
+      //   let _this = this;
+      //   axios.get('http://localhost:3000/getnewworks').then(function(result){
+      //     console.log('---');
+      //     console.log(result.data)
+      //     _this.info = result.data;
+      //     console.log(_this.info);
+      //   },function(err){
+      //     console.log(err)
+      //
+      //   })
+      // }
     }
 </script>
 

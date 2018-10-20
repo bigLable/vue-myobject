@@ -24,8 +24,10 @@
           >
           </el-input>
         </div>
-          <el-button type="primary" id="type" :plain="true" @click="open2">发表评论</el-button>
+          <el-button type="success" id="type" :plain="true" @click="open2">发表评论</el-button>
+          <el-button type="primary" id="type" :plain="true" @click="open2">我要上传</el-button>
         </div>
+
       </div>
 
 

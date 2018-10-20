@@ -1,77 +1,17 @@
 <template>
   <div>
-    <div class="">
+    <div class="" v-for="work in info">
       <div class="col-sm-6 col-md-4">
         <div class="thumbnail">
-          <img src="../../../assets/sl2.jpg" alt="...">
+          <img src="../../../assets/sl1.png" alt="...">
           <div class="caption">
-            <h3>异国风光</h3>
-            <p></p>
-            <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+            <h3 >{{work.worksDescribe}}</h3>
+            <p><a href="#" class="btn btn-primary" role="button">&nbsp;详情&nbsp;</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+            <h4>{{work.worksDate}}</h4>
           </div>
         </div>
       </div>
     </div>
-    <div class="">
-      <div class="col-sm-6 col-md-4">
-        <div class="thumbnail">
-          <img src="../../../assets/sl2.jpg" alt="...">
-          <div class="caption">
-            <h3>异国风光</h3>
-            <p></p>
-            <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="">
-      <div class="col-sm-6 col-md-4">
-        <div class="thumbnail">
-          <img src="../../../assets/sl2.jpg" alt="...">
-          <div class="caption">
-            <h3>异国风光</h3>
-            <p></p>
-            <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="">
-      <div class="col-sm-6 col-md-4">
-        <div class="thumbnail">
-          <img src="../../../assets/sl2.jpg" alt="...">
-          <div class="caption">
-            <h3>异国风光</h3>
-            <p></p>
-            <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-          </div>
-        </div>
-      </div>
-    </div> <div class="">
-    <div class="col-sm-6 col-md-4">
-      <div class="thumbnail">
-        <img src="../../../assets/sl2.jpg" alt="...">
-        <div class="caption">
-          <h3>异国风光</h3>
-          <p></p>
-          <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-        </div>
-      </div>
-    </div>
-  </div>
-    <div class="">
-      <div class="col-sm-6 col-md-4">
-        <div class="thumbnail">
-          <img src="../../../assets/sl2.jpg" alt="...">
-          <div class="caption">
-            <h3>异国风光</h3>
-            <p></p>
-            <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-          </div>
-        </div>
-      </div>
-    </div>
-
     <div class="block">
       <span class="demonstration">&nbsp;</span>
       <el-pagination
@@ -83,14 +23,27 @@
 </template>
 
 <script>
+  import axios from 'axios'
     export default {
         name: "hotworks",
       data(){
           return{
-
+            info:[],
 
           }
       }
+      , mounted(){
+      let _this = this;
+      axios.get('http://localhost:3000/works/hotworks').then(function(result){
+        console.log('---');
+        console.log(result.data)
+        _this.info = result.data;
+        console.log(_this.info);
+      },function(err){
+        console.log(err)
+
+      })
+    }
     }
 </script>
 
