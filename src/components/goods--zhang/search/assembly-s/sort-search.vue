@@ -1,113 +1,62 @@
 <template>
 <div class="container">
-  <div class="row">
-    <div class=" repudiv col-lg-3 col-md-3 col-sm-6 col-xs-6" >
+  <div class="row text-center" @click="fun">
+
+    <div v-for="dat in user" class=" repudiv col-lg-3 col-md-3 col-sm-6 col-xs-6" >
+
     <div class="bbb">
-      <div class="imgdiv">
-        <img class="img-responsive" src="https://www.sonystyle.com.cn/content/dam/sonystyle/products/lenses/e_lens/sel24f14gm/product/img_sel24f14gm_b.jpg.thumb.537.537.png" alt="">
+      <div class="imgdiv center-block">
+        <img class="img-responsive" :src="dat.shopImg" alt="" :id="dat.ShopID">
       </div>
       <div>
-        <h3>{{}}</h3>
-        <p>地区:{{}}</p>
-        <p>地址:{{}}</p>
-        <p>营业时间:{{}}</p>
-        <p>电话:{{}}</p>
+        <router-link :to="'/shops/'+dat.ShopID">
+        <h3>{{dat.shopName}}</h3>
+        </router-link>
+        <p>类型: <span style="font-size: 15px;">{{dat.shopType}}</span></p>
+        <p style="font-size: 18px;color: royalblue">RMB:{{dat.shopPrice}}.00</p>
       </div>
     </div>
   </div>
-    <div class=" repudiv col-lg-3 col-md-3 col-sm-6 col-xs-6" >
-      <div class="bbb">
-        <div class="imgdiv">
-          <img class="img-responsive" src="https://www.sonystyle.com.cn/content/dam/sonystyle/products/lenses/e_lens/sel24f14gm/product/img_sel24f14gm_b.jpg.thumb.537.537.png" alt="">
-        </div>
-        <div>
-          <h3>{{}}</h3>
-          <p>地区:{{}}</p>
-          <p>地址:{{}}</p>
-          <p>营业时间:{{}}</p>
-          <p>电话:{{}}</p>
-        </div>
-      </div>
-    </div>
-    <div class=" repudiv col-lg-3 col-md-3 col-sm-6 col-xs-6" >
-      <div class="bbb">
-        <div class="imgdiv">
-          <img class="img-responsive" src="https://www.sonystyle.com.cn/content/dam/sonystyle/products/lenses/e_lens/sel24f14gm/product/img_sel24f14gm_b.jpg.thumb.537.537.png" alt="">
-        </div>
-        <div>
-          <h3>{{}}</h3>
-          <p>地区:{{}}</p>
-          <p>地址:{{}}</p>
-          <p>营业时间:{{}}</p>
-          <p>电话:{{}}</p>
-        </div>
-      </div>
-    </div>
-    <div class=" repudiv col-lg-3 col-md-3 col-sm-6 col-xs-6" >
-      <div class="bbb">
-        <div class="imgdiv">
-          <img class="img-responsive" src="https://www.sonystyle.com.cn/content/dam/sonystyle/products/lenses/e_lens/sel24f14gm/product/img_sel24f14gm_b.jpg.thumb.537.537.png" alt="">
-        </div>
-        <div>
-          <h3>{{}}</h3>
-          <p>地区:{{}}</p>
-          <p>地址:{{}}</p>
-          <p>营业时间:{{}}</p>
-          <p>电话:{{}}</p>
-        </div>
-      </div>
-    </div>
-    <div class=" repudiv col-lg-3 col-md-3 col-sm-6 col-xs-6" >
-      <div class="bbb">
-        <div class="imgdiv">
-          <img class="img-responsive" src="https://www.sonystyle.com.cn/content/dam/sonystyle/products/lenses/e_lens/sel24f14gm/product/img_sel24f14gm_b.jpg.thumb.537.537.png" alt="">
-        </div>
-        <div>
-          <h3>{{}}</h3>
-          <p>地区:{{}}</p>
-          <p>地址:{{}}</p>
-          <p>营业时间:{{}}</p>
-          <p>电话:{{}}</p>
-        </div>
-      </div>
-    </div>
-    <div class=" repudiv col-lg-3 col-md-3 col-sm-6 col-xs-6" >
-      <div class="bbb">
-        <div class="imgdiv">
-          <img class="img-responsive" src="https://www.sonystyle.com.cn/content/dam/sonystyle/products/lenses/e_lens/sel24f14gm/product/img_sel24f14gm_b.jpg.thumb.537.537.png" alt="">
-        </div>
-        <div>
-          <h3>{{}}</h3>
-          <p>地区:{{}}</p>
-          <p>地址:{{}}</p>
-          <p>营业时间:{{}}</p>
-          <p>电话:{{}}</p>
-        </div>
-      </div>
-    </div>
-    <div class=" repudiv col-lg-3 col-md-3 col-sm-6 col-xs-6" >
-      <div class="bbb">
-        <div class="imgdiv">
-          <img class="img-responsive" src="https://www.sonystyle.com.cn/content/dam/sonystyle/products/lenses/e_lens/sel24f14gm/product/img_sel24f14gm_b.jpg.thumb.537.537.png" alt="">
-        </div>
-        <div>
-          <h3>{{}}</h3>
-          <p>地区:{{}}</p>
-          <p>地址:{{}}</p>
-          <p>营业时间:{{}}</p>
-          <p>电话:{{}}</p>
-        </div>
-      </div>
-    </div>
+
   </div>
 </div>
 
 </template>
 
 <script>
+import axios from 'axios'
     export default {
-        name: "sort-search"
+      name: "sort-search",
+      data() {
+        return {
+          name: '',
+          user: [],
+        };
+
+      },
+      methods: {
+        fun(){
+          this.$router.push({path:'/shops/'+dat.ShopID})
+        },
+
+        getData() {
+          let _this = this
+          axios.get('http://localhost:3000/shop/allshop').then(function (result) {
+            console.log(result.data);
+            _this.user = result.data;
+            console.log(_this.user);
+
+          })
+        }, function(err) {
+          console.log(err.msg)
+        },
+
+      }, mounted() {
+        this.getData()
+
+      }
     }
+
 </script>
 
 <style scoped>
@@ -123,5 +72,12 @@
     padding-left: 10px;
     padding-right: 10px;
     border: 1px solid #cccccc;
+  }
+  h3{
+    color: royalblue;
+    font-size: 22px;
+  }
+  p{
+    font-size: 14px;
   }
 </style>
