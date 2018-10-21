@@ -51,7 +51,7 @@ export const routes=[
       {path:'chizu',component:chizu}
     ]},
   {path:'/search',component:search},
-  {path:'/shops',component:shops,children:[
+  {path:'/shops/:id',component:shops,children:[
       {path:'shopinfo',component:shopinfo},
       {path:'shopimgs',component:shopimgs},
       {path:'shopcomment',component:shopcomment}

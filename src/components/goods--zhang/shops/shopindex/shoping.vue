@@ -42,8 +42,8 @@
         </div>
         <div id="z1">
           <ul>
-          <li> <input class="btn btn-primary but cornflowerblue " type="button" value="立即购买"></li>
-          <li>  <input  class="btn btn-default but" type="button" value="加入购物车"></li>
+          <li> <input class="btn btn-primary but cornflowerblue " type="button" value="加入购物车"></li>
+          <li>  <input  class="btn btn-default but" type="button" value="加入收藏"></li>
         </ul>
 
 
@@ -69,8 +69,8 @@
     methods: {
 
       getData(){
-      let  _this=this
-        axios.get('http://localhost:3000/shop/shopGetid?id=10001').then(function (result) {
+      let  _this=this;
+        axios.get('http://localhost:3000/shop/shopGetid?id='+`${this.$route.params.id}`).then(function (result) {
           console.log(result.data);
           _this.user = result.data[0];
           console.log(_this.user);
@@ -91,7 +91,7 @@
     },
     mounted(){
       this.getData()
-
+      console.log('id value'+this.$route.params.id)
     }
 
 
