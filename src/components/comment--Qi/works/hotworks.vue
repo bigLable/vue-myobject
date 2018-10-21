@@ -5,9 +5,13 @@
         <div class="thumbnail">
           <img :src="work.worksPic" alt="...">
           <div class="caption">
-            <h3 >{{work.worksDescribe}}</h3>
+            <h3>{{work.worksDescribe}}</h3>
 
-              <p><a href="#" class="btn btn-primary" role="button">&nbsp;详情&nbsp;</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+            <p>
+              <router-link role="presentation" :to="'/comment/'+work.worksId"><a href="#" class="btn btn-primary"
+                                                                                 role="button">&nbsp;详情&nbsp;</a>
+              </router-link>
+              <a href="#" class="btn btn-default" role="button">Button</a></p>
 
 
             <h4>{{work.worksDate}}</h4>
@@ -27,31 +31,32 @@
 
 <script>
   import axios from 'axios'
-    export default {
-        name: "hotworks",
-      data(){
-          return{
-            info:[],
 
-          }
+  export default {
+    name: "hotworks",
+    data() {
+      return {
+        info: [],
+
       }
-      , mounted(){
+    }
+    , mounted() {
       let _this = this;
-      axios.get('http://localhost:3000/works/hotworks').then(function(result){
+      axios.get('http://localhost:3000/works/hotworks').then(function (result) {
         console.log('---');
         console.log(result.data)
         _this.info = result.data;
         console.log(_this.info);
-      },function(err){
+      }, function (err) {
         console.log(err)
 
       })
     }
-    }
+  }
 </script>
 
 <style scoped>
-  .block{
+  .block {
     padding-left: 40%;
   }
 </style>
