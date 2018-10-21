@@ -5,7 +5,7 @@
     <div class="col-xs-12">
       <el-carousel :interval="4000" type="card" height="700px">
         <el-carousel-item v-for="(work,index) in info1" :key="index">
-          <img v-bind:src="work.worksPic">
+          <img v-bind:src="work.pic">
         </el-carousel-item>
       </el-carousel>
     </div>
@@ -15,15 +15,14 @@
       </div>
       <br><br><br><br>
       <el-row class="container">
-        <el-col :span="6" v-for="(o, index) in 6" :key="o" :offset="index > 0 ? 2 : 2">
-          <el-card :body-style="{ padding: '40px' }">
-            <img src="../../assets/sh3.png" class="image">
+        <el-col :span="6" v-for="(shop, index) in info3" :key="o" :offset="index > 0 ? 2 : 2">
+          <el-card :body-style="{ padding: '30px' }">
+            <img :src="shop.shopImg" class="image">
             <div style="padding: 14px;">
-              <span> 佳能EOS R(单机)</span>
+              <router-link :to="'/shops/'+shop.shopID"><span> 产品名称:{{shop.shopName}}</span></router-link>
               <div class="bottom clearfix">
-                <time class="time">{{ currentDate }}</time>
                 <el-button type="text" class="button">
-                  ¥15364-16000
+                  RMB:{{shop.shopPrice}}
                 </el-button>
               </div>
             </div>
@@ -35,40 +34,50 @@
     <div class="new col-xs-12 ">
       <div class="hot col-xs-12"><span class="glyphicon-heart
 glyphicon glyphicon-star" aria-hidden="true"><span>最新数码产品</span></span></div>
+      <div>
+        <router-link role="presentation" to="/search"><p
+          class="el-icon-caret-right more col-md-offset-10 col-xs-offset-10">more</p></router-link>
+      </div>
       <br><br><br><br>
       <el-row class="container">
-        <el-col :span="6" v-for="(o, index) in 6" :key="o" :offset="index > 0 ? 2 : 2">
-          <el-card :body-style="{ padding: '40px' }">
-            <img src="../../assets/sh3.png" class="image">
+        <el-col :span="6" v-for="(shop, index) in info2" :key="o" :offset="index > 0 ? 2 : 2">
+          <el-card :body-style="{ padding: '3 0px' }">
+            <img :src="shop.shopImg" class="image">
             <div style="padding: 14px;">
-              <span> 佳能EOS R(单机)</span>
+              <router-link :to="'/shops/'+shop.shopID"><span> 产品名称:{{shop.shopName}}</span></router-link>
               <div class="bottom clearfix">
-                <time class="time">{{ currentDate }}</time>
                 <el-button type="text" class="button">
-                  ¥15364-16000
+                  RMB:{{shop.shopPrice}}
                 </el-button>
               </div>
             </div>
           </el-card>
         </el-col>
+
       </el-row>
+
       <br>
     </div>
     <div class="work col-xs-12 ">
       <div class=" hot col-xs-12"><span class="
 glyphicon glyphicon-eye-open" aria-hidden="true"><span>&nbsp;热门作品</span></span></div>
+      <div>
+        <router-link role="presentation" to="/works"><p
+          class="el-icon-caret-right more col-md-offset-10 col-xs-offset-10">more</p></router-link>
+      </div>
       <br><br><br><br>
       <el-row class="container">
         <el-col :span="6" v-for="(work, index) in info4" :key="work" :offset="index > 0 ? 2 : 0">
-          <el-card :body-style="{ padding: '10px' }">
+          <el-card :body-style="{ padding: '20px' }">
             <img :src="work.worksPic" class="image">
             <div style="padding: 14px;">
-              <span> 佳能EOS R(单机)</span>
+              <span> {{work.worksauthor}}</span>
               <div class="bottom clearfix">
-                <time class="time">{{ currentDate }}</time>
-                <el-button type="text" class="button">
-                  ¥15364-16000
-                </el-button>
+                <router-link :to="'/comment/'+work.worksId">
+                  <el-button type="text" class="button">
+                    {{work.worksDescribe}}
+                  </el-button>
+                </router-link>
               </div>
             </div>
           </el-card>
@@ -88,14 +97,7 @@ glyphicon glyphicon-eye-open" aria-hidden="true"><span>&nbsp;热门作品</span>
     name: "Home",
     data() {
       return {
-        currentDate: new Date(),
-        imgList: [
-          {url: require("../../assets/ph1.jpg")},
-          {url: require("../../assets/ph2.jpg")},
-          {url: require("../../assets/ph3.jpg")},
-          {url: require("../../assets/ph4.jpg")},
-          {url: require("../../assets/ph5.jpg")},
-        ],
+
         info1: [],
         info2: [],
         info3: [],
@@ -107,7 +109,7 @@ glyphicon glyphicon-eye-open" aria-hidden="true"><span>&nbsp;热门作品</span>
     methods: {
       getpic: function () {
         let _this = this;
-        axios.get('http://localhost:3000/works/hotworks').then(function (result) {
+        axios.get('http://localhost:3000/getpic').then(function (result) {
           console.log('---');
           console.log(result.data)
           _this.info1 = result.data;
@@ -116,7 +118,7 @@ glyphicon glyphicon-eye-open" aria-hidden="true"><span>&nbsp;热门作品</span>
           console.log(err)
         })
       },
-      getnewgoods:function() {
+      getnewgoods: function () {
         let _this = this;
         axios.get('http://localhost:3000/getnew').then(function (result) {
           console.log('---');
@@ -138,7 +140,7 @@ glyphicon glyphicon-eye-open" aria-hidden="true"><span>&nbsp;热门作品</span>
           console.log(err)
         })
       },
-      getnewworks:function() {
+      getnewworks: function () {
         let _this = this;
         axios.get('http://localhost:3000/getnewworks').then(function (result) {
           console.log('---');
@@ -171,7 +173,7 @@ glyphicon glyphicon-eye-open" aria-hidden="true"><span>&nbsp;热门作品</span>
 
   .color {
     width: 100%;
-    height: 800px;
+    height: 900px;
     background-color: rgba(197, 255, 240, 0.25);
     padding-left: -200px;
   }
@@ -216,6 +218,20 @@ glyphicon glyphicon-eye-open" aria-hidden="true"><span>&nbsp;热门作品</span>
     clear: both
   }
 
+  a {
+    text-decoration: none;
+  }
+
+  .more {
+    font-size: 18px;
+    color: #b8b8b8;
+
+  }
+
+  .more:hover {
+    cursor: pointer;
+    color: #5b5b5b;
+  }
 
 </style>
 

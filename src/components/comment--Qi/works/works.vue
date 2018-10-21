@@ -3,16 +3,12 @@
   <div class="col-xs-12" >
     <el-carousel :interval="4000"  height="700px">
       <el-carousel-item v-for="(work,index) in info" :key="index">
-     <img v-bind:src="work.worksPic">
+     <img v-bind:src="work.pice">
       </el-carousel-item>
     </el-carousel>
   </div>
-
+  <br>
   <app-workskinds></app-workskinds>
-
-
-
-
  </div>
 </template>
 <script>
@@ -22,14 +18,7 @@
         name: "works",
       data() {
         return {
-          activeName: 'second',
-          imgList:[
-            {url:require("../../../assets/zp1.jpg")} ,
-            {url:require("../../../assets/zp2.jpg")} ,
-            {url:require("../../../assets/zp3.jpg")} ,
-            {url:require("../../../assets/zp4.jpg")} ,
 
-          ],
           info:[],
 
 
@@ -46,7 +35,7 @@
      },
        mounted(){
          let _this = this;
-         axios.get('http://localhost:3000/works/hotworks').then(function(result){
+         axios.get('http://localhost:3000/getpic').then(function(result){
            console.log('---');
            console.log(result.data)
            _this.info = result.data;

@@ -59,4 +59,7 @@
   .block {
     padding-left: 40%;
   }
+  img{
+    height: 300px;
+  }
 </style>

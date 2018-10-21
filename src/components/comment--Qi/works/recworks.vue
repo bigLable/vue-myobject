@@ -1,7 +1,7 @@
 <template>
   <div>
-    <div class="" v-for="work in info">
-      <div class="col-sm-6 col-md-4">
+    <div class="pic" v-for="work in info">
+      <div class="col-sm-6 col-md-4 ">
         <div class="thumbnail">
           <img :src="work.worksPic"  alt="...">
           <div class="caption">
@@ -49,6 +49,9 @@
 
 <style scoped>
   .block{
-    padding-left: 40%;
+    padding-left: 30%;
+  }
+  img{
+   height: 300px;
   }
 </style>

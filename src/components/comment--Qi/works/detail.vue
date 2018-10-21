@@ -33,8 +33,10 @@
 
       </div>
     <h1>热评</h1>
-    <div id="l2" v-for="con in com">
+
+    <div  v-for="con in com">
       <ul class="list-group">
+        <li class="list-group-item">用户：{{con.UserID}}</li>
         <li class="list-group-item">评论：{{con.commentsContent}}</li>
         <li class="list-group-item">评论时间：{{con.commentsDate}}</li>
 
@@ -165,5 +167,6 @@ height: 600px;
   h1{
     text-align: center;
   }
+
 
 </style>
