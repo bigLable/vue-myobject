@@ -34,15 +34,14 @@
           <ul>
             <li style="width: 300px">价格：<span style="color:cornflowerblue;font-size: 24px;">RMB {{user.shopPrice}}.00</span></li>
             <li>规格：<input type="button" class="btn btn-default" id="bt2" :value="user.shopName"></li>
-            <li>颜色：<input type="color"></li>
-            <li>数量：<input type="number" style="width: 50px"></li>
+            <li>颜色：<input type="color" style="width: 30px;background: white;height: 30px;"></li>
             <li>库存：<span style="color: cornflowerblue ;font-size:22px">{{user.shopKC}}台</span></li>
           </ul>
           <hr>
         </div>
         <div id="z1">
           <ul>
-          <li> <input class="btn btn-primary but cornflowerblue " type="button" value="加入购物车"></li>
+          <li> <input class="btn btn-primary but cornflowerblue " @click="gwc" type="button" value="加入购物车"></li>
           <li>  <input  class="btn btn-default but" type="button" value="加入收藏"></li>
         </ul>
 
@@ -67,6 +66,17 @@
 
     },
     methods: {
+      gwc(){
+        let  _this=this;
+        axios.get('http://localhost:3000/shoppingCart/getAllcar?ShopID='+`${this.$route.params.id}`).then(function (result) {
+          console.log(result.data);
+          _this.user = result.data[0];
+          console.log(_this.user);
+
+        })
+      }, function(err) {
+        console.log(err.msg)
+      },
 
       getData(){
       let  _this=this;

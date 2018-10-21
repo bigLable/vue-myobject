@@ -15,7 +15,11 @@
         </ul>
       </div>
     </div>
+
   </div>
+
+
+
 
 
 
@@ -29,13 +33,13 @@
       },
       methods:{
         shopimg(){
-          this.$router.push({path:'/shops/shopimgs'})
+          this.$router.push({path:'/shops/:id/shopimgs'})
         },
           shopinfo(){
-            this.$router.push({path:'/shops/shopinfo'})
+            this.$router.push({path:'/shops/:id/shopinfo'})
           },
         shopcomment(){
-          this.$router.push({path:'/shops/shopcomment'})
+          this.$router.push({path:'/shops/:id/shopcomment'})
         },
 
       }
