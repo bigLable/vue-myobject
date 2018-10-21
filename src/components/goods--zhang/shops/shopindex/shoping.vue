@@ -77,7 +77,6 @@
         })
       }, function(err) {
         console.log(err.msg)
-      }
       },
 
       getData(){
