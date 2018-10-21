@@ -1,9 +1,10 @@
 <template>
   <div>
-    <div class="">
+    <br><br><br>
+    <div  v-for="work in works" class="big">
       <div>
         <div >
-       <img src="../../../assets/ph1.jpg" alt="..." class=" img-responsive img-thumbnail"></div>
+       <img :src="work.worksPic" alt="..." class=" img-responsive img-thumbnail"></div>
         <div >
           <el-badge :value="200" :max="99" class="item">
             <el-button size="small">评论</el-button>
@@ -25,45 +26,61 @@
           </el-input>
         </div>
           <el-button type="success" id="type" :plain="true" @click="open2">发表评论</el-button>
-          <el-button type="primary" id="type" :plain="true" @click="open2">我要上传</el-button>
         </div>
 
       </div>
 
 
     </div>
-    <br><br><br> <br> <br>
+
 
   </div>
 
 </template>
 
 <script>
+  import axios from 'axios'
   export default {
     name: "detail",
     data() {
       return {
-        textarea: ''
+        textarea: '',
+        works:[],
       }
+
     },
     methods: {
 
       open2() {
         this.$message({
           message: '评论成功！',
-          type: 'success'
+          type: 'success',
         });
       },
 
+      getData:function() {
+        let _this = this;
+        axios.get('http://localhost:3000/works/getOneWorks?id=' + `${this.$route.params.id}`).then(function (result) {
+          console.log(result.data);
+          _this.works = result.data;
+          console.log(_this.works);
+
+        })
+      }
+
+    },
+    mounted:function(){
+      this.getData()
+      console.log('id value'+this.$route.params.id)
     }
+
   }
 </script>
 
 <style scoped>
   img {
-    width: 900px;
     height: 450px;
-
+   margin-left:50px;
 
   }
 
@@ -109,6 +126,8 @@
     left: 1100px;
     top: 420px;
   }
-
+.big{
+height: 800px;
+}
 
 </style>

@@ -6,7 +6,7 @@
           <img :src="work.worksPic"  alt="...">
           <div class="caption">
             <h3 >{{work.worksDescribe}}</h3>
-            <p><router-link role="presentation" to="/comment/10"><a href="#" class="btn btn-primary" role="button">&nbsp;详情&nbsp;</a> </router-link><a href="#" class="btn btn-default" role="button">Button</a></p>
+            <p><router-link role="presentation" :to="'/comment/'+work.worksId"><a href="#" class="btn btn-primary" role="button">&nbsp;详情&nbsp;</a> </router-link><a href="#" class="btn btn-default" role="button">Button</a></p>
             <h4>{{work.worksDate}}</h4>
           </div>
         </div>
