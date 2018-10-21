@@ -8,7 +8,6 @@
       <div class="col-md-3 col-sm-offset-9 bc font text-center" ><h2  @click="change" >确定付款</h2></div>
     </div>
 </template>
-
 <script>
   import axios from 'axios'
     export default {

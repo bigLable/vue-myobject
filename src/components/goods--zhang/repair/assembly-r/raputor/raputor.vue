@@ -5,13 +5,14 @@
         <div v-for="dat in user" class=" repudiv col-lg-3 col-md-3 col-sm-6 col-xs-6" >
           <div class="bbb">
             <div class="imgdiv">
-              <img class="img-responsive" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1539855396615&di=8b3a6dc81961ebb3d1941de100f44f5e&imgtype=0&src=http%3A%2F%2Fpic.58pic.com%2F58pic%2F15%2F45%2F91%2F27g58PICNEG_1024.png" alt="">
+              <img class="img-responsive" :src="dat.wxImg" alt="">
             </div>
-            <div>
+            <div class="text-left">
               <h3>{{dat.wxName}}</h3>
-              <p>地区:{{dat.wxFrom}}</p>
-              <p>营业时间:{{dat.wxTime}}</p>
-              <p>电话:{{dat.wxphone}}</p>
+              <p style="font-size: 15px">地区:<span style="color: grey">{{dat.wxFrom}}</span></p>
+              <p style="font-size: 15px">营业时间:<span style="color: grey">{{dat.wxTime}}</span></p>
+              <p style="font-size: 15px">电话:<span style="color: grey">{{dat.wxphone}}</span></p>
+
             </div>
           </div>
         </div>
@@ -67,8 +68,9 @@
   }
   img{
     height: 200px;
+    width: 100%;
     position:relative;
-    left: 10px;
+    top: 10px;
   }
   .repudiv{
     height: 400px;

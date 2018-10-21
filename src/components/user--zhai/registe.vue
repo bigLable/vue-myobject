@@ -3,9 +3,9 @@
     <div class="main">
       <div class="login"><h1>注 册</h1></div>
       <div class="login-1"><h5>Welcome to registration</h5></div>
-      <el-input v-model="user" placeholder="请输入用户名" type="text" class="input"></el-input><br><br>
-      <el-input v-model="pwd" placeholder="请输入密码" type="text" class="input"></el-input><br><br>
-      <el-input v-model="email" placeholder="请输入邮箱" type="text" class="input"></el-input><br><br>
+      <el-input id="name" v-model="user" placeholder="请输入用户名" type="text" class="input" maxlength="8" minlength="2"></el-input><br><br>
+      <el-input id="pwd" v-model="pwd" placeholder="请输入密码" type="text" class="input"></el-input><br><br>
+      <el-input id="email" v-model="email" placeholder="请输入邮箱" type="email" class="input"></el-input><br><br>
       <el-button type="primary" style="width:250px" @click="getdata" class="input">注 册</el-button><br><br>
       <router-link role="presentation" to="/login"><el-button type="info" style="width:250px" id="btn">已经有账号</el-button></router-link>
     </div>
@@ -13,14 +13,14 @@
 </template>
 
 <script>
-  import $ from 'jquery'
+  // import $ from 'jquery'
   export default {
     name: "registe",
     data() {
       return {
         user:'',
         pwd:'',
-        email:'',
+          email:'',
       };
     },
     methods:{
