@@ -1,14 +1,40 @@
 <template>
-   <div class="row">
-   <img  class="img-responsive" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1539685731602&di=7b1df0ea6a33442bf03d69dd706cceba&imgtype=0&src=http%3A%2F%2Fimg.99114.com%2Fgroup1%2FM00%2FEA%2FB9%2FwKgGS1klN0SABrXkAAuova4eNLQ468.jpg" alt="">
-     <img  class="img-responsive" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1539685731602&di=7b1df0ea6a33442bf03d69dd706cceba&imgtype=0&src=http%3A%2F%2Fimg.99114.com%2Fgroup1%2FM00%2FEA%2FB9%2FwKgGS1klN0SABrXkAAuova4eNLQ468.jpg" alt="">
+   <div class="row" >
+     <img  class="img-responsive" :src="user.IMG1" alt="">
+     <img  class="img-responsive" :src="user.IMG2" alt="">
+     <img  class="img-responsive" :src="user.IMG3" alt="">
    </div>
 </template>
 
 <script>
-    export default {
-        name: "shopimgs"
+  import axios from 'axios'
+  export default {
+    name: "shopimgs",
+    data() {
+      return {
+        name: '',
+        user: [],
+      };
+
+    },
+    methods: {
+      getData(){
+        let  _this=this;
+        axios.get('http://localhost:3000/shop/allIMG').then(function (result) {
+          console.log(result.data);
+          _this.user = result.data[4];
+          console.log(_this.user);
+
+        })
+      }, function(err) {
+        console.log(err.msg)
+      },
+
+    }, mounted() {
+      this.getData()
+
     }
+  }
 </script>
 
 <style scoped>
