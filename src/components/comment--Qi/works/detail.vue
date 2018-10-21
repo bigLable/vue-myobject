@@ -35,8 +35,9 @@
     <h1>热评</h1>
     <div id="l2" v-for="con in com">
       <ul class="list-group">
-        <li class="list-group-item">用户：{{con.userName}}</li>
         <li class="list-group-item">评论：{{con.commentsContent}}</li>
+        <li class="list-group-item">评论时间：{{con.commentsDate}}</li>
+
       </ul>
 
     </div>
@@ -46,6 +47,7 @@
 </template>
 
 <script>
+  import {formatDate} from '../../../../static/js/date';
   import $ from 'jquery'
   import axios from 'axios'
   export default {
@@ -55,8 +57,9 @@
         works:[],
         com:[],
        content:'',
-        date:'',
+        date:formatDate(new Date(), 'yyyy-MM-dd hh:mm'),
         wor:this.$route.params.id,
+        id:1,
 
       }
 
@@ -79,6 +82,7 @@
             commentsContent:_this.content,
               commentsDate:_this.date,
                      worksId:_this.wor,
+            UserID:_this.id,
 
           },function(res){
             alert('发表成功！')
