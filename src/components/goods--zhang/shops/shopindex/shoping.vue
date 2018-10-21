@@ -42,7 +42,7 @@
         </div>
         <div id="z1">
           <ul>
-          <li> <input class="btn btn-primary but cornflowerblue " type="button" value="加入购物车"></li>
+          <li> <input class="btn btn-primary but cornflowerblue " @click="gwc" type="button" value="加入购物车"></li>
           <li>  <input  class="btn btn-default but" type="button" value="加入收藏"></li>
         </ul>
 
@@ -67,6 +67,18 @@
 
     },
     methods: {
+      gwc(){
+        let  _this=this;
+        axios.get('http://localhost:3000/shoppingCart/getAllcar?ShopID='+`${this.$route.params.id}`).then(function (result) {
+          console.log(result.data);
+          _this.user = result.data[0];
+          console.log(_this.user);
+
+        })
+      }, function(err) {
+        console.log(err.msg)
+      }
+      },
 
       getData(){
       let  _this=this;

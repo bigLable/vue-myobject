@@ -5,16 +5,17 @@
     <div v-for="dat in user" class=" repudiv col-lg-3 col-md-3 col-sm-6 col-xs-6" >
 
     <div class="bbb">
+      <router-link :to="'/shops/'+dat.ShopID">
       <div class="imgdiv center-block">
         <img class="img-responsive" :src="dat.shopImg" alt="" :id="dat.ShopID">
       </div>
       <div>
-        <router-link :to="'/shops/'+dat.ShopID">
+
         <h3>{{dat.shopName}}</h3>
-        </router-link>
+
         <p>类型: <span style="font-size: 15px;">{{dat.shopType}}</span></p>
         <p style="font-size: 18px;color: royalblue">RMB:{{dat.shopPrice}}.00</p>
-      </div>
+      </div> </router-link>
     </div>
   </div>
 
@@ -79,5 +80,8 @@ import axios from 'axios'
   }
   p{
     font-size: 14px;
+  }
+  a{
+    text-decoration: none;
   }
 </style>
