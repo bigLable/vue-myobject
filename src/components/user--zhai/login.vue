@@ -28,6 +28,7 @@
 </template>
 
 <script>
+  import axios from 'axios'
     export default {
         name: "login",
       data() {
@@ -42,8 +43,6 @@
           }
         };
         return {
-          input: '',
-          input2:'',
           dynamicValidateForm: {
             domains: [{
               value: ''
@@ -61,7 +60,18 @@
             ],
           }
         };
-        }
+        },
+      mounted(){
+        let _this = this;
+        axios.get('http://localhost:3000/users/getOneUser'+`${_this.dynamicValidateForm.email}`).then(function(result){
+          console.log('---');
+          console.log(result.data)
+          _this.ruleForm2.pass = result.data[0];
+        },function(err){
+          console.log(err)
+
+        })
+      }
     }
 </script>
 
