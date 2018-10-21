@@ -6,14 +6,14 @@
         <div >
        <img :src="work.worksPic" alt="..." class=" img-responsive img-thumbnail"></div>
         <div >
-          <el-badge :value="200" :max="99" class="item">
+          <el-badge :value="200"  is-dot class="item">
             <el-button size="small">评论</el-button>
           </el-badge>
         <div id="like" ><span class="glyphicon glyphicon glyphicon-thumbs-up  " aria-hidden="true"></span></div>
         <div id="ll"> <ul class="list-group">
-          <li class="list-group-item">作者：</li>
-          <li class="list-group-item">作品名称：</li>
-          <li class="list-group-item">拍摄器材：</li>
+          <li class="list-group-item">作者：{{work.worksauthor}}</li>
+          <li class="list-group-item">作品名称:{{work.worksDescribe}}</li>
+          <li class="list-group-item">拍摄器材：{{work.worksEquipment}}</li>
         </ul>
         </div>
         <div class="text">
@@ -21,42 +21,47 @@
             type="textarea"
             :rows="2"
             n placeholder="请输入内容"
-            v-model="textarea"
+            v-model=" content"
           >
           </el-input>
+
         </div>
-          <el-button type="success" id="type" :plain="true" @click="open2">发表评论</el-button>
+          <el-button type="success" id="type" :plain="true" @click="getdata">发表评论</el-button>
         </div>
 
       </div>
 
+      </div>
+    <h1>热评</h1>
+    <div id="l2" v-for="con in com">
+      <ul class="list-group">
+        <li class="list-group-item">用户：{{con.userName}}</li>
+        <li class="list-group-item">评论：{{con.commentsContent}}</li>
+      </ul>
 
     </div>
-
 
   </div>
 
 </template>
 
 <script>
+  import $ from 'jquery'
   import axios from 'axios'
   export default {
     name: "detail",
     data() {
       return {
-        textarea: '',
         works:[],
+        com:[],
+       content:'',
+        date:'',
+        wor:this.$route.params.id,
+
       }
 
     },
     methods: {
-
-      open2() {
-        this.$message({
-          message: '评论成功！',
-          type: 'success',
-        });
-      },
 
       getData:function() {
         let _this = this;
@@ -66,11 +71,35 @@
           console.log(_this.works);
 
         })
-      }
+      },
+      getdata(){
+        let _this=this;
+        $.post('http://localhost:3000/works/addcomments',
+          {
+            commentsContent:_this.content,
+              commentsDate:_this.date,
+                     worksId:_this.wor,
 
-    },
+          },function(res){
+            alert('发表成功！')
+          })
+      },
+      getcom:function() {
+        let _this = this;
+        axios.get('http://localhost:3000/works/getcom?id=' + `${this.$route.params.id}`).then(function (result) {
+          console.log(result.data);
+          _this.com = result.data;
+          console.log(_this.com);
+
+        })
+      },
+
+
+
+  },
     mounted:function(){
-      this.getData()
+      this.getData();
+      this.getcom();
       console.log('id value'+this.$route.params.id)
     }
 
@@ -127,7 +156,10 @@
     top: 420px;
   }
 .big{
-height: 800px;
+height: 600px;
 }
+  h1{
+    text-align: center;
+  }
 
 </style>

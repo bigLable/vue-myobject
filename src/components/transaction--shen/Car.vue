@@ -15,6 +15,11 @@
   import oderprocess from './oderprocess'
     export default {
         name: "Car",
+      data(){
+            return {
+
+            }
+      },
         components:{
           'car-head':tsCarhead,
           'car-cardata':tsCardata,

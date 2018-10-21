@@ -16,7 +16,7 @@
            <th>总计金额</th>
            <th>操作</th>
          </tr>
-         <tr v-for="(good,key) in info" id="bc">
+         <tr v-for="(good,key) in info" class="cartItem">
            <td>
              <label>
              <input type="checkbox" id="blankCheckbox" v-model="checkedname" :value='good.ShopID' aria-label="...">
@@ -24,9 +24,10 @@
            </label>
            </td>
            <td>{{good.shopifo}}</td>
-           <td class="ifo">{{good.shopPrice}}</td>
-           <td><span><img src="../../assets/add.gif" @click="addNum(key)" /></span><span >{{Num}}</span><span><img src="../../assets/subtraction.gif" @click="sub(key)"/></span></td>
-           <td class="ifo">{{'￥'+Total}}</td>
+           <td class="price">{{good.shopPrice}}</td>
+           <td><span><img src="../../assets/add.gif" @click="addNum($event)" /></span><span :id="'num'+key" class="num">{{Num}}</span><span>
+             <img src="../../assets/subtraction.gif" @click="sub($event)"/></span></td>
+           <td class="selfTotal">{{Total}}</td>
            <td ><span v-on:click="getdelete(key)">删除</span></td>
          </tr>
           <tr >
@@ -53,26 +54,19 @@
            <!--</td>-->
            <!--<td ></td>-->
            <td colspan="3">已选商品:{{checkedname}}号</td>
-           <td>合计(不含运费):</td>
-           <td colspan="3"  class="paymoney"><router-link to="/Pay" style="color: white;font-size: large">去结算:</router-link></td>
+           <td>合计(不含运费):<span class="allTotal" style="color: red;font-size: large">￥{{Total}}</span></td>
+           <td colspan="3"  class="paymoney" v-on:click="change()">
+             <router-link  to="/Pay" style="color: white;font-size: large;text-decoration: none" ><span @click="toPay">去结算</span></router-link></td>
          </tr>
        </table>
      </div>
 
     </div>
 </template>
-<!--var example-component = Vue.component(-->
-<!--{-->
-<!--data:function(){ return { a : ‘’ }	,-->
-<!--computed: {-->
-<!--b: function () {-->
-<!--return this.a + 1;-->
-<!--}-->
-<!--}-->
-<!--},-->
-<!--});-->
+
 <script>
     import axios from 'axios'
+
     export default {
         name: "tsCardata",
         data(){
@@ -87,21 +81,88 @@
             }
           },
       methods:{
+          toPay(){
+            //1.封装对象
+            var newInfo = []
+            for(var i = 0 ; i < this.info.length ; i++){
+              for(var j = 0 ; j < this.checkedname.length ; j++){
+                var num = parseInt($('#num'+i).html())
+                if(this.info[i].ShopID == this.checkedname[j]){
+                  this.info[i].num = num;
+                  newInfo.push(this.info[i])
+                }
+              }
+
+            }
+            this.$store.state.inf= newInfo;
+            //2.this.$route.push('/pay')
+            this.$store.state.total=this.Total
+            // console.log(this.$store.state.inf+'~~~~~~~xixi~~~~~~~~'+this.$store.state.total)
+          },
           getdelete(key){
             this.info.splice(key,1)
           },
           addNum(key){
-            if(this.Num>=0){
-              this.Num=this.Num+1;
-              this.Total=this.Num*this.info[key].shopPrice;
-            }
+
+              this.calculation('add', $(key.target));
+
           },
         sub(key){
-            if(this.Num>0){
-              this.Num=this.Num-1;
-              this.Total=this.Num*this.info[key].shopPrice;
+
+              this.calculation('sub', $(key.target));
+
+        },
+
+        calculation: function(c, key) {
+          var el = key.parents('tr');
+          var numEl = el.find('.num'), num = 0;
+            if(c == 'add' && parseInt(numEl.text()) >= 0 || c == 'sub' && parseInt(numEl.text()) > 0) {
+              var price = parseInt(el.find('.price').text());
+              var selfTotal = el.find('.selfTotal'), allTotalEl = $('.allTotal'), allTotal = 0;
+              var cartList = $('.cartItem');
+
+              var tempNum = 0;
+              if(c == 'add') {
+                tempNum = 1;
+
+
+                // this.Num=this.Num+1;
+                // this.Total=this.Num*this.info[key].shopPrice;
+              } else if(c == 'sub') {
+                tempNum = -1;
+              }
+
+              num = parseInt(numEl.text()) + tempNum;
+              numEl.text(num);
+              selfTotal.text('￥'+price * num);
+              cartList.each(function (index, item) {
+                console.log($(item).find('.selfTotal').text());
+                allTotal += parseInt($(item).find('.selfTotal').text().replace('￥', ''));
+              });
+                  this.Total=allTotal
+              // allTotalEl.text('￥'+allTotal);
             }
         },
+
+        // toPay() {
+        //     var orderObj = {}
+        //     var cart = [],  total = this.Total
+        //     var cartItems = document.querySelectorAll('.cartItem')
+        //     cartItems.forEach(function (item, index) {
+        //       cart[index] = {
+        //         price: parseInt(this.querySelector('.price').innerText),
+        //         num: parseInt(this.querySelector('#num').innerText),
+        //         total: total
+        //       }
+        //     })
+        //
+        //
+        //     orderObj.items = cart
+        //     orderObj.total = total
+        //
+        //     this.$route.push({path: '/Pay', param: orderObj})
+        // },
+
         getData:function(){
           var _this = this;
           axios({
@@ -116,6 +177,11 @@
             console.log(err);
           })
         },
+        change(){
+          this.$store.state.num.int2++
+          console.log('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
+          console.log('num2:' + this.$store.state.num.int2)
+        }
       },
       mounted:function () {
         this.getData();
