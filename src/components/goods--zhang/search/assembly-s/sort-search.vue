@@ -13,7 +13,7 @@
 
         <h3>{{dat.shopName}}</h3>
 
-        <p>类型: <span style="font-size: 15px;">{{dat.shopType}}</span></p>
+        <p style="color: black">类型: <span style="font-size: 15px;">{{dat.shopType}}</span></p>
         <p style="font-size: 18px;color: royalblue">RMB:{{dat.shopPrice}}.00</p>
       </div> </router-link>
     </div>

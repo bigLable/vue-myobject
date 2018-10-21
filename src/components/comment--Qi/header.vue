@@ -19,7 +19,7 @@
           <ul class="nav navbar-nav">
             <li>  <router-link role="presentation" to="/"><img src="../../assets/u19.png" alt=""></router-link></li>
             <li class="">
-              <router-link role="presentation" to="/shops"><a>商品列表</a></router-link>
+              <router-link role="presentation" to="/search"><a>商品列表</a></router-link>
 
             </li>
             <li>
