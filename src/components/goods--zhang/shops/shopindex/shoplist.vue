@@ -11,12 +11,15 @@
           <li @click="shopinfo">详细参数</li>
 
           <li @click="shopcomment" >评论</li>
-          <li><input type="button" class="btn btn-primary" value="立即购买"></li>
+          <li><input type="button" class="btn btn-primary" value="加入购物车"></li>
         </ul>
       </div>
     </div>
 
   </div>
+
+
+
 
 
 
@@ -30,13 +33,13 @@
       },
       methods:{
         shopimg(){
-          this.$router.push({path:'/shops/shopimgs'})
+          this.$router.push({path:'/shops/:id/shopimgs'})
         },
           shopinfo(){
-            this.$router.push({path:'/shops/shopinfo'})
+            this.$router.push({path:'/shops/:id/shopinfo'})
           },
         shopcomment(){
-          this.$router.push({path:'/shops/shopcomment'})
+          this.$router.push({path:'/shops/:id/shopcomment'})
         },
 
       }
