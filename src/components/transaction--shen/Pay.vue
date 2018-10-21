@@ -15,6 +15,7 @@
   import payadress from './oderadress'
   import oderdetail from './oderDetail'
   import paymoney from './paymoney'
+
     export default {
         name: "Pay",
       components:{
@@ -23,7 +24,17 @@
            'pay-adress':payadress,
            'pay-detail':oderdetail,
            'pay-pay':paymoney
+      },
+      data() {
+          return{
+
+          }
+
+      },
+      mounted() {
+
       }
+
     }
 </script>
 

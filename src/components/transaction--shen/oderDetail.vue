@@ -15,19 +15,19 @@
         <th>数量</th>
         <th>小计</th>
       </tr>
-      <tr v-for="key in 2" id="bc">
+      <tr v-for="key in shopList" id="bc">
         <td>
-         <img src="../../assets/logo.png">
+         <img :src="key.shopImg">
         </td>
-        <td style="color: grey">详细信息</td>
-        <td >A7M3</td>
-        <td class="Red">￥100.00</td>
-        <td>2</td>
-        <td class="Red">￥200.00</td>
+        <td style="color: grey">{{key.shopifo}}</td>
+        <td >{{key.shopPara}}</td>
+        <td class="Red">{{key.shopPrice}}</td>
+        <td>{{key.num}}</td>
+        <td class="Red">{{key.shopPrice*key.num}}</td>
       </tr>
       <tr >
         <td colspan=3 style="text-align: left;padding-top:5%">给卖家留言:<input type="text" placeholder="欢迎给我们留言！"/></td>
-        <td colspan=3 style="text-align: center;padding-top:5%">合计费用:<span class="Red">￥121.00</span></td>
+        <td colspan=3 style="text-align: center;padding-top:5%">合计费用:<span class="Red">￥{{total}}</span></td>
       </tr>
     </table>
     </div>
@@ -37,7 +37,16 @@
 
 <script>
     export default {
-        name: "oderDetail"
+        name: "oderDetail",
+        data(){
+         return{
+           shopList:this.$store.state.inf,
+           total:this.$store.state.total
+         }
+       },
+        mounted() {
+
+        }
     }
 </script>
 
