@@ -12,10 +12,10 @@
       </div>
       <div class="right">
         <table>
-          <tr><td>镜头</td><td>2</td></tr>
-          <tr><td>镜头</td><td>2</td></tr>
-          <tr><td>镜头</td><td>2</td></tr>
-          <tr><td>镜头</td><td>2</td></tr>
+          <tr><td>影像传感器类型</td><td>Exmor R CMOS</td></tr>
+          <tr><td>影像传感器尺寸</td><td>1/5.8</td></tr>
+          <tr><td>动态有效像素</td><td>约229万像素(16:9)*1</td></tr>
+          <tr><td>静态有效像素</td><td>约229万像素(16:9)/约171万像素 (4:3)</td></tr>
         </table>
       </div>
       <div class="c100"></div>
