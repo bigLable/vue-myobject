@@ -3,6 +3,8 @@
     <div class="head">
       <span>后台管理</span>
       <el-input v-model="input" placeholder="请输入商品编号" class="input"></el-input>
+      <el-button plain class="btn">搜索</el-button>
+      <el-button plain class="btn">新增商品</el-button>
     </div>
    <div class="left">
      <el-row class="tac">
@@ -29,42 +31,32 @@
      </el-row>
    </div>
    <div class="main">
-     <el-table
-       :data="tableData3"
-       height="700"
-       style="width: 100%">
-       <el-table-column
-         prop="id"
-         label="商品编号"
-         width="180">
-       </el-table-column>
-       <el-table-column
-         prop="name"
-         label="商品名称"
-         width="180">
-       </el-table-column>
-       <el-table-column
-         prop="price"
-         label="商品价格">
-       </el-table-column>
-       <el-table-column label="操作">
-         <template slot-scope="scope">
-           <el-button
-             size="max"
-             @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
-           <el-button
-             size="max"
-             type="danger"
-             @click="handleDelete(scope.$index, scope.row)">删除</el-button>
-         </template>
-       </el-table-column>
-     </el-table>
+     <table width="100%" border="0" cellspacing="0" cellpadding="0" id="order">
+       <tr class="title">
+         <td>商品名称</td>
+         <td>数量</td>
+         <td>单价</td>
+         <td>操作</td>
+       </tr>
+       <tr id="row1">
+         <td>玫瑰保湿睡眠面膜</td>
+         <td>5</td>
+         <td>&yen;48</td>
+         <td><input name="del" type="button" value="删除" onclick='delRow("row1")' />
+           <input name="edit" type="button" value="修改"  onclick='editRow("row1")' /></td>
+       </tr>
+       <tr>
+         <td style="text-align:center; height:30px;" colspan="4">
+           <input name="bsn" type="button" value="增加定单" onclick="addRow()" /></td>
+       </tr>
+     </table>
+
    </div>
  </div>
 </template>
 
 <script>
-    export default {
+  export default {
       name: "manage",
       methods: {
         handleOpen(key, keyPath) {
@@ -73,48 +65,13 @@
         handleClose(key, keyPath) {
           console.log(key, keyPath);
         },
-        handleEdit(index, row) {
-          console.log(index, row);
-        },
-        handleDelete(index, row) {
-          console.log(index, row);
-        }
-      },
-      data() {
-        return {
-          input:'',
-          tableData3: [{
-            id: '2016-05-03',
-            name: '王小虎',
-            price: '上海市普陀区金沙江路 1518 弄'
-          }, {
-            id: '2016-05-02',
-            name: '王小虎',
-            price: '上海市普陀区金沙江路 1518 弄'
-          }, {
-            id: '2016-05-04',
-            name: '王小虎',
-            price: '上海市普陀区金沙江路 1518 弄'
-          }, {
-            id: '2016-05-01',
-            name: '王小虎',
-            price: '上海市普陀区金沙江路 1518 弄'
-          }, {
-            id: '2016-05-08',
-            name: '王小虎',
-            price: '上海市普陀区金沙江路 1518 弄'
-          }, {
-            id: '2016-05-06',
-            name: '王小虎',
-            price: '上海市普陀区金沙江路 1518 弄'
-          }, {
-            id: '2016-05-07',
-            name: '王小虎',
-            price: '上海市普陀区金沙江路 1518 弄'
-          }]
-        }
-      }
-    }
+      data(){
+      return {
+        input: ''
+      }}},
+
+}
+
 </script>
 
 <style scoped>
@@ -130,8 +87,9 @@
   }
   .input{
     width:200px;
-    margin-left:1000px;
-    margin-top:50px
+    margin-left:900px;
+    margin-top:50px;
+    margin-right:10px
   }
   span{
     position:absolute;
@@ -152,5 +110,8 @@
     height:700px;
     float:left
   }
-
+  .btn{
+    width:80px;
+    height:40px;
+  }
 </style>
