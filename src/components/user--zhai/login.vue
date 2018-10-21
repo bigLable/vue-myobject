@@ -17,7 +17,7 @@
           <el-form-item prop="pass">
             <el-input type="password" v-model="ruleForm2.pass" autocomplete="off" placeholder="请输入密码"></el-input>
           </el-form-item>
-      <el-button type="primary" style="width:250px">登 录</el-button>
+      <el-button type="primary" style="width:250px" @click="log">登 录</el-button>
       <router-link role="presentation" to="/registe"><el-button type="info" style="width:250px" id="btn">还没有账号</el-button></router-link>
       </el-form>
         <router-link to="/managelogin"><el-button plain size="mini" style="margin-top:10px;margin-left:158px">管理员登录</el-button></router-link>
@@ -61,9 +61,12 @@
           }
         };
         },
+      methods:{
+
+      },
       mounted(){
         let _this = this;
-        axios.get('http://localhost:3000/users/getOneUser'+`${_this.dynamicValidateForm.email}`).then(function(result){
+        axios.get('http://localhost:3000/users/getOneUser?userEmail='+`${_this.dynamicValidateForm.email}`).then(function(result){
           console.log('---');
           console.log(result.data)
           _this.ruleForm2.pass = result.data[0];
