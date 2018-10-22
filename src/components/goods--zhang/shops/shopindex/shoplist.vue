@@ -1,6 +1,6 @@
 <template>
   <div id="divsf" class="row">
-    <div class="container">
+    <div  class="container">
       <div class="col-xs-3 col-sm-4 col-md-6 col-lg-7">
         <span>相机型号</span>
       </div>
@@ -27,6 +27,17 @@
 
 <script>
   export default {
+    mounted(){
+      $(window).scroll(function (){
+        let wintop = document.documentElement.scrollTop || document.body.scrollTop;
+        if (wintop>=800){
+          $("#divsf").addClass('fi')
+        }else{
+          $("#divsf").removeClass('fi')
+        }
+      });
+
+    },
         name: "applist",
       components:{
 
@@ -69,11 +80,22 @@
   }
   li:hover{
     color: dodgerblue;
+
   }
   span{
     font-size: 25px;
     position: relative;
     top: 15px;
+  }
+  .fi{
+    margin: 0;
+    padding: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: white;
+    width: 100%;
+
   }
   
 

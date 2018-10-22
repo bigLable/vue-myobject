@@ -12,11 +12,15 @@
 
          <div class="cen">
            <div @click="img1" class="ylt">
+             <img  class="img-responsive" :src="user.shopImg" alt="">
+           </div>
+           <div @click="img1" class="ylt1">
              <img  class="img-responsive" :src="user.shopImg2" alt="">
            </div>
-           <div @click ="img2" @mousedown="pa1" class="ylt">
-             <img class="img-responsive" :src="user.shopImg3" alt="">
-           </div>
+             <div @click ="img2" @mousedown="pa1" class="ylt">
+               <img class="img-responsive" :src="user.shopImg3" alt="">
+             </div>
+
 
          </div>
 
@@ -165,17 +169,25 @@
      width: 100px;
      position: absolute;
      bottom: 15px;
-     left: 50px;
+     left: 65px;
 
    }
+
 .ylt:last-child  {
   display: inline-block;
   width: 100px;
   position: absolute;
   bottom: 15px;
-  left: 160px;
+  left: 180px;
 
 }
+  .ylt1{
+    display: inline-block;
+    width: 100px;
+    position: absolute;
+    bottom: 15px;
+    left: 295px;
+  }
   img {
     border: 1px solid #cccccc;
   }
