@@ -16,7 +16,7 @@
            <th>总计金额</th>
            <th>操作</th>
          </tr>
-         <tr v-for="(good,key) in info" class="cartItem">
+         <tr v-for="(good,key) in info" class="cartItem" :id="'tr'+key">
            <td>
              <label>
              <input type="checkbox" id="blankCheckbox" v-model="checkedname" :value='good.ShopID' aria-label="...">
@@ -72,7 +72,8 @@
         data(){
           return {
             Total:'0',
-            info: [],
+            info:[],
+            inf: [],
             Num: 0,
             // info:{'shopImg':require('../../assets/logo.png'),'shopifo':'超清','shopPrice':20,'num':2,'total':40},
             checkedname: [],
@@ -100,7 +101,21 @@
             // console.log(this.$store.state.inf+'~~~~~~~xixi~~~~~~~~'+this.$store.state.total)
           },
           getdelete(key){
-            this.info.splice(key,1)
+            let shopid=''
+            let shopi=localStorage.getItem('shopid')
+            let arr=shopi.split(',')
+            for(var i=1;i<arr.length;i++){
+              if (arr[i]==this.info[key].ShopID){
+                arr.splice(i,1)
+
+              }else {
+               shopid+=','+arr[i]
+              }
+            }
+            localStorage.setItem('shopid',shopid)
+            // this.info.splice(key,1)
+            var child=document.getElementById(`tr${key}`);
+            child.parentNode.removeChild(child);
           },
           addNum(key){
 
@@ -165,17 +180,29 @@
 
         getData:function(){
           var _this = this;
-          axios({
-            method:'get',
-            url:'http://localhost:3000/shoppingCart/getAllcar'
-          }).then(function(result){
-            console.log('============== =====');
-            // console.log(result.data)
-            _this.info = result.data.data[0];
-            console.log(_this.info[0]);
-              },function(err){
-            console.log(err);
-          })
+          let shopid=localStorage.getItem('shopid')
+             let ShopID=shopid.split(',')
+          console.log("shop.local.."+ShopID)
+          for(var i=1;i<ShopID.length;i++){
+
+                axios({
+                  method:'get',
+                  url:'http://localhost:3000/shoppingCart/getAllcar?ShopID='+`${ShopID[i]}`
+                }).then(function(result){
+                  // _this.inf = result.data.data[0];
+                  // console.log(_this.inf[0]);
+                  _this.inf=result.data.data[0][0];
+                  // console.log('请求单个商品结果'+(result.data[0]).shopImg3)
+                  console.log('请求单个商品结果'+result.data.data[0][0].shopifo)
+                  _this.info.push(_this.inf)
+                  console.log('属性值'+_this.info)
+                },function(err){
+                  console.log(err);
+                })
+
+          }
+
+
         },
         change(){
           this.$store.state.num.int2++
@@ -183,9 +210,12 @@
           console.log('num2:' + this.$store.state.num.int2)
         }
       },
-      mounted:function () {
+      // mounted:function () {
+      //
+      // },
+      created:function () {
         this.getData();
-      },
+      }
 
     }
 
