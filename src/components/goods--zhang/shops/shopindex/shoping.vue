@@ -72,7 +72,7 @@
           console.log(result.data);
           _this.user = result.data[0];
           console.log(_this.user);
-
+alert("添加购物车成功！")
         })
       }, function(err) {
         console.log(err.msg)

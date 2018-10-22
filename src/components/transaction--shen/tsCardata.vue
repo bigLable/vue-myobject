@@ -20,10 +20,10 @@
            <td>
              <label>
              <input type="checkbox" id="blankCheckbox" v-model="checkedname" :value='good.ShopID' aria-label="...">
-               <img v-bind:src="good.shopImg"/>
+               <img v-bind:src="good.shopImg"  style="width: 150px;" class="img-responsive"/>
            </label>
            </td>
-           <td>{{good.shopifo}}</td>
+           <td>{{good.shopPara}}</td>
            <td class="price">{{good.shopPrice}}</td>
            <td><span><img src="../../assets/add.gif" @click="addNum($event)" /></span><span :id="'num'+key" class="num">{{Num}}</span><span>
              <img src="../../assets/subtraction.gif" @click="sub($event)"/></span></td>

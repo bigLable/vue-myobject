@@ -17,13 +17,13 @@
       </tr>
       <tr v-for="key in shopList" id="bc">
         <td>
-         <img :src="key.shopImg">
+         <img :src="key.shopImg" style="width: 150px;"class="img-responsive">
         </td>
-        <td style="color: grey">{{key.shopifo}}</td>
+        <td style="color: grey">{{key.shopType}}</td>
         <td >{{key.shopPara}}</td>
-        <td class="Red">{{key.shopPrice}}</td>
+        <td class="Red">￥{{key.shopPrice}}</td>
         <td>{{key.num}}</td>
-        <td class="Red">{{key.shopPrice*key.num}}</td>
+        <td class="Red">￥{{key.shopPrice*key.num}}</td>
       </tr>
       <tr >
         <td colspan=3 style="text-align: left;padding-top:5%">给卖家留言:<input type="text" placeholder="欢迎给我们留言！"/></td>

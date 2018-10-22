@@ -36,7 +36,7 @@
 
     <div  v-for="con in com">
       <ul class="list-group">
-        <li class="list-group-item">用户：{{con.UserID}}</li>
+        <li class="list-group-item">用户：{{con.userName}}</li>
         <li class="list-group-item">评论：{{con.commentsContent}}</li>
         <li class="list-group-item">评论时间：{{con.commentsDate}}</li>
 
@@ -84,7 +84,7 @@
             commentsContent:_this.content,
               commentsDate:_this.date,
                      worksId:_this.wor,
-            UserID:_this.id,
+                 UserID:_this.id,
 
           },function(res){
             alert('发表成功！')

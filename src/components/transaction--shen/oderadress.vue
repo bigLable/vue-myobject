@@ -133,6 +133,7 @@
 </script>
 
 <style scoped>
+
   .h2-dot{
     border-bottom:dashed 1px black;
     display:block;
