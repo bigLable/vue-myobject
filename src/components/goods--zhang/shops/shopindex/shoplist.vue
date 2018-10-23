@@ -6,7 +6,7 @@
       </div>
       <div class="col-xs-9 col-sm-8 col-md-6 col-lg-5"   >
         <ul>
-          <li @click="shopimg">概述</li>
+          <li @click="shopimg" id="lii">概述</li>
 
           <li @click="shopinfo">详细参数</li>
 
@@ -25,9 +25,13 @@
 
 </template>
 
+
 <script>
   export default {
     mounted(){
+      $(function () {
+        $('#lii').click()
+      });
       $(window).scroll(function (){
         let wintop = document.documentElement.scrollTop || document.body.scrollTop;
         if (wintop>=800){
@@ -53,7 +57,8 @@
           this.$router.push({path:'/shops/:id/shopcomment'})
         },
 
-      }
+      },
+
 
     }
 </script>

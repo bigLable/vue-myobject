@@ -7,8 +7,8 @@
     </div>
     <div class="row">
      <div id="dv1" class="col-lg-6 col-md-6 col-sm-7 col-xs-11">
-       <div  id="d1">
-         <img id="imge" class="img-responsive" :src="user.shopImg" alt="">
+       <div  id="d1" >
+         <img id="imge" style="margin: 0 auto" class="img-responsive" :src="user.shopImg" alt="">
 
          <div class="cen">
            <div @click="img1" class="ylt">

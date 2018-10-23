@@ -24,12 +24,21 @@
 <script>
     export default {
         name: "title-repair",
+      mounted(){
+        $(function () {
+          $('#d1').click()
+        });
+      },
       methods:{
         zao(){
-          this.$router.push({path:'/repair/raputor'})
+          this.$router.push({path:'/repair/raputor'});
+          $('#d2').css('background','white');
+          $('#d1').css('background','#83aeff')
         },
         zuo(){
-          this.$router.push({path:'/repair/chizu'})
+          this.$router.push({path:'/repair/chizu'});
+          $('#d2').css('background','#83aeff');
+          $('#d1').css('background','white')
         }
       }
     }
@@ -61,7 +70,6 @@ div #div1{
 #d1{
   height: 100px;
   background:#83aeff;
-  border: 1px solid #cccccc;
 
 
 }
@@ -88,4 +96,8 @@ p:last-child{
   position: relative;
   top: 30px;
 }
+  .bl{
+    height: 300px;
+    width: 500px;
+  }
 </style>
