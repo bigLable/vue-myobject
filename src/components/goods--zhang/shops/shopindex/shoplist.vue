@@ -11,7 +11,7 @@
           <li @click="shopinfo">详细参数</li>
 
           <li @click="shopcomment" >评论</li>
-          <li><input type="button" class="btn btn-primary" value="加入购物车"></li>
+          <li><input type="button" class="btn btn-primary"  value="加入收藏"></li>
         </ul>
       </div>
     </div>
