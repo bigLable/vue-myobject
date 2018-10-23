@@ -5,11 +5,11 @@
       <div class="container">
       <div class="row">
         <div id="div1" >
-          <div id="d1"class=" col-lg-6 col-md-6 col-sm-6 col-xs-6" @click="zao">
-            <p>零售店</p>
+          <div id="d1" @click="zao" class=" col-lg-6 col-md-6 col-sm-6 col-xs-6" >
+            <p  >零售店</p>
           </div>
-          <div id="d2" class=" col-lg-6 col-md-6 col-sm-6 col-xs-6" @click="zuo" >
-            <p>特约维修店</p>
+          <div id="d2" @click="zuo" class=" col-lg-6 col-md-6 col-sm-6 col-xs-6" >
+            <p >特约维修店</p>
           </div>
           <p id="p1">直营店铺</p>
         </div>
@@ -57,16 +57,20 @@ div #div1{
   position: relative;
   top: 140px;
 
-
 }
 div #d1{
   height: 100px;
   background:#83aeff;
+  border: 1px solid #cccccc;
+
 
 }
+
 div #d2{
   height: 100px;
   background: white;
+  border: 1px solid transparent;
+
 
 }
 p:last-child{
