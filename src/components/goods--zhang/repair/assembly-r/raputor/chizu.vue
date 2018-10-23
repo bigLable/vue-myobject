@@ -23,11 +23,8 @@
         <input type="button" @click="suz" class="btn btn-warning" value="我附近的维修点">
 
       </div>
-      <div class="bbq">
-        <div id="allmap"></div>
-      </div>
-
     </div>
+    <div id="allmap"></div>
 </div>
     </div>
 </template>
@@ -146,10 +143,13 @@
   .container{
     background: white;
   }
-  .bbq{
-    position: relative;top: 10px;
-  }
-body, html,#allmap {width: 70%;height: 700px;overflow: hidden;margin:20px;font-family:"微软雅黑";}
+#allmap {width: 70%;
+  height: 700px;
+  margin:10px;
+  font-family:"微软雅黑";
+  margin-top: 20px;
+
+}
 
 
 </style>
