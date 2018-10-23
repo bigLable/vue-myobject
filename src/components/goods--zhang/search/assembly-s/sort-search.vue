@@ -1,6 +1,6 @@
 <template>
 <div class="container">
-  <div class="row text-center" @click="fun">
+  <div class="row text-center" >
 
     <div v-for="dat in user" class=" repudiv col-lg-3 col-md-3 col-sm-6 col-xs-6" >
 
@@ -36,9 +36,9 @@ import axios from 'axios'
 
       },
       methods: {
-        fun(){
-          this.$router.push({path:'/shops/'+dat.ShopID})
-        },
+        // fun(){
+        //   this.$router.push({path:'/shops/'+dat.ShopID})
+        // },
 
         getData() {
           let _this = this

@@ -12,11 +12,15 @@
 
          <div class="cen">
            <div @click="img1" class="ylt">
+             <img  class="img-responsive" :src="user.shopImg" alt="">
+           </div>
+           <div @click="img1" class="ylt1">
              <img  class="img-responsive" :src="user.shopImg2" alt="">
            </div>
-           <div @click ="img2" @mousedown="pa1" class="ylt">
-             <img class="img-responsive" :src="user.shopImg3" alt="">
-           </div>
+             <div @click ="img2" @mousedown="pa1" class="ylt">
+               <img class="img-responsive" :src="user.shopImg3" alt="">
+             </div>
+
 
          </div>
 
@@ -67,15 +71,21 @@
     },
     methods: {
       gwc(){
-        let  _this=this;
-        axios.get('http://localhost:3000/shoppingCart/getAllcar?ShopID='+`${this.$route.params.id}`).then(function (result) {
-          console.log(result.data);
-          _this.user = result.data[0];
-          console.log(_this.user);
-alert("添加购物车成功！")
-        })
-      }, function(err) {
-        console.log(err.msg)
+//         let  _this=this;
+//         axios.get('http://localhost:3000/shoppingCart/getAllcar?ShopID='+`${this.$route.params.id}`).then(function (result) {
+//           console.log(result.data);
+//           _this.user = result.data[0];
+//           console.log(_this.user);
+// alert("添加购物车成功！")
+//         }),function(err) {
+//           console.log(err.msg)
+//         }
+        let shopid='';
+
+        shopid=localStorage.getItem('shopid')+','+this.$route.params.id
+        localStorage.setItem('shopid',shopid)
+        alert('添加购物车成功！')
+        alert(shopid)
       },
 
       getData(){
@@ -159,17 +169,25 @@ alert("添加购物车成功！")
      width: 100px;
      position: absolute;
      bottom: 15px;
-     left: 50px;
+     left: 65px;
 
    }
+
 .ylt:last-child  {
   display: inline-block;
   width: 100px;
   position: absolute;
   bottom: 15px;
-  left: 160px;
+  left: 180px;
 
 }
+  .ylt1{
+    display: inline-block;
+    width: 100px;
+    position: absolute;
+    bottom: 15px;
+    left: 295px;
+  }
   img {
     border: 1px solid #cccccc;
   }
