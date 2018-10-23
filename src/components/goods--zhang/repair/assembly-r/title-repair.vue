@@ -11,7 +11,7 @@
           <div id="d2" @click="zuo" class=" col-lg-6 col-md-6 col-sm-6 col-xs-6" >
             <p >特约维修店</p>
           </div>
-          <p id="p1">直营店铺</p>
+         <span id="p1">直营店铺</span>
         </div>
       </div>
     </div>
@@ -58,7 +58,7 @@ div #div1{
   top: 140px;
 
 }
-div #d1{
+#d1{
   height: 100px;
   background:#83aeff;
   border: 1px solid #cccccc;
@@ -66,7 +66,7 @@ div #d1{
 
 }
 
-div #d2{
+#d2{
   height: 100px;
   background: white;
   border: 1px solid transparent;
