@@ -27,11 +27,12 @@
            <td class="price">{{good.shopPrice}}</td>
            <td>
              <span >
-             <img src="../../assets/add.gif" @click="addNum($event)" />
+            <img src="../../assets/subtraction.gif" @click="sub($event)"/>
               </span>
              <span :id="'num'+key" class="num">{{Num}}</span>
              <span>
-             <img src="../../assets/subtraction.gif" @click="sub($event)"/>
+
+                <img src="../../assets/add.gif" @click="addNum($event)" />
              </span>
            </td>
            <td class="selfTotal">{{Num*good.shopPrice}}</td>
@@ -154,6 +155,9 @@
           },
           addNum(key){
             this.calculation('add', $(key.target));
+            // if(parseInt(($(key.target).parentNode).nextSbiling.html())){
+            //   $(key.target).parents('tr').find('input').checked =true
+            // }
 
           },
         sub(key){

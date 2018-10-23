@@ -3,6 +3,8 @@ import Vuex from 'vuex'
 Vue.use(Vuex)
 export default new Vuex.Store({
   state:{
+    user:1,
+    username:'游客',
     num:{
       int1:1,
       int2:0,
