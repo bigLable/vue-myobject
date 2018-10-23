@@ -7,7 +7,7 @@
 
 
         <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <div class="" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
             <li>  <router-link role="presentation" to="/"><img src="../../assets/u19.png" alt=""></router-link></li>
             <li class="">

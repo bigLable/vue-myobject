@@ -9,6 +9,7 @@
   </div>
   <br>
   <app-workskinds></app-workskinds>
+
  </div>
 </template>
 <script>

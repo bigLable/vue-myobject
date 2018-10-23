@@ -2,22 +2,24 @@
 
   <div>
     <br>
-    <div class="col-xs-12">
-      <el-carousel :interval="4000" type="card" height="700px">
+    <div>
+      <el-carousel :interval="4000" type="card" height="600px" arrow="never">
         <el-carousel-item v-for="(work,index) in info1" :key="index">
-          <img v-bind:src="work.pic">
+          <img v-bind:src="work.pic" class="img-responsive">
         </el-carousel-item>
       </el-carousel>
     </div>
 
-    <div class="color col-xs-12 ">
-      <div class="hot col-xs-12"><span class="glyphicon glyphicon-fire" aria-hidden="true"><span>热门数码产品</span></span>
+    <div class="new col-xs-12 ">
+      <div class="hot col-xs-12">
+        <span class="glyphicon-heart glyphicon glyphicon-star" aria-hidden="true"><span>热门数码产品</span></span></div>
+      <div>
+        <br><br><br>
       </div>
-      <br><br><br><br>
       <el-row class="container">
-        <el-col :span="6" v-for="(shop, index) in info3" :key="o" :offset="index > 0 ? 2 : 2">
-          <el-card :body-style="{ padding: '30px' }">
-            <img :src="shop.shopImg" class="image">
+        <el-col :span="6" v-for="(shop, index) in info3" :offset="index > 0 ? 1 : 1" class="animated rubberBand">
+          <el-card :body-style="{ padding: '20px' }"style="height: 360px">
+            <img :src="shop.shopImg" class="img-responsive">
             <div style="padding: 14px;">
               <router-link :to="'/shops/'+shop.shopID"><span> 产品名称:{{shop.shopName}}</span></router-link>
               <div class="bottom clearfix">
@@ -27,22 +29,24 @@
               </div>
             </div>
           </el-card>
+          <br>
         </el-col>
       </el-row>
       <br>
     </div>
+
     <div class="new col-xs-12 ">
-      <div class="hot col-xs-12"><span class="glyphicon-heart
-glyphicon glyphicon-star" aria-hidden="true"><span>最新数码产品</span></span></div>
+      <div class="hot col-xs-12">
+        <span class="glyphicon-heart glyphicon glyphicon-star" aria-hidden="true"><span>最新数码产品</span></span></div>
       <div>
         <router-link role="presentation" to="/search"><p
           class="el-icon-caret-right more col-md-offset-10 col-xs-offset-10">more</p></router-link>
       </div>
       <br><br><br><br>
       <el-row class="container">
-        <el-col :span="6" v-for="(shop, index) in info2" :key="o" :offset="index > 0 ? 2 : 2">
-          <el-card :body-style="{ padding: '3 0px' }">
-            <img :src="shop.shopImg" class="image">
+        <el-col :span="6" v-for="(shop, index) in info2" :offset="index > 0 ? 1 : 1">
+          <el-card :body-style="{ padding: '20px' }"style="height: 360px">
+            <img :src="shop.shopImg" class="img-responsive">
             <div style="padding: 14px;">
               <router-link :to="'/shops/'+shop.shopID"><span> 产品名称:{{shop.shopName}}</span></router-link>
               <div class="bottom clearfix">
@@ -52,10 +56,9 @@ glyphicon glyphicon-star" aria-hidden="true"><span>最新数码产品</span></sp
               </div>
             </div>
           </el-card>
+          <br>
         </el-col>
-
       </el-row>
-
       <br>
     </div>
     <div class="work col-xs-12 ">
@@ -67,10 +70,10 @@ glyphicon glyphicon-eye-open" aria-hidden="true"><span>&nbsp;热门作品</span>
       </div>
       <br><br><br><br>
       <el-row class="container">
-        <el-col :span="6" v-for="(work, index) in info4" :key="work" :offset="index > 0 ? 2 : 0">
-          <el-card :body-style="{ padding: '20px' }">
+        <el-col :span="6" v-for="(work, index) in info4" :offset="index > 0 ? 1: 1">
+          <el-card :body-style="{ padding: '10px' }"style="height: 300px">
             <img :src="work.worksPic" class="image">
-            <div style="padding: 14px;">
+            <div style="padding: 14px;" >
               <span> {{work.worksauthor}}</span>
               <div class="bottom clearfix">
                 <router-link :to="'/comment/'+work.worksId">
@@ -81,10 +84,12 @@ glyphicon glyphicon-eye-open" aria-hidden="true"><span>&nbsp;热门作品</span>
               </div>
             </div>
           </el-card>
+          <br>
         </el-col>
       </el-row>
     </div>
     <br>
+    <p id="f" @mouseover='fade'>hello</p>
   </div>
 
 
@@ -107,6 +112,9 @@ glyphicon glyphicon-eye-open" aria-hidden="true"><span>&nbsp;热门作品</span>
       };
     },
     methods: {
+      fade:function(){
+        $('#f').addClass('animated bounceOutLeft')
+      },
       getpic: function () {
         let _this = this;
         axios.get('http://localhost:3000/getpic').then(function (result) {
@@ -142,7 +150,7 @@ glyphicon glyphicon-eye-open" aria-hidden="true"><span>&nbsp;热门作品</span>
       },
       getnewworks: function () {
         let _this = this;
-        axios.get('http://localhost:3000/getnewworks').then(function (result) {
+        axios.get('http://localhost:3000/works/hotworks').then(function (result) {
           console.log('---');
           console.log(result.data)
           _this.info4 = result.data;
@@ -151,8 +159,8 @@ glyphicon glyphicon-eye-open" aria-hidden="true"><span>&nbsp;热门作品</span>
           console.log(err)
         })
       },
-    },
 
+    },
     mounted: function () {
       this.getpic();
       this.getnewgoods();
@@ -173,7 +181,6 @@ glyphicon glyphicon-eye-open" aria-hidden="true"><span>&nbsp;热门作品</span>
 
   .color {
     width: 100%;
-    height: 900px;
     background-color: rgba(197, 255, 240, 0.25);
     padding-left: -200px;
   }
