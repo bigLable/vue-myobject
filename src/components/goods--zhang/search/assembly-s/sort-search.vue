@@ -37,7 +37,7 @@
       <div>
 
         <h3>{{dat.shopName}}</h3>
-
+        <p>{{dat.shopType}}</p>
         <p style="font-size: 18px;color: royalblue">RMB: <span style="font-size: 24px">{{dat.shopPrice}}.00</span></p>
       </div> </router-link>
     </div>
@@ -102,6 +102,8 @@ import axios from 'axios'
   }
   .bbb:hover{
     border: 1px solid #26a8df;
+    transform:scale(1.1);
+  ;
   }
   .bbb{
     padding-left: 10px;
