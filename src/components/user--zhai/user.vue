@@ -1,7 +1,7 @@
 <template>
   <div class="container">
 
-<span class="title">个人中心</span>
+    <span class="title">个人中心</span>
     <div class="menu">
       <el-col :span="24">
         <el-menu
@@ -32,7 +32,9 @@
     </div>
     <div class="body">
       <div class="pic"></div>
-      <router-link role="presentation" to="/changeinfo"><el-button class="btn" >修改资料</el-button></router-link>
+      <router-link role="presentation" to="/changeinfo">
+        <el-button class="btn">修改资料</el-button>
+      </router-link>
       <div class="main">
         <span>用户名：数码达人</span><br><br>
         <span>性别：男</span><br><br>
@@ -45,67 +47,77 @@
 </template>
 
 <script>
-    export default {
-      name: "user",
-      methods:{
-        handleOpen(key, keyPath) {
-          console.log(key, keyPath);
-        },
-        handleClose(key, keyPath) {
-          console.log(key, keyPath);
-        }
+  export default {
+    name: "user",
+    methods: {
+      handleOpen(key, keyPath) {
+        console.log(key, keyPath);
+      },
+      handleClose(key, keyPath) {
+        console.log(key, keyPath);
       }
     }
+  }
 </script>
 
 <style scoped>
-  *{padding:0;margin:0}
-  .container{
-    width:100%;
-    height:700px;
+  * {
+    padding: 0;
+    margin: 0
+  }
+
+  .container {
+    width: 100%;
+    height: 700px;
     background-color: #f4f4f4;
   }
-  .title{
-    display:block;
-    font-size:35px;
-    color:grey;
-    position:absolute;
-    margin-left:50px;
-    margin-top:80px;
+
+  .title {
+    display: block;
+    font-size: 35px;
+    color: grey;
+    position: absolute;
+    margin-left: 50px;
+    margin-top: 80px;
   }
-  .menu{
-    width:250px;
-    height:500px;
-    position:absolute;
-    float:left;
-    margin-left:15px;
-    margin-top:150px;
+
+  .menu {
+    width: 250px;
+    height: 500px;
+    position: absolute;
+    float: left;
+    margin-left: 15px;
+    margin-top: 150px;
   }
-  .body{
-    width:800px;
-    height:600px;
-    background-color:white;
-    margin:0 auto;
-    margin-top:80px;
+
+  .body {
+    width: 800px;
+    height: 600px;
+    background-color: white;
+    margin: 0 auto;
+    margin-top: 80px;
   }
-  .pic{
-    width:200px;
-    height:200px;
-    background-image:url('../../assets/pic.jpg');
-    position:absolute;
-    margin-left:50px;
-    margin-top:50px;
+
+  .pic {
+    width: 200px;
+    height: 200px;
+    background-image: url('../../assets/pic.jpg');
+    position: absolute;
+    margin-left: 50px;
+    margin-top: 50px;
   }
-  .btn{
-    margin-left:100px;
-    margin-top:280px;
+
+  .btn {
+    margin-left: 100px;
+    margin-top: 280px;
   }
-  .main{
-    width:400px;
-    height:400px;
-    margin-left:320px;
-    margin-top:-200px;
-    font-size:18px;
-    font-family:"PingFang SC",sans-serif;
+
+  .main {
+    width: 400px;
+    height: 400px;
+    margin-left: 320px;
+    margin-top: -200px;
+    font-size: 18px;
+    font-family: "PingFang SC", sans-serif;
   }
 </style>
