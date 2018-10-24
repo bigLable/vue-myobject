@@ -129,5 +129,6 @@ import axios from 'axios'
   #cad{
     height: 60px;
     background: #26a8df;
+    display: none;
   }
 </style>

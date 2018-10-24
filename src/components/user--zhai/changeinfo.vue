@@ -21,13 +21,6 @@
         </el-form-item>
         <el-radio v-model="radio" label="2" class="radio">男</el-radio>
         <el-radio v-model="radio" label="3" class="radio">女</el-radio>
-          <el-form-item label="生日">
-            <el-date-picker
-              v-model="value1"
-              type="date"
-              placeholder="选择日期">
-            </el-date-picker>
-          </el-form-item>
         <el-form-item label="职业">
           <el-input v-model="formLabelAlign.work"></el-input>
         </el-form-item>
@@ -41,7 +34,7 @@
                         { type: 'email', message: '请输入正确的邮箱地址', trigger: ['blur', 'change'] }]">
           <el-input v-model="formLabelAlign.email"></el-input>
         </el-form-item>
-        <el-button type="primary" round>提交修改</el-button>
+        <el-button type="primary" round @click="updateinfo">提交修改</el-button>
       </el-form>
       </div>
     </div>
@@ -59,16 +52,8 @@
           work: '',
           phone: '',
           email: '',
-          word:'',
         },
         radio:1,
-        pickerOptions1: {
-          disabledDate(time) {
-            return time.getTime() > Date.now();
-          },
-      },
-        value1: '',
-        textarea: '',
         imageUrl: ''
     }
   },
@@ -87,6 +72,18 @@
           this.$message.error('上传头像图片大小不能超过 2MB!');
         }
         return isJPG && isLt2M;
+      },
+      updateinfo(){
+          let _this = this;
+          $.post('http://localhost:3000/users/updateUsers',
+            {
+              userName: _this.user,
+              userPwd: _this.Form2.pass,
+              userEmail: _this.email,
+              userPhoneNum: _this.num
+            }, function (res) {
+              alert('开始注册ok！')
+            })
       }
     }
 }

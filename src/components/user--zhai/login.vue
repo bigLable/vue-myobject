@@ -1,81 +1,113 @@
 <template>
-<div class="container">
-  <div class="main">
-    <div class="login"><h1>登 录</h1></div>
-    <div class="login-1"><h5>Welcome Login</h5></div>
-    <div class="input">
-      <el-form :model="dynamicValidateForm" ref="dynamicValidateForm" class="demo-dynamic">
-        <el-form-item
-          prop="email"
-          :rules="[
+  <div class="container">
+    <div class="main">
+      <div class="login"><h1>登 录</h1></div>
+      <div class="login-1"><h5>Welcome Login</h5></div>
+      <div class="input">
+        <el-form :model="dynamicValidateForm" ref="dynamicValidateForm">
+          <el-form-item
+            prop="email"
+            :rules="[
       { required: true, message: '请输入邮箱地址', trigger: 'blur'},
       { type: 'email', message: '请输入正确的邮箱地址', trigger: ['blur', 'change'] }
     ]">
-          <el-input v-model="dynamicValidateForm.email" placeholder="请输入邮箱"></el-input>
-        </el-form-item>
-        <el-form :model="ruleForm2" status-icon :rules="rules2" ref="ruleForm2" class="demo-ruleForm">
-          <el-form-item prop="pass">
-            <el-input type="password" v-model="ruleForm2.pass" autocomplete="off" placeholder="请输入密码"></el-input>
+            <el-input v-model="dynamicValidateForm.email" placeholder="请输入邮箱" name="userEmail" id="userEmail"></el-input>
           </el-form-item>
-      <el-button type="primary" style="width:250px" @click="log">登 录</el-button>
-      <router-link role="presentation" to="/registe"><el-button type="info" style="width:250px" id="btn">还没有账号</el-button></router-link>
-      </el-form>
-        <router-link to="/managelogin"><el-button plain size="mini" style="margin-top:10px;margin-left:158px">管理员登录</el-button></router-link>
-      </el-form>
+          <el-form :model="Form2" status-icon :rules="rules2" ref="Form2">
+            <el-form-item prop="pass">
+              <el-input type="password" v-model="Form2.pass" autocomplete="off" placeholder="请输入密码" name="userPwd" id="userPwd"></el-input>
+            </el-form-item>
+            <el-button type="primary" style="width:250px" @click="UserButton">登 录</el-button>
+            <router-link role="presentation" to="/registe"><el-button type="info" style="width:250px" id="btn">还没有账号</el-button></router-link>
+          </el-form>
+        </el-form>
+      </div>
     </div>
   </div>
-</div>
 </template>
 
 <script>
-  import axios from 'axios'
-    export default {
-        name: "login",
-      data() {
-        var validatePass = (rule, value, callback) => {
-          if (value === '') {
-            callback(new Error('请输入密码'));
-          } else {
-            if (this.ruleForm2.checkPass !== '') {
-              this.$refs.ruleForm2.validateField('checkPass');
-            }
-            callback();
+  // import axios from 'axios'
+  import $ from 'jquery'
+  export default {
+    name: "login",
+    data() {
+      var validatePass = (rule, value, callback) => {
+        if (value === '') {
+          callback(new Error('请输入密码'));
+        } else {
+          if (this.Form2.checkPass !== '') {
+            this.$refs.ruleForm2.validateField('checkPass');
           }
-        };
-        return {
-          dynamicValidateForm: {
-            domains: [{
-              value: ''
-            }],
-            email: ''
-          },
-          ruleForm2: {
-            pass: '',
-            checkPass: '',
-            age: ''
-          },
-          rules2: {
-            pass: [
-              { validator: validatePass, trigger: 'blur' }
-            ],
-          }
-        };
+          callback();
+        }
+      };
+      return {
+        dynamicValidateForm: {
+          domains: [{
+            value: ''
+          }],
+          email: ''
         },
-      methods:{
+        Form2: {
+          pass: '',
+          checkPass: '',
+          age: ''
+        },
+        rules2: {
+          pass: [
+            { validator: validatePass, trigger: 'blur' }
+          ],
+        },
+      };
+    },
+    methods:{
+      UserButton() {
+        // let _this = this;
+        // $.post('http://localhost:3000/users/getOneUser',
+        //   { userEmail: _this.email,
+        //     userPwd: _this.Form2.pass,
+        //   }).then(function (result){
+        //   let info = eval("(" + result.request.response + ")");
+        //   console.log(info);
+        //   if (info.code == 200) {
+        //     alert('登录成功，即将跳转到首页');
+        //     setTimeout(function () {
+        //       _this.$router.push('/')
+        //     }.bind(this), 1000);
+        //     _this.$store.state.email=_this.email;
+        //     sessionStorage.setItem('email',_this.$store.state.email);
+        //     sessionStorage.setItem('pwd',_this.$store.state.Form2.pass);
+        //     console.log(_this.$store.state.email);
+        //     _this.$router.push({path: '/'})
+        //   }
+        //   else {
+        //     alert('用户名或密码错误')
+        //   }
+        //   //会记录当前路由
+        // });
+            let _this = this;
+            $.post('http://localhost:3000/users/getOneUser',
+          { userEmail: _this.dynamicValidateForm.email,
+            userPwd: _this.Form2.pass,
+          }, function (res) {
+              alert('++++++++++++++++'+JSON.stringify(res))
+                if(res.data.length == 0||res==null){
+                   alert('用户不存在！请输入正确用户名')
+                  }else if(res.data[0].length !=0){
+        let pwd=res.data[0].userPwd
+           if(_this.Form2.pass==pwd){
+             alert(`登录成功`)
+             _this.$router.push({path:'/'})
+        }  else{
+          alert('密码不正确！请重新输入密码')
+           }
+                }
 
-      },
-      mounted(){
-        let _this = this;
-        axios.get('http://localhost:3000/users/getOneUser?userEmail='+`${_this.dynamicValidateForm.email}`).then(function(result){
-          console.log('---');
-          console.log(result.data)
-          _this.ruleForm2.pass = result.data[0];
-        },function(err){
-          console.log(err)
-
-        })
+          })
       }
-    }
+  }
+  }
 </script>
 
 <style scoped>

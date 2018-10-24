@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div class="row">
+    <div id="info" class="row">
       <div id="bigt">
         主要规格
       </div>
@@ -45,23 +45,23 @@
 
 
 }
-  hr{
+  #info hr{
     border: lightgray 1px solid;
   }
-  .c100{
+#info .c100{
     height: 20px;
   }
-  #dkdg{
+#info #dkdg{
     height: 30px;
     width: 200px;
     font-size: 18px;
     color: #cccccc;
     float: left;
   }
-  .right{
+#info .right{
 
   }
-  td{
+#info td{
     width: 220px;
     height: 40px;
   }
