@@ -19,25 +19,33 @@
          <tr v-for="(good,key) in info" class="cartItem" :id="'tr'+key">
            <td>
              <label>
-             <input type="checkbox" id="blankCheckbox" v-model="checkedname" :value='good.ShopID' aria-label="...">
+             <input type="checkbox" :id="'blankCheckbox'+key"  v-model="checkedname"  :value='good.ShopID' aria-label="...">
                <img v-bind:src="good.shopImg"  style="width: 150px;" class="img-responsive"/>
            </label>
            </td>
            <td>{{good.shopPara}}</td>
            <td class="price">{{good.shopPrice}}</td>
-           <td><span><img src="../../assets/add.gif" @click="addNum($event)" /></span><span :id="'num'+key" class="num">{{Num}}</span><span>
-             <img src="../../assets/subtraction.gif" @click="sub($event)"/></span></td>
-           <td class="selfTotal">{{Total}}</td>
+           <td>
+             <span >
+            <img src="../../assets/subtraction.gif" @click="sub($event)"/>
+              </span>
+             <span :id="'num'+key" class="num">{{Num}}</span>
+             <span>
+
+                <img src="../../assets/add.gif" @click="addNum($event)" />
+             </span>
+           </td>
+           <td class="selfTotal">{{Num*good.shopPrice}}</td>
            <td ><span v-on:click="getdelete(key)">删除</span></td>
          </tr>
           <tr >
             <th colspan="6" style="text-align: center">
               <nav aria-label="..." class="row">
                 <div class="col-sm-3 con"></div>
-                <ul class="pager col-sm-6">
-                  <li class="previous" style="float: left"><a href="#"><span aria-hidden="true">&larr;</span>上一页</a></li>
-                  <li class="next" style="float: right"><a href="#">下一页<span aria-hidden="true">&rarr;</span></a></li>
-                </ul>
+                <!--<ul class="pager col-sm-6">-->
+                  <!--<li class="previous" style="float: left"><a href="#"><span aria-hidden="true">&larr;</span>上一页</a></li>-->
+                  <!--<li class="next" style="float: right"><a href="#">下一页<span aria-hidden="true">&rarr;</span></a></li>-->
+                <!--</ul>-->
                 <div class="col-sm-3"></div>
               </nav>
             </th>
@@ -71,6 +79,7 @@
         name: "tsCardata",
         data(){
           return {
+            to:0,
             Total:'0',
             info:[],
             inf: [],
@@ -78,18 +87,44 @@
             // info:{'shopImg':require('../../assets/logo.png'),'shopifo':'超清','shopPrice':20,'num':2,'total':40},
             checkedname: [],
             goData: [],
-
             }
           },
       methods:{
+          // bxoche(){
+          //   if (parseInt($('#num' + this).html())) {
+          //     $('#blankCheckbox' + this).checkbox.checked = true
+          //   }
+          // },
+        // toPay1(){
+        //   //1.封装对象
+        //
+        //   for(var i = 0 ; i < this.info.length ; i++){
+        //     for(var j = 0 ; j < this.checkedname.length ; j++){
+        //       var num = parseInt($('#num'+i).html())
+        //       if(this.info[i].ShopID == this.checkedname[j]&&num!=0){
+        //         this.info[i].num = num;
+        //
+        //           this.to+=this.info[i].shopPrice*num;
+        //       }
+        //     }
+        //
+        //   }
+        //   alert(this.to)
+        //   // this.$store.state.inf= newInfo;
+        //   // //2.this.$route.push('/pay')
+        //   // this.$store.state.total=this.Total
+        //   // console.log(this.$store.state.inf+'~~~~~~~xixi~~~~~~~~'+this.$store.state.total)
+        //
+        // },
           toPay(){
             //1.封装对象
             var newInfo = []
             for(var i = 0 ; i < this.info.length ; i++){
               for(var j = 0 ; j < this.checkedname.length ; j++){
                 var num = parseInt($('#num'+i).html())
-                if(this.info[i].ShopID == this.checkedname[j]){
+                if(this.info[i].ShopID == this.checkedname[j]&&num!=0){
                   this.info[i].num = num;
+                  this.to+=this.info[i].shopPrice*num;
                   newInfo.push(this.info[i])
                 }
               }
@@ -97,7 +132,7 @@
             }
             this.$store.state.inf= newInfo;
             //2.this.$route.push('/pay')
-            this.$store.state.total=this.Total
+            this.$store.state.total=this.to
             // console.log(this.$store.state.inf+'~~~~~~~xixi~~~~~~~~'+this.$store.state.total)
           },
           getdelete(key){
@@ -112,14 +147,17 @@
                shopid+=','+arr[i]
               }
             }
+            alert('确定删除'+this.info[key].shopName+'商品吗?')
             localStorage.setItem('shopid',shopid)
             // this.info.splice(key,1)
             var child=document.getElementById(`tr${key}`);
             child.parentNode.removeChild(child);
           },
           addNum(key){
-
-              this.calculation('add', $(key.target));
+            this.calculation('add', $(key.target));
+            // if(parseInt(($(key.target).parentNode).nextSbiling.html())){
+            //   $(key.target).parents('tr').find('input').checked =true
+            // }
 
           },
         sub(key){
@@ -129,6 +167,7 @@
         },
 
         calculation: function(c, key) {
+
           var el = key.parents('tr');
           var numEl = el.find('.num'), num = 0;
             if(c == 'add' && parseInt(numEl.text()) >= 0 || c == 'sub' && parseInt(numEl.text()) > 0) {
@@ -213,6 +252,7 @@
       // mounted:function () {
       //
       // },
+
       created:function () {
         this.getData();
       }

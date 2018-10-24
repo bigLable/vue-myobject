@@ -3,7 +3,7 @@
       <div class="col-sm-4 col-sm-offset-8 div">
         <div class="row"><span class="bold">应实付款:</span><span class="Red">￥{{total}}</span></div>
         <div class="row"><span class="bold">寄送至:{{gettotal}}{{dat}}</span></div>
-        <div class="row"><span class="bold">收货人:</span>李栓蛋</div>
+        <div class="row"><span class="bold">收货人:</span>{{getuser}}{{username}}</div>
       </div>
       <div class="col-md-3 col-sm-offset-9 bc font text-center" ><h2  @click="change" >确定付款</h2></div>
     </div>
@@ -14,6 +14,8 @@
         name: "paymoney",
       data(){
         return {
+          username:'',
+          info:[],
           total:this.$store.state.total,
           dat:''
         }
@@ -24,9 +26,12 @@
           console.log('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
           console.log(this.$store.state.num.int3)
         },
+
       },
       computed:{
+
         gettotal(){
+          this.username=this.$store.state.username
         let _this=this
            let id=this.$store.state.adres
           axios({
@@ -41,6 +46,17 @@
             console.log(err);
           })
 
+        },
+        getuser(){
+          let _this = this;
+          axios.get('http://localhost:3000/shoppingCart/getAlladres?userId='+`${_this.$store.state.userId}`).then(function(result){
+            console.log('============== =====');
+            // console.log(result.data)
+            _this.info = result.data.data[0];
+            console.log(_this.info);
+          },function(err){
+            console.log(err);
+          })
         }
       },
 

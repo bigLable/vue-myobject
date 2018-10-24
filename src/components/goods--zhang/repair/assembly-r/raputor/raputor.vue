@@ -2,16 +2,16 @@
   <div id="dv1" class="row">
     <div  id=ddd class="container">
       <div  id=reputor class="row">
-        <div v-for="dat in user" class=" repudiv col-lg-3 col-md-3 col-sm-6 col-xs-6" >
+        <div v-for="dd in user" class=" repudiv col-lg-3 col-md-3 col-sm-6 col-xs-6" >
           <div class="bbb">
             <div class="imgdiv">
-              <img class="img-responsive" :src="dat.wxImg" alt="">
+              <img class="img-responsive" :src="dd.wxImg" alt="">
             </div>
             <div class="text-left">
-              <h3>{{dat.wxName}}</h3>
-              <p style="font-size: 15px">地区:<span style="color: grey">{{dat.wxFrom}}</span></p>
-              <p style="font-size: 15px">营业时间:<span style="color: grey">{{dat.wxTime}}</span></p>
-              <p style="font-size: 15px">电话:<span style="color: grey">{{dat.wxphone}}</span></p>
+              <h3>{{dd.wxName}}</h3>
+              <p style="font-size: 15px">地区:<span style="color: grey">{{dd.wxFrom}}</span></p>
+              <p style="font-size: 15px">营业时间:<span style="color: grey">{{dd.wxTime}}</span></p>
+              <p style="font-size: 15px">电话:<span style="color: grey">{{dd.wxphone}}</span></p>
 
             </div>
           </div>
@@ -25,35 +25,55 @@
 </template>
 
 <script>
-  import axios from 'axios'
+  // import axios from 'axios'
   export default {
     name: "raputor",
-    data() {
-      return {
+    data(){
+      return{
         name: '',
         user: [],
-      };
+
+      }
+
 
     },
+
     methods: {
-      fun(){
-        this.$router.push({path:'/repair/'+dat.wxId})
-      },
 
-      getData() {
-        let _this = this;
-        axios.get('http://localhost:3000/wx/allwx').then(function (result) {
-          console.log(result.data);
-          _this.user = result.data;
-          console.log(_this.user);
+    //   getData() {
+    //     let _this = this;
+    //     axios.get('http://localhost:3000/wx/allwx').then(function (result) {
+    //       console.log(result.data);
+    //       _this.user = result.data;
+    //       console.log(_this.user);
+    //
+    //     })
+    //   }, function(err) {
+    //     console.log(err.msg)
+    //   },
+    //
+    },
+    mounted() {
+      let _this =this;
+      $(function(){
+        $.get('http://localhost:3000/wx/allwx',function (result) {
+          console.log(result);
+          _this.user=result;
+          console.log(_this.user)
 
-        })
-      }, function(err) {
-        console.log(err.msg)
-      },
-
-    }, mounted() {
-      this.getData()
+        });
+          // $.ajax({
+          //   url:'http://localhost:3000/wx/allwx',
+          //   type:"get",
+          //   success:function (result) {
+          //     console.log(result);
+          //     thiss.user=result;
+          //     console.log(thiss.user)
+          //   },error:function (err) {
+          //     console.log(err)
+          //   }
+          // })
+      })
 
     }
   }
