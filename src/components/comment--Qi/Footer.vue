@@ -52,6 +52,9 @@
 </script>
 
 <style scoped>
+  *{
+    margin: 0;
+  }
   .line{
     clear: both;
   }

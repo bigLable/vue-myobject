@@ -8,18 +8,20 @@
           <img v-bind:src="work.pic" class="img-responsive">
         </el-carousel-item>
       </el-carousel>
+
     </div>
+
 
     <div class="new col-xs-12 ">
       <div class="hot col-xs-12">
-        <span class="glyphicon-heart glyphicon glyphicon-star" aria-hidden="true"><span>热门数码产品</span></span></div>
+        <span class="glyphicon-heart glyphicon glyphicon-fire" aria-hidden="true"><span>热门数码产品</span></span></div>
       <div>
         <br><br><br>
       </div>
       <el-row class="container">
-        <el-col :span="6" v-for="(shop, index) in info3" :offset="index > 0 ? 1 : 1" class="animated rubberBand">
-          <el-card :body-style="{ padding: '20px' }"style="height: 360px">
-            <img :src="shop.shopImg" class="img-responsive">
+        <el-col :span="7" v-for="(shop, index) in info3" :offset="index > 0 ? 1:1"   >
+          <el-card :body-style="{ padding: '12px' }"style="height: 400px">
+            <img :src="shop.shopImg" class="img-responsive" >
             <div style="padding: 14px;">
               <router-link :to="'/shops/'+shop.shopID"><span> 产品名称:{{shop.shopName}}</span></router-link>
               <div class="bottom clearfix">
@@ -36,16 +38,16 @@
     </div>
 
     <div class="new col-xs-12 ">
+      <br><br>
       <div class="hot col-xs-12">
         <span class="glyphicon-heart glyphicon glyphicon-star" aria-hidden="true"><span>最新数码产品</span></span></div>
       <div>
         <router-link role="presentation" to="/search"><p
           class="el-icon-caret-right more col-md-offset-10 col-xs-offset-10">more</p></router-link>
       </div>
-      <br><br><br><br>
       <el-row class="container">
-        <el-col :span="6" v-for="(shop, index) in info2" :offset="index > 0 ? 1 : 1">
-          <el-card :body-style="{ padding: '20px' }"style="height: 360px">
+        <el-col :span="7" v-for="(shop, index) in info2" :offset="index > 0 ? 1 : 1">
+          <el-card :body-style="{ padding: '12px' }"style="height: 400px">
             <img :src="shop.shopImg" class="img-responsive">
             <div style="padding: 14px;">
               <router-link :to="'/shops/'+shop.shopID"><span> 产品名称:{{shop.shopName}}</span></router-link>
@@ -64,11 +66,13 @@
     <div class="work col-xs-12 ">
       <div class=" hot col-xs-12"><span class="
 glyphicon glyphicon-eye-open" aria-hidden="true"><span>&nbsp;热门作品</span></span></div>
+
       <div>
         <router-link role="presentation" to="/works"><p
           class="el-icon-caret-right more col-md-offset-10 col-xs-offset-10">more</p></router-link>
       </div>
-      <br><br><br><br>
+
+      <br><br>
       <el-row class="container">
         <el-col :span="6" v-for="(work, index) in info4" :offset="index > 0 ? 1: 1">
           <el-card :body-style="{ padding: '10px' }"style="height: 300px">
@@ -89,7 +93,6 @@ glyphicon glyphicon-eye-open" aria-hidden="true"><span>&nbsp;热门作品</span>
       </el-row>
     </div>
     <br>
-    <p id="f" @mouseover='fade'>hello</p>
   </div>
 
 
@@ -97,10 +100,14 @@ glyphicon glyphicon-eye-open" aria-hidden="true"><span>&nbsp;热门作品</span>
 
 <script>
   import axios from 'axios'
-
+  import {videoPlayer} from 'vue-video-player'
+  import '../../../node_modules/video.js/dist/video-js.css'
+  import '../../../node_modules/vue-video-player/src/custom-theme.css'
   export default {
     name: "Home",
     data() {
+
+
       return {
 
         info1: [],
@@ -108,12 +115,13 @@ glyphicon glyphicon-eye-open" aria-hidden="true"><span>&nbsp;热门作品</span>
         info3: [],
         info4: [],
 
-
-      };
+      }
     },
+
+
     methods: {
       fade:function(){
-        $('#f').addClass('animated bounceOutLeft')
+        $('#f').addClass('animated bounce')
       },
       getpic: function () {
         let _this = this;

@@ -12,7 +12,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <div><router-link role="presentation" class="navbar-brand" to="/"><img src="../../assets/kaca.png" alt="" class="img-responsive">
+          <div><router-link role="presentation" class="navbar-brand" to="/"><img src="../../assets/kaca1.png" alt="" class="img-responsive">
           </router-link></div>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -88,8 +88,9 @@
   }
 
   img {
-    width: 60px;
-    height: 40px;
+    width: 40px;
+    height: 30px;
+    margin-left: 10px;
   }
 
   a {
