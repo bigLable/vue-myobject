@@ -1,8 +1,6 @@
 <template>
   <div class="container-fluid">
     <app-shoping></app-shoping>
-    <app-shoplist></app-shoplist>
-    <router-view></router-view>
   </div>
 
 

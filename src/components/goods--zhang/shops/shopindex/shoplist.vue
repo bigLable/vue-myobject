@@ -29,9 +29,9 @@
 <script>
   export default {
     mounted(){
-      $(function () {
-        $('#lii').click()
-      });
+      // $(function () {
+      //   $('#lii').click()
+      // });
       $(window).scroll(function (){
         let wintop = document.documentElement.scrollTop || document.body.scrollTop;
         if (wintop>=800){
@@ -69,10 +69,10 @@
     height: 70px;
     border: 1px solid lightgray;
   }
-  ul{
+  #divsf ul{
     list-style: none;
   }
-  li{
+  #divsf li{
     font-size: 18px;
     width: 90px;
     height: 30px;
@@ -83,16 +83,16 @@
     bottom: -15px;
 
   }
-  li:hover{
+  #divsf li:hover{
     color: dodgerblue;
 
   }
-  span{
+  #divsf span{
     font-size: 25px;
     position: relative;
     top: 15px;
   }
-  .fi{
+  #divsf .fi{
     margin: 0;
     padding: 0;
     position: fixed;

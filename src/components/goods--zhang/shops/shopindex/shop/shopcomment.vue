@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div id="qqq"class="container">
       <div class="row">
         <div class="p90"></div>
         <div id="divstu">
@@ -51,12 +51,12 @@
     background:#f7f7f7;
     height: 40px;
   }
-  ul{
+ #qqq ul{
     list-style: none;
     position: relative;
     top: 10px;
   }
-  li{
+  #qqq li{
     display: inline-block;
     width: 140px;
     height: 40px;
