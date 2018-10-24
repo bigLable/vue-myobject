@@ -19,10 +19,10 @@
            <div @click="img1" class="ylt">
              <img  class="img-responsive" :src="user.shopImg" alt="">
            </div>
-           <div @click="img1" class="ylt1">
+           <div @click="img2" class="ylt1">
              <img  class="img-responsive" :src="user.shopImg2" alt="">
            </div>
-             <div @click ="img2" @mousedown="pa1" class="ylt">
+             <div @click ="img3" @mousedown="pa1" class="ylt">
                <img class="img-responsive" :src="user.shopImg3" alt="">
              </div>
 
@@ -190,20 +190,20 @@
     <!--==============================================================-->
     <div id="qqq" v-show="mura == 3" class="container">
       <div class="row">
-        <div class="p90"></div>
+        <h3>好评率 <span style="color: red;font-size: 30px">100%</span></h3>
+
         <div id="divstu">
           <ul>
             <form action="" id="forms"></form>
-            <li><input name="fluit" form="forms" type="radio">全部（）</li>
-            <li><input name="fluit" form="forms" type="radio">好评（）</li>
-            <li><input name="fluit" form="forms" type="radio">中评（）</li>
-            <li><input name="fluit" form="forms" type="radio">差评（）</li>
+            <li><input name="fluit" checked form="forms" type="radio" @click="mu(1)" >好评（2）</li>
+            <li><input name="fluit" form="forms" type="radio" @click="mi(3)">中评（1）</li>
+            <li><input name="fluit" form="forms" type="radio" @click="mi(2)">差评（0）</li>
           </ul>
         </div>
-        <div id="m1">
+        <div v-show="same == 1" class="m1">
           <div class="bbq col-md-6 col-xs-6 col-lg-6">
-            <img class="img-responsive img-circle" src="https://www.sonystyle.com.cn/etc/designs/sonystyle/images/p0.jpg" alt="">
-            <p>用户名</p>
+            <img class="img-responsive img-circle" src="http://b290.photo.store.qq.com/psb?/V13LzsMY2OXrWJ/rOSpWNNeBVaUX8Fbl8RjfrsvB9BJRB*M8GwF9SMhLio!/b/dCIBAAAAAAAA&bo=EgL.ARIC*gERBzA!&rf=viewer_4" alt="">
+            <p>初雪</p>
           </div>
           <div class="star col-md-6 col-xs-6 col-lg-6">
             <ul>
@@ -214,15 +214,71 @@
                 <span class="glyphicon glyphicon-star"></span>
                 <span class="glyphicon glyphicon-star"></span>
               </li>
-              <li>产品名称：{{user.shopName}}</li>
+              <li style="width: 300px">产品名称：{{user.shopName}}</li>
               <br/>
 
-              <li>拍照非常清晰！</li>
+              <li>拍照非常清晰！这价位找不到第二个了</li>
               <br/>
-              <li><img id="imge2" class="img-responsive" src="https://www.sonystyle.com.cn/content/dam/sonystyle/products/bravia/a9f/product/img_kd_a9f_b_0.jpg.thumb.537.537.png" alt=""></li>
+              <li><img  class="img-responsive imge2" src="http://b281.photo.store.qq.com/psb?/V13LzsMY2OXrWJ/tmKNDRe1zsRFFu9utIVrwmX4AeNuAvykCgDzi6RiTwY!/b/dBkBAAAAAAAA&bo=OgA*AAAAAAARFyU!&rf=viewer_4" alt=""></li>
             </ul>
 
           </div>
+
+
+
+        </div>
+        <div v-show="same == 3" class="m1">
+          <div class="bbq col-md-6 col-xs-6 col-lg-6">
+            <img class="img-responsive img-circle" src="http://b175.photo.store.qq.com/psb?/V13LzsMY2OXrWJ/9o8ee94Rn9ab3TaguKtelV0FvoakC3H9rvQGvTt4tAU!/b/dK8AAAAAAAAA&bo=OAQ4BAAAAAAFByQ!&rf=viewer_4" alt="">
+            <p>Nick杨</p>
+          </div>
+          <div class="star col-md-6 col-xs-6 col-lg-6">
+            <ul>
+              <li>
+                <span class="glyphicon glyphicon-star"></span>
+                <span class="glyphicon glyphicon-star"></span>
+                <span class="glyphicon glyphicon-star"></span>
+                <span style="color: #cccccc" class="glyphicon glyphicon-star"></span>
+                <span style="color: #cccccc" class="glyphicon glyphicon-star"></span>
+              </li>
+              <li style="width: 300px">产品名称：{{user.shopName}}</li>
+              <br/>
+
+              <li>价格太贵了，这价位感觉不值。</li>
+              <br/>
+              <li><img  class="img-responsive imge2" src="http://b347.photo.store.qq.com/psb?/V13LzsMY2OXrWJ/zJb6QFeKWuPIdE97hRj5DsDTK4Kac.Wkb59rHLyr5RI!/b/dFsBAAAAAAAA&bo=RwBDAEcAQwAFByQ!&rf=viewer_4" alt=""></li>
+            </ul>
+
+          </div>
+
+
+
+        </div>
+        <div v-show="same == 1" class="m1">
+          <div class="bbq col-md-6 col-xs-6 col-lg-6">
+            <img class="img-responsive img-circle" src="http://b199.photo.store.qq.com/psb?/V13LzsMY2OXrWJ/OBMQPN03ld96T2R5lH.pJVLCwtstTNOj70*BtTYKdOc!/b/dMcAAAAAAAAA&bo=xgDGAMYAxgAFByQ!&rf=viewer_4" alt="">
+            <p>仲野爱</p>
+          </div>
+          <div class="star col-md-6 col-xs-6 col-lg-6">
+            <ul>
+              <li>
+                <span class="glyphicon glyphicon-star"></span>
+                <span class="glyphicon glyphicon-star"></span>
+                <span class="glyphicon glyphicon-star"></span>
+                <span class="glyphicon glyphicon-star"></span>
+                <span class="glyphicon glyphicon-star"></span>
+              </li>
+              <li style="width: 300px">产品名称：{{user.shopName}}</li>
+              <br/>
+
+              <li>我觉得ok</li>
+              <br/>
+              <li><img  class="img-responsive imge2" src="http://b367.photo.store.qq.com/psb?/V13LzsMY2OXrWJ/fDociBiNhl4h9b6srWqWyHAPYoXs34iudS8KuUZzz7o!/b/dG8BAAAAAAAA&bo=cAT2AnAE9gIFByQ!&rf=viewer_4" alt=""></li>
+            </ul>
+
+          </div>
+
+
 
         </div>
         <hr>
@@ -238,15 +294,23 @@
     data() {
       return {
         mura:1,
+        same:1,
         name: '',
         user: [],
       };
 
     },
     methods: {
-      change(index){
+      change(index,index2){
         this.mura=index
       },
+      mu(index){
+        this.same=index
+      },
+      mi(index){
+        this.same=index
+      },
+
       gwc(){
 //         let  _this=this;
 //         axios.get('http://localhost:3000/shoppingCart/getAllcar?ShopID='+`${this.$route.params.id}`).then(function (result) {
@@ -277,10 +341,15 @@
         console.log(err.msg)
       },
       img1() {
-
+        thiss=this
+        $('#imge')
       },
       img2() {
-        alert('我被点击了')
+        thiss=this
+        $('#imge')
+      },
+      img3() {
+
       },
       pa1() {
 
@@ -546,10 +615,10 @@
     width: 500px;
     height: 30px;
   }
-  #m1{
+  .m1{
     height: 200px;
   }
-  #imge2{
+  .imge2{
     width: 100px;
   }
 </style>
