@@ -16,63 +16,69 @@
             <el-input type="password" v-model="ruleForm2.pass" autocomplete="off" placeholder="请输入密码"></el-input>
           </el-form-item>
         </el-form>
-        <router-link to="/manage"><el-button type="primary" round style="margin-left:85px">登 录</el-button></router-link>
+        <router-link to="/manage">
+          <el-button type="primary" round style="margin-left:85px">登 录</el-button>
+        </router-link>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-    export default {
-      name: "manage-login",
-      data() {
-        var validatePass = (rule, value, callback) => {
-          if (value === '') {
-            callback(new Error('请输入密码'));
-          } else {
-            if (this.ruleForm2.checkPass !== '') {
-              this.$refs.ruleForm2.validateField('checkPass');
-            }
-            callback();
+  export default {
+    name: "manage-login",
+    data() {
+      var validatePass = (rule, value, callback) => {
+        if (value === '') {
+          callback(new Error('请输入密码'));
+        } else {
+          if (this.ruleForm2.checkPass !== '') {
+            this.$refs.ruleForm2.validateField('checkPass');
           }
-        };
-        return {
-          ruleForm2: {
-            pass: '',
-          },
-          rules2: {
-            pass: [
-              { validator: validatePass, trigger: 'blur' }
-            ]},
-          ruleForm: {
-            name: '',
-                    },
-                }
-            }
+          callback();
+        }
+      };
+      return {
+        ruleForm2: {
+          pass: '',
+        },
+        rules2: {
+          pass: [
+            {validator: validatePass, trigger: 'blur'}
+          ]
+        },
+        ruleForm: {
+          name: '',
+        },
+      }
     }
+  }
 </script>
 
 <style scoped>
-  .container{
-    width:100%;
-    height:700px;
-    background-image:url('../../assets/managebg.jpg');
+  .container {
+    width: 100%;
+    height: 700px;
+    background-image: url('../../assets/managebg.jpg');
   }
-  .main{
-    width:550px;
-    height:500px;
-    margin:170px auto;
+
+  .main {
+    width: 550px;
+    height: 500px;
+    margin: 170px auto;
   }
-  span{
+
+  span {
     display: block;
-    text-align:center;
-    font-size:28px;
-    margin-top:40px;
+    text-align: center;
+    font-size: 28px;
+    margin-top: 40px;
   }
-  .input{
-    width:250px;
-    height:250px;
-    margin:0 auto;
-    margin-top:80px;
+
+  .input {
+    width: 250px;
+    height: 250px;
+    margin: 0 auto;
+    margin-top: 80px;
   }
 </style>
