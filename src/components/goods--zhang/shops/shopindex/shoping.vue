@@ -1,5 +1,5 @@
 <template>
-  <div style="margin: 0;padding: 0" class="container-fluid">
+  <div style="margin: 0;padding: 0;" class="container-fluid">
     <!--===============================================-->
     <!--头部-->
   <div class="container">
@@ -13,7 +13,7 @@
     <div class="row">
      <div id="dv1" class=" row col-lg-6 col-md-6 col-sm-7 col-xs-11">
        <div  id="d1" >
-         <img id="imge" style="" class="img-responsive" :src="user.shopImg" alt="">
+         <img id="imge" style="margin: 0 auto" class="img-responsive" :src="user.shopImg" alt="">
          <!--<div id="mask"></div>-->
          <!--<div id="big">-->
            <!--<img :src="user.shopImg" alt="">-->
@@ -43,7 +43,7 @@
             <li style="width: 300px">价格：<span style="color:cornflowerblue;font-size: 24px;">RMB {{user.shopPrice}}.00</span></li>
             <li>规格：<input type="button" class="btn btn-default" id="bt2" :value="user.shopName"></li>
             <li>颜色：<input type="color" style="width: 30px;background: white;height: 30px;"></li>
-            <li>库存：<span style="color: cornflowerblue ;font-size:22px">{{user.shopKC}}台</span></li>
+            <li>其他：<span  style="color: orangered ;font-size:13px">现在下单就获免费延保一年</span></li>
           </ul>
           <hr>
         </div>
@@ -562,7 +562,7 @@
   }
   #px p{
     font-size: 16px;
-    color: darkgray;
+    color: gray;
     position: relative;
     top: 10px;
   }
@@ -689,19 +689,25 @@
     width: 100px;
   }
   /*========================================?*/
-  #mask{
-    width:300px;
-    height: 300px;
-    background: #5bc0de;
-    opacity: 0.15;
-    position: absolute;
-    top: 0;
-    left: 0;
+  /*#mask{*/
+    /*width:300px;*/
+    /*height: 300px;*/
+    /*background: #5bc0de;*/
+    /*opacity: 0.15;*/
+    /*position: absolute;*/
+    /*top: 0;*/
+    /*left: 0;*/
 
+  /*}*/
+  /*#big{*/
+    /*width: 500px;*/
+    /*height: 500px;*/
+  /*}*/
+ #uuz img:hover{
+    border: 1px solid royalblue;
   }
-  #big{
-    width: 500px;
-    height: 500px;
+  #uuz span:hover{
+    transform: scale(1.2);
   }
 </style>
 
