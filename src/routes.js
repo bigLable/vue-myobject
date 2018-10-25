@@ -74,7 +74,5 @@ export const routes=[
   {path:'/changeinfo',component:changeinfo},
   {path:'/login',component:login},
   {path:'/registe',component:registe},
-  {path:'/manage',component:manage},
-  {path:'/managelogin',component:managelogin},
 
 ]
