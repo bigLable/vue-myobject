@@ -13,7 +13,7 @@
             <!--<option>江苏</option>-->
             <!--<option>广西壮族自治区</option>-->
           <!--</select>-->
-        <input type="text"  class="btn btn-primary" v-model="msg" style="width: 250px;">
+        <input type="text"  class="btn btn-primary" v-model="this.msg" style="width: 250px;">
       </div>
 
       <div class=" row col-lg-6 col-md-4  col-sm-3 col-xs-3">
@@ -32,6 +32,11 @@
 <script >
 
   export default {
+    data(){
+      return{
+        msg: "北京"
+      }
+    },
         name: "chizu",
       components:{
           suz(){
@@ -40,14 +45,21 @@
       },
     mounted(){
     $(function(){
-        var map = new BMap.Map("allmap");
-        map.centerAndZoom("苏州",15);
-        var local = new BMap.LocalSearch(map, {
-          renderOptions:{map: map}
-        });
-        local.search('sony');
-
+      var map = new BMap.Map("allmap");    // 创建Map实例
+      map.centerAndZoom(new BMap.Point(116.404, 39.915), 11);  // 初始化地图,设置中心点坐标和地图级别
+      //添加地图类型控件
+      map.addControl(new BMap.MapTypeControl({
+        mapTypes:[
+          BMAP_NORMAL_MAP,
+          BMAP_HYBRID_MAP
+        ]}));
+      map.setCurrentCity("北京");          // 设置地图显示的城市 此项是必须设置的
+      map.enableScrollWheelZoom(true);
+      var local = new BMap.LocalSearch(map, {
+        renderOptions:{map: map}
       });
+      local.search("景点");
+    });
 
     },
 
