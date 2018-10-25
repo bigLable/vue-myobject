@@ -4,7 +4,12 @@ import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import VueRouter from 'vue-router'
 import store from './store'
-
+import VideoPlayer from 'vue-video-player'
+require('video.js/dist/video-js.css')
+require('vue-video-player/src/custom-theme.css')
+require('../static/css/aboutcss.css');
+require('../static/css/aboutstyle.css');
+Vue.use(VideoPlayer)
 
 Vue.use(store)
 Vue.use(VueRouter)
