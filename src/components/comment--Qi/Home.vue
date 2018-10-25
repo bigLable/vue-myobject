@@ -1,40 +1,41 @@
 <template>
-
   <div>
-    <br>
     <div id="head">
-      <el-carousel :interval="4000" type="card" height="600px" arrow="never">
+      <el-carousel :interval="4000"  height="500px" arrow="always">
         <el-carousel-item v-for="(work,index) in info1" :key="index">
           <img v-bind:src="work.pic" class="img-responsive">
         </el-carousel-item>
       </el-carousel>
     </div>
-
-
-
-
+    <div style="text-align: center ;margin: 0 auto"id="f" @mouseover="fade"><h2 style="font-family:  'Times New Roman', Times, serif; cursor: pointer"  >带你走进想象力之门</h2></div>
+    <br>
+   <div v-for="work in info1" class="container col-sm-6" style="height: 440px;" >
+     <img :src="work.pict" alt="" class="img-responsive   animated  rubberBand"> <br>
+   </div>
+    <br>
     <div class=" col-xs-12 "  id="new">
+      <br>  <br>  <br><br>  <br>  <br>
       <div class="hot col-xs-12">
-        <span class="glyphicon-heart glyphicon glyphicon-fire" aria-hidden="true"><span>热门数码产品</span></span></div>
+        <span style="color: rgba(255,0,0,0.8)" aria-hidden="true">&nbsp;<span>热力推荐</span></span></div>
       <div>
         <br><br><br>
       </div>
       <el-row class="container" >
-          <div class="col-md-4 col-sm-6" v-for="shop in info3" >
-            <div class="box" >
+          <div class="col-md-3 col-sm-6" v-for="shop in info3" >
+            <div class="box" style="background: rgba(255,0,0,0.31)" >
               <img :src="shop.shopImg" alt="" class="img-responsive">
               <div class="box-content">
                 <div class="content">
                   <h3 class="title">{{shop.shopName}}</h3>
-                  <span class="post">RMB:{{shop.shopPrice}}</span>
+                  <span class="post">RMB:{{shop.shopPara}}</span>
                   <ul class="icon">
                     <router-link :to="'/shops/'+shop.shopID"> <li><a href="#"><i class="fa fa-link"></i></a></li></router-link>
                   </ul>
                 </div>
               </div>
-              <span class="zi"> 产品名称:{{shop.shopName}}</span>
+              <span class="zi" style="color: #080808;font-size: 14px;font-family:新宋体"> 型号:{{shop.shopName}}</span>
               <br>
-            <span class="zi">RMB:{{shop.shopPrice}}</span>
+              <span class="zi" style="color: #080808;font-size: 14px;font-family:新宋体">RMB:{{shop.shopPrice}}</span>
             </div>
             <br>
           </div>
@@ -42,9 +43,9 @@
       <br>
     </div>
     <div class=" col-xs-12 "  id="old">
-      <br><br>
+      <br><br><br><br>
       <div class="hot col-xs-12">
-        <span class="glyphicon-heart glyphicon glyphicon-star" aria-hidden="true"><span>最新数码产品</span></span></div>
+        <span aria-hidden="true">&nbsp;<span>新品发布</span></span></div>
       <div>
         <router-link role="presentation" to="/search"><p
           class="el-icon-caret-right more col-md-offset-10 col-xs-offset-10">more</p></router-link>
@@ -52,12 +53,12 @@
       </div>
       <el-row class="container" >
         <div class="col-md-4 col-sm-6" v-for="shop in info2" >
-          <div class="box" >
+          <div class="box" style="border:1px solid rgba(90,90,90,0.71); border-bottom:none;border-top:none;border-left:none">
             <img :src="shop.shopImg" alt="" class="img-responsive">
             <div class="box-content">
               <div class="content">
                 <h3 class="title">{{shop.shopName}}</h3>
-                <span class="post">RMB:{{shop.shopPrice}}</span>
+                <span class="post">RMB:{{shop.shopPara}}</span>
                 <ul class="icon">
                   <router-link :to="'/shops/'+shop.shopID"> <li><a href="#"><i class="fa fa-link"></i></a></li></router-link>
                 </ul>
@@ -69,44 +70,34 @@
           </div>
           <br>
         </div>
+
       </el-row>
       <br>
     </div>
 
 
-
-
-
     <div class="work col-xs-12  ">
-      <div class=" hot col-xs-12"><span class="
-glyphicon glyphicon-eye-open" aria-hidden="true"><span>&nbsp;热门作品</span></span></div>
 
+      <div class=" hot col-xs-12"><h3 style="font-family:  'Times New Roman', Times, serif; cursor: pointer"  >最好的时光在路上</h3></div>
       <div>
         <router-link role="presentation" to="/works"><p
           class="el-icon-caret-right more col-md-offset-10 col-xs-offset-10">more</p></router-link>
       </div>
 
-      <br><br>
-      <el-row class="container">
-        <el-col :span="6" v-for="(work, index) in info4" :offset="index > 0 ? 1: 1">
-          <el-card :body-style="{ padding: '10px' }"style="height: 300px">
-            <img :src="work.worksPic" class="image">
-            <div style="padding: 14px;" >
-              <span> {{work.worksauthor}}</span>
-              <div class="bottom clearfix">
-                <router-link :to="'/comment/'+work.worksId">
-                  <el-button type="text" class="button">
-                    {{work.worksDescribe}}
-                  </el-button>
-                </router-link>
-              </div>
-            </div>
-          </el-card>
-          <br>
-        </el-col>
-      </el-row>
+      <div class="wrapper" >
+        <section class="sec01" style="height: 500px"></section>
+        <section class="sec02" style="height: 500px"></section>
+        <section class="sec03" style="height: 500px"></section>
+
+      </div>
+
     </div>
     <br>
+
+
+    <div><img src="https://www.sonystyle.com.cn/smallapp/acafe/alphaPho/2018/Jan/images/kv.jpg" alt="" class="img-responsive"></div>
+
+
   </div>
 
 
@@ -135,7 +126,7 @@ glyphicon glyphicon-eye-open" aria-hidden="true"><span>&nbsp;热门作品</span>
 
     methods: {
       fade:function(){
-        $('#f').addClass('animated bounce')
+        $('#f').addClass('animated  pulse')
       },
       getpic: function () {
         let _this = this;
@@ -172,7 +163,7 @@ glyphicon glyphicon-eye-open" aria-hidden="true"><span>&nbsp;热门作品</span>
       },
       getnewworks: function () {
         let _this = this;
-        axios.get('http://localhost:3000/works/hotworks').then(function (result) {
+        axios.get('http://localhost:3000/getnewworks').then(function (result) {
           console.log('---');
           console.log(result.data)
           _this.info4 = result.data;
@@ -397,6 +388,74 @@ glyphicon glyphicon-eye-open" aria-hidden="true"><span>&nbsp;热门作品</span>
   @media only screen and (max-width:479px){
     .box .title{ font-size: 18px; }
   }
+
+
+
+.wrapper {
+  width: 100%;
+  height: 100%;
+  padding-left: 40px;
+}
+.wrapper section {
+
+  width: calc(100% /3.1);
+  height: 100%;
+  float: left;
+  -webkit-filter: grayscale(50%);
+  filter: grayscale(50%);
+  transition-duration: 0.5s;
+  position: relative;
+}
+.wrapper section::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(rgba(0, 0, 0, 0.6), transparent);
+  opacity: 1;
+  transition: 0.3s;
+}
+.wrapper section.sec01 {
+  background: url("https://desk-fd.zol-img.com.cn/t_s1280x1024c5/g5/M00/0A/0B/ChMkJ1tEfAKIeyCwAF6u9pbKmU0AAplXQBdHUIAXq8O746.jpg");
+}
+.wrapper section.sec02 {
+  background: url("https://desk-fd.zol-img.com.cn/t_s1280x1024c5/g5/M00/0A/0F/ChMkJ1tFZQKIU-mEABLiJ_5aa0AAApmNQJEw4wAEuI_739.jpg");
+}
+.wrapper section.sec03 {
+  background: url("https://desk-fd.zol-img.com.cn/t_s1280x1024c5/g5/M00/0D/0E/ChMkJ1ZFpNqIX9pSABAipaLl7xEAAE3CQLRnCMAECK9265.jpg");
+}
+.wrapper section.sec01, .wrapper section.sec02, .wrapper section.sec03 {
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: cover;
+}
+.wrapper:hover section:hover {
+  width: 40%;
+  -webkit-filter: grayscale(0%);
+  filter: grayscale(0%);
+}
+.wrapper:hover section:hover::before {
+  opacity: 0;
+}
+.wrapper:hover section:not(:hover) {
+  width: 30%;
+}
+
+
+.alternative a {
+  margin-top: 1500px;
+  font-size: 1.2rem;
+  display: block;
+  padding: 0.6em 0;
+  background: rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.6);
+  text-decoration: none;
+  transition-duration: 0.3s;
+}
+.alternative a:hover {
+  background: rgba(255, 255, 255, 0.6);
+  color: #333;
+}
 </style>
 
 

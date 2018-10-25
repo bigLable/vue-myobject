@@ -85,12 +85,15 @@
 <style scoped>
   * {
     margin: 0;
+
+
   }
 
   img {
-    width: 40px;
-    height: 30px;
-    margin-left: 10px;
+
+    width: 45px;
+    height: 35px;
+    margin-top: -5px;
   }
 
   a {

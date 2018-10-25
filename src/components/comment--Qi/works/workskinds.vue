@@ -15,8 +15,7 @@
     </el-menu>
     </div>
     <router-view></router-view>
-    <template>
-    </template>
+
 
 
   </div>
