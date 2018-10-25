@@ -31,8 +31,6 @@ import Pay from './components/transaction--shen/Pay'
 import user from './components/user--zhai/user.vue'
 import login from './components/user--zhai/login.vue'
 import registe from './components/user--zhai/registe.vue'
-import manage from './components/user--zhai/manage.vue'
-import managelogin from './components/user--zhai/manage-login.vue'
 import changeinfo from './components/user--zhai/changeinfo.vue'
 import repair from './components/goods--zhang/repair/repair'
 import search from './components/goods--zhang/search/search'
@@ -68,8 +66,6 @@ export const routes=[
     ]
   },
   {path:'/about',component:about},
-
-
   {path:'/user',component:user},
   {path:'/changeinfo',component:changeinfo},
   {path:'/login',component:login},
