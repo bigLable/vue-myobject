@@ -4,22 +4,24 @@
       <div class="login"><h1>登 录</h1></div>
       <div class="login-1"><h5>Welcome Login</h5></div>
       <div class="input">
-        <el-form :model="dynamicValidateForm" ref="dynamicValidateForm">
+        <el-form :model="Form" ref="Form">
           <el-form-item
             prop="email"
-            :rules="[
-      { required: true, message: '请输入邮箱地址', trigger: 'blur'},
-      { type: 'email', message: '请输入正确的邮箱地址', trigger: ['blur', 'change'] }
-    ]">
-            <el-input v-model="dynamicValidateForm.email" placeholder="请输入邮箱" name="userEmail" id="userEmail"></el-input>
+            :rules="[{ required: true, message: '请输入邮箱地址', trigger: 'blur'},
+                     { type: 'email', message: '请输入正确的邮箱地址', trigger: ['blur', 'change'] }]">
+            <el-input v-model="Form.email" placeholder="请输入邮箱" name="userEmail"
+                      id="userEmail"></el-input>
           </el-form-item>
           <el-form :model="Form2" status-icon :rules="rules2" ref="Form2">
             <el-form-item prop="pass">
-              <el-input type="password" v-model="Form2.pass" autocomplete="off" placeholder="请输入密码" name="userPwd" id="userPwd"></el-input>
+              <el-input type="password" v-model="Form2.pass" autocomplete="off" placeholder="请输入密码" name="userPwd"
+                        id="userPwd"></el-input>
             </el-form-item>
-            <el-button type="primary" style="width:250px" @click="UserButton">登 录</el-button>
-            <router-link role="presentation" to="/registe"><el-button type="info" style="width:250px" id="btn">还没有账号</el-button></router-link>
           </el-form>
+          <el-button type="primary" style="width:250px" @click="UserButton">登 录</el-button>
+          <router-link role="presentation" to="/registe">
+            <el-button type="info" style="width:250px" id="btn">还没有账号</el-button>
+          </router-link>
         </el-form>
       </div>
     </div>
@@ -27,8 +29,8 @@
 </template>
 
 <script>
-  // import axios from 'axios'
   import $ from 'jquery'
+
   export default {
     name: "login",
     data() {
@@ -43,10 +45,7 @@
         }
       };
       return {
-        dynamicValidateForm: {
-          domains: [{
-            value: ''
-          }],
+        Form: {
           email: ''
         },
         Form2: {
@@ -56,88 +55,69 @@
         },
         rules2: {
           pass: [
-            { validator: validatePass, trigger: 'blur' }
+            {validator: validatePass, trigger: 'blur'}
           ],
         },
       };
     },
-    methods:{
+    methods: {
       UserButton() {
-        // let _this = this;
-        // $.post('http://localhost:3000/users/getOneUser',
-        //   { userEmail: _this.email,
-        //     userPwd: _this.Form2.pass,
-        //   }).then(function (result){
-        //   let info = eval("(" + result.request.response + ")");
-        //   console.log(info);
-        //   if (info.code == 200) {
-        //     alert('登录成功，即将跳转到首页');
-        //     setTimeout(function () {
-        //       _this.$router.push('/')
-        //     }.bind(this), 1000);
-        //     _this.$store.state.email=_this.email;
-        //     sessionStorage.setItem('email',_this.$store.state.email);
-        //     sessionStorage.setItem('pwd',_this.$store.state.Form2.pass);
-        //     console.log(_this.$store.state.email);
-        //     _this.$router.push({path: '/'})
-        //   }
-        //   else {
-        //     alert('用户名或密码错误')
-        //   }
-        //   //会记录当前路由
-        // });
-            let _this = this;
-            $.post('http://localhost:3000/users/getOneUser',
-          { userEmail: _this.dynamicValidateForm.email,
+        let _this = this;
+        $.post('http://localhost:3000/users/getOneUser',
+          {
+            userEmail: _this.Form.email,
             userPwd: _this.Form2.pass,
           }, function (res) {
-              alert('++++++++++++++++'+JSON.stringify(res))
-                if(res.data.length == 0||res==null){
-                   alert('用户不存在！请输入正确用户名')
-                  }else if(res.data[0].length !=0){
-        let pwd=res.data[0].userPwd
-           if(_this.Form2.pass==pwd){
-             alert(`登录成功`)
-             _this.$router.push({path:'/'})
-        }  else{
-          alert('密码不正确！请重新输入密码')
-           }
-                }
-
+            if (res.data.length == 0 || res == null) {
+              alert('用户不存在！请输入正确邮箱')
+            } else if (res.data[0].length != 0) {
+              let pwd = res.data[0].userPwd
+              if (_this.Form2.pass == pwd) {
+                alert(`登录成功`)
+                _this.$router.push({path: '/'})
+              } else {
+                alert('密码不正确！请重新输入密码')
+              }
+            }
           })
       }
-  }
+    }
   }
 </script>
 
 <style scoped>
-  .container{
-    width:100%;
-    height:700px;
-    background-image:url('../../assets/timg.jpg');
-    background-position:-300px;
+  .container {
+    width: 100%;
+    height: 700px;
+    background-image: url('../../assets/timg.jpg');
+    background-position: -300px;
   }
-  .main{
-    width:550px;
-    height:600px;
-    margin:70px auto;
+
+  .main {
+    width: 550px;
+    height: 600px;
+    margin: 70px auto;
   }
-  .login{
-    text-align:center;
+
+  .login {
+    text-align: center;
   }
-  .login-1{
-    text-align:center;
-    margin-top:30px;
+
+  .login-1 {
+    text-align: center;
+    margin-top: 30px;
   }
-  .input{
-    width:250px;
-    height:250px;
-    margin:0 auto;
-    margin-top:70px;
+
+  .input {
+    width: 250px;
+    height: 250px;
+    margin: 0 auto;
+    margin-top: 70px;
   }
-  #btn{
-    margin-top:20px;
-    margin-left:-1px;
+
+  #btn {
+    margin-top: 20px;
+    margin-left: -1px;
   }
 
 </style>
