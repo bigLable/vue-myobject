@@ -14,46 +14,27 @@
       <span>让我们创造出只有咔嚓才能提供的前所未有的、新的兴奋和娱乐。</span><br>
       <span>开创独特的新鲜文化与体验。</span><br><br><br>
       <span>一切所为，均为与您情感相系。</span>
-    </div><br>
+    </div><br><br><br><br>
+    <div class="person"><span>核心成员</span>
+    </div><br><br>
     <div class="texiao">
       <div id="content">
         <!--特效部分-->
         <ul class="accordion" id="accordion">
           <li class="bg1">
-            <div class="heading">Guler</div>
+            <div class="heading">翟昱翔</div>
             <div class="bgDescription"></div>
-            <div class="description">
-              <h2>Guler</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisiut aliquip ex ea commodo consequat. Duis aute irure dolor inreprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-              <a href="#">more &rarr;</a>
-            </div>
           </li>
           <li class="bg2">
-            <div class="heading">Phillips</div>
+            <div class="heading">张帆</div>
             <div class="bgDescription"></div>
-            <div class="description">
-              <h2>Phillips</h2>
-              <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. </p>
-              <a href="#">more &rarr;</a>
-            </div>
           </li>
           <li class="bg3">
-            <div class="heading">Diamanti</div>
+            <div class="heading">沈洋洋</div>
             <div class="bgDescription"></div>
-            <div class="description">
-              <h2>Diamanti</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-              <a href="#">more &rarr;</a>
-            </div>
           </li>
           <li class="bg4 bleft">
-            <div class="heading">Meiklejohn</div>
-            <div class="bgDescription"></div>
-            <div class="description">
-              <h2>Meiklejohn</h2>
-              <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
-              <a href="#">more &rarr;</a>
-            </div>
+              <div class="heading">王琦</div>
           </li>
         </ul>
         <!--特效结束-->
@@ -96,7 +77,6 @@
         var $this = $(this);
         $this.stop().animate({'width':'480px'},500);
         $('.heading',$this).stop(true,true).fadeOut();
-        $('.bgDescription',$this).stop(true,true).slideDown(500);
         $('.description',$this).stop(true,true).fadeIn();
       },function(){
         var $this = $(this);
@@ -117,6 +97,14 @@
     font-family: "Helvetica Neue",Helvetica,"PingFang SC",Arial,sans-serif;
     line-height:30px;
     color: #87898d;
+  }
+  .person{
+    width:1000px;
+    height:70px;
+    font-size:24px;
+    margin:0 auto;
+    text-align: center;
+    border-bottom: 3px solid #929292;
   }
   .texiao{
     width:460px;
