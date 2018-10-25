@@ -35,10 +35,11 @@
             </div>
             <div class="col-sm-4">
               <form class="navbar-form navbar-left" style="margin: 10px">
+                <form action="" id="ff1"></form>
                 <div class="form-group">
-                  <input type="text" class="form-control" placeholder="Search">
+                  <input type="text" form="ff1" v-model="emi" class="form-control" placeholder="Search">
                 </div>
-                <button type="submit" class="btn btn-default">搜索</button>
+                <button type="submit" form="ff1" @click="sear"  class="btn btn-default">搜索</button>
               </form>
             </div>
             <div class="col-sm-3 " >
@@ -66,15 +67,24 @@
 </template>
 
 <script>
+  import axios from 'axios'
   export default {
     name: "Header",
     data() {
       return {
+        emi:'',
         activeIndex: '1',
         activeIndex2: '1'
       };
     },
     methods: {
+      sear(){
+        axios.get('http://localhost:3000/shop/shopsearch?id='+`${emi}`).then(function(result){
+          console.log('+==++++====+++===+++===+++');
+        },function(err){
+          console.log(err);
+        })
+      },
       handleSelect(key, keyPath) {
         console.log(key, keyPath);
       }

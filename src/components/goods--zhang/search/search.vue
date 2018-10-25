@@ -1,10 +1,13 @@
 <template>
+  <div class="container-fluid"">
+
+
   <div class="container">
   <title-indexes></title-indexes>
     <type-search></type-search>
   <sort-search></sort-search>
 
-  </div>
+  </div></div>
 </template>
 
 <script>

@@ -2,7 +2,7 @@
   <div id="dv1" class="row">
     <div  id=ddd class="container">
       <div  id=reputor class="row">
-        <div v-for="dd in user" class=" repudiv col-lg-3 col-md-3 col-sm-6 col-xs-6" >
+        <div v-for="dd in user" class="animated pulse repudiv col-lg-3 col-md-3 col-sm-6 col-xs-6" >
           <div class="bbb">
             <div class="imgdiv">
               <img class="img-responsive" :src="dd.wxImg" alt="">

@@ -282,8 +282,8 @@
         <!--==================================-->
         <div v-show="same == 1" class="m1">
           <div class="bbq col-md-6 col-xs-6 col-lg-6">
-            <img class="img-responsive img-circle" src="http://img2.imgtn.bdimg.com/it/u=410697512,2660335578&fm=26&gp=0.jpg" alt="">
-            <p>喜羊羊</p>
+            <img class="img-responsive img-circle" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1540398661982&di=e5b897d1703145e409d75790f139a9d9&imgtype=0&src=http%3A%2F%2Fi10.hoopchina.com.cn%2Fhupuapp%2Fbbs%2F14%2F3059014%2Fthread_34_3059014_20180609162535_s_80695_h_959px_w_959px91012.jpg%3Fx-oss-process%3Dimage%2Fresize%2Cw_800%2Fformat%2Cjpg" alt="">
+            <p>程玉林</p>
           </div>
           <div class="star col-md-6 col-xs-6 col-lg-6">
             <ul>
@@ -297,7 +297,7 @@
               <li style="width: 300px">产品名称：{{user.shopName}}</li>
               <br/>
 
-              <li>一直买这家相机，****好</li>
+              <li>买了新相机，开心</li>
               <br/>
               <li><img  class="img-responsive imge2" src="http://t2.hddhhn.com/uploads/tu/201612/98/st93.png" alt=""></li>
             </ul>
@@ -324,8 +324,8 @@
               <li style="width: 300px">产品名称：{{user.shopName}}</li>
               <br/>
 
-              <li>我王境泽就是饿死，死外边，从这跳下去，不会买你们的相机。
-              真香！</li>
+              <li>我王境泽就是饿死，死外边，从这跳下去，不会买你们一台相机！
+              真香~</li>
               <br/>
               <li><img  class="img-responsive imge2" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1540387000002&di=0d6c6f243ad6c327cc3a26c6b83577bd&imgtype=0&src=http%3A%2F%2Fpic.962.net%2Fup%2F2018-4%2F15244538834567915.png" alt=""></li>
             </ul>
