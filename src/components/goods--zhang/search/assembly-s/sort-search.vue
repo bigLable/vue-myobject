@@ -30,9 +30,9 @@
     </div>
     <div class="row text-center">
 
-      <div v-for="dat in user" class=" animated pulse repudiv col-lg-3 col-md-3 col-sm-6 col-xs-6">
+      <div v-for="dat in user" class=" animated pulse repudiv col-lg-3  col-md-3 col-sm-6 col-xs-6">
 
-        <div class="bbb">
+        <div class="bbb image-hover img-shadow-1 ">
           <router-link :to="'/shops/'+dat.ShopID">
             <div class="imgdiv center-block">
               <img class="img-responsive mme" :src="dat.shopImg" alt="" :id="dat.ShopID">
@@ -262,6 +262,22 @@
     position: relative;
     top: 5px;
     left: 20px;
+
+  }
+
+
+
+
+
+  .img-shadow-1
+  {
+    transition:all .6s ease-in-out;
+
+  }
+
+  .img-shadow-1:hover
+  {
+    transition:all .6s ease-in-out;
 
   }
 </style>

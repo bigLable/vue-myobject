@@ -12,16 +12,17 @@
     <!--详情-->
     <div class="row">
      <div id="dv1" class=" row col-lg-6 col-md-6 col-sm-7 col-xs-11">
-       <div  id="d1" >
-         <img id="imge" style="margin: 0 auto" class="img-responsive" :src="user.shopImg" alt="">
+       <div  id="d1"  class="">
+        <img id="imge" style="margin: 0 auto" class="img-responsive " :src="user.shopImg"  alt="">
+
          <!--<div id="mask"></div>-->
          <!--<div id="big">-->
            <!--<img :src="user.shopImg" alt="">-->
          <!--</div>-->
          <ul id="uuz">
            <span class="glyphicon glyphicon-chevron-right"></span>
-           <li><img  class="img-responsive" :src="user.shopImg" alt=""></li>
-           <li><img  class="img-responsive" :src="user.shopImg2" alt=""></li>
+           <li><img class="img-responsive" :src="user.shopImg" alt=""></li>
+           <li><img class="img-responsive" :src="user.shopImg2" alt=""></li>
            <li><img class="img-responsive" :src="user.shopImg3" alt=""></li>
            <span class="glyphicon glyphicon-chevron-left"></span>
          </ul>
@@ -355,6 +356,7 @@
 
     },
     methods: {
+
       change(index,index2){
         this.mura=index
       },
