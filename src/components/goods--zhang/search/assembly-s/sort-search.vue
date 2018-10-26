@@ -277,7 +277,7 @@
 
   .img-shadow-1:hover
   {
-    transition:all .6s ease-in-out;
+    transition:all .4s ease-in-out;
 
   }
 </style>
