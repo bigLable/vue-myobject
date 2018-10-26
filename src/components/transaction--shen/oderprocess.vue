@@ -1,4 +1,5 @@
 <template>
+  <div class="container-fluid" style="margin-top: 30px">
     <div class="row col-md-pull-3">
       <div class="progress">
         <div class="progress-bar progress-bar-success" :style="{width:int1 + '%'}">
@@ -13,6 +14,7 @@
       </div>
     <hr/>
     </div>
+  </div>
 </template>
 
 <script>

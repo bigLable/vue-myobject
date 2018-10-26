@@ -1,41 +1,40 @@
 <template>
-    <div class="container body-top">
+    <div class="container body-top" style="margin-bottom:10%">
       <div class="row"><h4>购物车商品列表</h4></div>
 
       <div class="row">
         <h2 class="h2-dot"></h2>
       </div>
      <div class="row">
-       <table class="table table-hover ">
+       <table class="table table-hover" style="background-color:white">
          <tr>
-           <th style="margin-left: 5px">
+           <th style="margin-left: 5px"><span class="text-left">请选择商品</span>
              </th>
            <th>商品信息</th>
-           <th>单价</th>
+           <th>单价(元)</th>
            <th>数量</th>
            <th>总计金额</th>
            <th>操作</th>
          </tr>
-         <tr v-for="(good,key) in info" class="cartItem" :id="'tr'+key">
+         <tr v-for="(good,key) in info" class="cartItem" id="conav">
            <td>
              <label>
              <input type="checkbox" :id="'blankCheckbox'+key"  v-model="checkedname"  :value='good.ShopID' aria-label="...">
                <img v-bind:src="good.shopImg"  style="width: 150px;" class="img-responsive"/>
-           </label>
-           </td>
-           <td>{{good.shopPara}}</td>
-           <td class="price">{{good.shopPrice}}</td>
-           <td>
+           </label>           </td>
+           <td style="width:40%;padding-right:5%">{{good.shopPara}}</td>
+           <td class="price" id="red" style="width:10%;padding-right:5%">{{good.shopPrice}}</td>
+           <td style="width:10%">
              <span >
             <img src="../../assets/subtraction.gif" @click="sub($event)"/>
               </span>
-             <span :id="'num'+key" class="num">{{Num}}</span>
+             <span :id="'num'+key" class="num" >{{Num}}</span>
              <span>
 
                 <img src="../../assets/add.gif" @click="addNum($event)" />
              </span>
            </td>
-           <td class="selfTotal">{{Num*good.shopPrice}}</td>
+           <td class="selfTotal" style="color: red;">￥{{Num*good.shopPrice}}</td>
            <td ><span v-on:click="getdelete(key)">删除</span></td>
          </tr>
           <tr >
@@ -61,7 +60,8 @@
            <!--</span>-->
            <!--</td>-->
            <!--<td ></td>-->
-           <td colspan="3">已选商品:{{checkedname}}号</td>
+           <!--<td colspan="3">已选商品:{{checkedname}}号</td>-->
+           <td colspan="3">已选商品:{{checkedname.length}}件商品</td>
            <td>合计(不含运费):<span class="allTotal" style="color: red;font-size: large">￥{{Total}}</span></td>
            <td colspan="3"  class="paymoney" v-on:click="change()">
              <router-link  to="/Pay" style="color: white;font-size: large;text-decoration: none" ><span @click="toPay">去结算</span></router-link></td>
@@ -90,6 +90,7 @@
             }
           },
       methods:{
+
           // bxoche(){
           //   if (parseInt($('#num' + this).html())) {
           //     $('#blankCheckbox' + this).checkbox.checked = true
@@ -219,11 +220,18 @@
 
         getData:function(){
           var _this = this;
+          var j=0;
           let shopid=localStorage.getItem('shopid')
              let ShopID=shopid.split(',')
           console.log("shop.local.."+ShopID)
+          for (var i = 0; i < ShopID.length; i++) {
+            for (j = i + 1; j < ShopID.length; j++) {
+              if (ShopID[i] === ShopID[j]) {
+                ShopID.splice(j, 1);
+              }
+            }
+          }
           for(var i=1;i<ShopID.length;i++){
-
                 axios({
                   method:'get',
                   url:'http://localhost:3000/shoppingCart/getAllcar?ShopID='+`${ShopID[i]}`
@@ -262,9 +270,8 @@
 </script>
 
 <style scoped>
-  #bc td{
-    background-color: rgba(249,247,247,0.7);
 
+  #bc td{
     border-bottom:5px solid white;
   }
   .paymoney{
@@ -292,7 +299,7 @@ table span{
     color: red;
     opacity: 0.5;
   }
-  .ifo{
+  #red{
     color: red;
   }
 </style>

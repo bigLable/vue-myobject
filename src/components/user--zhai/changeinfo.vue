@@ -20,8 +20,8 @@
                         :rules="[{ required: true, message: '请输入用户名', trigger: 'blur' }]">
             <el-input v-model="formLabelAlign.name" maxlength="8" minlength="1"></el-input>
           </el-form-item>
-          <el-radio v-model="radio" label="2" class="radio">男</el-radio>
-          <el-radio v-model="radio" label="3" class="radio">女</el-radio>
+          <el-radio v-model="radio" label="0" class="radio">男</el-radio>
+          <el-radio v-model="radio" label="1" class="radio">女</el-radio>
           <el-form-item label="职业">
             <el-input v-model="formLabelAlign.work"></el-input>
           </el-form-item>

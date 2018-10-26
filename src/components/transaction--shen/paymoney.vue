@@ -1,11 +1,11 @@
 <template>
-    <div class="container">
+    <div class="container" style="margin-bottom: 5%">
       <div class="col-sm-4 col-sm-offset-8 div">
         <div class="row"><span class="bold">应实付款:</span><span class="Red">￥{{total}}</span></div>
         <div class="row"><span class="bold">寄送至:{{gettotal}}{{dat}}</span></div>
         <div class="row"><span class="bold">收货人:</span>{{getuser}}{{username}}</div>
       </div>
-      <div class="col-md-3 col-sm-offset-9 bc font text-center" ><h2  @click="change" >确定付款</h2></div>
+      <div class="col-md-3 col-sm-offset-9 bc font text-center" @click="change"><h2>确定付款</h2></div>
     </div>
 </template>
 <script>
@@ -25,11 +25,11 @@
           this.$store.state.num.int3++
           console.log('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
           console.log(this.$store.state.num.int3)
+
         },
 
       },
       computed:{
-
         gettotal(){
           this.username=this.$store.state.username
         let _this=this
@@ -65,6 +65,7 @@
 
 <style scoped>
 .bold{
+  padding-left: 2px;
   font-weight: bolder;
   color: black;
 }
@@ -73,7 +74,7 @@
     color: red;
   }
   .div{
-    border: 1px solid black;
+    border: 2px solid red;
 
   }
   .bc{
