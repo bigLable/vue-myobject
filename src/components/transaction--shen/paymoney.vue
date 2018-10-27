@@ -10,6 +10,7 @@
 </template>
 <script>
   import axios from 'axios'
+  import $ from 'jquery'
     export default {
         name: "paymoney",
       data(){
@@ -25,6 +26,18 @@
           this.$store.state.num.int3++
           console.log('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
           console.log(this.$store.state.num.int3)
+             //增加订单
+          let _this=this
+          let id=this.$store.state.user
+          let inf=this.$store.state.inf
+          // let adres=this.$store.state.adres
+          for(var i=0;i<inf.length;i++){
+
+            $.post('http://localhost:3000/shoppingCart/addoder', {userId:id,shopId:inf[i].ShopID,shopnum:inf[i].num,adre:_this.dat},
+              function(result){
+                console.log(result)
+              })
+          }
 
         },
 

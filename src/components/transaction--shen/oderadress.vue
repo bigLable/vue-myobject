@@ -107,7 +107,7 @@
       },
         mounted(){
         let _this = this;
-          axios.get('http://localhost:3000/shoppingCart/getAlladres?userId='+`${_this.$store.state.user}`).then(function(result){
+          axios.get('http://localhost:3000/shoppingCart/getAlladres?userId='+`${this.$store.state.user}`).then(function(result){
           console.log('============== =====');
           // console.log(result.data)
           _this.info = result.data.data[0];

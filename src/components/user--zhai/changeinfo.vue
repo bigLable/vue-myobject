@@ -1,19 +1,19 @@
 <template>
   <div class="container">
     <div class="body">
-      <form role="form" >
+      <form  >
         <div class="form-group">
           <h2 >修改信息</h2>
           <label >用户名</label>
           <input type="text" v-model="formLabelAlign.name" class="form-control"  placeholder="新昵称">
         </div>
+        <!--<div class="form-group">-->
+          <!--<label >性别</label>-->
+          <!--<label><input v-model="userSex" name="sex" type="radio" value="1" />男 </label>-->
+          <!--<label><input v-model="userSex"  name="sex" type="radio" value="0" />女 </label>-->
+        <!--</div>-->
         <div class="form-group">
-          <label for="exampleInputPassword1">性别</label>
-          <label><input v-model="userSex" name="sex" type="radio" value="1" />男 </label>
-          <label><input v-model="userSex"  name="sex" type="radio" value="0" />女 </label>
-        </div>
-        <div class="form-group">
-          <label for="exampleInputFile">手机号</label>
+          <label >手机号</label>
           <input v-model="formLabelAlign.phone" class="form-control">
         </div>
         <span style="font-weight: bold">是否需要修改密码:
@@ -33,10 +33,12 @@
             </div>
         </div>
         <div class="form-group">
-          <label for="exampleInputFile">点击修改头像</label>
+          <label >点击修改头像</label>
           <input @change="File($event)" type="file" class="form-control">
         </div>
-        <button type="submit" class="btn btn-default" @click=" updateinfo">Submit</button>
+        <div class="form-group">
+          <input type="button"  class="form-control btn btn-default" @click="updateinfo()" value="提交">
+        </div>
       </form>
 
     </div>
