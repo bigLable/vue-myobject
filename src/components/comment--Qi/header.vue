@@ -17,23 +17,23 @@
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-              <div class="col-sm-4 ">
+              <div class="col-sm-3.5 ">
               <ul class="nav navbar-nav">
               <li>
-                <router-link role="presentation" to="/search"><a>商品列表</a></router-link>
+                <router-link role="presentation" to="/search"><span>商品列表</span></router-link>
               </li>
               <li>
-                <router-link role="presentation" to="/works"><a>摄影展示</a></router-link>
+                <router-link role="presentation" to="/works"><span>摄影展示</span></router-link>
               </li>
               <li>
-                <router-link role="presentation" to="/about"><a>关于我们</a></router-link>
+                <router-link role="presentation" to="/about"><span>关于我们</span></router-link>
               </li>
               <li>
-                <router-link role="presentation" to="/repair"><a>售后服务</a></router-link>
+                <router-link role="presentation" to="/repair"><span>售后服务</span></router-link>
               </li>
               </ul>
             </div>
-            <div class="col-sm-4">
+            <div class="col-sm-3.5">
               <form class="navbar-form navbar-left" style="margin: 10px">
                 <form action="" id="ff1"></form>
                 <div class="form-group">
@@ -42,7 +42,7 @@
                 <button type="submit" form="ff1" @click="sear"  class="btn btn-default">搜索</button>
               </form>
             </div>
-            <div class="col-sm-3 " >
+            <div class="col-sm-5" >
               <ul class="nav navbar-nav">
               <li style="margin-top:16px;color:white">
                 <b v-if="getEmail==null"><router-link role="presentation" to="/login"><a class="move">登录</a></router-link>
@@ -123,6 +123,7 @@
 
   a:hover {
     color: #a3a3a3;
+    cursor:pointer;
   }
 
   .move {
