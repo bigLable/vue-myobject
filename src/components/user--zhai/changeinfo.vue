@@ -5,7 +5,7 @@
         <div class="form-group">
           <h2 >修改信息</h2>
           <label >用户名</label>
-          <input type="email" v-model="formLabelAlign.name" class="form-control"  placeholder="新昵称">
+          <input type="text" v-model="formLabelAlign.name" class="form-control"  placeholder="新昵称">
         </div>
         <div class="form-group">
           <label for="exampleInputPassword1">性别</label>
@@ -116,9 +116,9 @@
             userPic:_this.model
 
           }, function (res) {
-            alert('开始修改信息！')
+
           })
-        alert('已提交成功！')
+
       }
     },
     computed: {

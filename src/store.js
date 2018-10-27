@@ -8,6 +8,7 @@ export default new Vuex.Store({
     user:1,
     userEmail:'',
     username:'游客',
+    userPw:'1523',
     num:{
       int1:1,
       int2:0,
