@@ -108,7 +108,7 @@
         oderIfo:[],
         allare:[],
         user:[],
-        index:1,
+        index:2,
         dialogTableVisible: false,
         dialogFormVisible: false,
         form: {
