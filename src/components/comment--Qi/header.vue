@@ -44,11 +44,10 @@
             </div>
             <div class="col-sm-3 " >
               <ul class="nav navbar-nav">
-              <li>
-                <router-link role="presentation" to="/login"><a class="move">登录</a></router-link>
-              </li>
-              <li>
-                <router-link role="presentation" to="/registe"><a class="move">注册</a></router-link>
+              <li style="margin-top:16px;color:white">
+                <b v-if="getEmail==null"><router-link role="presentation" to="/login"><a class="move">登录</a></router-link>
+                <router-link role="presentation" to="/registe"><a class="move">注册</a></router-link></b>
+                <b v-else="getEmail!=null"><span>欢迎您{{getEmail}}</span><a  @click="quit" to="login" >退出</a></b>
               </li>
               <li>
                 <router-link role="presentation" to="/Car"><a class="move">购物车</a></router-link>
@@ -87,6 +86,16 @@
       },
       handleSelect(key, keyPath) {
         console.log(key, keyPath);
+      },
+      quit() {
+        sessionStorage.clear()
+        this.$router.push('/login')
+        location.reload()
+      }
+    },
+    computed:{
+      getEmail(){
+        return  sessionStorage.getItem('Email')
       }
     }
   }

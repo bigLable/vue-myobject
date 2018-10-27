@@ -1,10 +1,12 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 Vue.use(Vuex)
+
+
 export default new Vuex.Store({
   state:{
     user:1,
-    userEmail:'121@qq.com',
+    userEmail:'',
     username:'游客',
     num:{
       int1:1,

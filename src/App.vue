@@ -4,7 +4,6 @@
     <router-view></router-view>
     <app-footer></app-footer>
 
-
   </div>
 
 </template>
@@ -18,17 +17,14 @@ export default {
   name: 'app',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
     }
   },
   components:{
 
     'app-header':Header,
     'app-footer':Footer,
-
-
-
-
+  },
+  methods:{
   }
 }
 </script>

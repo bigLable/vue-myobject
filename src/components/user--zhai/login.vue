@@ -61,27 +61,29 @@
       };
     },
     methods: {
-      UserButton() {
-        let _this = this;
-        $.post('http://localhost:3000/users/getOneUser',
-          {
-            userEmail: _this.Form.email,
-            userPwd: _this.Form2.pass,
-          }, function (res) {
-            if (res.data.length == 0 || res == null) {
-              alert('用户不存在！请输入正确邮箱')
-            } else if (res.data[0].length != 0) {
-              let pwd = res.data[0].userPwd
-              if (_this.Form2.pass == pwd) {
-                alert(`登录成功`)
-                _this.$router.push({path: '/'})
-              } else {
-                alert('密码不正确！请重新输入密码')
-              }
+    UserButton() {
+      let _this = this;
+      $.post('http://localhost:3000/users/getOneUser',
+        {
+          userEmail: _this.Form.email,
+          userPwd: _this.Form2.pass,
+        }, function (res) {
+          if (res.data.length == 0 || res == null) {
+            alert('用户不存在！请输入正确邮箱')
+          } else if (res.data[0].length != 0) {
+            let pwd = res.data[0].userPwd
+            if (_this.Form2.pass == pwd) {
+              alert(`登录成功`)
+              _this.$router.push({path: '/'})
+            } else {
+              alert('密码不正确！请重新输入密码')
             }
-          })
-      }
-    }
+          }
+          sessionStorage.setItem('Email', _this.Form.email);
+        });
+      location.reload()
+    },
+  }
   }
 </script>
 
