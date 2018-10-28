@@ -1,26 +1,57 @@
 <template>
   <div class="container" style="margin-bottom:300px">
+    <div id="menu">
+      <!--隐藏菜单-->
+      <div id="ensconce">
+        <h2>
+          <img src="../../assets/show.png" alt="">
+          个人中心
+        </h2>
+      </div>
 
-    <span class="title">个人中心</span>
-    <div class="menu">
-      <el-col :span="24">
-        <el-menu
-          default-active="2"
-          @open="handleOpen"
-          @close="handleClose">
-          <el-menu-item index="1" @click="select(1)">
-            <span slot="title" to="/user" >我的资料</span>
-          </el-menu-item>
+      <!--显示菜单-->
+      <div id="open">
+        <div class="navH">
+          个人中心
+          <span><img class="obscure" src="../../assets/obscure.png" alt=""></span>
+        </div>
+        <div class="navBox">
+          <ul>
+            <li>
+              <h2 class="obtain" index="1" @click="select(1)"><span slot="title" to="/user" >我的资料</span><i></i></h2>
 
-          <el-menu-item index="2" @click="select(2)">
-            <span slot="title">已完成订单</span>
-          </el-menu-item>
-          <el-menu-item index="3" @click="select(3)">
-            <span slot="title"  >地址管理</span>
-          </el-menu-item>
-        </el-menu>
-      </el-col>
-    </div>
+            </li>
+            <li>
+              <h2 class="obtain" index="2" @click="select(2)"><span slot="title">已完成订单</span><i></i></h2>
+
+            </li>
+            <li>
+              <h2 class="obtain" index="3" @click="select(3)"><span slot="title"  >地址管理</span><i></i></h2>
+
+            </li>
+          </ul>
+        </div>
+      </div>
+     </div>
+    <!--<div class="menu">-->
+      <!--<el-col :span="24">-->
+        <!--<el-menu-->
+          <!--default-active="2"-->
+          <!--@open="handleOpen"-->
+          <!--@close="handleClose">-->
+          <!--<el-menu-item index="1" @click="select(1)">-->
+            <!--<span slot="title" to="/user" >我的资料</span>-->
+          <!--</el-menu-item>-->
+
+          <!--<el-menu-item index="2" @click="select(2)">-->
+            <!--<span slot="title">已完成订单</span>-->
+          <!--</el-menu-item>-->
+          <!--<el-menu-item index="3" @click="select(3)">-->
+            <!--<span slot="title"  >地址管理</span>-->
+          <!--</el-menu-item>-->
+        <!--</el-menu>-->
+      <!--</el-col>-->
+    <!--</div>-->
     <div class="body" v-show="index==1" >
       <div class="pic"></div>
       <router-link role="presentation" to="/changeinfo">
@@ -34,7 +65,7 @@
         <span>注册时间:{{user.userRegisterDate}}</span><br><br>
       </div>
     </div>
-    <div style="background-color: white;width: 900px;height: 900px;margin: 0 auto">
+    <div style="background-color: white;width: 800px;height: 900px;margin: 0 auto">
       <table class="table table-hover odertd" v-show="index==2" >
         <tr >
           <td style="background-color: dodgerblue">商品图片</td>
@@ -98,6 +129,161 @@
 </template>
 
 <script>
+  window.onload = function () {
+    var flag = true;
+    var liC = document.querySelectorAll(".navBox li h2");
+    // 主导航nav点击事件
+    for (var i = 0; i < liC.length; i++) {
+      liC[i].onclick = function () {
+        if (flag) {
+          // 节流阀
+          flag = false;
+          setTimeout(function () {
+            flag = true;
+          }, 500)
+          // 自点
+          if (this.className === "obFocus") {
+            this.querySelector("i").classList.remove("arrowRot");
+            getNext(this).style.height = "0";
+            this.classList.add("obtain");
+            this.classList.remove("obFocus");
+            return
+          }
+
+          var sec = getNext(this);
+          var sib = siblings(sec.parentNode);
+          var otherArr = [];
+          var arrowClass = [];
+          // 排他 secondary arrowRot obFocus
+          for (var j = 0; j < sib.length; j++) {
+            var sibSec = sib[j].getElementsByTagName('*');
+            for (var i = 0; i < sibSec.length; i++) {
+              if (sibSec[i].className == "secondary") {
+                otherArr.push(sibSec[i])
+              }
+              if (sibSec[i].className == "arrowRot") {
+                arrowClass.push(sibSec[i])
+              }
+              if (sibSec[i].className == "obFocus") {
+                sibSec[i].classList.remove("obFocus");
+                sibSec[i].classList.add("obtain");
+
+              }
+            }
+          }
+          for (var i = 0; i < otherArr.length; i++) {
+            otherArr[i].style.height = "0";
+          }
+          if (arrowClass[0]) {
+            arrowClass[0].classList.remove("arrowRot");
+          }
+
+          // 留自己
+          sec.style.height = 2.5078 + "rem";
+          this.getElementsByTagName("i")[0].classList.add("arrowRot");
+          this.classList.remove("obtain");
+          this.classList.add("obFocus");
+        }
+
+      }
+    }
+
+    // 子导航点击事件
+    var seconC = document.querySelectorAll(".secondary h3")
+    for (var i = 0; i < seconC.length; i++) {
+      seconC[i].onclick = function () {
+        for (var i = 0; i < seconC.length; i++) {
+          seconC[i].classList.remove("seconFocus");
+        }
+        this.classList.add("seconFocus");
+      }
+    }
+
+    // 隐藏菜单
+    var obscure = document.querySelector(".navH span");
+    var open = document.querySelector("#open");
+    var ensconce = document.querySelector("#ensconce");
+    obscure.onclick = function () {
+      open.style.marginLeft = "-300px";
+      setTimeout(function () {
+        ensconce.style.display = "block";
+      }, 350)
+
+    }
+    //显示菜单
+    var showC = document.querySelector("#ensconce h2");
+    showC.onclick = function () {
+      open.style.marginLeft = "0px";
+      setTimeout(function () {
+        ensconce.style.display = "none";
+      }, 100)
+
+    }
+  }
+
+  function getByClass(clsName, parent) {
+    var oParent = parent ? document.getElementById(parent) : document,
+      boxArr = new Array(),
+      oElements = oParent.getElementsByTagName('*');
+    for (var i = 0; i < oElements.length; i++) {
+      if (oElements[i].className == clsName) {
+        boxArr.push(oElements[i]);
+      }
+    }
+    return boxArr;
+  }
+  // 获取下一个兄弟元素
+  function getNext(node) {
+    if (!node.nextSibling) return null;
+    var nextNode = node.nextSibling;
+    if (nextNode.nodeType == 1) {
+      return nextNode;
+    }
+    return getNext(node.nextSibling);
+  }
+
+  // 获取除了自己以外的其他亲兄弟元素
+  function siblings(elem) {
+    var r = [];
+    var n = elem.parentNode.firstChild;
+    for (; n; n = n.nextSibling) {
+      if (n.nodeType === 1 && n !== elem) {
+        r.push(n);
+      }
+    }
+    return r;
+  }
+  /* rem 适应*/
+  /*让文字和标签的大小随着屏幕的尺寸做变话 等比缩放*/
+  var html = document.getElementsByTagName('html')[0];
+  /*取到屏幕的宽度*/
+  var width = window.innerWidth;
+  /* 640 100  320 50 */
+  if (width > 1080) {
+    width = 1080;
+  }
+  else if (width < 320 ) {
+    width = 320 ;
+  }
+  var fontSize = 100/1080*width;
+  /*设置fontsize*/
+
+  html.style.fontSize = fontSize +'px';
+  window.onresize = function(){
+    var html = document.getElementsByTagName('html')[0];
+    /*取到屏幕的宽度*/
+    var width = window.innerWidth;
+    if (width > 1080) {
+      width = 1080;
+    }
+    else if (width < 320 ) {
+      width = 320 ;
+    }
+    /* 640 100  320 50 */
+    var fontSize = 100/1080 * width;
+    /*设置fontsize*/
+    html.style.fontSize = fontSize +'px';
+  }
   import axios from 'axios';
   import $ from 'jquery'
   export default {

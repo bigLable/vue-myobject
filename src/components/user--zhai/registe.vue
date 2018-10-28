@@ -63,7 +63,7 @@
           ],
           checkPass: [
             {validator: validatePass2, trigger: 'blur'}
-          ]
+          ],
         },
       };
     },
@@ -88,7 +88,7 @@
             })
         }
       },
-    },
+    }
   }
 
 </script>

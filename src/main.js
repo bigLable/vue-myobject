@@ -9,6 +9,8 @@ require('video.js/dist/video-js.css')
 require('vue-video-player/src/custom-theme.css')
 require('../static/css/aboutcss.css');
 require('../static/css/aboutstyle.css');
+require('../static/css/base.css');
+require('../static/css/menu.css');
 Vue.use(VideoPlayer)
 
 Vue.use(store)
