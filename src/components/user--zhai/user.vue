@@ -1,19 +1,11 @@
 <template>
   <div class="container" style="margin-bottom:300px">
     <div id="menu">
-      <!--隐藏菜单-->
-      <div id="ensconce">
-        <h2>
-          <img src="../../assets/show.png" alt="">
-          个人中心
-        </h2>
-      </div>
-
       <!--显示菜单-->
       <div id="open">
         <div class="navH">
           个人中心
-          <span><img class="obscure" src="../../assets/obscure.png" alt=""></span>
+          <span><img class="obscure" alt=""></span>
         </div>
         <div class="navBox">
           <ul>
@@ -65,7 +57,7 @@
         <span>注册时间:{{user.userRegisterDate}}</span><br><br>
       </div>
     </div>
-    <div style="background-color: white;width: 800px;height: 900px;margin: 0 auto">
+    <div style="background-color: white;width: 900px;height: 700px;margin: 0 auto">
       <table class="table table-hover odertd" v-show="index==2" >
         <tr >
           <td style="background-color: dodgerblue">商品图片</td>
@@ -89,7 +81,7 @@
         </tr>
 
       </table>
-      <div  style="background-color: white;width: 900px;height: 900px;margin: 80px auto">
+      <div  style="background-color: white;width: 900px;height: 680px;margin: 80px auto">
 
         <table class="table"  v-show="index==3">
           <thead>
@@ -199,26 +191,6 @@
       }
     }
 
-    // 隐藏菜单
-    var obscure = document.querySelector(".navH span");
-    var open = document.querySelector("#open");
-    var ensconce = document.querySelector("#ensconce");
-    obscure.onclick = function () {
-      open.style.marginLeft = "-300px";
-      setTimeout(function () {
-        ensconce.style.display = "block";
-      }, 350)
-
-    }
-    //显示菜单
-    var showC = document.querySelector("#ensconce h2");
-    showC.onclick = function () {
-      open.style.marginLeft = "0px";
-      setTimeout(function () {
-        ensconce.style.display = "none";
-      }, 100)
-
-    }
   }
 
   function getByClass(clsName, parent) {

@@ -9,36 +9,10 @@
   -ms-user-select: none;
   user-select: none;
 }
-#menu #ensconce {
-  /*隐藏菜单样式*/
-  width: 0.35rem;
-  height: 100%;
-  background-color: #20343c;
-  float: left;
-  text-align: center;
-  position: relative;
-  display: none;
-}
-#menu #ensconce h2 {
-  cursor: pointer;
-  color: #fff;
-  font-size: 0.24rem;
-  line-height: 0.5rem;
-  width: 100%;
-  position: absolute;
-  top: 35%;
-  -webkit-transform: translate(-50%, -50%);
-  -moz-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  -o-transform: translate(-50%, -50%);
-  transform: translate(0%, -50%);
-}
-#menu #ensconce h2 img {
-  width: 52%;
-}
+
 #menu #open {
   /*显示菜单样式*/
-  width: 2.6rem;
+  width: 220px;
   height: 100%;
   background-color: #363a45;
   padding-bottom: 0.1rem;

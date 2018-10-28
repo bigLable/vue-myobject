@@ -48,16 +48,16 @@
             </div>
             <div class="col-sm-3" >
               <ul class="nav navbar-nav">
-                <li style="margin-top:16px;color:white">
-                  <b v-if="getEmail==null"><router-link role="presentation" to="/login"><a class="move">登录</a></router-link>
-                    <router-link role="presentation" to="/registe"><a class="move">注册</a></router-link></b>
-                  <b v-else="getEmail!=null"><span>欢迎您{{getEmail}}</span><a  @click="quit" to="login" >退出</a></b>
+                <li style="margin-top:14px;color:white">
+                  <span v-if="sele==1"><router-link role="presentation" to="/login"><a class="move">登录</a></router-link>
+                    <router-link role="presentation" to="/registe"><a class="move">注册</a></router-link></span>
+                  <span v-else-if="sele==2"><span>欢迎您{{this.$store.state.userEmail}}</span><a  @click="quit" to="login" >退出</a></span>
                 </li>
                 <li>
-                  <router-link role="presentation" to="/Car"><a class="move">购物车</a></router-link>
+                  <router-link role="presentation" to="/Car"><a class="move" v-if="sele==2">购物车</a></router-link>
                 </li>
                 <li>
-                  <router-link role="presentation" to="/user"><a class="move">个人中心</a></router-link>
+                  <router-link role="presentation" to="/user"><a class="move" v-if="sele==2">个人中心</a></router-link>
                 </li>
               </ul>
             </div>
@@ -77,6 +77,7 @@
     name: "Header",
     data() {
       return {
+
         da:{},
         searchgood:[],
         emi:'',
@@ -113,16 +114,25 @@
         console.log(key, keyPath);
       },
       quit() {
-        sessionStorage.clear()
+        // sessionStorage.clear()
         this.$router.push('/login')
         location.reload()
+        this.$store.state.seletlogon=1
       }
     },
     computed:{
-      getEmail(){
-        return  sessionStorage.getItem('Email')
+      sele(){
+        return this.$store.state.seletlogon
       }
+      // getEmail(){
+      //   return  sessionStorage.getItem('Email')
+      // }
+    },
+    created(){
+      // this.index=this.$store.state.seletlogon
+      this.sele()
     }
+
   }
 </script>
 

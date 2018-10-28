@@ -2,7 +2,7 @@
   <div class="container">
     <div class="main">
       <div class="login"><h1>注 册</h1></div>
-      <div class="login-1"><h5>Welcome to registration</h5></div>
+      <div class="login-1"><h5>Welcome to registration</h5></div><br>
       <el-input v-model="user" placeholder="请输入用户名" type="text" class="input" maxlength="8" minlength="1"></el-input>
       <br><br>
       <el-form :model="Form2" status-icon :rules="rules2" ref="Form2" class="input">
@@ -108,6 +108,7 @@
   }
 
   .login {
+    font-size:30px;
     text-align: center;
   }
 
