@@ -6,7 +6,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state:{
     user:1,
-    userEmail:'',
+    userEmail:'1216102533@qq.com',
     username:'游客',
     userPw:'1523',
     num:{

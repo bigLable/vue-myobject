@@ -176,6 +176,7 @@
           function(res){
             // alert(JSON.stringify(res.data[0]))
             _this.user=res.data[0]
+            // alert(JSON.stringify(res.data[0]))
           });
 
       },
