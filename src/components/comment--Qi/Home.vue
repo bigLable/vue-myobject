@@ -9,9 +9,11 @@
     </div>
     <div style="text-align: center ;margin: 0 auto"id="f" @mouseover="fade"><h2 style="font-family:  'Times New Roman', Times, serif; cursor: pointer"  >带你走进想象力之门</h2></div>
     <br>
-   <div v-for="work in info1" class="container col-sm-6" style="height: 440px;" >
-     <img :src="work.pict" alt="" class="img-responsive   animated  rubberBand"> <br>
-   </div>
+    <router-link role="presentation" to="/search"> <div  class=" " style="height: 440px;" >
+     <img src="http://www.nikon.com.cn/tmp/CN/4016499630/3760176746/892078063/1046823830/639886146.jpg" alt="" class="img-responsive   animated  rubberBand col-sm-6">
+     <img src="http://www.nikon.com.cn/tmp/CN/4016499630/3760176746/892078063/1046823830/2966743444.jpg" alt="" class="img-responsive   animated  rubberBand col-sm-6"> <br>
+   </div></router-link>
+
     <br>
     <div class=" col-xs-12 "  id="new">
       <br>  <br>  <br><br>  <br>  <br>
@@ -22,26 +24,37 @@
       </div>
       <el-row class="container" >
           <div class="col-md-3 col-sm-6" v-for="shop in info3" >
-            <div class="box" style="background: rgba(255,0,0,0.31)" >
-              <img :src="shop.shopImg" alt="" class="img-responsive">
-              <div class="box-content">
-                <div class="content">
-                  <h3 class="title">{{shop.shopName}}</h3>
-                  <span class="post">RMB:{{shop.shopPara}}</span>
-                  <ul class="icon">
-                    <router-link :to="'/shops/'+shop.shopID"> <li><a href="#"><i class="fa fa-link"></i></a></li></router-link>
-                  </ul>
-                </div>
-              </div>
-              <span class="zi" style="color: #080808;font-size: 14px;font-family:新宋体"> 型号:{{shop.shopName}}</span>
-              <br>
-              <span class="zi" style="color: #080808;font-size: 14px;font-family:新宋体">RMB:{{shop.shopPrice}}</span>
+            <div class="demo">
+              <router-link :to="'/shops/'+shop.shopID">   <figure class="imghvr-shutter-in-out-diag-1" style="background:rgba(0,0,0,0.11)">  <img :src="shop.shopImg" alt="example-image">
+                <figcaption>
+                  <span>规格:{{shop.shopPara}}</span>
+                </figcaption>
+              </figure>
+              </router-link>
+              <h3 style="color: #696969">{{shop.shopName}}</h3>
+              <h4 style="color: #696969">￥{{shop.shopPrice}}</h4>
             </div>
-            <br>
+            <!--<div class="box" style="background: rgba(255,0,0,0.31)" >-->
+              <!--<img :src="shop.shopImg" alt="" class="img-responsive">-->
+              <!--<div class="box-content">-->
+                  <!--<h3 class="title">{{shop.shopName}}</h3>-->
+                  <!--<span class="post">RMB:{{shop.shopPara}}</span>-->
+                  <!--<ul class="icon">-->
+                    <!--<router-link :to="'/shops/'+shop.shopID"> <li><a href="#"><i class="fa fa-link"></i></a></li></router-link>-->
+                  <!--</ul>-->
+                <!--</div>-->
+              <!--</div>-->
+              <!--<span class="zi" style="color: #080808;font-size: 14px;font-family:新宋体"> 型号:{{shop.shopName}}</span>-->
+              <!--<br>-->
+              <!--<span class="zi" style="color: #080808;font-size: 14px;font-family:新宋体">RMB:{{shop.shopPrice}}</span>-->
+            <!--</div>-->
+            <!--<br>-->
           </div>
       </el-row>
       <br>
     </div>
+
+
     <div class=" col-xs-12 "  id="old">
       <br><br><br><br>
       <div class="hot col-xs-12">
@@ -53,7 +66,7 @@
       </div>
       <el-row class="container" >
         <div class="col-md-4 col-sm-6" v-for="shop in info2" >
-          <div class="box" style="border:1px solid rgba(90,90,90,0.71); border-bottom:none;border-top:none;border-left:none">
+          <div class="box" >
             <img :src="shop.shopImg" alt="" class="img-responsive">
             <div class="box-content">
               <div class="content">
@@ -96,15 +109,15 @@
 
 
     <div><img src="https://www.sonystyle.com.cn/smallapp/acafe/alphaPho/2018/Jan/images/kv.jpg" alt="" class="img-responsive"></div>
+    <br>
 
 
   </div>
-
-
 </template>
 
 <script>
   import axios from 'axios'
+  import $ from 'jquery'
   import {videoPlayer} from 'vue-video-player'
   import '../../../node_modules/video.js/dist/video-js.css'
   import '../../../node_modules/vue-video-player/src/custom-theme.css'
@@ -125,6 +138,7 @@
 
 
     methods: {
+
       fade:function(){
         $('#f').addClass('animated  pulse')
       },
@@ -171,8 +185,7 @@
         }, function (err) {
           console.log(err)
         })
-      },
-
+      }
     },
     mounted: function () {
       this.getpic();
@@ -181,6 +194,8 @@
       this.getnewworks();
     },
   }
+
+
 </script>
 
 <style scoped>
@@ -456,6 +471,8 @@
   background: rgba(255, 255, 255, 0.6);
   color: #333;
 }
+
+
 </style>
 
 
