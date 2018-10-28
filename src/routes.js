@@ -22,7 +22,6 @@ import addworks from './components/comment--Qi/works/addworks'
 import about from './components/user--zhai/about'
 import detail from './components/comment--Qi/works/detail'
 import comment from './components/comment--Qi/works/comment'
-import hotworks from './components/comment--Qi/works/hotworks'
 import newworks from './components/comment--Qi/works/newworks'
 import recworks from './components/comment--Qi/works/recworks'
 import  Home from './components/comment--Qi/Home'
@@ -55,7 +54,6 @@ export const routes=[
       {path:'shopcomment',component:shopcomment}
     ]},
   {path:'/works',component:works,children:[
-      {path:'hotworks',component:hotworks},
       {path:'newworks',component:newworks},
       {path:'',component:recworks},
     ]

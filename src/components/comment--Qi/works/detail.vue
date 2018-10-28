@@ -1,22 +1,28 @@
 <template>
   <div>
     <br><br><br>
-    <div  v-for="work in works" class="big">
+    <div  class="big">
       <div>
+        <div class="block"style="width: 800px">
+          <span class="demonstration"></span>
+          <el-carousel height="450px">
+            <el-carousel-item  v-for="work in detail" >
+              <img :src="work.Dpic" alt="">
+            </el-carousel-item>
+          </el-carousel>
+        </div>
         <div >
-       <img :src="work.worksPic" alt="..." class=" img-responsive img-thumbnail"></div>
-        <div >
-          <el-badge :value="200"  is-dot class="item">
-            <el-button size="small">评论</el-button>
-          </el-badge>
-        <div id="like" ><span class="glyphicon glyphicon glyphicon-thumbs-up  " aria-hidden="true"></span></div>
-        <div id="ll"> <ul class="list-group">
+
+        <div id="ll" v-for="work in works" > <ul class="list-group">
           <li class="list-group-item">作者：{{work.worksauthor}}</li>
-          <li class="list-group-item">作品名称:{{work.worksDescribe}}</li>
+          <li class="list-group-item">作品描述:{{work.worksDescribe}}</li>
           <li class="list-group-item">拍摄器材：{{work.worksEquipment}}</li>
         </ul>
         </div>
-        <div class="text">
+
+
+
+          <div class="text">
           <el-input
             type="textarea"
             :rows="2"
@@ -26,15 +32,16 @@
           </el-input>
 
         </div>
-          <el-button type="success" id="type" :plain="true" @click="getdata">发表评论</el-button>
+          <div  >
+           <el-button type="success" id="type" :plain="true" @click="getdata"> 发表评论</el-button>
         </div>
-
+        </div>
       </div>
 
       </div>
     <h1>热评</h1>
 
-    <div  v-for="con in com">
+    <div  v-for="con in com" style="height: 300px">
       <ul class="list-group">
         <li class="list-group-item">用户：{{con.userName}}</li>
         <li class="list-group-item">评论：{{con.commentsContent}}</li>
@@ -58,6 +65,7 @@
       return {
         works:[],
         com:[],
+        detail:[],
        content:'',
         date:formatDate(new Date(), 'yyyy-MM-dd hh:mm'),
         wor:this.$route.params.id,
@@ -89,6 +97,7 @@
           },function(res){
             alert('发表成功！')
           })
+        this.$router.go(0)
       },
       getcom:function() {
         let _this = this;
@@ -99,6 +108,15 @@
 
         })
       },
+      getworksD:function() {
+        let _this = this;
+        axios.get('http://localhost:3000/works/getworksD?id=' + `${this.$route.params.id}`).then(function (result) {
+          console.log(result.data);
+          _this.detail = result.data;
+          console.log(_this.detail);
+
+        })
+      },
 
 
 
@@ -106,6 +124,7 @@
     mounted:function(){
       this.getData();
       this.getcom();
+      this.getworksD()
       console.log('id value'+this.$route.params.id)
     }
 
@@ -167,6 +186,10 @@ height: 600px;
   h1{
     text-align: center;
   }
+li{
+  text-decoration: none;
+
+}
 
 
 </style>
