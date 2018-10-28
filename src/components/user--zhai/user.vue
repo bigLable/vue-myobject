@@ -152,7 +152,7 @@
 
           confirm(`确定删除第${index}条吗？`)
            window.location.reload()
-          this.index=3
+
         },function(err){
           console.log(err);
         })
