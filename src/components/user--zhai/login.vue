@@ -68,30 +68,37 @@
           userEmail: _this.Form.email,
           userPwd: _this.Form2.pass,
         }, function (res) {
+            _this.$store.state.user=res.data[0].userID
+            _this.$store.state.userName=res.data[0].userName
+            _this.$store.state.userPw=res.data[0].userPwd
+            _this.$store.state.userEmail=res.data[0].userEmail
           if (res.data.length == 0 || res == null) {
             alert('用户不存在！请输入正确邮箱')
           } else if (res.data[0].length != 0) {
             let pwd = res.data[0].userPwd
             if (_this.Form2.pass == pwd) {
+
               alert(`登录成功`)
-              _this.$router.push({path: '/'})
+              _this.$store.state.seletlogon=2
             } else {
               alert('密码不正确！请重新输入密码')
             }
           }
-          sessionStorage.setItem('Email', _this.Form.email);
+          // sessionStorage.setItem('Email', _this.Form.email);
+
         });
-      location.reload()
+          // location.reload()
+         _this.$router.push({path: '/'})
     },
   }
-  }
+  };
 </script>
 
 <style scoped>
   .container {
     width: 100%;
     height: 700px;
-    background-image: url('../../assets/timg.jpg');
+    background: url('../../assets/timg.jpg') no-repeat;
     background-position: -300px;
   }
 
@@ -102,6 +109,7 @@
   }
 
   .login {
+    font-size:30px;
     text-align: center;
   }
 

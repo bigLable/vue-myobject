@@ -16,12 +16,13 @@
            <th>总计金额</th>
            <th>操作</th>
          </tr>
-         <tr v-for="(good,key) in info" class="cartItem" id="conav">
+          <tr v-for="(good,key) in info" class="cartItem" id='conav'>  <!--id='conav'-->
            <td>
              <label>
              <input type="checkbox" :id="'blankCheckbox'+key"  v-model="checkedname"  :value='good.ShopID' aria-label="...">
                <img v-bind:src="good.shopImg"  style="width: 150px;" class="img-responsive"/>
-           </label>           </td>
+           </label>
+           </td>
            <td style="width:40%;padding-right:5%">{{good.shopPara}}</td>
            <td class="price" id="red" style="width:10%;padding-right:5%">{{good.shopPrice}}</td>
            <td style="width:10%">
@@ -63,8 +64,9 @@
            <!--<td colspan="3">已选商品:{{checkedname}}号</td>-->
            <td colspan="3">已选商品:{{checkedname.length}}件商品</td>
            <td>合计(不含运费):<span class="allTotal" style="color: red;font-size: large">￥{{Total}}</span></td>
-           <td colspan="3"  class="paymoney" v-on:click="change()">
-             <router-link  to="/Pay" style="color: white;font-size: large;text-decoration: none" ><span @click="toPay">去结算</span></router-link></td>
+
+           <td colspan="3"  class="paymoney"  @click="toPay">
+             <router-link  to="/Pay" style="color: white;font-size: large;text-decoration: none" ><h1 v-on:click="change()">去结算</h1></router-link></td>
          </tr>
        </table>
      </div>
@@ -150,9 +152,10 @@
             }
             alert('确定删除'+this.info[key].shopName+'商品吗?')
             localStorage.setItem('shopid',shopid)
-            // this.info.splice(key,1)
-            var child=document.getElementById(`tr${key}`);
-            child.parentNode.removeChild(child);
+            this.info.splice(key,1)
+            // var child=document.getElementById(`tr${key}`);
+            // child.parentNode.removeChild(child);
+
           },
           addNum(key){
             this.calculation('add', $(key.target));

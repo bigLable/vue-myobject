@@ -36,27 +36,33 @@
             <div class="col-sm-4">
               <form class="navbar-form navbar-left" style="margin: 10px">
                 <form action="" id="ff1"></form>
-                <div class="form-group">
-                  <input type="text" form="ff1" v-model="emi" class="form-control" placeholder="Search">
+                <div style="position: relative" class="form-group">
+                  <input type="text" style="width: 160px;" form="ff1" v-model="emi" @focus="xian" @mouseover="xian" class="form-control" placeholder="输入关键字">
+                  <div id="spe" @mouseover="xian"  @mouseout="ni">
+                    <span id="sp" @click="ni" v-for="good in searchgood"><router-link :to="'/shops/'+good.ShopID">{{good.shopName}}</router-link></span>
+                  </div>
+
                 </div>
-                <button type="submit" form="ff1" @click="sear"  class="btn btn-default">搜索</button>
+                <!--<button type="button" form="ff1"  class="btn btn-default">搜索</button>-->
               </form>
             </div>
             <div class="col-sm-3" >
               <ul class="nav navbar-nav">
-              <li style="margin-top:16px;color:white">
-                <b v-if="getEmail==null"><router-link role="presentation" to="/login"><a class="move">登录</a></router-link>
-                <router-link role="presentation" to="/registe"><a class="move">注册</a></router-link></b>
-                <b v-else="getEmail!=null"><span>欢迎您{{getEmail}}</span><a  @click="quit" to="login" >退出</a></b>
-              </li>
-              <li>
-                <router-link role="presentation" to="/Car"><a class="move">购物车</a></router-link>
-              </li>
-              <li>
-                <router-link role="presentation" to="/user"><a class="move">个人中心</a></router-link>
-              </li>
+                <li style="margin-top:14px;color:white">
+                  <span v-if="sele==1"><router-link role="presentation" to="/login"><a class="move">登录</a></router-link>
+                    <router-link role="presentation" to="/registe"><a class="move">注册</a></router-link></span>
+                  <span v-else-if="sele==2"><span>欢迎您{{this.$store.state.userEmail}}</span><a  @click="quit" to="login" >退出</a></span>
+                </li>
+                <li>
+                  <router-link role="presentation" to="/Car"><a class="move" v-if="sele==2">购物车</a></router-link>
+                </li>
+                <li>
+                  <router-link role="presentation" to="/user"><a class="move" v-if="sele==2">个人中心</a></router-link>
+                </li>
               </ul>
             </div>
+
+
 
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
@@ -71,33 +77,62 @@
     name: "Header",
     data() {
       return {
+
+        da:{},
+        searchgood:[],
         emi:'',
         activeIndex: '1',
         activeIndex2: '1'
       };
     },
-    methods: {
-      sear(){
-        axios.get('http://localhost:3000/shop/shopsearch?id='+`${emi}`).then(function(result){
-          console.log('+==++++====+++===+++===+++');
+    watch:{
+      'emi':function () {
+        let  _this=this;
+        axios.get('http://localhost:3000/shop/shopsearch?id='+`${_this.emi}`).then(function(result){
+          console.log('+==++++====+++===+++===+++'+_this.emi);
+          // alert(result.data[0].ShopID)
+          console.log('++++++++++++++++++++++++++++++'+result.data)
+          _this.searchgood=result.data
         },function(err){
           console.log(err);
         })
+      }
+    },
+    methods: {
+      xx(){
+        // window.location.reload()
+      },
+      xian(){
+        $('#spe').show()
+
+      },
+      ni(){
+        $('#spe').hide()
+
       },
       handleSelect(key, keyPath) {
         console.log(key, keyPath);
       },
       quit() {
-        sessionStorage.clear()
+        // sessionStorage.clear()
         this.$router.push('/login')
         location.reload()
+        this.$store.state.seletlogon=1
       }
     },
     computed:{
-      getEmail(){
-        return  sessionStorage.getItem('Email')
+      sele(){
+        return this.$store.state.seletlogon
       }
+      // getEmail(){
+      //   return  sessionStorage.getItem('Email')
+      // }
+    },
+    created(){
+      // this.index=this.$store.state.seletlogon
+      this.sele()
     }
+
   }
 </script>
 
@@ -137,6 +172,21 @@
 
   li {
     float: left;
+  }
+  #spe{
+    width: 160px;
+    background: #000;
+    opacity: 0.7;
+    position: absolute;
+    top: 45px;
+    left: 0;
+    z-index: 3;
+    border-radius:0 0 5px 5px;
+  }
+  #sp{
+    display: inline-block;
+    height: 30px;
+
   }
 
 </style>

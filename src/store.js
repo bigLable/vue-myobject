@@ -5,10 +5,11 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state:{
-    user:1,
+    seletlogon:1,
+    user:'',
     userEmail:'',
-    username:'游客',
-    userPw:'1523',
+    username:'',
+    userPw:'',
     num:{
       int1:1,
       int2:0,

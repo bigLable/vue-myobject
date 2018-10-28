@@ -549,6 +549,7 @@
   .btn:hover{
     background: cornflowerblue;
     color: white;
+    border: none;
   }
   .btn:active{
     background: cornflowerblue;

@@ -5,7 +5,14 @@
         <div class="row"><span class="bold">寄送至:{{gettotal}}{{dat}}</span></div>
         <div class="row"><span class="bold">收货人:</span>{{getuser}}{{username}}</div>
       </div>
-      <div class="col-md-3 col-sm-offset-9 bc font text-center" @click="change"><h2>确定付款</h2></div>
+      <div class="col-md-3 col-sm-offset-9 bc font text-center" @click="change">
+
+        <el-button type="text" @click="open">
+          <h2 style="color: white">确定付款</h2>
+        </el-button>
+
+
+      </div>
     </div>
 </template>
 <script>
@@ -22,6 +29,13 @@
         }
       },
       methods:{
+          //付款成功后弹框
+        open() {
+          this.$alert('尊敬的客户你已下单成功！如有后续操作欢迎联系客服热线100-1001011', '付款成功提示', {
+            confirmButtonText: '确定',
+
+          });
+        },
         change(){
           this.$store.state.num.int3++
           console.log('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
