@@ -2,8 +2,8 @@
   <div id="dv1" class="row">
     <div  id=ddd class="container">
       <div  id=reputor class="row">
-        <div v-for="dd in user" class="animated pulse repudiv col-lg-3 col-md-3 col-sm-6 col-xs-6" >
-          <div class="bbb">
+        <div v-for="dd in user" class=" animated pulse repudiv col-lg-3 col-md-3 col-sm-6 col-xs-6" >
+          <div class="bbb image-hover img-shadow-1 " >
             <div class="imgdiv">
               <img class="img-responsive" :src="dd.wxImg" alt="">
             </div>
@@ -109,6 +109,22 @@
     margin-top: 10px;
 
     border: 1px solid #cccccc;
+  }
+  .bbb:hover{
+    transform: scale(1.05);
+    position: relative;
+    top: -7px;
+  }
+  .img-shadow-1
+  {
+    transition:all .6s ease-in-out;
+
+  }
+
+  .img-shadow-1:hover
+  {
+    transition:all .4s ease-in-out;
+
   }
 
 </style>
