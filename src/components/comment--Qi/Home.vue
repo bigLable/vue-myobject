@@ -7,7 +7,7 @@
         </el-carousel-item>
       </el-carousel>
     </div>
-    <div style="text-align: center ;margin: 0 auto"id="f" @mouseover="fade"><h2 style="font-family:  'Times New Roman', Times, serif; cursor: pointer"  >带你走进想象力之门</h2></div>
+    <div style="text-align: center ;margin: 0 auto"id="f" @mouseover="fade"><span style="font-family:  'Times New Roman', Times, serif; cursor: pointer;font-size: 22px"  >带你走进想象力之门</span></div>
     <br>
     <router-link role="presentation" to="/search"> <div  class=" " style="height: 440px;" >
      <img src="http://www.nikon.com.cn/tmp/CN/4016499630/3760176746/892078063/1046823830/639886146.jpg" alt="" class="img-responsive   animated  rubberBand col-sm-6">
@@ -71,7 +71,7 @@
             <div class="box-content">
               <div class="content">
                 <h3 class="title">{{shop.shopName}}</h3>
-                <span class="post">RMB:{{shop.shopPara}}</span>
+                <span class="post">规格:{{shop.shopPara}}</span>
                 <ul class="icon">
                   <router-link :to="'/shops/'+shop.shopID"> <li><a href="#"><i class="fa fa-link"></i></a></li></router-link>
                 </ul>
@@ -199,6 +199,8 @@
 </script>
 
 <style scoped>
+  @import '../../../static/css/style.css';
+  @import '../../../static/css/imagehover.css';
 #head{
   background-color: #ffffff;
 }
@@ -278,7 +280,7 @@
     overflow: hidden;
     position: relative;
     width: 260px;
-    height: 300px;
+    height: 320px;
     background-color:#ffffff;
   }
   .box:before{
