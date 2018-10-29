@@ -69,9 +69,10 @@
           userPwd: _this.Form2.pass,
         }, function (res) {
             _this.$store.state.user=res.data[0].userID
-            _this.$store.state.userName=res.data[0].userName
+            _this.$store.state.username=res.data[0].userName
             _this.$store.state.userPw=res.data[0].userPwd
             _this.$store.state.userEmail=res.data[0].userEmail
+
           if (res.data.length == 0 || res == null) {
             alert('用户不存在！请输入正确邮箱')
           } else if (res.data[0].length != 0) {
@@ -99,7 +100,6 @@
     width: 100%;
     height: 700px;
     background: url('../../assets/timg.jpg') no-repeat;
-    background-position: -300px;
   }
 
   .main {

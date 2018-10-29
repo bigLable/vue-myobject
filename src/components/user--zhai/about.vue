@@ -51,6 +51,8 @@
 
 </script>
 <style scoped>
+  @import'../../../static/css/aboutcss.css';
+  @import'../../../static/css/aboutstyle.css';
   .text{
     width:100%;
     height:400px;

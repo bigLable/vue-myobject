@@ -47,7 +47,7 @@
     <div class="body" v-show="index==1" >
       <div class="pic"></div>
       <router-link role="presentation" to="/changeinfo">
-        <el-button class="btn">修改资料</el-button>
+        <el-button class="btn"></el-button>
       </router-link>
       <div class="main">
         <span>用户名：{{user.userName}}</span><br><br>
@@ -57,8 +57,8 @@
         <span>注册时间:{{user.userRegisterDate}}</span><br><br>
       </div>
     </div>
-    <div style="background-color: white;width: 900px;height: 700px;margin: 0 auto">
-      <table class="table table-hover odertd" v-show="index==2" >
+    <div style="background-color: white;width: 900px;height: 700px;margin: 0 auto" v-show="index==2">
+      <table class="table table-hover odertd"  >
         <tr >
           <td style="background-color: dodgerblue">商品图片</td>
           <td style="background-color: dodgerblue">商品名称</td>
@@ -375,6 +375,7 @@
 </script>
 
 <style scoped>
+  @import '../../../static/css/menu.css';
   * {
     padding: 0;
     margin: 0
