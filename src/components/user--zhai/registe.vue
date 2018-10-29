@@ -98,7 +98,6 @@
     width: 100%;
     height: 700px;
     background: url('../../assets/registe.jpg') no-repeat;
-    background-position: -300px;
   }
 
   .main {
