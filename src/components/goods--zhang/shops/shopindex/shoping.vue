@@ -377,12 +377,17 @@
 //         }),function(err) {
 //           console.log(err.msg)
 //         }
-        let shopid='';
+        if(this.$store.state.user==''){
+          alert('请先登录 再进行添加购物车')
+        }else{
+          let shopid='';
 
-        shopid=localStorage.getItem('shopid')+','+this.$route.params.id
-        localStorage.setItem('shopid',shopid)
-        alert('添加购物车成功！')
-        alert(shopid)
+          shopid=localStorage.getItem('shopid')+','+this.$route.params.id
+          localStorage.setItem('shopid',shopid)
+          alert('添加购物车成功！')
+          alert(shopid)
+        }
+
       },
 
       getData(){

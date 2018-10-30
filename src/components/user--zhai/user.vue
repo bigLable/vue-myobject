@@ -111,7 +111,7 @@
           </el-form>
           <div slot="footer" class="dialog-footer">
             <el-button @click="dialogFormVisible = false">取 消</el-button>
-            <el-button type="primary" @click="dialogFormVisible = false"><span @click="address">确 定</span></el-button>
+            <el-button type="primary" @click="address"><span @click="dialogFormVisible = false">确 定</span></el-button>
           </div>
         </el-dialog>
       </div>
@@ -270,7 +270,7 @@
         dialogTableVisible: false,
         dialogFormVisible: false,
         form: {
-          name: '',
+          name:'',
           region: '',
           date1: '',
           date2: '',
@@ -288,10 +288,11 @@
       //增加地址
       address(){
         let _this=this
-        axios.get('http://localhost:3000/shoppingCart/addadres?adrename='+`${_this.form.name}&userId=${_this.$store.state.user}`).then(function(result){
+        $.get('http://localhost:3000/shoppingCart/addadres?adrename='+`${_this.form.name}&userId=${_this.$store.state.user}`).then(function(result){
           // adrename:_this.form.name;
              alert('地址添加成功！！')
-          this.getAllare()
+              console.log('``````````````````````````````````````````````````地址添加成功')
+          _this.getAllare()
           console.log('==============地址 =====');
           console.log(result.data.data[0])
           // _this.info=result.data.data[0]
@@ -309,7 +310,7 @@
           // console.log(result.data)
 
           confirm(`确定删除第${index}条吗？`)
-           window.location.reload()
+          _this.getAllare()
 
         },function(err){
           console.log(err);
