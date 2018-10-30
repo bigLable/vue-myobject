@@ -61,38 +61,38 @@
       };
     },
     methods: {
-    UserButton() {
-      let _this = this;
-      $.post('http://localhost:3000/users/getOneUser',
-        {
-          userEmail: _this.Form.email,
-          userPwd: _this.Form2.pass,
-        }, function (res) {
-            _this.$store.state.user=res.data[0].userID
-            _this.$store.state.username=res.data[0].userName
-            _this.$store.state.userPw=res.data[0].userPwd
-            _this.$store.state.userEmail=res.data[0].userEmail
-          if (res.data.length == 0 || res == null) {
-            alert('用户不存在！请输入正确邮箱')
-          } else if (res.data[0].length != 0) {
-            let pwd = res.data[0].userPwd
-            if (_this.Form2.pass == pwd) {
+      UserButton() {
+        let _this = this;
+        $.post('http://localhost:3000/users/getOneUser',
+          {
+            userEmail: _this.Form.email,
+            userPwd: _this.Form2.pass,
+          }, function (res) {
+            _this.$store.state.user = res.data[0].userID
+            _this.$store.state.username = res.data[0].userName
+            _this.$store.state.userPw = res.data[0].userPwd
+            _this.$store.state.userEmail = res.data[0].userEmail
+            _this.$store.state.userPhone = res.data[0].userPhoneNum
+            _this.$store.state.userTime = res.data[0].userRegisterDate
 
-              //alert(`登录成功`)
-              _this.$store.state.seletlogon=2
-              // //alert(JSON.stringify(res.data))
-              // _this.$store.commit('local', res.data[0])
-            } else {
-              alert('密码不正确！请重新输入密码')
+            if (res.data.length == 0 || res == null) {
+              alert('用户不存在！请输入正确邮箱')
+            } else if (res.data[0].length != 0) {
+              let pwd = res.data[0].userPwd
+              if (_this.Form2.pass == pwd) {
+                alert(`登录成功`)
+                _this.$router.push({path: '/'})
+                _this.$store.state.seletlogon = 2
+              } else if (_this.Form2.pass != pwd) {
+                alert('密码不正确！请重新输入密码')
+                _this.$router.push({path: '/login'})
+              }
             }
-          }
-          // sessionStorage.setItem('Email', _this.Form.email);
-
-        });
-          // location.reload()
-         _this.$router.push({path: '/'})
-    },
-  }
+            // sessionStorage.setItem('Email', _this.Form.email);
+          })
+        // location.reload()
+      },
+    }
   };
 </script>
 
@@ -101,7 +101,6 @@
     width: 100%;
     height: 700px;
     background: url('../../assets/timg.jpg') no-repeat;
-    background-position: -300px;
   }
 
   .main {
@@ -111,7 +110,7 @@
   }
 
   .login {
-    font-size:30px;
+    font-size: 30px;
     text-align: center;
   }
 

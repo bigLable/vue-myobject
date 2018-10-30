@@ -98,8 +98,8 @@
       }*/
     data() {
       var validatePass = (rule, value, callback) => {
-        if (value === '') {
-          callback(new Error('请输入密码'));
+        if (value === '' ||value.length !=6) {
+          callback(new Error('请输入6位密码'));
         } else {
           if (this.ruleForm.checkPass !== '') {
             this.$refs.ruleForm.validateField('checkPass');
@@ -130,14 +130,14 @@
             {min: 2, max: 6, message: '长度在 2 到 6 个字符', trigger: 'blur'}
           ],
           pass: [
-            {validator: validatePass, required: true, message: '请输入6位账号密码', trigger: 'blur'}
+            {validator: validatePass,trigger: 'blur'}
           ],
           checkPass: [
-            {validator: validatePass2, required: true, message: '两次密码输入不一致', trigger: 'blur'}
+            {validator: validatePass2,trigger: 'blur'}
           ],
           phone: [
-            {required: true, message: '请输入手机号', trigger: 'blur'},
-            {min: 2, max: 6, message: '长度在 2 到 6 个字符', trigger: 'blur'}
+            {required: true, message: '请输入11位手机号', trigger: 'blur'},
+            {min: 11, max: 11, message: '请输入11位手机号', trigger: 'blur'}
           ],
           email: [
             {required: true, message: '请输入邮箱', trigger: 'blur'},
@@ -157,6 +157,7 @@
                 userPwd: this.ruleForm.pass,
                 userPhoneNum: this.ruleForm.phone,
                 userEmail: this.ruleForm.email,
+                userRegisterDate:new Date().toLocaleString(),
               }, function (res) {
                 alert('注册完成！！！')
                 _this.$router.push({path: '/login'})

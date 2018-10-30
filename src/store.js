@@ -8,17 +8,22 @@ export default new Vuex.Store({
     seletlogon:1,
     user:'',
     userEmail:'',
-      username:'',
-      userPw:'',
-      num:{
-        int1:1,
-        int2:0,
-        int3:0
-      },
-      inf:[],
-      total:'',
-      adres:''
+    username:'',
+    userPw:'',
+    userSex:'',
+    userTime:'',
+    userPhone:'',
+
+    num:{
+      int1:1,
+      int2:0,
+      int3:0
     },
+    inf:[],
+    total:'',
+    adres:''
+
+  },
   getters:{
 
   },
@@ -26,12 +31,7 @@ export default new Vuex.Store({
 
   },
   mutations:{
-    //   local(state,  val) {
-    //     if(val == undefined) {
-    //      state= JSON.parse(localStorage.getItem('state'))
-    //     }
-    //     localStorage.setItem('state', JSON.stringify(state))
-    // }
+
   }
 })
 
