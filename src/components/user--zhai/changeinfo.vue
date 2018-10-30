@@ -7,11 +7,11 @@
           <label >用户名</label>
           <input type="text" v-model="formLabelAlign.name" class="form-control"  placeholder="新昵称">
         </div>
-        <!--<div class="form-group">-->
-          <!--<label >性别</label>-->
-          <!--<label><input v-model="userSex" name="sex" type="radio" value="1" />男 </label>-->
-          <!--<label><input v-model="userSex"  name="sex" type="radio" value="0" />女 </label>-->
-        <!--</div>-->
+        <div class="form-group">
+          <label >性别</label>
+          <label><input v-model="userSex" name="sex" type="radio" value="1" />男 </label>
+          <label><input v-model="userSex"  name="sex" type="radio" value="0" />女 </label>
+        </div>
         <div class="form-group">
           <label >手机号</label>
           <input v-model="formLabelAlign.phone" class="form-control">

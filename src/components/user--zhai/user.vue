@@ -50,11 +50,11 @@
         <el-button class="btn">修改资料</el-button>
       </router-link>
       <div class="main">
-        <span>用户名：{{user.userName}}</span><br><br>
-        <span v-if="user.userSex==1?'男':'女'">性别：{{user.userSex==1?'男':'女'}}</span><br><br>
-        <span>邮箱:{{user.userEmail}}</span><br><br>
-        <span>手机号码：{{user.userPhoneNum}}</span><br><br>
-        <span>注册时间:{{user.userRegisterDate}}</span><br><br>
+        <span>用户名：{{this.$store.state.username}}</span><br><br>
+        <span>性别：{{this.$store.state.userSex}}</span><br><br>
+        <span>邮箱:{{this.$store.state.userEmail}}</span><br><br>
+        <span>手机号码：{{this.$store.state.userPhone}}</span><br><br>
+        <span>注册时间:{{this.$store.state.userTime}}</span><br><br>
       </div>
     </div>
     <div style="background-color: white;width: 900px;height: 700px;margin: 0 auto" v-show="index==2">
@@ -271,7 +271,7 @@
         oderIfo: [],
         allare: [],
         user: [],
-        index: 2,
+        index: 1,
         dialogTableVisible: false,
         dialogFormVisible: false,
         form: {

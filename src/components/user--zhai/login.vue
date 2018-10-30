@@ -72,6 +72,8 @@
             _this.$store.state.username = res.data[0].userName
             _this.$store.state.userPw = res.data[0].userPwd
             _this.$store.state.userEmail = res.data[0].userEmail
+            _this.$store.state.userPhone = res.data[0].userPhoneNum
+            _this.$store.state.userTime = res.data[0].userRegisterDate
 
             if (res.data.length == 0 || res == null) {
               alert('用户不存在！请输入正确邮箱')
