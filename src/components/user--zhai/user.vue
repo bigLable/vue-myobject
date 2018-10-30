@@ -44,27 +44,27 @@
     <div class="body" v-show="index==1">
       <div class="pic"></div>
       <router-link role="presentation" to="/changeinfo">
-        <el-button class="btn">修改资料</el-button>
+        <el-button type="info" plain  class="btn" style="font-size:15px;font-weight: bold">修改资料</el-button>
       </router-link>
       <div class="main">
         <span>用户名： {{this.$store.state.username}}</span><br><br>
         <span v-if="user.userSex==1?'男':'女'">性别： {{user.userSex==1?'男':'女'}}</span><br><br>
         <span>邮箱: {{this.$store.state.userEmail}}</span><br><br>
         <span>手机号码： {{this.$store.state.userPhone}}</span><br><br>
-        <span>注册时间: {{this.$store.state.userTime}}</span><br><br>
+        <span>注册时间:  {{this.$store.state.userTime}}</span><br><br>
       </div>
     </div>
-    <div style="background-color: white;width: 900px;height: 700px;margin-left:300px" >
-      <table class="table table-hover odertd" v-show="index==2">
+    <div style="background-color: white;width: 900px;height: 700px;margin-left:300px;text-align: center;font-family:Arial,sans-serif;"v-show="index==2">
+      <table class="table table-hover odertd">
         <tr>
-          <td style="background-color: dodgerblue">商品图片</td>
-          <td style="background-color: dodgerblue">商品名称</td>
-          <td style="background-color: dodgerblue">商品属性</td>
-          <td style="background-color: dodgerblue">商品数量</td>
-          <td style="background-color: dodgerblue">商品单价(元)</td>
-          <td style="background-color: dodgerblue">商品总价(元)</td>
-          <td style="background-color: dodgerblue;width:110px">收货地址</td>
-          <td style="background-color: dodgerblue">交易时间</td>
+          <td style="background-color: #ddd0ff; font-weight: bold">商品图片</td>
+          <td style="background-color: #ddd0ff; font-weight: bold">商品名称</td>
+          <td style="background-color: #ddd0ff; font-weight: bold">商品属性</td>
+          <td style="background-color: #ddd0ff; font-weight: bold">商品数量</td>
+          <td style="background-color: #ddd0ff; font-weight: bold">商品单价(元)</td>
+          <td style="background-color: #ddd0ff; font-weight: bold">商品总价(元)</td>
+          <td style="background-color: #ddd0ff; font-weight: bold;width:110px">收货地址</td>
+          <td style="background-color: #ddd0ff; font-weight: bold">交易时间</td>
         </tr>
         <tr v-for="(goodIfo,inde) in  oderIfo">
           <td style="width:20%;"><span><img :src="goodIfo.商品图片" alt="" class="img-responsive" style="width:30%;"></span>
@@ -77,10 +77,9 @@
           <td style="text-align: center">{{goodIfo.收货地址}}</td>
           <td style="text-align: center">{{goodIfo.下单时间}}</td>
         </tr>
-
       </table>
-      <div style="background-color: white;width: 900px;height: 680px;margin: 0px auto" v-show="index==3">
-
+    </div>
+      <div style="background-color: white;width: 900px;height: 680px;margin-left:300px;margin-top:65px " v-show="index==3">
         <table class="table">
           <thead>
           <tr class="success">
@@ -94,12 +93,10 @@
           <tbody>
           <tr v-for="(adres,index) in allare">
             <td>{{index+1}}<span style="margin-left: 10%">{{adres.adrename}}</span>
-
             </td>
             <td><span style="cursor: pointer" @click="deleadre(adres.Adressid,index+1)"
                       class="glyphicon glyphicon-trash"></span></td>
           </tr>
-
           </tbody>
         </table>
         <el-dialog title="收货地址" :visible.sync="dialogFormVisible">
@@ -114,8 +111,6 @@
           </div>
         </el-dialog>
       </div>
-
-    </div>
   </div>
 </template>
 
@@ -443,7 +438,9 @@
   }
 
   .btn {
-    margin-left: 100px;
+    width:200px;
+    height:40px;
+    margin-left: 50px;
     margin-top: 280px;
   }
 
