@@ -10,6 +10,8 @@ export default new Vuex.Store({
     userEmail:'',
     username:'',
     userPw:'',
+    userTime:'',
+    userPhone:'',
 
     num:{
       int1:1,

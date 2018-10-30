@@ -65,8 +65,9 @@
            <td colspan="3">已选商品:{{checkedname.length}}件商品</td>
            <td>合计(不含运费):<span class="allTotal" style="color: red;font-size: large">￥{{Total}}</span></td>
 
-           <td colspan="3"  class="paymoney"  @click="toPay">
-             <router-link  to="/Pay" style="color: white;font-size: large;text-decoration: none" ><h1 v-on:click="change()">去结算</h1></router-link></td>
+           <td colspan="3" v-on:click="change()"  class="paymoney"  @click="toPay" style="cursor: pointer">
+            <h1 style="color: white;font-size: large;text-decoration: none;">去结算</h1>
+           </td>
          </tr>
        </table>
      </div>
@@ -255,9 +256,22 @@
 
         },
         change(){
-          this.$store.state.num.int2++
-          console.log('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
-          console.log('num2:' + this.$store.state.num.int2)
+            if(this.checkedname.length<1){
+              alert('请点击选择购物车商品！')
+            }else if (this.Total==0) {
+              alert('请选择商品数量！')
+            }else{
+              if(this.$store.state.num.int2==0){
+                this.$store.state.num.int2++
+              }else {
+                this.$store.state.num.int2=1
+              }
+
+              console.log('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
+              // console.log('num2:' + this.$store.state.num.int2)
+              this.$router.push({path:'/Pay'})
+            }
+
         }
       },
       // mounted:function () {

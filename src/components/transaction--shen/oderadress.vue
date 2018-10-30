@@ -6,8 +6,8 @@
   <div class="container">
 
     <div class="col-sm-2">收货地址</div>
-    <div class="col-sm-2 " >删除</div>
-    <div class="col-sm-1  pointer" ><span @click="control">新增</span></div>
+    <!--<div class="col-sm-2 " >删除</div>-->
+    <!--<div class="col-sm-1  pointer" ><span @click="control">新增</span></div>-->
     <hr/>
 
       <div slot="header" class="clearfix">
@@ -20,11 +20,11 @@
             <td> <el-radio :label="text.Adressid"></el-radio> </td>
             <!--<td> <el-radio ></el-radio> </td>-->
             <td> {{'&nbsp;&nbsp;&nbsp;&nbsp;'+ text.adrename }}</td>
-            <td style="width:60%;text-align: right">
-              <span title="删除" class="glyphicon glyphicon-trash" @click='del(text.Adressid,text.adrename)'>
+            <!--<td style="width:60%;text-align: right">-->
+              <!--&lt;!&ndash;<span title="删除" class="glyphicon glyphicon-trash" @click='del(text.Adressid,text.adrename)'>&ndash;&gt;-->
 
-            </span>
-            </td>
+            <!--</span>-->
+            <!--</td>-->
           </tr>
         </table>
  </el-radio-group>
@@ -74,9 +74,9 @@
           axios.get('http://localhost:3000/shoppingCart/addadres?adrename='+`${_this.formLabelAlign.name}&userId=${_this.$store.state.user}`).then(function(result){
             console.log('==============地址 =====');
             console.log(result.data.data[0])
-            // _this.info=result.data.data[0]
-            _this.info.push({Adressid:_this.info[_this.info.length-1].Adressid+1,adrename:_this.formLabelAlign.name})
-            alert(_this.formLabelAlign.name)
+            _this.info=result.data.data[0]
+            // _this.info.push({Adressid:_this.info[_this.info.length-1].Adressid+1,adrename:_this.formLabelAlign.name})
+            // alert(_this.formLabelAlign.name)
           },function(err){
             console.log(err);
           })
@@ -107,7 +107,9 @@
       },
         mounted(){
         let _this = this;
-          axios.get('http://localhost:3000/shoppingCart/getAlladres?userId='+`${this.$store.state.user}`).then(function(result){
+          //_this.$store.commit('local', undefined)
+          // var id = JSON.parse(localStorage.getItem('state')).user
+          axios.get(`http://localhost:3000/shoppingCart/getAlladres?userId=${_this.$store.state.user}`).then(function(result){
           console.log('============== =====');
           // console.log(result.data)
           _this.info = result.data.data[0];

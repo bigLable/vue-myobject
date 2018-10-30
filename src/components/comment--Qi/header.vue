@@ -129,8 +129,8 @@
       // }
     },
     created(){
-      // this.index=this.$store.state.seletlogon
-      this.sele()
+      // // this.index=this.$store.state.seletlogon
+      // this.$computed.sele()
     }
 
   }
