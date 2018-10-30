@@ -80,8 +80,8 @@
 
               //alert(`登录成功`)
               _this.$store.state.seletlogon=2
-              //alert(JSON.stringify(res.data))
-              _this.$store.commit('local', res.data[0])
+              // //alert(JSON.stringify(res.data))
+              // _this.$store.commit('local', res.data[0])
             } else {
               alert('密码不正确！请重新输入密码')
             }

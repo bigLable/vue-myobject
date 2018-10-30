@@ -26,12 +26,12 @@ export default new Vuex.Store({
 
   },
   mutations:{
-      local(state,  val) {
-        if(val == undefined) {
-         state= JSON.parse(localStorage.getItem('state'))
-        }
-        localStorage.setItem('state', JSON.stringify(state))
-    }
+    //   local(state,  val) {
+    //     if(val == undefined) {
+    //      state= JSON.parse(localStorage.getItem('state'))
+    //     }
+    //     localStorage.setItem('state', JSON.stringify(state))
+    // }
   }
 })
 

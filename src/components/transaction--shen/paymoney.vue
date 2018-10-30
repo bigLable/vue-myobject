@@ -8,7 +8,7 @@
       <div class="col-md-3 col-sm-offset-9 bc font text-center" @click="change">
 
         <el-button type="text" @click="open">
-          <h2 style="color: white">确定付款</h2>
+          <h2 style="color: white;cursor: pointer" >确定付款</h2>
         </el-button>
 
 
