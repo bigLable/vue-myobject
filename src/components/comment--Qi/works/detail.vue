@@ -29,9 +29,12 @@
 
         </div>
           <div  >
-           <el-button type="success" id="type" :plain="true" @click="setTimeout(getdata(),2000) ">  发表评论</el-button>
+           <el-button type="success" id="type" :plain="true" @click="getdata ">  发表评论</el-button>
 
         </div>
+          <!-- Button trigger modal -->
+
+
         </div>
       </div>
 
@@ -61,11 +64,23 @@
 
     <!--</div>-->
 
+    <el-dialog
+      :visible.sync="dialogVisible"
+      width="28%"
+      :show-close="false"
+      :close-on-press-escape="false"
+      >
+      <span style="color: #2e6da4 ;" >评论成功！</span>
+      <span slot="footer" class="dialog-footer">
+    <el-button type="primary" @click="getcom">确定</el-button>
+  </span>
+    </el-dialog>
   </div>
 
 </template>
 
 <script>
+
   import {formatDate} from '../../../../static/js/date';
   import $ from 'jquery'
   import axios from 'axios'
@@ -83,6 +98,7 @@ inject:['reload'],
         date:formatDate(new Date(), 'yyyy-MM-dd hh:mm'),
         wor:this.$route.params.id,
         id: this.$store.state.user,
+        dialogVisible: false,
 
       }
 
@@ -105,9 +121,25 @@ inject:['reload'],
           console.log(result.data);
           _this.com = result.data;
           console.log(_this.com);
+
         })
+        this.dialogVisible = false
+
 
       },
+      // getcomm() {
+      //   let _this = this;
+      //   axios.get('http://localhost:3000/works/getcom?id=' + `${this.$route.params.id}`).then(function (result) {
+      //     console.log('============== =====');
+      //     // console.log(result.data)
+      //     _this.com = result.data;
+      //     // alert(JSON.stringify(_this.allare));
+      //
+      //   }, function (err) {
+      //     console.log(err);
+      //   })
+      //
+      // },
 
 
       getdata(){
@@ -139,18 +171,26 @@ inject:['reload'],
           }
         )
       ,
-
-          this.$message({
-          showClose: true,
-          message: '评论成功！',
-          type: 'success'
-
-        })
           this.content=''
-        this.getcom()
+          this.getcom()
+    this.dialogVisible = true
       },
 
-
+      // addcomments(){
+      //   let _this = this
+      //   axios.get('http://localhost:3000/works/addcomments?commentsContent=' + `${_this.content}&UserID=${_this.$store.state.user}&worksId=${this.$route.params.id}&commentsDate=${new Date()}`).then(function (result) {
+      //     // adrename:_this.form.name;
+      //     alert('地址添加成功！！')
+      //     _this.getcomm()
+      //     console.log('==============地址 =====');
+      //     console.log(result.data.data[0])
+      //     // _this.info=result.data.data[0]
+      //     // _this.info.push({Adressid:_this.info[_this.info.length-1].Adressid+1,adrename:_this.formLabelAlign.name})
+      //     // alert(_this.formLabelAlign.name)
+      //   }, function (err) {
+      //     console.log(err);
+      //   })
+      // },
 
 
 
