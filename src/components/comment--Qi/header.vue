@@ -40,11 +40,10 @@
             <form class="navbar-form navbar-left" style="margin: 10px">
               <form action="" id="ff1"></form>
               <div style="position: relative" class="form-group">
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <input type="text" style="width: 160px;" form="ff1" v-model="emi" @focus="xian" @mouseover="xian"
                        class="form-control" placeholder="输入关键字">
                 <div id="spe" @mouseover="xian" @mouseout="ni">
-                  <span id="sp" @click="ni" v-for="good in searchgood"><router-link :to="'/shops/'+good.ShopID">{{good.shopName}}</router-link></span>
+                  <span id="sp" v-on:click="ckl" @click="ni" v-for="good in searchgood"><router-link :to="'/shops/'+good.ShopID">{{good.shopName}}</router-link></span>
                 </div>
 
               </div>
@@ -107,6 +106,9 @@
       }
     },
     methods: {
+      ckl(){
+        window.location.reload()
+      },
       xx() {
         // window.location.reload()
       },
