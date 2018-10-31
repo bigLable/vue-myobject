@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <app-header></app-header>
-    <router-view></router-view>
+    <router-view v-if="isRouterAlive">></router-view>
     <app-footer></app-footer>
 
   </div>
@@ -15,16 +15,29 @@
 
 export default {
   name: 'app',
-  data () {
+  provide() {
     return {
+      reload: this.reload
     }
   },
-  components:{
-
-    'app-header':Header,
-    'app-footer':Footer,
+  data() {
+    return {
+      isRouterAlive: true
+    }
   },
-  methods:{
+  components: {
+
+    'app-header': Header,
+    'app-footer': Footer,
+  },
+  methods: {
+    reload() {
+      this.isRouterAlive = false
+      this.$nextTick(function () {
+        this.isRouterAlive = true
+      })
+
+    }
   }
 }
 </script>
