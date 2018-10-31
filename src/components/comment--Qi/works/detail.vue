@@ -6,8 +6,10 @@
         <div class="block"style="width: 800px">
           <span class="demonstration"></span>
           <el-carousel height="450px">
-            <el-carousel-item  v-for="work in detail" >
+            <el-carousel-item   v-for="work in detail"   >
+              <viewer >
               <img :src="work.Dpic" alt="">
+              </viewer>
             </el-carousel-item>
           </el-carousel>
         </div>
@@ -76,6 +78,7 @@
     <el-button type="primary" @click="getcom">确定</el-button>
   </span>
     </el-dialog>
+
   </div>
 
 </template>

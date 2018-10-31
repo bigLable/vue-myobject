@@ -5,6 +5,14 @@ import 'element-ui/lib/theme-chalk/index.css';
 import VueRouter from 'vue-router'
 import store from './store'
 import VideoPlayer from 'vue-video-player'
+import Viewer from 'v-viewer'
+import 'viewerjs/dist/viewer.css'
+//Vue.use(Viewer) 默认配置写法
+Vue.use(Viewer, {
+  defaultOptions: {
+    zIndex: 9999
+  }
+})
 require('video.js/dist/video-js.css')
 require('vue-video-player/src/custom-theme.css')
 Vue.use(VideoPlayer)
