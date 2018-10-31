@@ -417,6 +417,7 @@
       }
     },
     mounted(){
+      this.getData();
       $(document).ready(function() {
         $("#tohard").click(function () {
           $("html, body").animate({
@@ -436,8 +437,8 @@
         $("#divsf").removeClass('fi')
       }
     });
-      this.getData();
-      console.log('id value'+this.$route.params.id)
+
+      // console.log('id value'+this.$route.params.id)
 
     }
 
