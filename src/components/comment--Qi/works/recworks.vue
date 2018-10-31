@@ -1,8 +1,8 @@
 <template>
   <div>
-
-    <div class="pic" v-for="work in info">
-      <div class="col-md-3 col-sm-6">
+    <div style="height: 80px">&nbsp;</div>
+    <div class="pic " v-for="work in info">
+      <div class="  col-md-3 col-sm-6">
         <div class="box">
           <img :src="work.worksPic" class="img-thumbnail">
           <div class="box-content">

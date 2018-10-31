@@ -1,5 +1,5 @@
 <template>
-  <div class="container" style="margin-bottom:300px">
+  <div class="container">
     <div id="menu">
       <!--显示菜单-->
       <div id="open">
@@ -8,57 +8,54 @@
           <span><img class="obscure" alt=""></span>
         </div>
         <div class="navBox">
-          <ul>
-            <li>
-              <h2 class="obtain" index="1" @click="select(1)"><span slot="title" to="/user">我的资料</span><i></i></h2>
-
-            </li>
-            <li>
-              <h2 class="obtain" index="2" @click="select(2)"><span slot="title">已完成订单</span><i></i></h2>
-
-            </li>
-            <li>
-              <h2 class="obtain" index="3" @click="select(3)"><span slot="title">地址管理</span><i></i></h2>
-
-            </li>
-          </ul>
+            <ul>
+              <li>
+                <h2 class="obtain" index="1" @click="select(1)" ><span slot="title" to="/user">我的资料</span><i></i></h2>
+              </li>
+              <li>
+                <h2 class="obtain" index="2" @click="select(2)"><span slot="title">已完成订单</span><i></i></h2>
+              </li>
+              <li>
+                <h2 class="obtain" index="3" @click="select(3)"><span slot="title">地址管理</span><i></i></h2>
+              </li>
+            </ul>
         </div>
       </div>
     </div>
-    <!--<div class="menu">-->
-    <!--<el-col :span="24">-->
-    <!--<el-menu-->
-    <!--default-active="2"-->
-    <!--@open="handleOpen"-->
-    <!--@close="handleClose">-->
-    <!--<el-menu-item index="1" @click="select(1)">-->
-    <!--<span slot="title" to="/user" >我的资料</span>-->
-    <!--</el-menu-item>-->
+   <!-- <div class="menu">
+    <el-col :span="24">
+    <el-menu
+    default-active="2"
+    @open="handleOpen"
+    @close="handleClose">
+    <el-menu-item index="1" @click="select(1)">
+    <span slot="title" to="/user" >我的资料</span>
+    </el-menu-item>
 
-    <!--<el-menu-item index="2" @click="select(2)">-->
-    <!--<span slot="title">已完成订单</span>-->
-    <!--</el-menu-item>-->
-    <!--<el-menu-item index="3" @click="select(3)">-->
-    <!--<span slot="title"  >地址管理</span>-->
-    <!--</el-menu-item>-->
-    <!--</el-menu>-->
-    <!--</el-col>-->
-    <!--</div>-->
+    <el-menu-item index="2" @click="select(2)">
+    <span slot="title">已完成订单</span>
+    </el-menu-item>
+    <el-menu-item index="3" @click="select(3)">
+    <span slot="title"  >地址管理</span>
+    </el-menu-item>
+    </el-menu>
+    </el-col>
+    </div>-->
     <div class="body" v-show="index==1">
       <div class="pic"></div>
       <router-link role="presentation" to="/changeinfo">
         <el-button class="btn">修改资料</el-button>
       </router-link>
       <div class="main">
-        <span>用户名：{{this.$store.state.username}}</span><br><br>
-        <span>性别：{{this.$store.state.userSex}}</span><br><br>
-        <span>邮箱:{{this.$store.state.userEmail}}</span><br><br>
-        <span>手机号码：{{this.$store.state.userPhone}}</span><br><br>
-        <span>注册时间:{{this.$store.state.userTime}}</span><br><br>
+        <span>用户名： {{this.$store.state.username}}</span><br><br>
+        <span v-if="user.userSex==1?'男':'女'">性别： {{user.userSex==1?'男':'女'}}</span><br><br>
+        <span>邮箱: {{this.$store.state.userEmail}}</span><br><br>
+        <span>手机号码： {{this.$store.state.userPhone}}</span><br><br>
+        <span>注册时间: {{this.$store.state.userTime}}</span><br><br>
       </div>
     </div>
-    <div style="background-color: white;width: 900px;height: 700px;margin: 0 auto" v-show="index==2">
-      <table class="table table-hover odertd">
+    <div style="background-color: white;width: 900px;height: 700px;margin-left:300px" >
+      <table class="table table-hover odertd" v-show="index==2">
         <tr>
           <td style="background-color: dodgerblue">商品图片</td>
           <td style="background-color: dodgerblue">商品名称</td>
@@ -82,9 +79,9 @@
         </tr>
 
       </table>
-      <div style="background-color: white;width: 900px;height: 680px;margin: 80px auto">
+      <div style="background-color: white;width: 900px;height: 680px;margin: 0px auto" v-show="index==3">
 
-        <table class="table" v-show="index==3">
+        <table class="table">
           <thead>
           <tr class="success">
             <td>收货地址</td>
@@ -296,7 +293,7 @@
         axios.get('http://localhost:3000/shoppingCart/addadres?adrename=' + `${_this.form.name}&userId=${_this.$store.state.user}`).then(function (result) {
           // adrename:_this.form.name;
           alert('地址添加成功！！')
-          this.getAllare()
+          _this.getAllare()
           console.log('==============地址 =====');
           console.log(result.data.data[0])
           // _this.info=result.data.data[0]
@@ -314,8 +311,8 @@
           // console.log(result.data)
 
           confirm(`确定删除第${index}条吗？`)
-          window.location.reload()
-
+          // window.location.reload()
+          _this.getAllare()
         }, function (err) {
           console.log(err);
         })
@@ -368,6 +365,9 @@
           console.log(err);
         })
         // this.buyedifo=this.$store.state.inf
+      },
+      fade:function(){
+        $('.a').addClass('animated bounceInLeft')
       }
     },
     mounted: function () {
@@ -430,6 +430,7 @@
     background-color: white;
     margin: 0 auto;
     margin-top: 80px;
+    margin-left:300px;
   }
 
   .pic {

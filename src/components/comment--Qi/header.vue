@@ -33,7 +33,7 @@
               </li>
               </ul>
             </div>
-            <div class="col-sm-4">
+            <div class="col-sm-3">
               <form class="navbar-form navbar-left" style="margin: 10px">
                 <form action="" id="ff1"></form>
                 <div style="position: relative" class="form-group">
@@ -46,18 +46,18 @@
                 <!--<button type="button" form="ff1"  class="btn btn-default">搜索</button>-->
               </form>
             </div>
-            <div class="col-sm-3" >
+            <div class="col-sm-4" >
               <ul class="nav navbar-nav">
                 <li style="margin-top:14px;color:white">
                   <span v-if="sele==1"><router-link role="presentation" to="/login"><a class="move">登录</a></router-link>
                     <router-link role="presentation" to="/registe"><a class="move">注册</a></router-link></span>
-                  <span v-else-if="sele==2"><span>欢迎您{{this.$store.state.userEmail}}</span><a  @click="quit" to="login" >退出</a></span>
+                  <span v-else-if="sele==2 "style="font-size: 14px"><span>欢迎您:&nbsp;{{this.$store.state.username}}</span><a  @click="quit" to="login" >退出</a></span>
                 </li>
                 <li>
-                  <router-link role="presentation" to="/Car"><a class="move" v-if="sele==2">购物车</a></router-link>
+                  <router-link role="presentation" to="/Car"><a class="move" v-if="sele==2"style="font-size: 14px">购物车</a></router-link>
                 </li>
                 <li>
-                  <router-link role="presentation" to="/user"><a class="move" v-if="sele==2">个人中心</a></router-link>
+                  <router-link role="presentation" to="/user"><a class="move" v-if="sele==2"style="font-size: 14px">个人中心</a></router-link>
                 </li>
               </ul>
             </div>
