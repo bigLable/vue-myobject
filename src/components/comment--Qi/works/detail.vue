@@ -41,9 +41,10 @@
       </div>
     <h3 id="lj">留言板</h3>
     <div class="box1 shadow1"id="lk"v-for="comment in com">
-      <p>{{comment.commentsContent}}<br>
-        </p>
-      <p>用户：{{comment.userName}}</p>
+
+      <p style="font-size: 14px">用户：{{comment.userName}}</p>
+      <p style="font-size: 13px">{{comment.commentsContent}}
+      </p>
       <div class="circle"></div>
     </div>
     <!--<div  style="height: 150px">-->
@@ -70,7 +71,7 @@
       :show-close="false"
       :close-on-press-escape="false"
       >
-      <span style="color: #2e6da4 ;" >评论成功！</span>
+      <span style="color: #2e6da4 ;font-size: 18px;height: 20px" >评论成功！</span>
       <span slot="footer" class="dialog-footer">
     <el-button type="primary" @click="getcom">确定</el-button>
   </span>
