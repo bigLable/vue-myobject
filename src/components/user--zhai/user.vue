@@ -64,6 +64,7 @@
           <td style="background-color: #ddd0ff; font-weight: bold">商品单价(元)</td>
           <td style="background-color: #ddd0ff; font-weight: bold">商品总价(元)</td>
           <td style="background-color: #ddd0ff; font-weight: bold;width:110px">收货地址</td>
+          <td style="background-color: #ddd0ff; font-weight: bold;width:110px">手机号</td>
           <td style="background-color: #ddd0ff; font-weight: bold">交易时间</td>
         </tr>
         <tr v-for="(goodIfo,inde) in  oderIfo">
@@ -75,18 +76,19 @@
           <td style="text-align: center">{{goodIfo.商品价格}}</td>
           <td style="text-align: center">{{(goodIfo.商品数量)*(goodIfo.商品价格)}}</td>
           <td style="text-align: center">{{goodIfo.收货地址}}</td>
+          <td style="text-align: center">{{goodIfo.手机号}}</td>
           <td style="text-align: center">{{goodIfo.下单时间}}</td>
         </tr>
       </table>
     </div>
-      <div style="background-color: white;width: 900px;height: 680px;margin-left:300px;margin-top:65px " v-show="index==3">
+      <div style="background-color: white;width: 900px;height: 680px;margin-left:300px;margin-top:75px; " v-show="index==3">
         <table class="table">
           <thead>
           <tr class="success">
             <td>收货地址</td>
             <td><span>删除操作</span></td>
-            <td class="edit" style="text-align: center">
-              <el-button type="text" @click="dialogFormVisible = true">添加地址</el-button>
+            <td class="edit" style="text-align: center"@click="dialogFormVisible = true">
+              <el-button type="text">添加地址</el-button>
             </td>
           </tr>
           </thead>
@@ -106,7 +108,7 @@
             </el-form-item>
           </el-form>
           <div slot="footer" class="dialog-footer">
-            <el-button @click="dialogFormVisible = false">取 消</el-button>
+            <!--<el-button @click="dialogFormVisible = false">取 消</el-button>-->
             <el-button type="primary" @click="dialogFormVisible = false"><span @click="address">确 定</span></el-button>
           </div>
         </el-dialog>
@@ -288,6 +290,7 @@
         axios.get('http://localhost:3000/shoppingCart/addadres?adrename=' + `${_this.form.name}&userId=${_this.$store.state.user}`).then(function (result) {
           // adrename:_this.form.name;
           alert('地址添加成功！！')
+          _this.form.name=''
           _this.getAllare()
           console.log('==============地址 =====');
           console.log(result.data.data[0])
@@ -305,7 +308,7 @@
           console.log('============== =====');
           // console.log(result.data)
 
-          confirm(`确定删除第${index}条吗？`)
+          alert(`确定删除第${index}条吗？`)
           // window.location.reload()
           _this.getAllare()
         }, function (err) {
@@ -372,11 +375,11 @@
       this.getdetail()
     },
   }
+
 </script>
 
 <style scoped>
   @import '../../../static/css/menu.css';
-
   * {
     padding: 0;
     margin: 0
@@ -399,30 +402,12 @@
     width: 100%;
     height: 700px;
     background-color: #f4f4f4;
+    background:url('../../assets/change.jpg');
   }
-
-  .title {
-    display: block;
-    font-size: 35px;
-    color: grey;
-    position: absolute;
-    margin-left: 50px;
-    margin-top: 80px;
-  }
-
-  .menu {
-    width: 250px;
-    height: 500px;
-    position: absolute;
-    float: left;
-    margin-left: 15px;
-    margin-top: 150px;
-  }
-
   .body {
     width: 900px;
     height: 600px;
-    background-color: white;
+    color:white;
     margin: 0 auto;
     margin-top: 80px;
     margin-left:300px;
