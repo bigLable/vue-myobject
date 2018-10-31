@@ -109,7 +109,8 @@
         let _this = this;
           //_this.$store.commit('local', undefined)
           // var id = JSON.parse(localStorage.getItem('state')).user
-          axios.get(`http://localhost:3000/shoppingCart/getAlladres?userId=${_this.$store.state.user}`).then(function(result){
+         let id=_this.$store.state.user
+          axios.get('http://localhost:3000/shoppingCart/getAlladres?userId='+`${id}`).then(function(result){
           console.log('============== =====');
           // console.log(result.data)
           _this.info = result.data.data[0];
