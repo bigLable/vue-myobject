@@ -41,9 +41,8 @@
       </div>
 
       </div>
-    <h3 id="lj">留言板</h3>
+    <h3 id="lj">留言便利贴</h3>
     <div class="box1 shadow1"id="lk"v-for="comment in com">
-
       <p style="font-size: 14px">用户：{{comment.userName}}</p>
       <p style="font-size: 13px">{{comment.commentsContent}}
       </p>
@@ -344,7 +343,7 @@ height: 600px;
   height: 100px;
   position: relative;
   border-radius: 5px;
-  background: linear-gradient(to right, #abbd73 35%, #d6e2ad 100%);
+  background: linear-gradient(to right, #C0FFDB 35%, #acffb7 100%);
   margin-bottom: 40px;
   padding: 15px 25px 0 40px;
   color: darkslategray;
@@ -373,7 +372,7 @@ height: 600px;
 }
 
 .box1:hover {
-  background: linear-gradient(to right, #abbd73 0%, #abbd73 100%);
+  background: linear-gradient(to right, #affff7 0%, #a0fff0 100%);
 }
 
 .shadow1:hover::before {

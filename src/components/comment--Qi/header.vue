@@ -197,6 +197,10 @@
 
   nav {
     background-color: black;
+    position:fixed;/*固定作用*/
+    top:0px;
+    z-index:100;
+    width: 100%;
   }
 
   li {
@@ -222,11 +226,11 @@
 
 
 
-  body{font:12px/180% Arial, Helvetica, sans-serif, "新宋体";padding:40px 0 0 0;}
+
 
   /* nav2 */
-  .nav2{width:100px;height:30px;position:relative;font-family:微软雅黑;font-size:12px;color:#fff;overflow:hidden;float:left;top: 10px}
-  .nav2 div{width:100px;height:30px;line-height:30px;position:absolute;text-align:center;-webkit-transition:all 0.3s ease-in-out;-moz-transition:all 0.3s ease-in-out;-o-transition:all 0.3s ease-in-out;transition:all 0.3s ease-in-out;}
+  .nav2{width:100px;height:20px;position:relative;font-family:微软雅黑;font-size:12px;color:#fff;overflow:hidden;float:left;top: 15px}
+  .nav2 div{width:100px;height:20px;line-height:20px;position:absolute;text-align:center;-webkit-transition:all 0.3s ease-in-out;-moz-transition:all 0.3s ease-in-out;-o-transition:all 0.3s ease-in-out;transition:all 0.3s ease-in-out;}
 
   .nav2 .one{top:-30px;left:0;z-index:1;background: #000000;color:#FFF;opacity:0;}
   .nav2:hover .one{top:0px;left:0;opacity:1;-webkit-transform:scale(1.3);-moz-transform:scale(1.3);-o-transform:scale(1.3);transform:scale(1.3);}
