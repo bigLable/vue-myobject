@@ -47,6 +47,7 @@
 </template>
 
 <script>
+  import crypto from 'crypto';
   export default {
     name: "registe",
     /*data() {
@@ -153,10 +154,10 @@
           if (valid) {
             $.post('http://localhost:3000/users/addUsers',
               {
-                userName: this.ruleForm.name,
-                userPwd: this.ruleForm.pass,
-                userPhoneNum: this.ruleForm.phone,
-                userEmail: this.ruleForm.email,
+                userName: _this.ruleForm.name,
+                userPwd: _this.ruleForm.pass,
+                userPhoneNum: _this.ruleForm.phone,
+                userEmail: _this.ruleForm.email,
                 userRegisterDate:new Date().toLocaleString(),
               }, function (res) {
                 alert('注册完成！！！')
