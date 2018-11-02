@@ -1,6 +1,5 @@
 <template>
   <div>
-    <div style="height: 80px"></div>
     <div class="col-xs-12" >
       <div style="border: 1px rgba(193,193,193,0.49) solid;height: 350px;" class="col-xs-3">
 
@@ -37,6 +36,15 @@
 
     <img src="https://www.sonystyle.com.cn/mysony/acafe/images/new/u1.jpg" class="img-responsive" alt="">
     <div style="height: 120px">&nbsp;</div>
+    <div v-for="work in info">
+      <div class="col-sm-6" >
+      <img :src="work.picc" alt="" class="img-responsive  img-thumbnail">
+        <br><br>
+      </div>
+    </div>
+    <h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </h3>
+
     <h3 style="text-align: center;font-family:宋体 ;font-size: 24px">拍照，从选机开始</h3>
     <h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h3>
     <br>
@@ -45,8 +53,7 @@
         <div class="demo">
           <router-link :to="'/shops/'+shop.shopID">
             <figure class="imghvr-flip-diag-2" style="background:rgba(0,0,0,0.8);height: 85px"><img :src="shop.IMG1"
-                                                                                                    alt="example-image"
-                                                                                                    class="img-responsive">
+                                                                                                    alt="example-image" class="img-responsive">
               <figcaption style="text-align: center;">
                 <span style="font-size: 12px;">{{shop.shopPara}}</span>
               </figcaption>
@@ -95,6 +102,7 @@
           console.log(err)
         })
       },
+
 
     },
     mounted() {

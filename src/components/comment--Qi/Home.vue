@@ -1,5 +1,6 @@
 <template>
   <div>
+
     <div id="head">
       <el-carousel :interval="4000"  height="500px" arrow="always">
         <el-carousel-item v-for="(work,index) in info1" :key="index">
