@@ -2,66 +2,66 @@
   <div style="margin: 0;padding: 0;" class="container-fluid">
     <!--===============================================-->
     <!--头部-->
-    <div class="container">
-      <div id="px" class="row">
-        <div class="col-lg-12 col-sm-12 col-xs-12 col-md-12">
-          <p>咔嚓在线商城首页>{{user.shopType}}>{{user.shopName}}</p>
-        </div>
+  <div class="container">
+    <div id="px" class="row">
+      <div class="col-lg-12 col-sm-12 col-xs-12 col-md-12">
+        <p>咔嚓在线商城首页>{{user.shopType}}>{{user.shopName}}</p>
       </div>
-      <!--=====================================================-->
-      <!--详情-->
-      <div class="row">
-        <div id="dv1" class=" row col-lg-6 col-md-6 col-sm-7 col-xs-11">
-          <div  id="d1"  class="">
-            <img id="imge" style="margin: 0 auto" @click="sk" class="img-responsive " :src="user.shopImg"  alt="">
-
-            <!--<div id="mask"></div>-->
-            <!--<div id="big">-->
-            <!--<img :src="user.shopImg" alt="">-->
-            <!--</div>-->
-            <ul id="uuz">
-              <span class="glyphicon glyphicon-chevron-right"></span>
-              <li><img class="img-responsive" :src="user.shopImg" alt=""></li>
-              <li><img class="img-responsive" :src="user.shopImg2" alt=""></li>
-              <li><img class="img-responsive" :src="user.shopImg3" alt=""></li>
-              <span class="glyphicon glyphicon-chevron-left"></span>
-            </ul>
-
-
-          </div>
-          <!--<span class="glyphicon glyphicon-chevron-right"></span>-->
-          <!--<span class="glyphicon glyphicon-chevron-left"></span>-->
-        </div>
-        <!--====================左侧img========================-->
-        <div id="dv2" class="col-lg-6 col-md-6 col-sm-5 col-xs-12 ">
-          <div id="page1">
-            <span id="sh2">{{user.shopPara}}</span>
-            <p>产品详情：{{user.shopifo}}</p>
-          </div>
-          <hr>
-          <div id="shoping">
-            <ul>
-              <li style="width: 300px">价格：<span style="color:cornflowerblue;font-size: 24px;">RMB {{user.shopPrice}}.00</span></li>
-              <li>规格：<input type="button" class="btn btn-default" id="bt2" :value="user.shopName"></li>
-              <li>颜色：<input type="color" style="width: 30px;background: white;height: 30px;"></li>
-              <li>其他：<span  style="color: orangered ;font-size:13px">现在下单就获免费延保一年</span></li>
-            </ul>
-            <hr>
-          </div>
-          <div id="z1">
-            <ul>
-              <li> <input class="btn btn-primary but cornflowerblue " @click="gwc" type="button" value="加入购物车"></li>
-              <li>  <input  class="btn btn-default but" type="button" value="加入收藏"></li>
-            </ul>
-
-
-          </div>
-          <!--===================================右侧=======================================-->
-        </div>
-      </div>
-
     </div>
-    <!--========================================================================-->
+    <!--=====================================================-->
+    <!--详情-->
+    <div class="row">
+     <div id="dv1" class=" row col-lg-6 col-md-6 col-sm-7 col-xs-11">
+       <div  id="d1"  class="">
+        <img id="imge" style="margin: 0 auto" @click="sk" class="img-responsive " :src="user.shopImg"  alt="">
+
+         <!--<div id="mask"></div>-->
+         <!--<div id="big">-->
+           <!--<img :src="user.shopImg" alt="">-->
+         <!--</div>-->
+         <ul id="uuz">
+           <span class="glyphicon glyphicon-chevron-right"></span>
+           <li><img class="img-responsive" :src="user.shopImg" alt=""></li>
+           <li><img class="img-responsive" :src="user.shopImg2" alt=""></li>
+           <li><img class="img-responsive" :src="user.shopImg3" alt=""></li>
+           <span class="glyphicon glyphicon-chevron-left"></span>
+         </ul>
+
+
+       </div>
+       <!--<span class="glyphicon glyphicon-chevron-right"></span>-->
+       <!--<span class="glyphicon glyphicon-chevron-left"></span>-->
+     </div>
+      <!--====================左侧img========================-->
+      <div id="dv2" class="col-lg-6 col-md-6 col-sm-5 col-xs-12 ">
+        <div id="page1">
+          <span id="sh2">{{user.shopPara}}</span>
+          <p>产品详情：{{user.shopifo}}</p>
+        </div>
+        <hr>
+        <div id="shoping">
+          <ul>
+            <li style="width: 300px">价格：<span style="color:cornflowerblue;font-size: 24px;">RMB {{user.shopPrice}}.00</span></li>
+            <li>规格：<input type="button" class="btn btn-default" id="bt2" :value="user.shopName"></li>
+            <li>颜色：<input type="color" style="width: 30px;background: white;height: 30px;"></li>
+            <li>其他：<span  style="color: orangered ;font-size:13px">现在下单就获免费延保一年</span></li>
+          </ul>
+          <hr>
+        </div>
+        <div id="z1">
+          <ul>
+          <li> <input class="btn btn-primary but cornflowerblue " @click="gwc" type="button" value="加入购物车"></li>
+          <li>  <input  class="btn btn-default but" type="button" value="加入收藏"></li>
+        </ul>
+
+
+        </div>
+<!--===================================右侧=======================================-->
+      </div>
+    </div>
+
+  </div>
+<!--========================================================================-->
     <!--腰部-->
     <div id="divsf" class="row">
       <div  class="container">
@@ -80,13 +80,13 @@
       </div>
 
     </div>
-    <!--======================================================-->
+<!--======================================================-->
     <!--详情图-->
-    <div class="row"  v-show="mura == 1" >
-      <img  class="img-responsive" :src="user.IMG1" alt="">
-      <img  class="img-responsive" :src="user.IMG2" alt="">
-      <img  class="img-responsive" :src="user.IMG3" alt="">
-    </div>
+  <div class="row"  v-show="mura == 1" >
+    <img  class="img-responsive" :src="user.IMG1" alt="">
+    <img  class="img-responsive" :src="user.IMG2" alt="">
+    <img  class="img-responsive" :src="user.IMG3" alt="">
+  </div>
     <!--===========================================================-->
     <!--详细信息-->
     <div class="container" v-show="mura == 2">
@@ -99,7 +99,7 @@
         <div class="c100"></div>
         <div class="dkdg">
           影像传感器
-        </div>
+      </div>
         <div class="right">
           <table>
             <tr><td>有效像素 </td><td>约2010万有效像素</td></tr>
@@ -150,25 +150,25 @@
         <!--=========================================-->
         <div class="dkdg">
           记录
-        </div>
-        <div class="right">
-          <table>
-            <tr><td>兼容存储卡</td><td>记忆棒：Memory Stick Duo™/ Memory Stick PRO Duo™/ Memory Stick PRO Duo™（高速）/ Memory Stick PRO-HG Duo™/ SD 存储卡/SDHC存储卡/SDXC存储卡</td></tr>
-            <tr><td>静态影像尺寸</td><td>[3:2] 20M（5472×3648）/10M（3888×2592）/5.0M（2736×1824）
-              [16:9] 17M（5472×3080）/7.5M（3648×2056）/4.2M（2720×1528）
-              [4:3] 18M（4864×3648）/10M（3648×2736）/5.0M（2592×1944）/VGA
-              [1:1] 13M（3648×3648）/6.5M（2544×2544）/3.7M（1920×1920）
-              [扫描全景]宽尺寸（12416×1856/5536×2160），标准尺寸（8192×1856/3872×2160）
-              [在拍摄动态影像的同时拍摄静态影像][16:9] 17M（5472×3080）/7.5M（3648×2056）/4.2M（2720×1528）</td></tr>
-            <tr><td>动态影像尺寸</td><td>AVCHD:28M PS（1920×1080，50p）/24M FX（1920×1080，50i）/17M FH（1920×1080，50i）/24M FX（1920×1080，25p）/17M FH（1920×1080，25p）/
-              XAVC S 4K:25p 100M（3840x2160，25p）/25p 60M（3840x2160，25p）/
-              XAVC S HD:50p 50M（1920x1080，50p）/25p 50M（1920x1080，25p）/100P 100M（1920x1080，100p）/100P 60M（1920x1080，100p）/
-              MP4:28M（1920x1080，50p）/16M（1920x1080，25p）/6M（1280x720，25p）/</td></tr>
-          </table>
+    </div>
+      <div class="right">
+        <table>
+          <tr><td>兼容存储卡</td><td>记忆棒：Memory Stick Duo™/ Memory Stick PRO Duo™/ Memory Stick PRO Duo™（高速）/ Memory Stick PRO-HG Duo™/ SD 存储卡/SDHC存储卡/SDXC存储卡</td></tr>
+          <tr><td>静态影像尺寸</td><td>[3:2] 20M（5472×3648）/10M（3888×2592）/5.0M（2736×1824）
+            [16:9] 17M（5472×3080）/7.5M（3648×2056）/4.2M（2720×1528）
+            [4:3] 18M（4864×3648）/10M（3648×2736）/5.0M（2592×1944）/VGA
+            [1:1] 13M（3648×3648）/6.5M（2544×2544）/3.7M（1920×1920）
+            [扫描全景]宽尺寸（12416×1856/5536×2160），标准尺寸（8192×1856/3872×2160）
+            [在拍摄动态影像的同时拍摄静态影像][16:9] 17M（5472×3080）/7.5M（3648×2056）/4.2M（2720×1528）</td></tr>
+          <tr><td>动态影像尺寸</td><td>AVCHD:28M PS（1920×1080，50p）/24M FX（1920×1080，50i）/17M FH（1920×1080，50i）/24M FX（1920×1080，25p）/17M FH（1920×1080，25p）/
+            XAVC S 4K:25p 100M（3840x2160，25p）/25p 60M（3840x2160，25p）/
+            XAVC S HD:50p 50M（1920x1080，50p）/25p 50M（1920x1080，25p）/100P 100M（1920x1080，100p）/100P 60M（1920x1080，100p）/
+            MP4:28M（1920x1080，50p）/16M（1920x1080，25p）/6M（1280x720，25p）/</td></tr>
+        </table>
 
-        </div>
-        <div class="c100"></div>
-        <hr>
+      </div>
+      <div class="c100"></div>
+      <hr>
         <div class="dkdg">
           其他
         </div>
@@ -183,7 +183,7 @@
         </div>
         <div class="c100"></div>
         <hr>
-      </div>
+    </div>
 
     </div>
     <!--==============================================================-->
@@ -326,7 +326,7 @@
               <br/>
 
               <li>我王境泽就是饿死，死外边，从这跳下去，不会买你们一台相机！
-                真香~</li>
+              真香~</li>
               <br/>
               <li><img  class="img-responsive imge2" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1540387000002&di=0d6c6f243ad6c327cc3a26c6b83577bd&imgtype=0&src=http%3A%2F%2Fpic.962.net%2Fup%2F2018-4%2F15244538834567915.png" alt=""></li>
             </ul>
@@ -393,7 +393,7 @@
       },
 
       getData(){
-        let  _this=this;
+      let  _this=this;
         axios.get('http://localhost:3000/shop/shopGetid?id='+`${this.$route.params.id}`).then(function (result) {
           console.log(result.data);
           _this.user = result.data[0];
@@ -432,13 +432,13 @@
 
       });
       $(window).scroll(function (){
-        let wintop = document.documentElement.scrollTop || document.body.scrollTop;
-        if (wintop>=800){
-          $("#divsf").addClass('fi')
-        }else{
-          $("#divsf").removeClass('fi')
-        }
-      });
+      let wintop = document.documentElement.scrollTop || document.body.scrollTop;
+      if (wintop>=800){
+        $("#divsf").addClass('fi')
+      }else{
+        $("#divsf").removeClass('fi')
+      }
+    });
 
       // console.log('id value'+this.$route.params.id)
 
@@ -456,7 +456,7 @@
     position: relative;
   }
   ul{
-    list-style: none;
+   list-style: none;
   }
   #z1 li{
     display: inline-block;
@@ -468,37 +468,37 @@
     height: 50px;
     width: 200px;
   }
-  #uuz li{
-    display:inline-block;
-    width: 100px;
-    height: 100px;
-    margin-right: 5px;
-    position: relative;
-    top: 20px;
-    left: 5px;
+ #uuz li{
+   display:inline-block;
+   width: 100px;
+   height: 100px;
+   margin-right: 5px;
+   position: relative;
+   top: 20px;
+   left: 5px;
 
   }
-  #dv1{
-    position: relative;
-    height: 670px;
-  }
-  #dv2{
-    height: 600px;
-  }
+#dv1{
+  position: relative;
+  height: 670px;
+}
+#dv2{
+  height: 600px;
+}
   div #d1{
     /*border:1px solid #cccccc;*/
 
 
   }
-  .glyphicon.glyphicon-chevron-right{
-    font-size: 45px;
-    color: #5bc0de;
-    float: right;
-    position: absolute;
-    right: 0px;
-    top: 91%;
+.glyphicon.glyphicon-chevron-right{
+  font-size: 45px;
+  color: #5bc0de;
+  float: right;
+  position: absolute;
+  right: 0px;
+  top: 91%;
 
-  }
+}
   .glyphicon.glyphicon-chevron-left{
     font-size: 45px;
     color: #5bc0de;
@@ -508,22 +508,22 @@
     top: 91%;
   }
   .ylt:first-child  {
-    display: inline-block;
-    width: 100px;
-    position: absolute;
-    bottom: 15px;
-    left: 65px;
+     display: inline-block;
+     width: 100px;
+     position: absolute;
+     bottom: 15px;
+     left: 65px;
 
-  }
+   }
 
-  .ylt:last-child  {
-    display: inline-block;
-    width: 100px;
-    position: absolute;
-    bottom: 15px;
-    left: 180px;
+.ylt:last-child  {
+  display: inline-block;
+  width: 100px;
+  position: absolute;
+  bottom: 15px;
+  left: 180px;
 
-  }
+}
   .ylt1{
     display: inline-block;
     width: 100px;
@@ -612,7 +612,7 @@
     position: relative;
     top: 15px;
   }
-  .fi {
+ .fi {
     margin: 0;
     padding: 0;
     position: fixed;
@@ -620,9 +620,9 @@
     left: 0;
     background: white;
     width: 100%;
-    z-index: 500;
+   z-index: 500;
   }
-  /*=========================================================*/
+/*=========================================================*/
   /*详细信息*/
   #bigt{
     width: 150px;
@@ -635,7 +635,6 @@
     position: relative;
     top: 20px;
     padding-top: 5px;
-
 
   }
   #info hr{
@@ -702,20 +701,20 @@
   }
   /*========================================?*/
   /*#mask{*/
-  /*width:300px;*/
-  /*height: 300px;*/
-  /*background: #5bc0de;*/
-  /*opacity: 0.15;*/
-  /*position: absolute;*/
-  /*top: 0;*/
-  /*left: 0;*/
+    /*width:300px;*/
+    /*height: 300px;*/
+    /*background: #5bc0de;*/
+    /*opacity: 0.15;*/
+    /*position: absolute;*/
+    /*top: 0;*/
+    /*left: 0;*/
 
   /*}*/
   /*#big{*/
-  /*width: 500px;*/
-  /*height: 500px;*/
+    /*width: 500px;*/
+    /*height: 500px;*/
   /*}*/
-  #uuz img:hover{
+ #uuz img:hover{
     border: 1px solid royalblue;
   }
   #uuz span:hover{

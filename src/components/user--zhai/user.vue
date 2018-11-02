@@ -42,16 +42,16 @@
     </el-col>
     </div>-->
     <div class="body" v-show="index==1">
-      <div class="pic"></div>
+      <div class="pic"><img :src="this.$store.state.headPic" style="width: 100px;" class="img-responsive"/></div>
       <router-link role="presentation" to="/changeinfo">
         <el-button type="info" plain  class="btn" style="font-size:15px;font-weight: bold">修改资料</el-button>
       </router-link>
       <div class="main">
-        <span>用户名： {{this.$store.state.username}}</span><br><br>
-        <span v-if="user.userSex==1?'男':'女'">性别： {{user.userSex==1?'男':'女'}}</span><br><br>
-        <span>邮箱: {{this.$store.state.userEmail}}</span><br><br>
-        <span>手机号码： {{this.$store.state.userPhone}}</span><br><br>
-        <span>注册时间:  {{this.$store.state.userTime}}</span><br><br>
+        <span>用户名： {{user.userName}}</span><br><br>
+        <span v-if="sex==1?'男':'女'">性别： {{sex==1?'男':'女'}}</span><br><br>
+        <span>邮箱: {{user.userEmail}}</span><br><br>
+        <span>手机号码： {{user.userPhoneNum}}</span><br><br>
+        <span>注册时间:  {{user.userRegisterDate}}</span><br><br>
       </div>
     </div>
     <div style="background-color: white;width: 900px;height: 700px;margin-left:300px;text-align: center;font-family:Arial,sans-serif;"v-show="index==2">
@@ -68,7 +68,7 @@
           <td style="background-color: #ddd0ff; font-weight: bold">交易时间</td>
         </tr>
         <tr v-for="(goodIfo,inde) in  oderIfo">
-          <td style="width:20%;"><span><img :src="goodIfo.商品图片" alt="" class="img-responsive" style="width:30%;"></span>
+          <td style="width:20%;"><span><img :src="goodIfo.商品图片" alt="" class="img-responsive" style="width:30%;margin-left:50px;"></span>
           </td>
           <td>{{goodIfo.as商品名称}}</td>
           <td style="width:20%;padding: 5px">{{goodIfo.商品规格}}</td>
@@ -101,22 +101,23 @@
           </tr>
           </tbody>
         </table>
-        <el-dialog title="收货地址" :visible.sync="dialogFormVisible">
-          <el-form :model="form">
+        <div><el-dialog title="收货地址" :visible.sync="dialogFormVisible">
+          <div slot="footer" class="dialog-footer" style="height:400px;"><el-form :model="form">
             <el-form-item label="添加地址名称" :label-width="formLabelWidth">
-              <el-input v-model="form.name" autocomplete="off"></el-input>
+             <v-distpicker province="广东省" city="广州市" area="海珠区" @selected="onSelected" ></v-distpicker>
+              <el-input v-model="form.addre" autocomplete="off" placeholder="请输入具体地址"></el-input>
             </el-form-item>
           </el-form>
-          <div slot="footer" class="dialog-footer">
-            <!--<el-button @click="dialogFormVisible = false">取 消</el-button>-->
-            <el-button type="primary" @click="dialogFormVisible = false"><span @click="address">确 定</span></el-button>
+              <el-button type="primary" @click="dialogFormVisible = false"><span @click="address">确 定</span></el-button>
           </div>
         </el-dialog>
+        </div>
       </div>
   </div>
 </template>
 
 <script>
+
   window.onload = function () {
     var flag = true;
     var liC = document.querySelectorAll(".navBox li h2");
@@ -261,7 +262,7 @@
     name: "user",
     data() {
       return {
-
+           sex:'',
         oderIfo: [],
         allare: [],
         user: [],
@@ -269,6 +270,7 @@
         dialogTableVisible: false,
         dialogFormVisible: false,
         form: {
+          addre:'',
           name: '',
           region: '',
           date1: '',
@@ -284,10 +286,14 @@
     },
     methods: {
 
+      onSelected(data) {
+        this.form.name= data.province.value+data.city.value+data.area.value;
+        alert(this.form.name)
+      },
       //增加地址
       address() {
         let _this = this
-        axios.get('http://localhost:3000/shoppingCart/addadres?adrename=' + `${_this.form.name}&userId=${_this.$store.state.user}`).then(function (result) {
+        axios.get('http://localhost:3000/shoppingCart/addadres?adrename=' + `${_this.form.name+_this.form.addre}&userId=${_this.$store.state.user}`).then(function (result) {
           // adrename:_this.form.name;
           alert('地址添加成功！！')
           _this.form.name=''
@@ -334,6 +340,8 @@
           function (res) {
             // alert(JSON.stringify(res.data[0]))
             _this.user = res.data[0]
+            _this.sex=res.data[0].userSex.data[0]
+            alert('xingbie'+JSON.stringify(res.data[0].userSex.data[0]))
             // alert(JSON.stringify(res.data[0]))
           });
 
@@ -368,12 +376,16 @@
         $('.a').addClass('animated bounceInLeft')
       }
     },
+    created(){
+      this.getuser()
+    },
     mounted: function () {
       // alert(JSON.stringify(this.$store.state.inf))
       this.getuser()
       this.getAllare()
       this.getdetail()
     },
+
   }
 
 </script>
@@ -416,7 +428,7 @@
   .pic {
     width: 200px;
     height: 200px;
-    background-image: url('../../assets/pic.jpg');
+
     position: absolute;
     margin-left: 50px;
     margin-top: 50px;
@@ -437,4 +449,35 @@
     font-size: 18px;
     font-family: "PingFang SC", sans-serif;
   }
+  .divwrap{
+    width:300px;
+    height: 400px;
+    overflow-y: auto;
+    position: fixed;
+  }
+  .divwrap>>>.distpicker-address-wrapper{
+    width:275px;
+    height:300px;
+       color: #999;
+     }
+  .divwrap>>>.address-header{
+    width:400px;
+    position: fixed;
+    bottom: 400px;
+    background: #fff;
+    color:#000;
+  }
+  .divwrap>>>.address-header ul li{
+    flex-grow:3;
+    text-align: center;
+  }
+
+  .divwrap>>>.address-container .active{
+    color: #000;
+  }
+  .divwrap>>>.distpicker-address-wrapper-select{
+    width:100px;
+    height:300px;
+  }
+
 </style>

@@ -83,7 +83,7 @@
           <router-link role="presentation" to="/Car"><a class="move" v-if="sele==2" style="font-size: 14px">购物车</a></router-link>
         </li>
         <li>
-          <router-link role="presentation" to="/user"><a class="move" v-if="sele==2" style="font-size: 14px">个人中心</a></router-link>
+          <router-link role="presentation" to="/user"><a class="move" v-if="sele==2" style="font-size: 14px"><span @click="upd">个人中心</span></a></router-link>
         </li>
       </ul>
     </div>
@@ -126,6 +126,19 @@
       }
     },
     methods: {
+      getuser() {
+        let _this = this
+        $.post("http://localhost:3000/users/getOneUser",
+          {
+            userEmail: _this.$store.state.userEmail
+          },
+          function (res) {
+            // alert(JSON.stringify(res.data[0]))
+            _this.user = res.data[0]
+            // alert(JSON.stringify(res.data[0]))
+          });
+
+      },
       ckl() {
         window.location.reload()
       },
