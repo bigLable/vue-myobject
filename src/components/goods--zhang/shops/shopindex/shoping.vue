@@ -13,7 +13,7 @@
     <div class="row">
      <div id="dv1" class=" row col-lg-6 col-md-6 col-sm-7 col-xs-11">
        <div  id="d1"  class="">
-        <img id="imge" style="margin: 0 auto" class="img-responsive " :src="user.shopImg"  alt="">
+        <img id="imge" style="margin: 0 auto" @click="sk" class="img-responsive " :src="user.shopImg"  alt="">
 
          <!--<div id="mask"></div>-->
          <!--<div id="big">-->
@@ -366,7 +366,9 @@
       mi(index){
         this.same=index
       },
-
+      sk(){
+        this.src=this.user.shopImg2
+      },
       gwc(){
 //         let  _this=this;
 //         axios.get('http://localhost:3000/shoppingCart/getAllcar?ShopID='+`${this.$route.params.id}`).then(function (result) {
@@ -633,7 +635,6 @@
     position: relative;
     top: 20px;
     padding-top: 5px;
-
 
   }
   #info hr{
