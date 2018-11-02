@@ -13,6 +13,7 @@ export default new Vuex.Store({
     userPw:'',
     userTime:'',
     userPhone:'',
+    headPic:'',
 
     num:{
       int1:1,

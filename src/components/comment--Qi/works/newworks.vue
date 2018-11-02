@@ -1,13 +1,13 @@
 <template>
   <div>
     <div style="height: 80px">&nbsp;</div>
-    <div v-for="work in info" style="margin: 0 auto">
+    <div v-for="(activity,index) in myActData1" :key="index" style="margin: 0 auto">
 
       <div class="m-artlist m-artlist-2  col-md-3 col-sm-6">
         <div class="item">
           <div class="img " >
 
-            <router-link role="presentation" :to="'/comment/'+work.worksId" class="img-thumbnail">
+            <router-link role="presentation" :to="'/comment/'+activity.worksId" class="img-thumbnail">
 				<span class="bor">
 				</span>
               <span class="bor">
@@ -16,21 +16,50 @@
 				</span>
               <span class="bor">
 				</span>
-              <img :src="work.worksPic" >
+              <img :src="activity.worksPic" >
 
             </router-link>
           </div>
           <br>
-          <h4 class="title">简介:{{work.worksDescribe}}</h4>
+          <h4 class="title">简介:{{activity.worksDescribe}}</h4>
           <p class="description">
-            <img src="../../../assets/user.png" alt="" class="img-responsive" style="width: 20px;height: 20px;display: inline">&nbsp;{{work.worksauthor}}作品
+            <img src="../../../assets/user.png" alt="" class="img-responsive" style="width: 20px;height: 20px;display: inline">&nbsp;{{activity.worksauthor}}作品
           </p>
           <br>
           <br>
         </div>
 
       </div>
-  </div>
+
+    </div>
+
+
+
+    <!--<div class="pic " v-for="work in info">-->
+    <!--<div class="  col-md-3 col-sm-6">-->
+    <!--<div class="box">-->
+    <!--<img :src="work.worksPic" class="img-thumbnail">-->
+    <!--<div class="box-content">-->
+    <!--<h3 class="title">{{work.worksauthor}}作品</h3>-->
+    <!--<p class="description">-->
+    <!--{{work.worksDescribe}}-->
+    <!--</p>-->
+    <!--<router-link role="presentation" :to="'/comment/'+work.worksId">Read More</router-link>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--</div>-->
+    <div style="height: 50px">&nbsp;</div>
+    <div class="col-xs-12" style="text-align: center">
+      <el-pagination
+        small
+        @current-change="change()"
+        :current-page.sync="pageIndex"
+        layout="prev, pager, next"
+        :total="pageCount"
+        :page-size = "pagesize">
+      </el-pagination>
+    </div>
   </div>
 </template>
 
@@ -40,17 +69,48 @@
     name: "newworks",
     data(){
       return{
+        mydata: [],
+        pageIndex: 1,
+        pagesize: 4,  //每页条数
+        pageCount:0,
         info:[],
+        activitys:[],
 
       }
+    },
+    computed:{
+      myActData1(){
+        return this.activitys;
+      }
+    },
+    methods:{
+      loadData() {
+        this.activitys = [];
+        let start = (this.pageIndex-1) * this.pagesize;
+        let end = start + this.pagesize;
+        // console.log(this.myActData[1]);
+        if(end>=this.pageCount){
+          end=this.pageCount
+        }
+        for (var i = start; i < end; i++) {
+          this.activitys.push(this.myActData[i])
+        }
+      },
+      change(){
+        return this.loadData();
+      },
+
     }
     , mounted(){
       let _this = this;
       axios.get('http://localhost:3000/works/newworks').then(function(result){
         console.log('---');
         console.log(result.data)
-        _this.info = result.data;
-        console.log(_this.info);
+        _this.myActData = result.data;
+        _this.pageCount=_this.myActData.length;
+        // console.log(_this.pageCount)
+        _this.loadData()
+        console.log(_this.myActData);
       },function(err){
         console.log(err)
 
@@ -183,4 +243,69 @@
     -ms-transform:rotate(-5deg);
     transform:rotate(-5deg);
   }
+  /*.box{*/
+  /*background: #fff;*/
+  /*box-shadow: 0 0 5px #bababa;*/
+  /*text-align: center;*/
+  /*overflow: hidden;*/
+  /*position: relative;*/
+  /*}*/
+  /*.box img{*/
+  /*width: 100%;*/
+  /*height: auto;*/
+  /*transition: all 0.4s ease-in-out 0.2s;*/
+  /*}*/
+  /*.box:hover img{*/
+  /*transform: scale(0);*/
+  /*transition-delay: 0s;*/
+  /*}*/
+  /*.box .box-content{*/
+  /*width: 100%;*/
+  /*height: 100%;*/
+  /*background: #425770;*/
+  /*color: #fff;*/
+  /*padding: 30px;*/
+  /*position: absolute;*/
+  /*top: 0;*/
+  /*left: 0;*/
+  /*opacity: 0;*/
+  /*transform: scale(0) rotate(-180deg);*/
+  /*transition: all 0.4s ease-in 0s;*/
+  /*}*/
+  /*.box:hover .box-content{*/
+  /*opacity: 1;*/
+  /*transform: scale(1) rotate(0deg);*/
+  /*transition-delay: 0.2s;*/
+  /*}*/
+  /*.box .title{*/
+  /*font-size: 20px;*/
+  /*font-weight: 800;*/
+  /*border-bottom: 1px solid #334a65;*/
+  /*padding-bottom: 10px;*/
+  /*margin-top: 0;*/
+  /*text-transform: capitalize;*/
+  /*}*/
+  /*.box .description{*/
+  /*font-size: 13px;*/
+  /*font-style: italic;*/
+  /*line-height: 20px;*/
+  /*margin-bottom: 30px;*/
+  /*}*/
+  /*.box .read{*/
+  /*display: inline-block;*/
+  /*font-size: 14px;*/
+  /*color: #fff;*/
+  /*background: #132d4d;*/
+  /*padding: 7px 20px;*/
+  /*text-transform: capitalize;*/
+  /*}*/
+  /*@media only screen and (max-width: 990px){*/
+  /*.box{ margin-bottom: 20px; }*/
+  /*}*/
+  /*@media only screen and (max-width: 479px){*/
+  /*.box .box-content{ padding: 20px; }*/
+  /*}*/
+  /*@media only screen and (max-width: 359px){*/
+  /*.box .box-content{ padding: 10px; }*/
+  /*}*/
 </style>

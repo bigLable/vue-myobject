@@ -1,13 +1,13 @@
 <template>
   <div>
     <div style="height: 80px">&nbsp;</div>
-<div v-for="work in info" style="margin: 0 auto">
+<div v-for="(activity,index) in myActData1" :key="index" style="margin: 0 auto">
 
     <div class="m-artlist m-artlist-2  col-md-3 col-sm-6">
       <div class="item">
         <div class="img " >
 
-          <router-link role="presentation" :to="'/comment/'+work.worksId" class="img-thumbnail">
+          <router-link role="presentation" :to="'/comment/'+activity.worksId" class="img-thumbnail">
 				<span class="bor">
 				</span>
             <span class="bor">
@@ -16,14 +16,14 @@
 				</span>
             <span class="bor">
 				</span>
-            <img :src="work.worksPic" >
+            <img :src="activity.worksPic" >
 
           </router-link>
         </div>
         <br>
-        <h4 class="title">简介:{{work.worksDescribe}}</h4>
+        <h4 class="title">简介:{{activity.worksDescribe}}</h4>
         <p class="description">
-          <img src="../../../assets/user.png" alt="" class="img-responsive" style="width: 20px;height: 20px;display: inline">&nbsp;{{work.worksauthor}}作品
+          <img src="../../../assets/user.png" alt="" class="img-responsive" style="width: 20px;height: 20px;display: inline">&nbsp;{{activity.worksauthor}}作品
         </p>
         <br>
         <br>
@@ -32,6 +32,8 @@
     </div>
 
 </div>
+
+
 
       <!--<div class="pic " v-for="work in info">-->
       <!--<div class="  col-md-3 col-sm-6">-->
@@ -48,6 +50,16 @@
       <!--</div>-->
     <!--</div>-->
     <div style="height: 50px">&nbsp;</div>
+    <div class="col-xs-12" style="text-align: center">
+    <el-pagination
+      small
+      @current-change="change()"
+      :current-page.sync="pageIndex"
+      layout="prev, pager, next"
+      :total="pageCount"
+      :page-size = "pagesize">
+    </el-pagination>
+    </div>
   </div>
 </template>
 
@@ -57,17 +69,48 @@
     name: "recworks",
     data(){
       return{
+        mydata: [],
+        pageIndex: 1,
+        pagesize: 4,  //每页条数
+        pageCount:0,
         info:[],
+        activitys:[],
 
       }
+    },
+    computed:{
+      myActData1(){
+        return this.activitys;
+      }
+    },
+    methods:{
+      loadData() {
+        this.activitys = [];
+        let start = (this.pageIndex-1) * this.pagesize;
+        let end = start + this.pagesize;
+        // console.log(this.myActData[1]);
+        if(end>=this.pageCount){
+          end=this.pageCount
+        }
+        for (var i = start; i < end; i++) {
+          this.activitys.push(this.myActData[i])
+        }
+      },
+      change(){
+        return this.loadData();
+      },
+
     }
     , mounted(){
       let _this = this;
       axios.get('http://localhost:3000/works/recworks').then(function(result){
         console.log('---');
         console.log(result.data)
-        _this.info = result.data;
-        console.log(_this.info);
+        _this.myActData = result.data;
+        _this.pageCount=_this.myActData.length;
+        // console.log(_this.pageCount)
+        _this.loadData()
+        console.log(_this.myActData);
       },function(err){
         console.log(err)
 
