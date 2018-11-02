@@ -42,7 +42,9 @@
     </el-col>
     </div>-->
     <div class="body" v-show="index==1">
-      <div class="pic"></div>
+      <div class="pic">
+        <img :src="userpic">
+      </div>
       <router-link role="presentation" to="/changeinfo">
         <el-button type="info" plain  class="btn" style="font-size:15px;font-weight: bold">修改资料</el-button>
       </router-link>
@@ -104,7 +106,8 @@
         <el-dialog title="收货地址" :visible.sync="dialogFormVisible">
           <el-form :model="form">
             <el-form-item label="添加地址名称" :label-width="formLabelWidth">
-              <el-input v-model="form.name" autocomplete="off"></el-input>
+              <!--<el-input v-model="form.name" autocomplete="off"></el-input>-->
+              <v-distpicker ></v-distpicker>
             </el-form-item>
           </el-form>
           <div slot="footer" class="dialog-footer">
@@ -261,7 +264,7 @@
     name: "user",
     data() {
       return {
-
+          userpic:'',
         oderIfo: [],
         allare: [],
         user: [],
@@ -281,6 +284,9 @@
         formLabelWidth: '120px'
 
       }
+    },
+    created(){
+      this.userpic=this.$store.state.userpic
     },
     methods: {
 

@@ -16,6 +16,7 @@
     "element-ui": "^2.4.8",
     "jquery": "^3.3.1",
     "koa-session": "^5.9.0",
+    "v-distpicker": "^1.0.20",
     "v-viewer": "^1.2.1",
     "vue": "^2.5.11",
     "vue-router": "^3.0.1",

@@ -1,21 +1,43 @@
 <template>
-  <div class="container">
+  <div class="container" >
     <div class="body">
-      <form class="form">
-        <div class="form-group">
+
           <h2 style="text-align: center;color:white">修改信息</h2>
           <div class="form-group" style="width:250px;margin:0 auto">
-            <label style="color:white">点击修改头像</label>
-            <input @change="File($event)" type="file" class="form-control" style="background-color:transparent;border: 2px solid rgba(255,255,255,0.3);color:white">
+            <div>
+              <h1>上传文件</h1>
+              <div class="app">
+                <div class="admin-content">
+                  <div class="edit">
+                    <div class="avatar">
+                      <div class="img">
+                        <img src=''>
+                        <span>更改</span>
+                      </div>
+                      <input type="file" name="avatar"
+                             @change="changeImage($event)"
+                             accept="image/gif,image/jpeg,image/jpg,image/png"
+                             ref="avatarInput"
+                             multiple
+                      ><br/>
+                      <!--自定义的表单数据：<input type="text" v-model="mydata">-->
+                    </div>
+                    <!--<button type="button" @click="edit">上传文件</button>-->
+                  </div>
+                </div>
+              </div>
+            </div>
           </div><br>
+      <form class="form">
+        <div class="form-group">
           <label style="color:white;margin-left:25px">新的用户名</label>
           <input type="text" v-model="formLabelAlign.name" class="form-control"  style="margin:0 auto;width:250px;background-color: transparent;border: 2px solid rgba(255,255,255,0.3);color: white">
         </div>
-        <!--<div class="form-group">
-          <label >性别</label>
-          <label><input v-model="userSex" name="sex" type="radio" value="1" />男 </label>
-          <label><input v-model="userSex"  name="sex" type="radio" value="0" />女 </label>
-        </div>-->
+        <!--<div class="form-group">-->
+          <!--<label >性别</label>-->
+          <!--<label><input v-model="userSex" name="sex" type="radio" value="1" />男 </label>-->
+          <!--<label><input v-model="userSex"  name="sex" type="radio" value="0" />女 </label>-->
+        <!--</div>-->
         <div class="form-group">
           <label style="color:white;margin-left:25px">手机号</label>
           <input v-model="formLabelAlign.phone" class="form-control" style="margin:0 auto;width:250px;background-color: transparent;border: 2px solid rgba(255,255,255,0.3);">
@@ -38,7 +60,7 @@
         </div>
         <br><br>
         <div class="form-group">
-          <el-button type="primary" round style="width:150px;height:40px;margin-left:70px" class="form-control btn btn-default" @click="updateinfo()">提交修改</el-button>
+          <el-button type="primary" round style="width:150px;height:40px;margin-left:70px" class="form-control btn btn-default" @click="edit">提交修改</el-button>
         </div>
       </form>
 
@@ -48,12 +70,14 @@
 
 <script>
   import $ from 'jquery'
+  import axios from 'axios'
   export default {
     name: "changeinfo",
     data() {
       return {
+        upath:'',
         userSex:'',
-        lmodel:{},
+        userId:'',
         show: '0',
         labelPosition: 'right',
         pwd:'',
@@ -65,17 +89,43 @@
         },
         radio: 1,
         //是否修改密码
-        imageUrl: ''
+
       }
     },
+    created(){
+      this.userId=this.$store.state.user
+    },
     methods: {
-      //图片上传
-      File : function (event) {
-        var file = event.target.files; // (利用console.log输出看结构就知道如何处理档案资料)
-        // do something...
-        this.lmodel=file
-        // console.log('++++++++++++'+this.lmodel)
+
+      edit() {
+
+        console.log(this.upath);
+        var zipFormData = new FormData();
+        //依次添加多个文件
+        for(var i = 0 ; i< this.upath.length ; i++){
+          zipFormData.append('filename', this.upath[i]);
+        }
+        //添加其他的表单元素
+        alert(this.$store.state.user)
+        alert(this.userId)
+        zipFormData.append('userId',this.userId)
+        zipFormData.append('userName',this.formLabelAlign.name)
+        zipFormData.append('userSex',this.radio)
+        zipFormData.append('userPhoneNum',this.formLabelAlign.phone,)
+        zipFormData.append('userPwd',this.formLabelAlign.userPwd)
+        let config = { headers: { 'Content-Type': 'multipart/form-data' } };
+        axios.post('http://localhost:3000/users/updateUsers', zipFormData,config)
+          .then(function (response) {
+            console.log(response);
+            console.log(response.data);
+            console.log(response.bodyText);
+          });
       },
+      //选中文件后，将文件保存到实例的变量中
+      changeImage(e) {
+        this.upath = e.target.files;
+      },
+
       //是否需要修改密码
       sel(index) {
         if (index == 0) {
@@ -84,45 +134,8 @@
           this.show = 1
         }
       },
-      // handleAvatarSuccess(res, file) {
-      //   this.imageUrl = URL.createObjectURL(file.raw);
-      //   // this.imageURL=file
-      //   // alert(JSON.stringify(file.raw))
-      // },
-      // beforeAvatarUpload(file) {
-      //   const isJPG = file.type === 'image/jpeg';
-      //   const isLt2M = file.size / 1024 / 1024 < 2;
-      //
-      //   if (!isJPG) {
-      //     this.$message.error('上传头像图片只能是 JPG 格式!');
-      //   }
-      //   if (!isLt2M) {
-      //     this.$message.error('上传头像图片大小不能超过 2MB!');
-      //   }
-      //   return isJPG && isLt2M;
-      // },
-      updateinfo() {
 
-        if(this.show==1){
-          this.pwd=this.formLabelAlign.userPwd
-        }else{
-          this.pwd=this.$store.state.userPw
-        }
-        let _this = this;
-        $.post('http://localhost:3000/users/updateUsers',
-          {
-            userID:_this.$store.state.user,
-            userName:_this.formLabelAlign.name,
-            userSex: _this.radio,
-            userPhoneNum:_this.formLabelAlign.phone,
-            userPwd: _this.pwd,
-            userPic:_this.model
 
-          }, function (res) {
-
-          })
-
-      }
     },
     computed: {
       // 计算属性的 getter
@@ -192,9 +205,9 @@
     text-align: center;
   }
 
-  .avatar {
-    width: 178px;
-    height: 178px;
-    display: block;
-  }
+  /*.avatar {*/
+    /*width: 178px;*/
+    /*height: 178px;*/
+    /*display: block;*/
+  /*}*/
 </style>

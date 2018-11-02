@@ -5,6 +5,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state:{
+    userpic:'',
     seletlogon:1,
     user:'',
     userEmail:'',
