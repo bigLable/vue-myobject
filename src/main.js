@@ -8,7 +8,8 @@ import VideoPlayer from 'vue-video-player'
 import Viewer from 'v-viewer'
 import 'viewerjs/dist/viewer.css'
 //Vue.use(Viewer) 默认配置写法
-
+import Distpicker from 'v-distpicker'
+Vue.component('v-distpicker', Distpicker)
 
 Vue.use(Viewer, {
   defaultOptions: {
@@ -32,7 +33,7 @@ const router =new VueRouter({
 })
 new Vue({
   el: '#app',
-   store,
+  store,
   router,
   render: h => h(App)
 })
