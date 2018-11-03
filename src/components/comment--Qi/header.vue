@@ -33,7 +33,7 @@
         <div class="one"><router-link role="presentation" to="/about"><a>关于我们</a></router-link></div>
         <div class="two"><router-link role="presentation" to="/about"><a>关于我们</a></router-link></div>
       </div>
-      <div class="nav2">
+      <div class="nav2" >
         <div class="one"><router-link role="presentation" to="/repair"><a>售后服务</a></router-link></div>
         <div class="two"><router-link role="presentation" to="/repair"><a>售后服务</a></router-link></div>
       </div>

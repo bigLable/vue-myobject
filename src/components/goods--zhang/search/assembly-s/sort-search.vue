@@ -53,7 +53,7 @@
 
     </div>
     <div style="height: 50px">&nbsp;</div>
-    <div class="col-xs-12" style="text-align: center">
+    <div class="col-xs-12"  style="text-align: center">
       <el-pagination
         small
         @current-change="change()"
