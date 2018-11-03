@@ -71,7 +71,7 @@
       return{
         mydata: [],
         pageIndex: 1,
-        pagesize: 4,  //每页条数
+        pagesize: 12,  //每页条数
         pageCount:0,
         info:[],
         activitys:[],

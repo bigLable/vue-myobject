@@ -27,10 +27,15 @@ import {routes} from './routes'
 const router =new VueRouter({
   routes:routes,
   mode:'history'
+
 })
 new Vue({
   el: '#app',
    store,
   router,
   render: h => h(App)
+})
+//跳转后回到顶部
+router.afterEach((to,from,next) => {
+  window.scrollTo(0,0);
 })
