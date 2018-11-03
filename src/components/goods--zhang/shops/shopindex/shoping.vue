@@ -65,16 +65,16 @@
     <!--腰部-->
     <div id="divsf" class="row">
       <div  class="container">
-        <div id="tohard" class="col-xs-3 col-sm-4 col-md-6 col-lg-7">
-          <span>{{user.shopName}}</span>
+        <div id="tohard" class="col-xs-4 col-sm-4 col-md-6 col-lg-7">
+          <span style="font-size: 22px;">{{user.shopName}}</span>
         </div>
-        <div class="col-xs-9 col-sm-8 col-md-6 col-lg-5"   >
+        <div class="col-xs-8 col-sm-8 col-md-6 col-lg-5"   >
           <ul>
-            <li  id="lii" @click="change(3)"><span>评论</span></li>
+            <li style="width: 100px"  id="lii" @click="change(3)"><span>评论</span></li>
 
-            <li   @click="change(2)"><span>详细参数</span></li>
+            <li style="width: 100px"  @click="change(2)"><span>详细参数</span></li>
 
-            <li @click="change(1)"><span>概述</span></li>
+            <li style="width: 100px" @click="change(1)"><span>概述</span></li>
           </ul>
         </div>
       </div>
