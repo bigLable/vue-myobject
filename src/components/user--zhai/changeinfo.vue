@@ -28,9 +28,11 @@
           <input type="text" v-model="formLabelAlign.name" class="form-control"  style="margin:0 auto;width:250px;background-color: transparent;border: 2px solid rgba(255,255,255,0.3);color: white">
         </div>
         <div class="form-group" style="margin-left:25px;">
-        <label >性别:</label>
-        <label><input v-model="userSex" name="sex" type="radio" value="1" />男 </label>&nbsp;&nbsp;&nbsp;&nbsp;
-        <label><input v-model="userSex"  name="sex" type="radio" value="0" />女 </label>
+          <label for="man">男</label>
+          <input type="radio" id="man" value=1 v-model="sex">
+          <label for="woman">女</label>
+          <input type="radio" id="woman" value=0 v-model="sex">
+
         </div>
         <div class="form-group">
           <label style="margin-left:25px">手机号</label>
@@ -68,7 +70,7 @@
     data() {
       return {
         upath:'',
-        userSex:'',
+        sex:0,
         userId:'',
         show: '0',
         labelPosition: 'right',
@@ -79,7 +81,7 @@
           phone: '',
           userPwd: '',
         },
-        radio: 1,
+        radio:1,
         //是否修改密码
 
       }
@@ -102,6 +104,7 @@
 
       },
       edit() {
+        alert('性别'+this.radio)
       let _this=this
         console.log(this.upath);
         var zipFormData = new FormData();
@@ -112,7 +115,7 @@
         //添加其他的表单元素
         zipFormData.append('userId',this.userId)
         zipFormData.append('userName',this.formLabelAlign.name)
-        zipFormData.append('userSex',this.radio)
+        zipFormData.append('userSex',this.sex)
         zipFormData.append('userPhoneNum',this.formLabelAlign.phone,)
         zipFormData.append('userPwd',this.formLabelAlign.userPwd)
         let config = { headers: { 'Content-Type': 'multipart/form-data' } };
