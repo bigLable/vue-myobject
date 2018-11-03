@@ -43,7 +43,7 @@
           <ul>
             <li style="width: 300px">价格：<span style="color:cornflowerblue;font-size: 24px;">RMB {{user.shopPrice}}.00</span></li>
             <li>规格：<input type="button" class="btn btn-default" id="bt2" :value="user.shopName"></li>
-            <li>颜色：<input type="color" style="width: 30px;background: white;height: 30px;"></li>
+            <li>颜色：<div style="width: 26px;height: 26px;background: whitesmoke;position: relative;top: 8px;display: inline-block"><div style="width: 18px;height: 18px;background: black;position: absolute;left: 4px;top: 4px;"></div></div></li>
             <li>其他：<span  style="color: orangered ;font-size:13px">现在下单就获免费延保一年</span></li>
           </ul>
           <hr>
