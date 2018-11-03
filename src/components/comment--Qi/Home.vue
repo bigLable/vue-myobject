@@ -135,7 +135,9 @@
 
 
     <div style="height: 600px"></div>
-
+    <div class="go-top">
+      <img  id="ding" src="../../assets/ding.png" @click="goTop" alt="" ref="btn">
+    </div>
 
 
   </div>
@@ -154,6 +156,8 @@
 
 
       return {
+        isTop: true,
+        timer: null,
 
         info1: [],
         info2: [],
@@ -165,7 +169,34 @@
 
 
     methods: {
-
+      needScroll () {
+        let clientHeight = document.documentElement.clientHeight
+        let obtn = this.$refs.btn
+        window.onscroll = function () {
+          let osTop = document.documentElement.scrollTop || document.body.scrollTop
+          if (osTop >= clientHeight) {
+            obtn.style.display = 'block'
+          } else {
+            obtn.style.display = 'none'
+          }
+          if (!this.isTop) {
+            clearInterval(this.timer)
+          }
+          this.isTop = false
+        }
+      },
+      goTop () {
+        let self = this
+        self.timer = setInterval(function () {
+          let osTop = document.documentElement.scrollTop || document.body.scrollTop
+          let ispeed = Math.floor(-osTop / 5)
+          document.documentElement.scrollTop = document.body.scrollTop = osTop + ispeed
+          self.isTop = true
+          if (osTop === 0) {
+            clearInterval(self.timer)
+          }
+        }, 30)
+      },
       fade: function () {
         $('#f').addClass('animated  pulse')
       },
@@ -219,6 +250,7 @@
       this.getnewgoods();
       this.gethotgoods();
       this.getnewworks();
+      this.needScroll();
     },
   }
 
@@ -228,10 +260,20 @@
 <style scoped>
   @import '../../../static/css/style.css';
   @import '../../../static/css/imagehover.css';
-
   #head {
     background-color: #ffffff;
   }
+#ding{
+    width: 50px;
+    height: 50px;
+    position: fixed;
+    right: 50px;
+    bottom: 50px;
+    border: none;
+    display: none;
+
+  }
+
 
   .hot {
     font-size: 24px;

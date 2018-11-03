@@ -64,6 +64,10 @@
       </div>
     </el-row>
     <h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h3>
+    <div class="go-top">
+      <img  id="ding" src="../../../assets/ding.png" @click="goTop" alt="" ref="btn">
+    </div>
+
   </div>
 </template>
 <script>
@@ -76,7 +80,8 @@
     name: "works",
     data() {
       return {
-
+        isTop: true,
+        timer: null,
         info: [],
         info3: []
 
@@ -88,6 +93,34 @@
 
     },
     methods: {
+      needScroll () {
+        let clientHeight = document.documentElement.clientHeight
+        let obtn = this.$refs.btn
+        window.onscroll = function () {
+          let osTop = document.documentElement.scrollTop || document.body.scrollTop
+          if (osTop >= clientHeight) {
+            obtn.style.display = 'block'
+          } else {
+            obtn.style.display = 'none'
+          }
+          if (!this.isTop) {
+            clearInterval(this.timer)
+          }
+          this.isTop = false
+        }
+      },
+      goTop () {
+        let self = this
+        self.timer = setInterval(function () {
+          let osTop = document.documentElement.scrollTop || document.body.scrollTop
+          let ispeed = Math.floor(-osTop / 5)
+          document.documentElement.scrollTop = document.body.scrollTop = osTop + ispeed
+          self.isTop = true
+          if (osTop === 0) {
+            clearInterval(self.timer)
+          }
+        }, 30)
+      },
       handleClick(tab, event) {
         console.log(tab, event);
       },
@@ -116,6 +149,7 @@
         console.log(err);
       });
       this.gethotgoods();
+      this.needScroll();
 
 
     }
@@ -131,6 +165,16 @@
 
   img {
     width: 1920px;
+  }
+  #ding{
+    width: 50px;
+    height: 50px;
+    position: fixed;
+    right: 50px;
+    bottom: 50px;
+    border: none;
+    display: none;
+
   }
 
 </style>
