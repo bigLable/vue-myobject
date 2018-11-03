@@ -31,7 +31,6 @@
               </span>
              <span :id="'num'+key" class="num" >{{Num}}</span>
              <span>
-
                 <img src="../../assets/add.gif" @click="addNum($event)" />
              </span>
            </td>
@@ -83,15 +82,16 @@
         data(){
           return {
             to:0,
-            Total:'0',
+            Total:0,
             info:[],
             inf: [],
-            Num: 0,
+            Num: 1,
             // info:{'shopImg':require('../../assets/logo.png'),'shopifo':'超清','shopPrice':20,'num':2,'total':40},
             checkedname: [],
             goData: [],
             }
           },
+
       methods:{
 
           // bxoche(){
@@ -246,6 +246,7 @@
                   // console.log('请求单个商品结果'+(result.data[0]).shopImg3)
                   console.log('请求单个商品结果'+result.data.data[0][0].shopifo)
                   _this.info.push(_this.inf)
+                  _this.Total=_this.Total+_this.inf.shopPrice
                   console.log('属性值'+_this.info)
                 },function(err){
                   console.log(err);

@@ -31,10 +31,24 @@
       methods:{
           //付款成功后弹框
         open() {
-          this.$alert('尊敬的客户你已下单成功！如有后续操作欢迎联系客服热线100-1001011', '付款成功提示', {
-            confirmButtonText: '确定',
+          let _this=this;
+          if(this.$store.state.adres==''){
+            alert('请选择收货地址')
+          }else {
+            this.$alert('尊敬的客户你已下单成功！如有后续操作欢迎联系客服热线100-1001011', '付款成功提示', {
+              confirmButtonText: '确定',
+            });
 
-          });
+          }
+          setTimeout(function () {
+            _this.$store.state.num.int1=1;
+            _this.$store.state.num.int2=0;
+            _this.$store.state.num.int3=0;
+            _this.$router.push({path:'/user'})
+
+          },2000);
+
+
         },
         change(){
           this.$store.state.num.int3++

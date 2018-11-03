@@ -19,7 +19,6 @@ Vue.use(Viewer, {
 require('video.js/dist/video-js.css')
 require('vue-video-player/src/custom-theme.css')
 import Distpicker from 'v-distpicker'
-
 Vue.component('v-distpicker', Distpicker)
 Vue.use(VideoPlayer)
 

@@ -7,7 +7,7 @@
 
     <div class="col-sm-2">收货地址</div>
     <!--<div class="col-sm-2 " >删除</div>-->
-    <!--<div class="col-sm-1  pointer" ><span @click="control">新增</span></div>-->
+    <div class="col-sm-1  pointer" ><span @click="control">地址编辑</span></div>
     <hr/>
 
       <div slot="header" class="clearfix">
@@ -66,7 +66,8 @@
       },
       methods:{
         control(){
-          this.disp='block'
+          // this.disp='block'
+          this.$router.push({path:'/user'})
         },
         control2(){
           let _this=this
