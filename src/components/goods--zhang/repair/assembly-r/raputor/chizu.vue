@@ -20,7 +20,7 @@
         <!--<input type="button" class="btn btn-primary" form="rok"  value="确定">-->
       <!--</div>-->
       <!--<div class=" row col-lg-3 col-md-4  col-xs-4">-->
-        <input type="button" @click="ckb" class="btn btn-warning" value="我附近的维修点">
+        <input type="button" @click="ckb"  class="btn btn-warning" value="我附近的维修点">
 
       </div>
     </div>
@@ -44,12 +44,40 @@
           }
       },
     methods:{
+      ccc(){
+        var map = new BMap.Map("allmap");    // 创建Map实例
+        map.centerAndZoom(new BMap.Point(116.404, 39.915), 11);  // 初始化地图,设置中心点坐标和地图级别
+        //添加地图类型控件
+        map.addControl(new BMap.MapTypeControl({
+          mapTypes:[
+            BMAP_NORMAL_MAP,
+            BMAP_HYBRID_MAP
+          ]}));
+        map.setCurrentCity("苏州");          // 设置地图显示的城市 此项是必须设置的
+        map.enableScrollWheelZoom(true);
+
+        // function loadJScript() {
+        //   var script = document.createElement("script");
+        //   script.type = "text/javascript";
+        //   script.src = "http://api.map.baidu.com/api?v=2.0&ak=您的密钥&callback=init";
+        //   document.body.appendChild(script);
+        // }
+        // function init() {
+        //   var map = new BMap.Map("allmap");            // 创建Map实例
+        //   var point = new BMap.Point(116.404, 39.915); // 创建点坐标
+        //   map.centerAndZoom(point,15);
+        //   map.enableScrollWheelZoom();                 //启用滚轮放大缩小
+        // }
+        // window.onload = loadJScript;  //异步加载地图
+      },
       ckb() {
+
         var map = new BMap.Map("allmap");
         var point = new BMap.Point(116.404, 39.915);
         map.centerAndZoom(point, 11);
 
         var geolocation = new BMap.Geolocation();
+
         geolocation.getCurrentPosition(function (r) {
           if (this.getStatus() == BMAP_STATUS_SUCCESS) {
             var mk = new BMap.Marker(r.point);
@@ -63,6 +91,7 @@
           }
           else {
             alert('failed' + this.getStatus());
+            alert('获取位置失败，请确认是否给予定位权限')
           }
         }, {enableHighAccuracy: true})
       }
@@ -86,32 +115,7 @@
       // }
     },
     mounted(){
-    $(function(){
-        var map = new BMap.Map("allmap");    // 创建Map实例
-      map.centerAndZoom(new BMap.Point(116.404, 39.915), 11);  // 初始化地图,设置中心点坐标和地图级别
-      //添加地图类型控件
-      map.addControl(new BMap.MapTypeControl({
-        mapTypes:[
-          BMAP_NORMAL_MAP,
-          BMAP_HYBRID_MAP
-        ]}));
-      map.setCurrentCity("苏州");          // 设置地图显示的城市 此项是必须设置的
-      map.enableScrollWheelZoom(true);
-
-      // function loadJScript() {
-      //   var script = document.createElement("script");
-      //   script.type = "text/javascript";
-      //   script.src = "http://api.map.baidu.com/api?v=2.0&ak=您的密钥&callback=init";
-      //   document.body.appendChild(script);
-      // }
-      // function init() {
-      //   var map = new BMap.Map("allmap");            // 创建Map实例
-      //   var point = new BMap.Point(116.404, 39.915); // 创建点坐标
-      //   map.centerAndZoom(point,15);
-      //   map.enableScrollWheelZoom();                 //启用滚轮放大缩小
-      // }
-      // window.onload = loadJScript;  //异步加载地图
-    });
+    this.ccc()
 
     },
 
@@ -136,7 +140,7 @@
     font-size: 20px;
   }
   .btn.btn-warning{
-    height: 100px;
+    height: 80px;
     width: 500px;
     font-size: 38px;
   }

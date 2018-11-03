@@ -5,10 +5,12 @@
   <div class="container">
     <div id="px" class="row">
       <div class="col-lg-12 col-sm-12 col-xs-12 col-md-12">
-        <p>咔嚓在线商城首页>{{user.shopType}}>{{user.shopName}}</p>
+        <router-link to="/"><p style="display: inline-block">咔嚓在线商城首页></p></router-link>
+        <router-link to="/search"><p style="display: inline-block" >商品列表></p></router-link><p style="display: inline-block">{{user.shopName}}</p>
       </div>
     </div>
     <!--=====================================================-->
+
     <!--详情-->
     <div class="row">
      <div id="dv1" class=" row col-lg-6 col-md-6 col-sm-7 col-xs-11">
@@ -43,7 +45,7 @@
           <ul>
             <li style="width: 300px">价格：<span style="color:cornflowerblue;font-size: 24px;">RMB {{user.shopPrice}}.00</span></li>
             <li>规格：<input type="button" class="btn btn-default" id="bt2" :value="user.shopName"></li>
-            <li>颜色：<input type="color" style="width: 30px;background: white;height: 30px;"></li>
+            <li>颜色：<div style="width: 26px;height: 26px;background: whitesmoke;position: relative;top: 8px;display: inline-block"><div style="width: 18px;height: 18px;background: black;position: absolute;left: 4px;top: 4px;"></div></div></li>
             <li>其他：<span  style="color: orangered ;font-size:13px">现在下单就获免费延保一年</span></li>
           </ul>
           <hr>
@@ -65,16 +67,16 @@
     <!--腰部-->
     <div id="divsf" class="row">
       <div  class="container">
-        <div id="tohard" class="col-xs-3 col-sm-4 col-md-6 col-lg-7">
-          <span>{{user.shopName}}</span>
+        <div id="tohard" class="col-xs-4 col-sm-4 col-md-6 col-lg-7">
+          <span style="font-size: 22px;">{{user.shopName}}</span>
         </div>
-        <div class="col-xs-9 col-sm-8 col-md-6 col-lg-5"   >
+        <div class="col-xs-8 col-sm-8 col-md-6 col-lg-5"   >
           <ul>
-            <li  id="lii" @click="change(3)"><span>评论</span></li>
+            <li style="width: 100px"  id="lii" @click="change(3)"><span>评论</span></li>
 
-            <li   @click="change(2)"><span>详细参数</span></li>
+            <li style="width: 100px"  @click="change(2)"><span>详细参数</span></li>
 
-            <li @click="change(1)"><span>概述</span></li>
+            <li style="width: 100px" @click="change(1)"><span>概述</span></li>
           </ul>
         </div>
       </div>

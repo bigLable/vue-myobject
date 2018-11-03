@@ -30,7 +30,7 @@
     </div>
     <div class="row text-center">
 
-      <div v-for="dat in user" class=" animated pulse repudiv col-lg-3  col-md-3 col-sm-6 col-xs-6">
+      <div v-for="(dat,index) in activitys" class=" animated pulse repudiv col-lg-3  col-md-3 col-sm-6 col-xs-6">
 
         <div class="bbb image-hover img-shadow-1 ">
           <router-link :to="'/shops/'+dat.ShopID">
@@ -52,6 +52,18 @@
       </div>
 
     </div>
+    <div style="height: 50px">&nbsp;</div>
+    <div class="col-xs-12"  style="text-align: center">
+      <el-pagination
+        small
+        @current-change="change()"
+        :current-page.sync="pageIndex"
+        layout="prev, pager, next"
+        :total="pageCount"
+        :page-size = "pagesize">
+      </el-pagination>
+    </div>
+
   </div>
 
 </template>
@@ -66,14 +78,46 @@
         name: '',
         name1: '',
         user: [],
+        mydata: [],
+        pageIndex: 1,
+        pagesize: 12,  //每页条数
+        pageCount:0,
+        info:[],
+        activitys:[],
+
       };
 
     },
+    computed:{
+      myActData1(){
+        return this.activitys;
+      }
+    },
+
+
+
+
+
     methods: {
+      loadData() {
+        this.activitys = [];
+        let start = (this.pageIndex-1) * this.pagesize;
+        let end = start + this.pagesize;
+        // console.log(this.myActData[1]);
+        if(end>=this.pageCount){
+          end=this.pageCount
+        }
+        for (var i = start; i < end; i++) {
+          this.activitys.push(this.user[i])
+        }
+      },
+      change(){
+        return this.loadData();
+      },
       paratt(){
         let arr = [];
-        for (let a = 0; a < this.user.length; a++) {
-          arr[a] = this.user[a].shopPrice;
+        for (let a = 0; a < this.activitys.length; a++) {
+          arr[a] = this.activitys[a].shopPrice;
         }
         let quicksort = function (arr) {
           if (arr.length <= 1) {
@@ -96,20 +140,20 @@
         let result = quicksort(arr);
         let newArr=[];
         for(let i=0;i<result.length;i++){
-          for(let j=0;j<this.user.length;j++){
-            if(this.user[j].shopPrice==result[i]){
-              newArr.push(this.user[j])
+          for(let j=0;j<this.activitys.length;j++){
+            if(this.activitys[j].shopPrice==result[i]){
+              newArr.push(this.activitys[j])
             }
           }
         }
-        this.user=newArr;
-        console.log(JSON.stringify(this.user));
+        this.activitys=newArr;
+        console.log(JSON.stringify(this.activitys));
       },
       // ==========================冒泡排序==============================
       paraup() {
         let arr = [];
-        for (let a = 0; a < this.user.length; a++) {
-          arr[a] = this.user[a].shopPrice;
+        for (let a = 0; a < this.activitys.length; a++) {
+          arr[a] = this.activitys[a].shopPrice;
         }
         let quicksort = function (arr) {
           if (arr.length <= 1) {
@@ -132,19 +176,19 @@
         let result = quicksort(arr);
         let newArr=[];
         for(let i=0;i<result.length;i++){
-          for(let j=0;j<this.user.length;j++){
-            if(this.user[j].shopPrice==result[i]){
-              newArr.push(this.user[j])
+          for(let j=0;j<this.activitys.length;j++){
+            if(this.activitys[j].shopPrice==result[i]){
+              newArr.push(this.activitys[j])
             }
           }
         }
-        this.user=newArr;
-        console.log(JSON.stringify(this.user));
+        this.activitys=newArr;
+        console.log(JSON.stringify(this.activitys));
       },
       paradown() {
         let arr = [];
-        for (let a = 0; a < this.user.length; a++) {
-          arr[a] = this.user[a].shopPrice;
+        for (let a = 0; a < this.activitys.length; a++) {
+          arr[a] = this.activitys[a].shopPrice;
         }
         let quicksort = function (arr) {
           if (arr.length <= 1) {
@@ -167,13 +211,13 @@
         let result = quicksort(arr);
         let newArr=[];
         for(let i=0;i<result.length;i++){
-          for(let j=0;j<this.user.length;j++){
-            if(this.user[j].shopPrice==result[i]){
-              newArr.push(this.user[j])
+          for(let j=0;j<this.activitys.length;j++){
+            if(this.activitys[j].shopPrice==result[i]){
+              newArr.push(this.activitys[j])
             }
           }
         }
-        this.user=newArr;
+        this.activitys=newArr;
         console.log(JSON.stringify(result));
 
       },
@@ -183,20 +227,34 @@
       //   this.$router.push({path:'/shops/'+dat.ShopID})
       // },
 
-      getData() {
-        let _this = this
-        axios.get('http://localhost:3000/shop/allshop').then(function (result) {
-          console.log(result.data);
-          _this.user = result.data;
-          console.log(_this.user);
+      // getData() {
+      //   let _this = this
+      //   axios.get('http://localhost:3000/shop/allshop').then(function (result) {
+      //     console.log(result.data);
+      //     _this.user = result.data;
+      //     console.log(_this.user);
+      //
+      //   })
+      // }, function(err) {
+      //   console.log(err.msg)
+      // },
 
-        })
-      }, function(err) {
-        console.log(err.msg)
-      },
+    },
+    mounted() {
+    let _this=this;
+      // this.getData();
+      axios.get('http://localhost:3000/shop/allshop').then(function(result){
+        console.log('---');
+        console.log(result.data)
+        _this.user = result.data;
+        _this.pageCount=_this.user.length;
+        // console.log(_this.pageCount)
+        _this.loadData()
+        console.log(_this.user);
+      },function(err){
+        console.log(err)
 
-    }, mounted() {
-      this.getData();
+      })
 
     }
   }
