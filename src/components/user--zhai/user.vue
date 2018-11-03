@@ -104,7 +104,7 @@
         <div><el-dialog title="收货地址" :visible.sync="dialogFormVisible">
           <div slot="footer" class="dialog-footer" style="height:400px;"><el-form :model="form">
             <el-form-item label="添加地址名称" :label-width="formLabelWidth">
-             <v-distpicker province="广东省" city="广州市" area="海珠区" @selected="onSelected" ></v-distpicker>
+             <v-distpicker province="广东省" city="广州市" area="海珠区" @selected="onSelected" type="mobile"></v-distpicker>
               <el-input v-model="form.addre" autocomplete="off" placeholder="请输入具体地址"></el-input>
             </el-form-item>
           </el-form>

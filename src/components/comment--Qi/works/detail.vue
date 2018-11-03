@@ -41,7 +41,8 @@
       </div>
 
     </div>
-    <h3 id="lj">留言板</h3>
+    <hr>
+    <h3 id="lj">留言贴</h3>
     <div class="box1 shadow1"id="lk"v-for="comment in com">
 
       <p style="font-size: 14px">用户：{{comment.userName}}</p>
@@ -244,31 +245,31 @@
     position: absolute;
     width: 200px;
     left: 1000px;
-    top: 250px;
+    top: 400px;
   }
   #ll{
     position: absolute;
     width: 200px;
     left: 980px;
-    top: 100px;
+    top: 250px;
   }
   #lk{
     position: relative;
     width: 200px;
-    left: 1000px;
-    top: -200px;
+    left: 540px;
+
   }
   #lj{
     position: absolute;
     width: 200px;
-    left: 1100px;
-    top: 450px;
+    left: 700px;
+    top: 650px;
   }
   #type{
     position: absolute;
     width: 100px;
     left: 1100px;
-    top: 320px;
+    top: 460px;
   }
   .big{
     height: 600px;
