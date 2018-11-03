@@ -5,7 +5,8 @@
   <div class="container">
     <div id="px" class="row">
       <div class="col-lg-12 col-sm-12 col-xs-12 col-md-12">
-        <p>咔嚓在线商城首页>{{user.shopType}}>{{user.shopName}}</p>
+        <router-link to="/"><p style="display: inline-block">咔嚓在线商城首页></p></router-link>
+        <router-link to="/search"><p style="display: inline-block" >商品列表></p></router-link><p style="display: inline-block">{{user.shopName}}</p>
       </div>
     </div>
     <!--=====================================================-->
