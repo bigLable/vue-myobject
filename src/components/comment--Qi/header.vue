@@ -1,6 +1,7 @@
 <template>
   <div>
 
+
     <nav class="navbar navbar navbar-inverse">
     <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -20,7 +21,7 @@
     </div>
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-    <div class="col-sm-4">
+    <div class="col-sm-4 col-xs-12">
       <div class=" nav2">
         <div class="one"><router-link role="presentation" to="/search"><a>商品列表</a></router-link></div>
         <div class="two"><router-link role="presentation" to="/search"><a>商品列表</a></router-link></div>
@@ -37,27 +38,8 @@
         <div class="one"><router-link role="presentation" to="/repair"><a>售后服务</a></router-link></div>
         <div class="two"><router-link role="presentation" to="/repair"><a>售后服务</a></router-link></div>
       </div>
-    <!--<ul class="nav navbar-nav  ">-->
-    <!---->
-    <!--<li>-->
-    <!--<router-link role="presentation" to="/search"><a>商品列表</a></router-link>-->
-
-    <!--</li>-->
-    <!--<li>-->
-    <!--<router-link role="presentation" to="/works"><a>摄影展示</a></router-link>-->
-
-    <!--</li>-->
-    <!--<li>-->
-    <!--<router-link role="presentation" to="/about"><a>关于我们</a></router-link>-->
-
-    <!--</li>-->
-    <!--<li>-->
-    <!--<router-link role="presentation" to="/repair"><a>售后服务</a></router-link>-->
-
-    <!--</li>-->
-    <!--</ul>-->
     </div>
-    <div class="col-sm-3">
+    <div class="col-sm-3 col-xs-12" >
     <form class="navbar-form navbar-left" style="margin: 10px">
     <form action="" id="ff1"></form>
     <div style="position: relative" class="form-group">
@@ -68,13 +50,12 @@
     </div>
 
     </div>
-    <!--<button type="button" form="ff1"  class="btn btn-default">搜索</button>-->
     </form>
     </div>
-    <div class="col-sm-4">
+    <div class="col-sm-4 col-xs-12">
       <ul class="nav navbar-nav">
         <li style="margin-top:14px;color:white">
-                  <span v-if="sele==1"><router-link role="presentation" to="/login"><a class="move">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;登录</a></router-link>
+                  <span v-if="sele==1"><router-link role="presentation" to="/login"><a class="move">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;登录</a></router-link>
                     <router-link role="presentation" to="/registe"><a class="move">注册</a></router-link></span>
           <span v-else-if="sele==2 " style="font-size: 14px"><span>欢迎您：&nbsp;{{this.$store.state.username}}</span><a
             @click="quit" to="login">退出</a></span>
