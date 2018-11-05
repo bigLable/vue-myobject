@@ -15,18 +15,19 @@
     <div class="row">
      <div id="dv1" class=" row col-lg-6 col-md-6 col-sm-7 col-xs-11">
        <div  id="d1"  class="">
-        <img id="imge" style="margin: 0 auto" @click="sk" class="img-responsive " :src="user.shopImg"  alt="">
-
+        <img  v-if="type == 0" style="margin: 0 auto" @click="sk" class="img-responsive " :src="user.shopImg"  alt="">
+         <img  v-else-if="type == 1" style="margin: 0 auto" @click="sk" class="img-responsive " :src="user.shopImg2"  alt="">
+         <img  v-else-if="type == 2" style="margin: 0 auto" @click="sk" class="img-responsive " :src="user.shopImg3"  alt="">
          <!--<div id="mask"></div>-->
          <!--<div id="big">-->
            <!--<img :src="user.shopImg" alt="">-->
          <!--</div>-->
          <ul id="uuz">
-           <span class="glyphicon glyphicon-chevron-right"></span>
-           <li><img class="img-responsive" :src="user.shopImg" alt=""></li>
-           <li><img class="img-responsive" :src="user.shopImg2" alt=""></li>
-           <li><img class="img-responsive" :src="user.shopImg3" alt=""></li>
-           <span class="glyphicon glyphicon-chevron-left"></span>
+           <span v-on:click="sh(3)"　class="glyphicon glyphicon-chevron-right"></span>
+           <li><img v-on:click="show(0)" class="img-responsive" :src="user.shopImg" alt=""></li>
+           <li><img v-on:click="show(1)" class="img-responsive" :src="user.shopImg2" alt=""></li>
+           <li><img v-on:click="show(2)" class="img-responsive" :src="user.shopImg3" alt=""></li>
+           <span v-on:click="sho(0)" class="glyphicon glyphicon-chevron-left"></span>
          </ul>
 
 
@@ -34,6 +35,32 @@
        <!--<span class="glyphicon glyphicon-chevron-right"></span>-->
        <!--<span class="glyphicon glyphicon-chevron-left"></span>-->
      </div>
+
+
+      <!--<div id="mydiv">-->
+
+        <!--<div v-if="type == 0"><img :src="item.cBigimg.split(',')[0]"/></div>-->
+
+        <!--<div v-else-if="type == 1"><img :src="item.cBigimg.split(',')[1]"/></div>-->
+
+        <!--<div v-else-if="type == 2"><img :src="item.cBigimg.split(',')[2]"/></div>-->
+
+        <!--<div v-else><img :src="item.cBigimg.split(',')[3]"/></div>-->
+
+        <!--<ul>-->
+
+          <!--<li v-on:click="show(0)"><img :src="item.cBigimg.split(',')[0]"/></闪电>-->
+
+          <!--<li v-on:click="show(1)"><img :src="item.cBigimg.split(',')[1]"/></闪电>-->
+
+          <!--<li v-on:click="show(2)"><img :src="item.cBigimg.split(',')[2]"/></闪电>-->
+
+          <!--<li v-on:click="show(3)"><img :src="item.cBigimg.split(',')[3]"/></闪电>-->
+
+        <!--</ul>-->
+
+      <!--</div>-->
+
       <!--====================左侧img========================-->
       <div id="dv2" class="col-lg-6 col-md-6 col-sm-5 col-xs-12 ">
         <div id="page1">
@@ -354,11 +381,20 @@
         same:1,
         name: '',
         user: [],
+        type:"0",
       };
 
     },
     methods: {
-
+      show:function(index){
+        this.type=index;
+      },
+      sho:function(index){
+        this.type=index+1;
+      },
+      sh:function(index){
+        this.type=index-1;
+      },
       change(index,index2){
         this.mura=index
       },
