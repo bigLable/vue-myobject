@@ -42,13 +42,13 @@
     </el-col>
     </div>-->
     <div class="body" v-show="index==1">
-      <div class="pic"><img :src="this.$store.state.headPic" style="width: 100px;" class="img-responsive"/></div>
+      <div class="pic"><img :src="'http://localhost:3000/headpic/'+user.userPic" style="width: 100px;" class="img-responsive"/></div>
       <router-link role="presentation" to="/changeinfo">
         <el-button type="info" plain  class="btn" style="font-size:15px;font-weight: bold">修改资料</el-button>
       </router-link>
       <div class="main">
         <span>用户名： {{user.userName}}</span><br><br>
-        <span v-if="sex==1?'男':'女'">性别： {{sex==1?'男':'女'}}</span><br><br>
+        <span>性别：{{user.userSex==1?'男':'女'}}</span><br><br>
         <span>邮箱: {{user.userEmail}}</span><br><br>
         <span>手机号码： {{user.userPhoneNum}}</span><br><br>
         <span>注册时间:  {{user.userRegisterDate}}</span><br><br>
@@ -340,8 +340,8 @@
           function (res) {
             // alert(JSON.stringify(res.data[0]))
             _this.user = res.data[0]
-            _this.sex=res.data[0].userSex.data[0]
-            alert('xingbie'+JSON.stringify(res.data[0].userSex.data[0]))
+            // _this.sex=res.data[0].userSex.data[0]
+            // alert('xingbie'+JSON.stringify(res.data[0].userSex.data[0]))
             // alert(JSON.stringify(res.data[0]))
           });
 
