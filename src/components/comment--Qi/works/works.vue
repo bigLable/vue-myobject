@@ -38,7 +38,7 @@
     <div style="height: 120px">&nbsp;</div>
     <div v-for="work in info">
       <div class="col-sm-6" >
-      <img :src="work.picc" alt="" class="img-responsive  img-thumbnail">
+        <router-link role="presentation" to="/comment/1039" class="img-thumbnail"> <img :src="work.picc" alt="" class="img-responsive  img-thumbnail"></router-link>
         <br><br>
       </div>
     </div>

@@ -1,6 +1,6 @@
 <template>
   <div  >
-    <div class="bottom">
+    <div class="bottom ">
 
       <div class="footer">
         <div class="w1200">
@@ -9,15 +9,16 @@
               来电咨询<br>
              xxx-xxxx
             </div>
-            <ul>
+
+            <ul >
               <li>全方位的购买咨询</li>|
               <li>精准的产品推荐</li>|
               <li>专业支持的售后咨询</li>|
               <li>电商业务开展咨询</li>
             </ul>
-          </div>
 
-          <div class="footer_copyright">
+          </div>
+          <div class="footer_copyright  ">
             <p>软件企业编号© 2003-2017 Shop,Inc.All rights reserved.</p>
             <p class="beian"><a href="#"><img src="../../assets/ba.png"/>&nbsp;沪公网安备 xxxxxxxxxx号</a> <a href="#"><img src="../../assets/gs.gif"/>&nbsp;上海工商</a></p>
           </div>
@@ -62,7 +63,6 @@
   }
 
   .w1200 {
-    width: 1200px;
     margin: 0 auto;
   }
   .w1200:after{
@@ -122,7 +122,7 @@
     border-bottom: 1px solid #333;
     height: 90px;
     margin: 0 auto;
-    width: 1180px;
+    width: 100%;
     padding-top: 30px;
     color: #aaa;
   }
@@ -131,7 +131,7 @@
     float: left;
     font-size: 16px;
     width: 180px;
-    height: 65px;
+    height: 165px;
     background: url(../../assets/foot_icon5.png) no-repeat 20px 0;
     padding-left: 100px;
   }

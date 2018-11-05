@@ -3,23 +3,24 @@
     <div style="background-image:url('https://desk-fd.zol-img.com.cn/t_s1920x1080c5/g5/M00/02/0A/ChMkJ1bKz1GIIl7YAA6JdnjyzesAALJTwOqxhYADomO449.jpg'); background-position: center center;
  background-attachment: fixed;background-repeat: no-repeat;background-size: cover;">
       <div style="height: 450px"></div>
-      <div style="width: 1000px;background: #ffffff; margin: 0 auto;">
+      <div style="width: 1100px;background: #ffffff; margin: 0 auto;">
   <div class="menu" >
     <br><br><br>
     <div  class="big col-xs-12">
       <div>
-        <div class="block"style="width: 600px">
+        <div class="block"style="width: 700px">
           <span class="demonstration"></span>
           <el-carousel height="550px">
             <el-carousel-item   v-for="work in detail"   >
               <viewer >
-                <img :src="work.Dpic" alt="">
+                <img :src="work.Dpic" alt="" class="img-responsive">
               </viewer>
             </el-carousel-item>
           </el-carousel>
         </div>
         <div >
           <div class="bt-box"v-for="work in works" id="ll">
+
             <a  class="xiaoA bg-1">作者：{{work.worksauthor}}</a>
             <p class="top bt-box-p">作品描述:{{work.worksDescribe}}</p>
             <p class="bottom bt-box-p">拍摄器材：{{work.worksEquipment}}</p>
@@ -47,12 +48,13 @@
         <div v-for="(activity,index) in myActData1" style="width: 800px;margin: 0 auto;">
           <hr>
     <div class="box1 shadow1"id="lk">
-      <p style="font-size: 14px">用户:{{activity.userName}}</p>
 
-      <p style="font-size: 13px">评论内容:{{activity.commentsContent}}
+      <p style="font-size: 14px;margin-left: -50px"><img :src="activity.userPic" alt=""class="img-responsive"style="height: 20px;width: 20px;display: inline">{{activity.userName}}</p>
+
+      <p style="font-size: 13px">评论:{{activity.commentsContent}}
 
       </p>
-      <p style="font-size: 13px">评论时间:{{activity.commentsDate|formatDate}}
+      <p style="font-size: 13px">时间:{{activity.commentsDate|formatDate}}
       </p>
     </div>
 
@@ -119,6 +121,7 @@
         pageCount:0,
         info:[],
         activitys:[],
+
 
       }
 
@@ -200,6 +203,7 @@
             commentsDate:_this.date,
             worksId:_this.wor,
             UserID:_this.id,
+
           }
         )
           ,
@@ -255,13 +259,13 @@
   .text {
     position: relative;
     width: 200px;
-    left: 720px;
+    left: 790px;
     top: -400px;
   }
   #ll{
     position: relative;
     width: 100px;
-    left:200px;
+    left:220px;
     top: -400px;
   }
 
@@ -273,7 +277,7 @@
   #type{
     position: relative;
     width: 100px;
-    left:820px;
+    left:880px;
     top:-380px;
   }
   .big{
