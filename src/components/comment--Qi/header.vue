@@ -57,7 +57,7 @@
         <li style="margin-top:14px;color:white">
                   <span v-if="sele==1"><router-link role="presentation" to="/login"><a class="move">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;登录</a></router-link>
                     <router-link role="presentation" to="/registe"><a class="move">注册</a></router-link></span>
-          <span v-else-if="sele==2 " style="font-size: 14px">欢迎您:&nbsp;&nbsp;&nbsp; <router-link role="presentation" to="/user"><img :src="this.$store.state.headPic" alt=""class="img-responsive"style="width:30px;height:30px;border-radius: 15px;display: inline"></router-link><span>{{this.$store.state.username}}</span>&nbsp;&nbsp;&nbsp;<a
+          <span v-else-if="sele==2 " style="font-size: 14px">欢迎您:<router-link role="presentation" to="/user"><img :src="this.$store.state.headPic" alt=""class="img-responsive"style="width:30px;height:30px;border-radius: 15px;display: inline"></router-link><span>{{this.$store.state.username}}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
             @click="quit" to="login"><span class="glyphicon glyphicon-log-out"></span>&nbsp;退出</a></span>
         </li>
         <li>
@@ -180,7 +180,7 @@
   }
 
   a:hover {
-    color: #d2bca7;
+    color: #bdac9c;
     cursor: pointer;
   }
 
