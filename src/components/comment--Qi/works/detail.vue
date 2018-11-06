@@ -1,25 +1,33 @@
 <template>
-  <div class="menu">
+  <div >
+    <div style="background-image:url('https://desk-fd.zol-img.com.cn/t_s1920x1080c5/g5/M00/02/0A/ChMkJ1bKz1GIIl7YAA6JdnjyzesAALJTwOqxhYADomO449.jpg'); background-position: center center;
+ background-attachment: fixed;background-repeat: no-repeat;background-size: cover;">
+      <div style="height: 450px"></div>
+      <div style="width: 1100px;background: #ffffff; margin: 0 auto;">
+  <div class="menu" >
     <br><br><br>
-    <div  class="big">
+    <div  class="big col-xs-12">
       <div>
-        <div class="block"style="width: 800px">
+        <div class="block"style="width: 700px">
           <span class="demonstration"></span>
-          <el-carousel height="450px">
+          <el-carousel height="550px">
             <el-carousel-item   v-for="work in detail"   >
               <viewer >
-                <img :src="work.Dpic" alt="">
+                <img :src="work.Dpic" alt="" class="img-responsive">
               </viewer>
             </el-carousel-item>
           </el-carousel>
         </div>
         <div >
           <div class="bt-box"v-for="work in works" id="ll">
+
             <a  class="xiaoA bg-1">作者：{{work.worksauthor}}</a>
             <p class="top bt-box-p">作品描述:{{work.worksDescribe}}</p>
             <p class="bottom bt-box-p">拍摄器材：{{work.worksEquipment}}</p>
-          </div>
 
+
+
+          </div>
           <div class="text">
             <el-input
               type="textarea"
@@ -30,44 +38,27 @@
             </el-input>
 
           </div>
-          <div  >
-            <el-button type="success" id="type" :plain="true" @click="getdata ">  发表评论</el-button>
-
-          </div>
-          <!-- Button trigger modal -->
-
-
+          <el-button type="success" id="type" :plain="true" @click="getdata ">  发表评论</el-button>
         </div>
       </div>
-
     </div>
-    <hr>
-    <h3 id="lj">留言贴</h3>
-    <div class="box1 shadow1"id="lk"v-for="comment in com">
+    </div>
 
-      <p style="font-size: 14px">用户：{{comment.userName}}</p>
-      <p style="font-size: 13px">{{comment.commentsContent}}
+        <h3 id="lj">留言板</h3>
+        <div v-for="(activity,index) in myActData1" style="width: 800px;margin: 0 auto;">
+          <hr>
+    <div class="box1 shadow1"id="lk">
+
+      <p style="font-size: 14px;margin-left: -50px"><img :src="activity.userPic" alt=""class="img-responsive"style="height: 20px;width: 20px;display: inline">{{activity.userName}}</p>
+
+      <p style="font-size: 13px">评论:{{activity.commentsContent}}
+
       </p>
-      <div class="circle"></div>
+      <p style="font-size: 13px">时间:{{activity.commentsDate|formatDate}}
+      </p>
     </div>
-    <!--<div  style="height: 150px">-->
-    <!--<ul class="list-group">-->
-    <!--<li class="list-group-item">用户：{{con.userName}}</li>-->
-    <!--<li class="list-group-item">评论：{{con.commentsContent}}</li>-->
-    <!--<li class="list-group-item">评论时间：{{con.commentsDate}}</li>-->
 
-    <!--</ul>-->
-
-    <!--&lt;!&ndash;</div>&ndash;&gt;-->
-    <!--<div id="lk">-->
-    <!--<div class="bt-box" v-for="comment in com" >-->
-    <!--<a  class="xiaoA bg-1">{{comment.commentsContent}}</a>-->
-    <!--<p class="top bt-box-p">用户：{{comment.userName}}</p>-->
-    <!--<p class="bottom bt-box-p">评论时间：{{comment.commentsDate}}</p>-->
-    <!--</div>-->
-
-    <!--</div>-->
-
+        </div>
     <el-dialog
       :visible.sync="dialogVisible"
       width="28%"
@@ -79,6 +70,20 @@
     <el-button type="primary" @click="getcom">确定</el-button>
   </span>
     </el-dialog>
+        <br>
+        <div style="height: 300px;text-align: center">
+          <el-pagination
+            small
+            @current-change="change()"
+            :current-page.sync="pageIndex"
+            layout="prev, pager, next"
+            :total="pageCount"
+            :page-size = "pagesize">
+          </el-pagination>
+        </div>
+  </div>
+      <div style="height: 150px"></div>
+  </div>
 
   </div>
 
@@ -90,6 +95,12 @@
   import $ from 'jquery'
   import axios from 'axios'
   export default {
+    filters: {
+      formatDate(time) {
+        var date = new Date(time);
+        return formatDate(date, 'yyyy-MM-dd hh:mm');
+      }
+    },
     inject:['reload'],
     name: "detail",
 
@@ -104,12 +115,39 @@
         wor:this.$route.params.id,
         id: this.$store.state.user,
         dialogVisible: false,
+        mydata: [],
+        pageIndex: 1,
+        pagesize: 6,  //每页条数
+        pageCount:0,
+        info:[],
+        activitys:[],
+
 
       }
 
     },
+    computed:{
+      myActData1(){
+        return this.activitys;
+      }
+    },
 
     methods: {
+      loadData() {
+        this.activitys = [];
+        let start = (this.pageIndex-1) * this.pagesize;
+        let end = start + this.pagesize;
+        // console.log(this.myActData[1]);
+        if(end>=this.pageCount){
+          end=this.pageCount
+        }
+        for (var i = start; i < end; i++) {
+          this.activitys.push(this.myActData[i])
+        }
+      },
+      change(){
+        return this.loadData();
+      },
 
       getData:function() {
         let _this = this;
@@ -123,29 +161,21 @@
       getcom:function() {
         let _this = this;
         axios.get('http://localhost:3000/works/getcom?id=' + `${this.$route.params.id}`).then(function (result) {
-          console.log(result.data);
-          _this.com = result.data;
-          console.log(_this.com);
+          console.log('---');
+          console.log(result.data)
+          _this.myActData = result.data;
+          _this.pageCount=_this.myActData.length;
+          // console.log(_this.pageCount)
+          _this.loadData()
+          console.log(_this.myActData);
+        },function(err){
+          console.log(err)
 
         })
         this.dialogVisible = false
 
 
       },
-      // getcomm() {
-      //   let _this = this;
-      //   axios.get('http://localhost:3000/works/getcom?id=' + `${this.$route.params.id}`).then(function (result) {
-      //     console.log('============== =====');
-      //     // console.log(result.data)
-      //     _this.com = result.data;
-      //     // alert(JSON.stringify(_this.allare));
-      //
-      //   }, function (err) {
-      //     console.log(err);
-      //   })
-      //
-      // },
-
 
       getdata(){
         if(this.$store.state.user==''){
@@ -173,6 +203,7 @@
             commentsDate:_this.date,
             worksId:_this.wor,
             UserID:_this.id,
+
           }
         )
           ,
@@ -180,22 +211,6 @@
         this.getcom()
         this.dialogVisible = true
       },
-
-      // addcomments(){
-      //   let _this = this
-      //   axios.get('http://localhost:3000/works/addcomments?commentsContent=' + `${_this.content}&UserID=${_this.$store.state.user}&worksId=${this.$route.params.id}&commentsDate=${new Date()}`).then(function (result) {
-      //     // adrename:_this.form.name;
-      //     alert('地址添加成功！！')
-      //     _this.getcomm()
-      //     console.log('==============地址 =====');
-      //     console.log(result.data.data[0])
-      //     // _this.info=result.data.data[0]
-      //     // _this.info.push({Adressid:_this.info[_this.info.length-1].Adressid+1,adrename:_this.formLabelAlign.name})
-      //     // alert(_this.formLabelAlign.name)
-      //   }, function (err) {
-      //     console.log(err);
-      //   })
-      // },
 
 
 
@@ -242,37 +257,32 @@
   }
 
   .text {
-    position: absolute;
-    width: 200px;
-    left: 1000px;
-    top: 400px;
-  }
-  #ll{
-    position: absolute;
-    width: 200px;
-    left: 980px;
-    top: 250px;
-  }
-  #lk{
     position: relative;
     width: 200px;
-    left: 540px;
+    left: 790px;
+    top: -400px;
+  }
+  #ll{
+    position: relative;
+    width: 100px;
+    left:220px;
+    top: -400px;
+  }
+
+  #lj{
+   text-align: center;
+
 
   }
-  #lj{
-    position: absolute;
-    width: 200px;
-    left: 700px;
-    top: 650px;
-  }
   #type{
-    position: absolute;
+    position: relative;
     width: 100px;
-    left: 1100px;
-    top: 460px;
+    left:880px;
+    top:-380px;
   }
   .big{
     height: 600px;
+
   }
   h1{
     text-align: center;
@@ -283,7 +293,7 @@
     margin: 50px auto;
     position: relative;
   }
-  .bt-box .bg-1{background:#62aeff;}
+  .bt-box .bg-1{background: #fc9d9a;}
 
   .bt-box .xiaoA{
     display:block;
@@ -327,7 +337,7 @@
   }
   .bt-box .xiaoA:hover {
     color: #fff;
-    background: #2f7fd5;
+    background: #fc9d9a;
     text-decoration: none;}
 
 
@@ -336,64 +346,44 @@
   *::after {
     box-sizing: inherit;
   }
+.box1{
+   background: rgba(183, 255, 205, 0.46);
+    color: #000000;
 
+    position:relative;
+    height:100px;
+    font-size:1.6em;
+    padding:0 2em;
+    cursor:pointer;
+    transition:800ms ease all;
+    outline:none;
 
-  .box1 {
-    width: 15%;
-    min-width: 350px;
-    display: block;
-    height: 100px;
-    position: relative;
-    border-radius: 5px;
-    background: linear-gradient(to right, #abbd73 35%, #d6e2ad 100%);
-    margin-bottom: 40px;
-    padding: 15px 25px 0 40px;
-    color: darkslategray;
-    box-shadow: 1px 2px 1px -1px #777;
-    transition: background 200ms ease-in-out;
-    text-align:right;
+  }
+  .box1:hover{
+    background:#fff;
+    color: #000000;
+  }
+  .box1:before,.box1:after{
+    content:'';
+    position:absolute;
+    top:0;
+    right:0;
+    height:2px;
+    width:0;
+    background: #769c8a;
+    transition:400ms ease all;
+  }
+  .box1:after{
+    right:inherit;
+    top:inherit;
+    left:0;
+    bottom:0;
+  }
+  .box1:hover:before,.box1:hover:after{
+    width:100%;
+    transition:800ms ease all;
   }
 
-  .box1 a{color:#fff;text-decoration:none;}
 
-  .shadow1 {
-    position: relative;
-  }
-  .shadow1:before {
-    z-index: -1;
-    position: absolute;
-    content: "";
-    bottom: 13px;
-    right: 7px;
-    width: 75%;
-    top: 0;
-    box-shadow: 0 15px 10px #777;
-    -webkit-transform: rotate(4deg);
-    transform: rotate(4deg);
-    transition: all 150ms ease-in-out;
-  }
 
-  .box1:hover {
-    background: linear-gradient(to right, #abbd73 0%, #abbd73 100%);
-  }
-
-  .shadow1:hover::before {
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg);
-    bottom: 20px;
-    z-index: -10;
-  }
-
-  .circle {
-    position: absolute;
-    top: 14px;
-    left: 15px;
-    border-radius: 50%;
-    box-shadow: inset 1px 1px 1px 0px rgba(0, 0, 0, 0.5), inset 0 0 0 25px antiquewhite;
-    width: 20px;
-    height: 20px;
-    display: inline-block;
-    text-align:right;
-    padding:0 20px 0 0;
-  }
 </style>
