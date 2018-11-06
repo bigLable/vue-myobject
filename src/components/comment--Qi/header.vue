@@ -57,16 +57,13 @@
         <li style="margin-top:14px;color:white">
                   <span v-if="sele==1"><router-link role="presentation" to="/login"><a class="move">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;登录</a></router-link>
                     <router-link role="presentation" to="/registe"><a class="move">注册</a></router-link></span>
-          <span v-else-if="sele==2 " style="font-size: 14px">欢迎您:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img :src="this.$store.state.headPic" alt=""class="img-responsive"style="width:30px;height:30px;border-radius: 15px;display: inline">&nbsp;&nbsp;&nbsp;<span>{{this.$store.state.username}}</span><a
-            @click="quit" to="login">退出</a></span>
+          <span v-else-if="sele==2 " style="font-size: 14px">欢迎您:&nbsp;&nbsp;&nbsp; <router-link role="presentation" to="/user"><img :src="this.$store.state.headPic" alt=""class="img-responsive"style="width:30px;height:30px;border-radius: 15px;display: inline"></router-link><span>{{this.$store.state.username}}</span>&nbsp;&nbsp;&nbsp;<a
+            @click="quit" to="login"><span class="glyphicon glyphicon-log-out"></span>&nbsp;退出</a></span>
+        </li>
+        <li>
+          <router-link role="presentation" to="/Car"><a class="move" v-if="sele==2" style="font-size: 13px;"><span class="glyphicon glyphicon-shopping-cart"></span>&nbsp;购物车</a></router-link>
+        </li>
 
-        </li>
-        <li>
-          <router-link role="presentation" to="/Car"><a class="move" v-if="sele==2" style="font-size: 13px;">购物车</a></router-link>
-        </li>
-        <li>
-          <router-link role="presentation" to="/user"><a class="move" v-if="sele==2" style="font-size: 13px"><span @click="upd">个人中心</span></a></router-link>
-        </li>
       </ul>
     </div>
 
@@ -183,7 +180,7 @@
   }
 
   a:hover {
-    color: #a3a3a3;
+    color: #d2bca7;
     cursor: pointer;
   }
 
