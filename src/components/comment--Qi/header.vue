@@ -77,7 +77,7 @@
                     <router-link role="presentation" to="/registe"><a class="move"><span
                       class="glyphicon glyphicon-pencil"></span>&nbsp;注册</a></router-link></span>
                 <span v-else-if="sele==2 " style="font-size: 14px">欢迎您:<img
-                  :src="this.$store.state.headPic" alt="" class="img-responsive"
+                  :src="'http://localhost:3000/headpic/'+this.$store.state.headPic" alt="" class="img-responsive"
                   style="width:30px;height:30px;border-radius: 15px;display: inline"><router-link role="presentation" to="/user"><span>{{this.$store.state.username}}</span></router-link>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
                   @click="quit" to="login"><span class="glyphicon glyphicon-log-out"></span>&nbsp;退出</a></span>
               </li>
@@ -101,12 +101,12 @@
 
 <script>
   import axios from 'axios'
-
+  import $ from 'jquery'
   export default {
     name: "Header",
     data() {
       return {
-
+       user:[],
         da: {},
         searchgood: [],
         emi: '',
@@ -135,10 +135,8 @@
           {
             userEmail: _this.$store.state.userEmail
           },
-          function (res) {
-            // alert(JSON.stringify(res.data[0]))
-            _this.user = res.data[0]
-            // alert(JSON.stringify(res.data[0]))
+          function (result) {
+            _this.user = result.data;
           });
 
       },
@@ -177,7 +175,11 @@
     created() {
       // // this.index=this.$store.state.seletlogon
       // this.$computed.sele()
-    }
+    },
+    mounted: function () {
+      // alert(JSON.stringify(this.$store.state.inf))
+      this.getuser()
+    },
 
   }
 </script>

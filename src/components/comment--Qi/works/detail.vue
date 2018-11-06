@@ -49,7 +49,7 @@
           <hr>
     <div class="box1 shadow1"id="lk">
 
-      <p style="font-size: 14px;margin-left: -50px"><img :src="activity.userPic" alt=""class="img-responsive"style="height: 20px;width: 20px;display: inline">{{activity.userName}}</p>
+      <p style="font-size: 14px;margin-left: -50px"><img :src="'http://localhost:3000/headpic/'+activity.userPic" alt=""class="img-responsive"style="height: 20px;width: 20px;display: inline">{{activity.userName}}</p>
 
       <p style="font-size: 13px">评论:{{activity.commentsContent}}
 
