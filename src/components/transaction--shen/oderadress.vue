@@ -16,7 +16,7 @@
     <el-radio-group v-model="radio2">
 
         <table class="table">
-          <tr v-for="(text,index) in info"  :key="text.Adressid" class="text item">
+          <tr v-for="(text,index) in info"  :key="index" class="text item">
             <td> <el-radio :label="text.Adressid"></el-radio> </td>
             <!--<td> <el-radio ></el-radio> </td>-->
             <td> {{'&nbsp;&nbsp;&nbsp;&nbsp;'+ text.adrename }}</td>

@@ -81,7 +81,7 @@
           phone: '',
           userPwd: '',
         },
-        radio:1,
+
         //是否修改密码
 
       }
@@ -104,7 +104,7 @@
 
       },
       edit() {
-        alert('性别'+this.radio)
+
       let _this=this
         console.log(this.upath);
         var zipFormData = new FormData();

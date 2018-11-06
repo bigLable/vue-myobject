@@ -48,7 +48,7 @@
       </router-link>
       <div class="main">
         <span>用户名： {{user.userName}}</span><br><br>
-        <span>性别：{{user.userSex==1?'男':'女'}}</span><br><br>
+        <span>性别:  {{sex=='1' ? '男':'女'}}</span><br><br>
         <span>邮箱: {{user.userEmail}}</span><br><br>
         <span>手机号码： {{user.userPhoneNum}}</span><br><br>
         <span>注册时间:  {{user.userRegisterDate}}</span><br><br>
@@ -104,7 +104,7 @@
         <div><el-dialog title="收货地址" :visible.sync="dialogFormVisible">
           <div slot="footer" class="dialog-footer" style="height:400px;"><el-form :model="form">
             <el-form-item label="添加地址名称" :label-width="formLabelWidth">
-             <v-distpicker province="广东省" city="广州市" area="海珠区" @selected="onSelected" type="mobile"></v-distpicker>
+             <v-distpicker  province="广东省" city="广州市" area="海珠区" @selected="onSelected" type="mobile"></v-distpicker>
               <el-input v-model="form.addre" autocomplete="off" placeholder="请输入具体地址"></el-input>
             </el-form-item>
           </el-form>
@@ -336,12 +336,15 @@
         $.post("http://localhost:3000/users/getOneUser",
           {
             userEmail: _this.$store.state.userEmail
+
           },
           function (res) {
             // alert(JSON.stringify(res.data[0]))
             _this.user = res.data[0]
+            _this.sex=_this.user.userSex.data[0]
+            // alert(JSON.stringify(_this.user)+'数值')
             // _this.sex=res.data[0].userSex.data[0]
-            // alert('xingbie'+JSON.stringify(res.data[0].userSex.data[0]))
+            alert('xingbie'+typeof JSON.stringify(res.data[0].userSex.data[0]))
             // alert(JSON.stringify(res.data[0]))
           });
 
