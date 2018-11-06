@@ -42,7 +42,7 @@
     </el-col>
     </div>-->
     <div class="body" v-show="index==1">
-      <div class="pic"><img :src="'http://localhost:3000/headpic/'+user.userPic" style="width: 100px;" class="img-responsive"/></div>
+      <div class="pic"><img :src="'http://localhost:3000/headpic/'+user.userPic"  class="img-responsive"/></div>
       <router-link role="presentation" to="/changeinfo">
         <el-button type="info" plain  class="btn" style="font-size:15px;font-weight: bold">修改资料</el-button>
       </router-link>
@@ -54,8 +54,9 @@
         <span>注册时间:  {{user.userRegisterDate}}</span><br><br>
       </div>
     </div>
-    <div style="background-color: white;width: 900px;height: 700px;margin-left:300px;text-align: center;font-family:Arial,sans-serif;"v-show="index==2">
+    <div style="background-color: white;width: 900px;height: 700px;margin-left:300px;text-align: center;font-family:Arial,sans-serif;background: rgba(0, 0, 0, 0.2)"v-show="index==2">
       <table class="table table-hover odertd">
+
         <tr>
           <td style="background-color: #ddd0ff; font-weight: bold">商品图片</td>
           <td style="background-color: #ddd0ff; font-weight: bold">商品名称</td>
@@ -67,7 +68,7 @@
           <td style="background-color: #ddd0ff; font-weight: bold;width:110px">手机号</td>
           <td style="background-color: #ddd0ff; font-weight: bold">交易时间</td>
         </tr>
-        <tr v-for="(goodIfo,inde) in  oderIfo">
+        <tbody> <tr v-for="(goodIfo,inde) in  oderIfo">
           <td style="width:20%;"><span><img :src="goodIfo.商品图片" alt="" class="img-responsive" style="width:30%;margin-left:50px;"></span>
           </td>
           <td>{{goodIfo.as商品名称}}</td>
@@ -79,14 +80,15 @@
           <td style="text-align: center">{{goodIfo.手机号}}</td>
           <td style="text-align: center">{{goodIfo.下单时间}}</td>
         </tr>
+        </tbody>
       </table>
     </div>
-      <div style="background-color: white;width: 900px;height: 680px;margin-left:300px;margin-top:75px; " v-show="index==3">
+      <div style="background-color: white;color:white;width: 900px;height: 680px;margin-left:300px;margin-top:75px;background: rgba(0, 0, 0, 0.2)" v-show="index==3">
         <table class="table">
           <thead>
           <tr class="success">
-            <td>收货地址</td>
-            <td><span>删除操作</span></td>
+            <td style="color:black">收货地址</td>
+            <td style="color:black"><span>删除操作</span></td>
             <td class="edit" style="text-align: center"@click="dialogFormVisible = true">
               <el-button type="text">添加地址</el-button>
             </td>
@@ -258,6 +260,15 @@
   import axios from 'axios';
   import $ from 'jquery'
 
+  $(document).ready(function () {
+    $('tbody tr').hover(function() {
+      $(this).addClass('odd');
+    }, function() {
+      $(this).removeClass('odd');
+    });
+
+  });
+
   export default {
     name: "user",
     data() {
@@ -296,7 +307,7 @@
         axios.get('http://localhost:3000/shoppingCart/addadres?adrename=' + `${_this.form.name+_this.form.addre}&userId=${_this.$store.state.user}`).then(function (result) {
           // adrename:_this.form.name;
           alert('地址添加成功！！')
-          _this.form.name=''
+          _this.form.addre=''
           _this.getAllare()
           console.log('==============地址 =====');
           console.log(result.data.data[0])
@@ -427,8 +438,8 @@
 
   .pic {
     width: 200px;
-    height: 200px;
-
+    height:200px;
+    background-image:url('../../assets/pic.jpg');
     position: absolute;
     margin-left: 50px;
     margin-top: 50px;

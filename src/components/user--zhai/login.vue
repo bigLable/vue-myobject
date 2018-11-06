@@ -75,7 +75,7 @@
             _this.$store.state.userEmail = res.data[0].userEmail
             _this.$store.state.userPhone = res.data[0].userPhoneNum
             _this.$store.state.userTime = res.data[0].userRegisterDate
-            if (res.data.length == 0 || res == null) {
+            if (_this.Form.email !=res.data[0].userEmail) {
               alert('用户不存在！请输入正确邮箱')
             } else if (res.data[0].length != 0) {
               let pwd = res.data[0].userPwd
@@ -83,7 +83,6 @@
               const cry=crypto.createHash('md5');
               cry.update(_this.Form2.pass);
               var inpwd=cry.digest('hex');
-
               if (inpwd == pwd) {
                 alert(`登录成功`)
                 _this.$router.push({path: '/'})
