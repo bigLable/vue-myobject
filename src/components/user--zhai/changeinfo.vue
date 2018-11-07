@@ -192,7 +192,7 @@
     background-color: #ffffff;
     background:url('../../assets/1111.jpg') no-repeat;
     background-position-y:0px;
-    background-position-x:-150px;
+    background-position-x:-80px;
   }
   .body {
     padding:30px;
