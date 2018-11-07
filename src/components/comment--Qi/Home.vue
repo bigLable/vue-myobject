@@ -119,8 +119,9 @@
 
       <div class=" hot col-xs-12"><h3 style="font-family:  'Times New Roman', Times, serif; cursor: pointer">
         最好的时光在路上</h3></div>
+      <router-link role="presentation" to="/works">
       <div>
-        <router-link role="presentation" to="/works"> <div class="col-xs-offset-10"><img src="../../assets/jian.png" alt=""style="width:20px;height:23px ">more</div></router-link>
+       <div class="col-xs-offset-10"><img src="../../assets/jian.png" alt=""style="width:20px;height:23px ">more</div>
       </div>
 
       <div class="wrapper">
@@ -129,7 +130,7 @@
         <section class="sec03" style="height: 500px"></section>
 
       </div>
-
+      </router-link>
     </div>
     <br>
 
