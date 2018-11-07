@@ -39,14 +39,15 @@
               confirmButtonText: '确定',
             });
 
-          }
-          setTimeout(function () {
-            _this.$store.state.num.int1=1;
-            _this.$store.state.num.int2=0;
-            _this.$store.state.num.int3=0;
-            _this.$router.push({path:'/user'})
+            setTimeout(function () {
+              _this.$store.state.num.int1=1;
+              _this.$store.state.num.int2=0;
+              _this.$store.state.num.int3=0;
+              _this.$router.push({path:'/user'})
 
-          },2000);
+            },2000);
+
+          }
 
 
         },
