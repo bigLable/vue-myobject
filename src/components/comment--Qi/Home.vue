@@ -519,15 +519,15 @@
   }
 
   .wrapper section.sec01 {
-    background: url("https://desk-fd.zol-img.com.cn/t_s1280x1024c5/g5/M00/0A/0B/ChMkJ1tEfAKIeyCwAF6u9pbKmU0AAplXQBdHUIAXq8O746.jpg");
+    background: url("https://desk-fd.zol-img.com.cn/t_s1920x1080c5/g5/M00/02/07/ChMkJlbKzAyIO7ZXAFy20NJj-EIAALIyQAAAAAAXLbo795.jpg");
   }
 
   .wrapper section.sec02 {
-    background: url("https://desk-fd.zol-img.com.cn/t_s1280x1024c5/g5/M00/0A/0F/ChMkJ1tFZQKIU-mEABLiJ_5aa0AAApmNQJEw4wAEuI_739.jpg");
+    background: url("https://desk-fd.zol-img.com.cn/t_s1920x1080c5/g5/M00/01/0E/ChMkJ1bKwcqIA7lfAB2yA6HYWdoAALGdwMr6M0AHbIb529.jpg");
   }
 
   .wrapper section.sec03 {
-    background: url("https://desk-fd.zol-img.com.cn/t_s1280x1024c5/g5/M00/0D/0E/ChMkJ1ZFpNqIX9pSABAipaLl7xEAAE3CQLRnCMAECK9265.jpg");
+    background: url("https://desk-fd.zol-img.com.cn/t_s1920x1080c5/g5/M00/02/07/ChMkJ1bKzA2IMcXPABz6hXeA8P8AALIyQBctugAHPqd190.jpg");
   }
 
   .wrapper section.sec01, .wrapper section.sec02, .wrapper section.sec03 {
