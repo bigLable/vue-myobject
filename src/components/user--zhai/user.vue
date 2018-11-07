@@ -439,7 +439,6 @@
   .pic {
     width: 200px;
     height:200px;
-    background-image:url('../../assets/pic.jpg');
     position: absolute;
     margin-left: 50px;
     margin-top: 50px;
