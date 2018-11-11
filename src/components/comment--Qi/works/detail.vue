@@ -10,10 +10,10 @@
       <div>
         <div class="block"style="width: 700px">
           <span class="demonstration"></span>
-          <el-carousel height="550px">
-            <el-carousel-item   v-for="work in detail"   >
+          <el-carousel height="550px" arrow="never">
+            <el-carousel-item   v-for="work in works"   >
               <viewer >
-                <img :src="work.Dpic" alt="" class="img-responsive">
+                <img :src="'http://localhost:3000/img/'+work.worksPic" alt="" class="img-responsive">
               </viewer>
             </el-carousel-item>
           </el-carousel>
@@ -21,7 +21,7 @@
         <div >
           <div class="bt-box"v-for="work in works" id="ll">
 
-            <a  class="xiaoA bg-1">作者：{{work.worksauthor}}</a>
+            <a  class="xiaoA bg-1">作者：{{work.userName}}</a>
             <p class="top bt-box-p">作品描述:{{work.worksDescribe}}</p>
             <p class="bottom bt-box-p">拍摄器材：{{work.worksEquipment}}</p>
 
@@ -67,7 +67,7 @@
     >
       <span style="color: #2e6da4 ;font-size: 18px;height: 20px" >评论成功！</span>
       <span slot="footer" class="dialog-footer">
-    <el-button type="primary" @click="getcom">确定</el-button>
+    <el-button type="primary" @click="getcom"> 确定</el-button>
   </span>
     </el-dialog>
         <br>
@@ -214,15 +214,6 @@
 
 
 
-      getworksD:function() {
-        let _this = this;
-        axios.get('http://localhost:3000/works/getworksD?id=' + `${this.$route.params.id}`).then(function (result) {
-          console.log(result.data);
-          _this.detail = result.data;
-          console.log(_this.detail);
-
-        })
-      },
 
 
 
@@ -230,7 +221,6 @@
     mounted:function(){
       this.getData();
       this.getcom();
-      this.getworksD()
       console.log('id value'+this.$route.params.id)
     }
 

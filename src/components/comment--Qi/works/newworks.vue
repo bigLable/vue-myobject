@@ -16,7 +16,7 @@
 				</span>
               <span class="bor">
 				</span>
-              <img :src="activity.worksPic" >
+              <img :src="'http://localhost:3000/img/'+activity.worksPic" >
 
             </router-link>
           </div>

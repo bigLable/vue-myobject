@@ -19,6 +19,7 @@
 // ]
 import works from './components/comment--Qi/works/works'
 import about from './components/user--zhai/about'
+import add from './components/comment--Qi/works/addworks'
 import detail from './components/comment--Qi/works/detail'
 import comment from './components/comment--Qi/works/comment'
 import newworks from './components/comment--Qi/works/newworks'
@@ -62,6 +63,7 @@ export const routes=[
     ]
   },
   {path:'/about',component:about},
+  {path:'/add',component:add},
   {path:'/user',component:user},
   {path:'/changeinfo',component:changeinfo},
   {path:'/login',component:login},

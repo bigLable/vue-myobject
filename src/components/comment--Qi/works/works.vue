@@ -6,13 +6,15 @@
         <div> <img src="../../../assets/h1.png" alt="" class="img-responsive"></div>
 
 
-        <h3   style="font-size:26px;font-family:新宋体;text-align: center;font-weight: bold;height: 50px;">欢迎来到kaca摄影区</h3>
+        <p   style="font-size:23px;font-family:新宋体;text-align: center;font-weight: bold;height: 50px;">欢迎来到kaca摄影区</p>
+    <el-button type="primary" round style="margin-left: 110px; margin-top: -25px;margin-bottom: 10px"  @click="getdata ">上传我的作品</el-button>
+        <p style="text-align: center;font-size: 14px;font-family:新宋体;color: rgb(160,160,160)">为了方便您的互动交流<br>请您先登录或注册</p>
         <el-row style="text-align: center;height: 60px;">
-          <router-link role="presentation" to="/login"> <el-button type="danger" round>&nbsp;&nbsp;登录&nbsp;&nbsp;</el-button></router-link>
-          <router-link role="presentation" to="/registe"> <el-button type="primary" round>&nbsp;&nbsp;注册&nbsp;&nbsp;</el-button></router-link>
+          <router-link role="presentation" to="/login"> <el-button type="danger" plain >&nbsp;&nbsp;登录&nbsp;&nbsp;</el-button></router-link>
+          <router-link role="presentation" to="/registe"> <el-button type="warning"  plain>&nbsp;&nbsp;注册&nbsp;&nbsp;</el-button></router-link>
 
         </el-row>
-        <p style="text-align: center;font-size: 16px;font-family:新宋体;color: rgb(160,160,160)">为了方便您的评论<br>请您先登录或注册</p>
+
 
       </div>
 <div class="col-xs-9">
@@ -135,6 +137,22 @@
           console.log(err)
         })
       },
+      getdata() {
+        let _this=this
+        if (this.$store.state.user == '') {
+          this.$message({
+            showClose: true,
+            message: '请先登录！！',
+            type: 'warning'
+          },
+
+        );
+          _this.$router.push({path: '/login'})
+        }
+        else {
+          _this.$router.push({path: '/add'})
+        }
+      }
 
 
     },
@@ -150,6 +168,7 @@
       });
       this.gethotgoods();
       this.needScroll();
+
 
 
     }
