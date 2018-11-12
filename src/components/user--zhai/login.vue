@@ -30,7 +30,6 @@
 
 <script>
   import $ from 'jquery'
-0
  import crypto from 'crypto';
   export default {
     name: "login",
