@@ -64,7 +64,7 @@
       :show-close="false"
       :close-on-press-escape="false"
     >
-      <span style="color: #2e6da4 ;font-size: 18px;height: 20px" >评论成功！</span>
+      <span style="color: #2e6da4 ;font-size: 18px;height: 20px" >发表成功！</span>
       <span slot="footer" class="dialog-footer">
     <el-button type="primary"><router-link role="presentation" to="works">确定</router-link></el-button>
   </span>
