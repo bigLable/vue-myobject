@@ -16,14 +16,14 @@
 				</span>
             <span class="bor">
 				</span>
-            <img :src="activity.worksPic" >
+            <img :src="'http://localhost:3000/img/'+activity.worksPic" >
 
           </router-link>
         </div>
         <br>
         <h4 class="title">简介:{{activity.worksDescribe}}</h4>
         <p class="description">
-          <img src="../../../assets/user.png" alt="" class="img-responsive" style="width: 20px;height: 20px;display: inline">&nbsp;{{activity.worksauthor}}作品
+          <img src="../../../assets/user.png" alt="" class="img-responsive" style="width: 20px;height: 20px;display: inline">&nbsp;{{activity.userName}}作品
         </p>
         <br>
         <br>
