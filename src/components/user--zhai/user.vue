@@ -355,7 +355,7 @@
             _this.sex=_this.user.userSex.data[0]
             // alert(JSON.stringify(_this.user)+'数值')
             // _this.sex=res.data[0].userSex.data[0]
-            alert('xingbie'+typeof JSON.stringify(res.data[0].userSex.data[0]))
+            // alert('xingbie'+typeof JSON.stringify(res.data[0].userSex.data[0]))
             // alert(JSON.stringify(res.data[0]))
           });
 
