@@ -30,12 +30,13 @@
     </div>
     <div class="row text-center">
 
-      <div v-for="(dat,index) in activitys" class=" animated pulse repudiv col-lg-3  col-md-3 col-sm-6 col-xs-6">
+      <div v-for="dat in activitys" class=" animated pulse repudiv col-lg-3  col-md-3 col-sm-6 col-xs-6">
 
         <div class="bbb image-hover img-shadow-1 ">
           <router-link :to="'/shops/'+dat.ShopID">
             <div class="imgdiv center-block">
-              <img class="img-responsive mme" :src="dat.shopImg" alt="" :id="dat.ShopID">
+              <img v-if="type == 0"  class="img-responsive mme" :src="dat.shopImg" alt="" :id="dat.ShopID">
+              <img v-else-if="type == 1"  class="img-responsive mme" :src="dat.shopImg2" alt="" :id="dat.ShopID">
             </div>
             <div>
 
@@ -46,9 +47,7 @@
             </div>
           </router-link>
         </div>
-        <div id="cad">
 
-        </div>
       </div>
 
     </div>
@@ -84,6 +83,7 @@
         pageCount:0,
         info:[],
         activitys:[],
+        type:"0"
 
       };
 
@@ -99,6 +99,12 @@
 
 
     methods: {
+      // shang:function(index){
+      //   this.user.type=index;
+      // },
+      // xia:function(index){
+      //   this.user.type=index;
+      // },
       loadData() {
         this.activitys = [];
         let start = (this.pageIndex-1) * this.pagesize;
@@ -282,6 +288,7 @@
   }
 
   .bbb {
+
     padding-left: 10px;
     padding-right: 10px;
     border: 1px solid #cccccc;

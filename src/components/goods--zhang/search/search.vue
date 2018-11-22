@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid"">
+  <div class="container-fluid">
 
 
   <div class="container">
@@ -7,7 +7,9 @@
     <type-search></type-search>
   <sort-search></sort-search>
 
-  </div></div>
+  </div>
+
+  </div>
 </template>
 
 <script>

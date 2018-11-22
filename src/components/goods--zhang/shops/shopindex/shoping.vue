@@ -386,6 +386,27 @@
 
     },
     methods: {
+      scoll(){
+        $(document).ready(function() {
+          $("#tohard").click(function () {
+            $("html, body").animate({
+              scrollTop: $("#px").offset().top
+            }, {duration: 500, easing: "swing"});
+            return false;
+          });
+        });
+        $(function () {
+
+        });
+        $(window).scroll(function (){
+          let wintop = document.documentElement.scrollTop || document.body.scrollTop;
+          if (wintop>=800){
+            $("#divsf").addClass('fi')
+          }else{
+            $("#divsf").removeClass('fi')
+          }
+        });
+      },
       show:function(index){
         this.type=index;
       },
@@ -425,7 +446,7 @@
           shopid=localStorage.getItem('shopid')+','+this.$route.params.id
           localStorage.setItem('shopid',shopid)
           alert('添加购物车成功！')
-          alert(shopid)
+          // alert(shopid)
         }
 
       },
@@ -458,25 +479,9 @@
     },
     mounted(){
       this.getData();
-      $(document).ready(function() {
-        $("#tohard").click(function () {
-          $("html, body").animate({
-            scrollTop: $("#px").offset().top
-          }, {duration: 500, easing: "swing"});
-          return false;
-        });
-      });
-      $(function () {
+      this.scoll();
 
-      });
-      $(window).scroll(function (){
-      let wintop = document.documentElement.scrollTop || document.body.scrollTop;
-      if (wintop>=800){
-        $("#divsf").addClass('fi')
-      }else{
-        $("#divsf").removeClass('fi')
-      }
-    });
+
 
       // console.log('id value'+this.$route.params.id)
 
